@@ -1,0 +1,51 @@
+name: Bug Report
+about: File a bug report
+title: '[Bug]: '
+body:
+  - type: checkboxes
+    id: prerequisites
+    attributes:
+      label: "Please confirm that:"
+      options:
+        - label: I have searched the [issues](https://codeberg.org/bg443/JetBird/issues) and didn't find my bug or an answer to my question
+          required: true
+        - label: My bug is about JetBird and not something upstream
+          required: true
+  - type: input
+    id: version
+    attributes:
+      label: What is your JetBird version?
+      description: |
+        This can be found at the bottom of the Settings page.
+      placeholder: e.g. 1.0.0
+    validations:
+      required: true
+  - type: input
+    id: model
+    attributes:
+      label: What make/model is your device?
+      placeholder: e.g. Pixel 9 Pro Fold
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: What OS and version are you running?
+      placeholder: e.g. GrapheneOS Android 14 (2024071200)
+    validations:
+      required: true
+  - type: textarea
+    id: bug
+    attributes:
+      label: What happened?
+      description: |
+        Please include as much detail as possible, as well as steps to reproduce if possible.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: |
+        Please copy and paste any relevant logs. This will be automatically formatted into code, so no need for backticks.
+      render: shell

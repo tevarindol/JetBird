@@ -1,0 +1,19 @@
+name: Feature Request
+about: Submit a feature request
+title: '[Feature Request]: '
+body:
+  - type: checkboxes
+    id: prerequisites
+    attributes:
+      label: "Please confirm that:"
+      options:
+        - label: I have searched the [issues](https://codeberg.org/bg443/JetBird/issues) and didn't find the feature I am looking for
+          required: true
+  - type: textarea
+    id: feature
+    attributes:
+      label: Feature description
+      description: |
+        Please include as much detail as possible.
+    validations:
+      required: true

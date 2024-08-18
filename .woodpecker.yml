@@ -1,0 +1,43 @@
+steps:
+  build_netbird:
+    image: openpriv/go-cross-compile:2024.02
+    commands:
+      - ./scripts/build_netbird.sh -v
+  build_debug:
+    image: alvrme/alpine-android:android-34-jdk21
+    commands:
+      - ./gradlew :app:assembleDebug
+    when:
+      path: [app/**, build.gradle.kts, .woodpecker.yml]
+      event: [push]
+  build_release:
+    image: alvrme/alpine-android:android-34-jdk21
+    commands:
+      - ./gradlew :app:assembleRelease --stacktrace
+    when:
+      event: [tag]
+  sign:
+    image: alvrme/alpine-android:android-34-jdk21
+    commands:
+      - ./scripts/apk_sign.sh
+    secrets: [APK_KS, APK_KS_ALIAS, APK_KS_PASS]
+    when:
+      event: [tag]
+  publish:
+    image: woodpeckerci/plugin-gitea-release
+    settings:
+      base_url: https://codeberg.org
+      files:
+        - JetBird-arm64-v8a-release.apk
+        - JetBird-armeabi-v7a-release.apk
+        - JetBird-universal-release.apk
+        - JetBird-x86-release.apk
+        - JetBird-x86_64-release.apk
+      api_key:
+        from_secret: GIT_ACCESS_TOKEN
+      target: master
+      prerelease: true
+    when:
+      event: [tag]
+when:
+  event: [push, tag, pull_request]

@@ -1,0 +1,96 @@
+diff --git a/client/android/client.go b/client/android/client.go
+index d937e132..6af7815d 100644
+--- a/client/android/client.go
++++ b/client/android/client.go
+@@ -3,7 +3,9 @@
+ package android
+ 
+ import (
++	"bytes"
+ 	"context"
++	"io"
+ 	"sync"
+ 
+ 	log "github.com/sirupsen/logrus"
+@@ -149,14 +151,20 @@ func (c *Client) Stop() {
+ 
+ // SetTraceLogLevel configure the logger to trace level
+ func (c *Client) SetTraceLogLevel() {
++	log.SetOutput(log.StandardLogger().Out)
+ 	log.SetLevel(log.TraceLevel)
+ }
+ 
+ // SetInfoLogLevel configure the logger to info level
+ func (c *Client) SetInfoLogLevel() {
++	log.SetOutput(log.StandardLogger().Out)
+ 	log.SetLevel(log.InfoLevel)
+ }
+ 
++func (c *Client) DisableLogs() {
++	log.SetOutput(io.Discard)
++}
++
+ // PeersList return with the list of the PeerInfos
+ func (c *Client) PeersList() *PeerInfoArray {
+ 
+@@ -164,10 +172,29 @@ func (c *Client) PeersList() *PeerInfoArray {
+ 
+ 	peerInfos := make([]PeerInfo, len(fullStatus.Peers))
+ 	for n, p := range fullStatus.Peers {
++		var routes bytes.Buffer
++		for r := range p.GetRoutes() {
++			routes.WriteString(r)
++			routes.WriteString(";")
++		}
+ 		pi := PeerInfo{
+ 			p.IP,
+ 			p.FQDN,
+ 			p.ConnStatus.String(),
++			p.PubKey,
++			p.ConnStatusUpdate.Unix(),
++			p.Relayed,
++			p.Direct,
++			p.LocalIceCandidateType,
++			p.RemoteIceCandidateType,
++			p.LocalIceCandidateEndpoint,
++			p.RemoteIceCandidateEndpoint,
++			p.LastWireguardHandshake.Unix(),
++			p.BytesTx,
++			p.BytesRx,
++			p.Latency.Milliseconds(),
++			p.RosenpassEnabled,
++			routes.String(),
+ 		}
+ 		peerInfos[n] = pi
+ 	}
+diff --git a/client/android/peer_notifier.go b/client/android/peer_notifier.go
+index 9f6fcddd..f9669a7d 100644
+--- a/client/android/peer_notifier.go
++++ b/client/android/peer_notifier.go
+@@ -2,9 +2,23 @@ package android
+ 
+ // PeerInfo describe information about the peers. It designed for the UI usage
+ type PeerInfo struct {
+-	IP         string
+-	FQDN       string
+-	ConnStatus string // Todo replace to enum
++	IP                         string
++	FQDN                       string
++	ConnStatus                 string // Todo replace to enum
++	PubKey                     string
++	ConnStatusUpdate           int64
++	Relayed                    bool
++	Direct                     bool
++	LocalIceCandidateType      string
++	RemoteIceCandidateType     string
++	LocalIceCandidateEndpoint  string
++	RemoteIceCandidateEndpoint string
++	LastWireguardHandshake     int64
++	BytesTx                    int64
++	BytesRx                    int64
++	Latency                    int64
++	RosenpassEnabled           bool
++	Routes                     string
+ }
+ 
+ // PeerInfoCollection made for Java layer to get non default types as collection
