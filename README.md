@@ -111,6 +111,7 @@ See a full list of libraries used [here](https://codeberg.org/bg443/JetBird/wiki
 ## License
 <img src="assets/gpl_v3.svg" height=100 />
 <br />
+
 JetBird is free software: you can redistribute it and/or modify it under the terms of the [GNU GPL-3.0-or-later License](./LICENCE.md) as published by the Free Software Foundation.
 
 This software is provided with no warranty.
