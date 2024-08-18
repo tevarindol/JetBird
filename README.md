@@ -1,10 +1,7 @@
 <div align="center">
 <img src="assets/jetbird_banner_full_rev4.svg" alt="JetBird banner" />
 
-[![status-badge](https://ci.codeberg.org/api/badges/status.svg)]()
-[![Submodule SHA](https://badges.codeberg.org/badge/dynamic/json?url=https%3A%2F%2Fcodeberg.org%2Fapi%2Fv1%2Frepos%2Fbg443%2FJetBird%2Fcontents%2Fnetbird&query=%24.sha&label=submodule%20commit%20SHA)]()
-[![Upstream Release](https://badges.codeberg.org/github/v/release/netbirdio/netbird?label=latest%20upstream%20release)](https://github.com/netbirdio/netbird/releases/latest)
-[![GitHub commits since latest release](https://badges.codeberg.org/github/commits-since/netbirdio/netbird/latest)](https://github.com/netbirdio/netbird)
+[![status-badge](https://ci.codeberg.org/api/badges/13669/status.svg)](https://ci.codeberg.org/repos/13669)
 <p>An unofficial, FLOSS, native Android NetBird client built with privacy in mind</p>
 </div>
 
@@ -99,6 +96,13 @@ JetBird requires a few permissions in order to function:
 As JetBird is just a wrapper around the official NetBird client, most connection/peer/management issues will reside with upstream.
 
 Please open an issue using the template provided if you believe you have found a bug or have a feature request!
+
+## Translations
+You can contribute to JetBird translations [here](https://translate.codeberg.org/projects/jetbird/app)
+
+<a href="https://translate.codeberg.org/engage/jetbird/">
+<img src="https://translate.codeberg.org/widget/jetbird/app/multi-auto.svg" alt="Translation status" />
+</a>
 
 ## Libraries
 
