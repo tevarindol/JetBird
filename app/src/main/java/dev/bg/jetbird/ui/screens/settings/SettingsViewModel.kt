@@ -102,6 +102,11 @@ class SettingsViewModel @Inject constructor(
         launchUpdatePreferenceState()
     }
 
+    fun updateFallbackDns(dns: String?) {
+        preferencesRepository.fallbackDns = dns
+        launchUpdatePreferenceState()
+    }
+
     fun resetPreferences() {
         log("Resetting JetBird preferences")
         viewModelScope.launch(ioDispatcher) {

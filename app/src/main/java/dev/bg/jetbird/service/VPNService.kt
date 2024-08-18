@@ -81,14 +81,18 @@ class VPNService: VpnService() {
     private var liveLoggingJob = ReplaceableJob()
     private var isLoggingEnabled = false
     private var isVerboseLoggingEnabled = false
+    private var fallbackDns: String? = null
 
     override fun onCreate() {
         super.onCreate()
         liveLoggingScope = CoroutineScope(ioDispatcher)
         tunnel = Tunnel(this, serviceStateListener, connectionListener)
-        hasAuthed = preferencesRepository.hasAuthed
-        isLoggingEnabled = preferencesRepository.logging
-        isVerboseLoggingEnabled = preferencesRepository.verboseLogging
+        scope.launch(ioDispatcher) {
+            hasAuthed = preferencesRepository.hasAuthed
+            isLoggingEnabled = preferencesRepository.logging
+            isVerboseLoggingEnabled = preferencesRepository.verboseLogging
+            fallbackDns = preferencesRepository.fallbackDns
+        }
         setEngineLoggingLevel(preferencesRepository.engineLogging, preferencesRepository.verboseEngineLogging)
         scope.launch {
             preferencesRepository.state.collectLatest {
@@ -97,6 +101,7 @@ class VPNService: VpnService() {
                 isVerboseLoggingEnabled = it.verboseLogging
                 setEngineLoggingLevel(it.engineLogging, it.verboseEngineLogging)
                 isLiveLoggingEnabled = it.liveEngineLogging
+                fallbackDns = it.fallbackDns
                 if (it.liveEngineLogging) {
                     startEngineLogTailing()
                 } else {
@@ -168,7 +173,8 @@ class VPNService: VpnService() {
             loggingLevel = engineLoggingLevel,
             excludeApps = preferencesRepository.excludedApps,
             enableRouteOverrides = preferencesRepository.routeOverridesEnabled,
-            overrides = preferencesRepository.routeOverrides
+            overrides = preferencesRepository.routeOverrides,
+            fallbackDns = fallbackDns
         )
     }
 

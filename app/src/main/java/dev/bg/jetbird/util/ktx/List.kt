@@ -11,9 +11,9 @@ fun List<InetAddress>.toDnsList(): DNSList {
 }
 
 fun List<InetAddress>.addFallbackDns(
-    dnsHostname: String
+    dnsHostname: String?
 ): DNSList {
-    if (this.isEmpty()) return toDnsList()
+    if (dnsHostname == null || this.isEmpty()) return toDnsList()
     if (!this[0].isLinkLocalAddress) return toDnsList()
     val dns = this.toMutableList()
     runCatching {

@@ -26,6 +26,7 @@ class DNSWatch(
 
     private val connectivityManager: ConnectivityManager = context.getSystemService(ConnectivityManager::class.java)
     private var dnsServers: DNSList
+    private var fallbackDns: String? = null
 
     init {
         dnsServers = getActiveDns()
@@ -88,6 +89,10 @@ class DNSWatch(
         }
     }
 
+    fun updateFallbackDns(dns: String?) {
+        fallbackDns = dns
+    }
+
     private fun extendWithFallbackDNS(dnsServers: List<InetAddress>): DNSList {
         val modifiableDnsServers: List<InetAddress> = ArrayList(dnsServers)
         if (dnsServers.isEmpty()) {
@@ -96,7 +101,7 @@ class DNSWatch(
         if (!dnsServers[0].isLinkLocalAddress) {
             return modifiableDnsServers.toDnsList()
         }
-        return modifiableDnsServers.addFallbackDns("1.1.1.1")
+        return modifiableDnsServers.addFallbackDns(fallbackDns)
     }
 
     private fun notifyDnsWatcher(dnsServers: DNSList) {
