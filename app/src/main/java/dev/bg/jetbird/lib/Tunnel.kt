@@ -61,7 +61,8 @@ class Tunnel(
         loggingLevel: EngineLoggingLevel,
         excludeApps: Set<String>,
         enableRouteOverrides: Boolean,
-        overrides: Set<String>
+        overrides: Set<String>,
+        fallbackDns: String?
     ) {
         if (isRunning) return
         when (loggingLevel) {
@@ -72,6 +73,7 @@ class Tunnel(
         excludedApps = excludeApps
         routeOverrideEnabled = enableRouteOverrides
         routeOverrides = overrides
+        dnsWatch.updateFallbackDns(fallbackDns)
         scope.launch {
             try {
                 notifyServiceStateListeners(true)

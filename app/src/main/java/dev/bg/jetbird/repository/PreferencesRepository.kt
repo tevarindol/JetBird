@@ -25,6 +25,7 @@ interface PreferencesValues {
     var excludedApps: Set<String>
     var routeOverridesEnabled: Boolean
     var routeOverrides: Set<String>
+    var fallbackDns: String?
 }
 
 interface PreferencesRepository: PreferencesValues {
@@ -118,6 +119,10 @@ class PreferencesRepositoryImpl @Inject constructor(): PreferencesRepository {
         get() = mmkv.decodeStringSet(PreferenceKeys.RouteOverrides.key, emptySet<String>())!!.toSet()
         set(value) { mmkv.encode(PreferenceKeys.RouteOverrides.key, value) }
 
+    override var fallbackDns: String?
+        get() = mmkv.decodeString(PreferenceKeys.FallbackDNS.key, null)
+        set(value) { mmkv.encode(PreferenceKeys.FallbackDNS.key, value) }
+
     override fun reset() {
         mmkv.removeValuesForKeys(mmkv.allKeys())
     }
@@ -138,7 +143,8 @@ class PreferencesRepositoryImpl @Inject constructor(): PreferencesRepository {
             verboseLogging = verboseLogging,
             excludedApps = excludedApps,
             routeOverridesEnabled = routeOverridesEnabled,
-            routeOverrides = routeOverrides
+            routeOverrides = routeOverrides,
+            fallbackDns = fallbackDns
         )
     }
 }
@@ -161,7 +167,8 @@ data class PreferencesState(
     override var verboseLogging: Boolean,
     override var excludedApps: Set<String>,
     override var routeOverridesEnabled: Boolean,
-    override var routeOverrides: Set<String>
+    override var routeOverrides: Set<String>,
+    override var fallbackDns: String?
 ): PreferencesValues
 
 private enum class PreferenceKeys(
@@ -186,5 +193,6 @@ private enum class PreferenceKeys(
     VerboseLogging("verbose_logging"),
     ExcludedApps("excluded_apps"),
     RouteOverridesEnabled("route_overrides_enabled"),
-    RouteOverrides("route_overrides")
+    RouteOverrides("route_overrides"),
+    FallbackDNS("fallback_dns")
 }

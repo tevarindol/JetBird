@@ -42,6 +42,7 @@
     <string name="failed_remove_netbird_config">Failed to remove NetBird configuration file</string>
     <string name="failed_to_change_management_server">Failed to change management server</string>
     <string name="failed_vpn_permission">User rejected VPN permission</string>
+    <string name="fallback_dns">Fallback DNS</string>
     <string name="foreground_notification_description">JetBird tunnel is active</string>
     <string name="get_started_url">To get started please enter your management server URL</string>
     <string name="grant_permission">Grant permission</string>

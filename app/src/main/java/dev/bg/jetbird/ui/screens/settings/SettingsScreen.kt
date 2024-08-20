@@ -221,6 +221,7 @@ fun SettingsScreen(
             title = stringResource(R.string.app_name)
         ) {
             var excludeAppsDialog by remember { mutableStateOf(false) }
+            var fallbackDnsDialog by remember { mutableStateOf(false) }
 
             SettingsSwitch(
                 title = stringResource(R.string.enable_logging),
@@ -254,6 +255,22 @@ fun SettingsScreen(
                 title = stringResource(R.string.route_selector),
                 description = stringResource(R.string.route_selector_description, state.routeOverrides.size),
                 onClick = { navController.navigate(Route.RouteSelector) }
+            )
+            SettingsTileWithValue(
+                title = stringResource(R.string.fallback_dns),
+                value = state.fallbackDns.toStringOrNotSet(ctx),
+                onClick = { fallbackDnsDialog = true }
+            )
+            TextFieldAlertDialog(
+                open = fallbackDnsDialog,
+                title = stringResource(R.string.fallback_dns),
+                label = stringResource(R.string.fallback_dns),
+                initialValue = state.fallbackDns,
+                inputType = OutlinedTextFieldInputType.Any,
+                onDismissRequest = { fallbackDnsDialog = false },
+                onEntered = { dns ->
+                    viewModel.updateFallbackDns(dns)
+                }
             )
         }
         HorizontalDivider()
