@@ -13,6 +13,7 @@ steps:
   build_release:
     image: alvrme/alpine-android:android-34-jdk21
     commands:
+      - extras ndk
       - ./gradlew :app:assembleRelease --stacktrace
     when:
       event: [tag]
