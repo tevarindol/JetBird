@@ -26,6 +26,7 @@ interface PreferencesValues {
     var routeOverridesEnabled: Boolean
     var routeOverrides: Set<String>
     var fallbackDns: String?
+    var reconnectOnNewRoutes: Boolean
 }
 
 interface PreferencesRepository: PreferencesValues {
@@ -123,6 +124,10 @@ class PreferencesRepositoryImpl @Inject constructor(): PreferencesRepository {
         get() = mmkv.decodeString(PreferenceKeys.FallbackDNS.key, null)
         set(value) { mmkv.encode(PreferenceKeys.FallbackDNS.key, value) }
 
+    override var reconnectOnNewRoutes: Boolean
+        get() = mmkv.decodeBool(PreferenceKeys.ReconnectOnNewRoutes.key, false)
+        set(value) { mmkv.encode(PreferenceKeys.ReconnectOnNewRoutes.key, value) }
+
     override fun reset() {
         mmkv.removeValuesForKeys(mmkv.allKeys())
     }
@@ -144,7 +149,8 @@ class PreferencesRepositoryImpl @Inject constructor(): PreferencesRepository {
             excludedApps = excludedApps,
             routeOverridesEnabled = routeOverridesEnabled,
             routeOverrides = routeOverrides,
-            fallbackDns = fallbackDns
+            fallbackDns = fallbackDns,
+            reconnectOnNewRoutes = reconnectOnNewRoutes
         )
     }
 }
@@ -168,7 +174,8 @@ data class PreferencesState(
     override var excludedApps: Set<String>,
     override var routeOverridesEnabled: Boolean,
     override var routeOverrides: Set<String>,
-    override var fallbackDns: String?
+    override var fallbackDns: String?,
+    override var reconnectOnNewRoutes: Boolean
 ): PreferencesValues
 
 private enum class PreferenceKeys(
@@ -194,5 +201,6 @@ private enum class PreferenceKeys(
     ExcludedApps("excluded_apps"),
     RouteOverridesEnabled("route_overrides_enabled"),
     RouteOverrides("route_overrides"),
-    FallbackDNS("fallback_dns")
+    FallbackDNS("fallback_dns"),
+    ReconnectOnNewRoutes("reconnect_new_routes")
 }

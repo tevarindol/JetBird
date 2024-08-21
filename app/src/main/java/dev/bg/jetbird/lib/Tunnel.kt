@@ -22,7 +22,7 @@ import kotlinx.coroutines.launch
 interface TunnelListener {
     fun onStarted()
     fun onStopped()
-    fun onRequiresRestart()
+    fun onRoutesChange()
     fun onLog(message: String, verbose: Boolean, force: Boolean)
     fun onError(message: String)
 }
@@ -144,9 +144,9 @@ class Tunnel(
         }
     }
 
-    override fun onNetworkChanged(p0: String) {
-        log("NetBird sent new routes - recreating tunnel")
-        tunnelListener.onRequiresRestart()
+    override fun onNetworkChanged(routes: String) {
+        log("NetBird sent new routes - $routes")
+        tunnelListener.onRoutesChange()
     }
 
     override fun setInterfaceIP(ip: String) {}

@@ -9,7 +9,7 @@ steps:
       - ./gradlew :app:assembleDebug
     when:
       path: [app/**, build.gradle.kts, .woodpecker.yml]
-      event: [push]
+      event: [pull_request]
   build_release:
     image: alvrme/alpine-android:android-34-jdk21
     commands:
@@ -40,4 +40,4 @@ steps:
     when:
       event: [tag]
 when:
-  event: [push, tag, pull_request]
+  event: [pull_request, tag]

@@ -33,7 +33,7 @@ class SettingsViewModel @Inject constructor(
                 preferences.commit()                
             }
             preferencesRepository.preSharedKey = key
-            updatePreferenceState()
+            preferencesRepository.updateState()
         }
     }
 
@@ -52,7 +52,7 @@ class SettingsViewModel @Inject constructor(
             if (!enabled) {
                 toggleRosenpassPermissive(configPath, false)
             }
-            updatePreferenceState()
+            preferencesRepository.updateState()
         }
     }
 
@@ -68,59 +68,70 @@ class SettingsViewModel @Inject constructor(
                 preferences.commit()
             }
             preferencesRepository.rosenpassPermissive = enabled
-            updatePreferenceState()
+            preferencesRepository.updateState()
         }
     }
 
     fun toggleLogging(enabled: Boolean) {
-        preferencesRepository.logging = enabled
-        launchUpdatePreferenceState()
+        viewModelScope.launch(ioDispatcher) {
+            preferencesRepository.logging = enabled
+            preferencesRepository.updateState()
+        }
     }
 
     fun toggleVerboseLogging(enabled: Boolean) {
-        preferencesRepository.verboseLogging = enabled
-        launchUpdatePreferenceState()
+        viewModelScope.launch(ioDispatcher) {
+            preferencesRepository.verboseLogging = enabled
+            preferencesRepository.updateState()
+        }
     }
 
     fun toggleEngineLogging(enabled: Boolean) {
-        preferencesRepository.engineLogging = enabled
-        launchUpdatePreferenceState()
+        viewModelScope.launch(ioDispatcher) {
+            preferencesRepository.engineLogging = enabled
+            preferencesRepository.updateState()
+        }
     }
 
     fun toggleVerboseEngineLogging(enabled: Boolean) {
-        preferencesRepository.verboseEngineLogging = enabled
-        launchUpdatePreferenceState()
+        viewModelScope.launch(ioDispatcher) {
+            preferencesRepository.verboseEngineLogging = enabled
+            preferencesRepository.updateState()
+        }
     }
 
     fun toggleLiveEngineLogging(enabled: Boolean) {
-        preferencesRepository.liveEngineLogging = enabled
-        launchUpdatePreferenceState()
+        viewModelScope.launch(ioDispatcher) {
+            preferencesRepository.liveEngineLogging = enabled
+            preferencesRepository.updateState()
+        }
+    }
+
+    fun toggleReconnectOnRouteChanges(enabled: Boolean) {
+        viewModelScope.launch(ioDispatcher) {
+            preferencesRepository.reconnectOnNewRoutes = enabled
+            preferencesRepository.updateState()
+        }
     }
 
     fun updateExcludedApps(packageNames: Set<String>) {
-        preferencesRepository.excludedApps = packageNames
-        launchUpdatePreferenceState()
+        viewModelScope.launch(ioDispatcher) {
+            preferencesRepository.excludedApps = packageNames
+            preferencesRepository.updateState()
+        }
     }
 
     fun updateFallbackDns(dns: String?) {
-        preferencesRepository.fallbackDns = dns
-        launchUpdatePreferenceState()
+        viewModelScope.launch(ioDispatcher) {
+            preferencesRepository.fallbackDns = dns
+            preferencesRepository.updateState()
+        }
     }
 
     fun resetPreferences() {
         log("Resetting JetBird preferences")
         viewModelScope.launch(ioDispatcher) {
             preferencesRepository.reset()
-        }
-    }
-
-    private suspend fun updatePreferenceState() {
-        preferencesRepository.updateState()
-    }
-
-    private fun launchUpdatePreferenceState() {
-        viewModelScope.launch(ioDispatcher) {
-            updatePreferenceState()
         }
     }
 

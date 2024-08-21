@@ -72,7 +72,13 @@ JetBird requires a few permissions in order to function:
 - `INTERNET`
 - `FOREGROUND_SERVICE`/`FOREGROUND_SERVICE_SYSTEM_EXEMPTED` - used to run the VPN service
 - `ACCESS_NETWORK_STATE`/`CHANGE_NETWORK_STATE` - used to monitor network to check if VPN is already running etc.
+- `POST_NOTIFICATIONS` - used for notifications when JetBird is running and when upstream sends new routes
 - `QUERY_ALL_PACKAGES` - used so you can choose which apps aren't tunneled
+
+## Notifications
+Notifications are optional but Android requires JetBird to show a notification when the tunnel is running. This is dismissible on Android 13+.
+
+JetBird will also send you a notification when there are route changes, as you will need to restart the tunnel. This can be configured in the settings to automatically restart the tunnel but this process will stop the VPN momentarily.
 
 ## Screenshots
 ### Phone

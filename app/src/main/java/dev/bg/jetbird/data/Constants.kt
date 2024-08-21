@@ -20,6 +20,10 @@ object Actions {
     const val TILE_STOP_SERVICE_ACTION = "dev.bg.jetbird.Tile.Stop"
 }
 
+object JetBirdConstants {
+    const val RECONNECT_NOTIFICATION_CHANNEL_ID = "reconnect"
+}
+
 object NetBirdErrors {
     const val NETBIRD_TUNNEL_FAILURE = "rpc error: code = PermissionDenied desc = no peer auth method provided, please use a setup key or interactive SSO login"
 

@@ -12,6 +12,7 @@ import androidx.core.app.NotificationCompat
 import dagger.hilt.android.AndroidEntryPoint
 import dev.bg.jetbird.R
 import dev.bg.jetbird.data.Actions
+import dev.bg.jetbird.data.JetBirdConstants
 import dev.bg.jetbird.data.NetBirdErrors
 import dev.bg.jetbird.data.model.ConnectionState
 import dev.bg.jetbird.data.model.Peer
@@ -26,6 +27,7 @@ import dev.bg.jetbird.repository.VpnRepository
 import dev.bg.jetbird.util.IoDispatcher
 import dev.bg.jetbird.util.Log
 import dev.bg.jetbird.util.ReplaceableJob
+import dev.bg.jetbird.util.ktx.getPendingIntent
 import dev.bg.jetbird.util.ktx.toPeerList
 import io.netbird.android.ConnectionListener
 import io.netbird.android.URLOpener
@@ -82,6 +84,7 @@ class VPNService: VpnService() {
     private var isLoggingEnabled = false
     private var isVerboseLoggingEnabled = false
     private var fallbackDns: String? = null
+    private var reconnectOnRouteChanges = false
 
     override fun onCreate() {
         super.onCreate()
@@ -92,6 +95,7 @@ class VPNService: VpnService() {
             isLoggingEnabled = preferencesRepository.logging
             isVerboseLoggingEnabled = preferencesRepository.verboseLogging
             fallbackDns = preferencesRepository.fallbackDns
+            reconnectOnRouteChanges = false
         }
         setEngineLoggingLevel(preferencesRepository.engineLogging, preferencesRepository.verboseEngineLogging)
         scope.launch {
@@ -102,6 +106,7 @@ class VPNService: VpnService() {
                 setEngineLoggingLevel(it.engineLogging, it.verboseEngineLogging)
                 isLiveLoggingEnabled = it.liveEngineLogging
                 fallbackDns = it.fallbackDns
+                reconnectOnRouteChanges = it.reconnectOnNewRoutes
                 if (it.liveEngineLogging) {
                     startEngineLogTailing()
                 } else {
@@ -254,6 +259,7 @@ class VPNService: VpnService() {
             .setSmallIcon(R.drawable.ic_stat)
             .setContentTitle(this.getString(R.string.app_name))
             .setContentText(this.getString(R.string.foreground_notification_description))
+            .setContentIntent(getPendingIntent())
             .build()
         startForeground(1, notification)
     }
@@ -350,6 +356,25 @@ class VPNService: VpnService() {
         }
     }
 
+    private fun sendRouteChangeNotification() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            (getSystemService(NOTIFICATION_SERVICE) as NotificationManager).createNotificationChannel(
+                NotificationChannel(
+                    JetBirdConstants.RECONNECT_NOTIFICATION_CHANNEL_ID,
+                    getString(R.string.route_changes),
+                    NotificationManager.IMPORTANCE_DEFAULT
+                )
+            )
+        }
+        val notification = NotificationCompat.Builder(application, JetBirdConstants.RECONNECT_NOTIFICATION_CHANNEL_ID)
+            .setSmallIcon(R.drawable.ic_stat)
+            .setContentTitle(this.getString(R.string.route_changes))
+            .setContentText(this.getString(R.string.route_changes_description))
+            .setContentIntent(getPendingIntent())
+            .build()
+        startForeground(1, notification)
+    }
+
     private var serviceStateListener = object : TunnelListener {
         override fun onStarted() {
             isTunnelStarted = true
@@ -366,11 +391,15 @@ class VPNService: VpnService() {
             stop()
         }
 
-        override fun onRequiresRestart() {
-            stop()
-            scope.launch {
-                delay(5000L)
-                start(null)
+        override fun onRoutesChange() {
+            if (reconnectOnRouteChanges) {
+                stop()
+                scope.launch {
+                    delay(5000L)
+                    start(null)
+                }
+            } else {
+                sendRouteChangeNotification()
             }
         }
 

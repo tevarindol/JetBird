@@ -202,7 +202,7 @@ fun SettingsScreen(
                 }
             }
             LiveLoggingWarning(
-                visible = engineLoggingWarning,
+                open = engineLoggingWarning,
                 onDismissRequest = { engineLoggingWarning = false }
             )
             SettingsTile(
@@ -211,7 +211,7 @@ fun SettingsScreen(
                 onClick = { configViewDialog = true }
             )
             ConfigViewDialog(
-                visible = configViewDialog,
+                open = configViewDialog,
                 onDismissRequest = { configViewDialog = false }
             )
         }
@@ -220,6 +220,7 @@ fun SettingsScreen(
         SettingsSection(
             title = stringResource(R.string.app_name)
         ) {
+            var reconnectWarningDialog by remember { mutableStateOf(false) }
             var excludeAppsDialog by remember { mutableStateOf(false) }
             var fallbackDnsDialog by remember { mutableStateOf(false) }
 
@@ -237,13 +238,28 @@ fun SettingsScreen(
                     onChange = viewModel::toggleVerboseLogging
                 )
             }
+            SettingsSwitch(
+                title = stringResource(R.string.reconnect_on_route_changes),
+                description = stringResource(R.string.reconnect_on_route_changes_description),
+                checked = state.reconnectOnNewRoutes,
+                onChange = {
+                    if (it) {
+                        reconnectWarningDialog = true
+                    }
+                    viewModel.toggleReconnectOnRouteChanges(it)
+                }
+            )
+            AutomaticReconnectWarning(
+                open = reconnectWarningDialog,
+                onDismissRequest = { reconnectWarningDialog = false }
+            )
             SettingsTile(
                 title = stringResource(R.string.exclude_apps),
                 description = stringResource(R.string.exclude_apps_description, state.excludedApps.size),
                 onClick = { excludeAppsDialog = true }
             )
             ExcludeAppsDialog(
-                visible = excludeAppsDialog,
+                open = excludeAppsDialog,
                 initialPackages = state.excludedApps,
                 onDismissRequest = { excludeAppsDialog = false },
                 onSelected = { packageNames ->
@@ -358,10 +374,10 @@ fun SettingsScreen(
 
 @Composable
 private fun LiveLoggingWarning(
-    visible: Boolean,
+    open: Boolean,
     onDismissRequest: () -> Unit
 ) {
-    if (visible) {
+    if (open) {
         AlertDialog(
             modifier = Modifier.padding(vertical = 16.dp),
             onDismissRequest = onDismissRequest,
@@ -377,13 +393,33 @@ private fun LiveLoggingWarning(
 }
 
 @Composable
+private fun AutomaticReconnectWarning(
+    open: Boolean,
+    onDismissRequest: () -> Unit
+) {
+    if (open) {
+        AlertDialog(
+            modifier = Modifier.padding(vertical = 16.dp),
+            onDismissRequest = onDismissRequest,
+            title = { Text(stringResource(R.string.warning)) },
+            text = { Text(stringResource(R.string.reconnect_on_route_changes_warning)) },
+            confirmButton = {
+                Button(onClick = onDismissRequest) {
+                    Text(stringResource(R.string.close))
+                }
+            }
+        )
+    }
+}
+
+@Composable
 private fun ConfigViewDialog(
-    visible: Boolean,
+    open: Boolean,
     onDismissRequest: () -> Unit
 ) {
     val ctx = LocalContext.current
 
-    if (visible) {
+    if (open) {
         AlertDialog(
             modifier = Modifier.padding(vertical = 16.dp),
             onDismissRequest = onDismissRequest,
@@ -403,7 +439,7 @@ private fun ConfigViewDialog(
 
 @Composable
 private fun ExcludeAppsDialog(
-    visible: Boolean,
+    open: Boolean,
     initialPackages: Set<String>,
     onDismissRequest: () -> Unit,
     onSelected: (packageNames: Set<String>) -> Unit
@@ -435,7 +471,7 @@ private fun ExcludeAppsDialog(
         }
     }
 
-    if (visible) {
+    if (open) {
         AlertDialog(
             modifier = Modifier.padding(vertical = 16.dp),
             onDismissRequest = onDismissRequest,
