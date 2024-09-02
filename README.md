@@ -32,7 +32,7 @@ There are a few differences between NetBird official Android client and JetBird.
 ### Prebuilt binaries
 - Available to download in the [releases](https://codeberg.org/bg443/JetBird/releases) tab
 - You can see the steps of the build on [JetBird's CI page]()
-- Where possible, download the specific build for your device's architecture because the NetBird client is ~35-40MB and downloading the universal version will download all 4 architectures regardless of if you need them
+- Where possible, download the specific build for your device's architecture because the NetBird client is ~25MB and downloading the universal version will download all 4 architectures regardless of if you need them
 
 <br />
 <div>
