@@ -7,8 +7,12 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
@@ -17,7 +21,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import dev.bg.jetbird.LocalLayoutType
 import dev.bg.jetbird.data.LayoutType
 import dev.bg.jetbird.util.ktx.conditional
@@ -152,5 +159,68 @@ fun SettingsSwitch(
                 .padding(horizontal = 4.dp)
                 .padding(start = 12.dp)
         )
+    }
+}
+
+@Composable
+@OptIn(ExperimentalMaterial3Api::class)
+fun SettingsDropdownTile(
+    title: String,
+    description: String? = null,
+    items: List<String>,
+    selected: String,
+    expanded: Boolean,
+    onExpandedChanged: (Boolean) -> Unit,
+    onDismissRequest: () -> Unit,
+    onSelected: (String) -> Unit
+) {
+    Row(
+        Modifier
+            .fillMaxWidth()
+            .clickable { onExpandedChanged(!expanded) },
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        if (description == null) {
+            Text(
+                title,
+                modifier = Modifier.padding(vertical = 4.dp)
+            )
+        } else {
+            Column {
+                Text(title)
+                Text(
+                    description,
+                    color = MaterialTheme.colorScheme.secondary
+                )
+            }
+        }
+        ExposedDropdownMenuBox(
+            expanded = expanded,
+            onExpandedChange = onExpandedChanged
+        ) {
+            BasicTextField(
+                selected,
+                {},
+                readOnly = true,
+                modifier = Modifier.menuAnchor(),
+                textStyle = TextStyle(
+                    color = MaterialTheme.colorScheme.secondary,
+                    textAlign = TextAlign.End,
+                    fontSize = 16.sp
+                )
+            )
+            ExposedDropdownMenu(expanded = expanded, onDismissRequest = onDismissRequest) {
+                items.forEach { item ->
+                    DropdownMenuItem(
+                        text = { Text(item) },
+                        onClick = {
+                            onSelected(item)
+                            onDismissRequest()
+                        }
+                    )
+                }
+            }
+        }
     }
 }

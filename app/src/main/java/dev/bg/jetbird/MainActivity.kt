@@ -7,9 +7,9 @@ import android.content.ServiceConnection
 import android.net.VpnService
 import android.os.Bundle
 import android.os.IBinder
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
@@ -35,7 +35,7 @@ val LocalSnackbar = staticCompositionLocalOf<SnackbarHostState> { error("No Snac
 val LocalLayoutType = staticCompositionLocalOf<LayoutType> { error("No LayoutType") }
 
 @AndroidEntryPoint
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
 
     private var binder by mutableStateOf<VPNService.VPNServiceBinder?>(null)
     private val serviceConnection = object : ServiceConnection {

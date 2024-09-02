@@ -1,4 +1,6 @@
-<resources>
+<resources
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
     <string name="about">About</string>
     <string name="about_build">Build: %1$d</string>
     <string name="about_netbird_version">NetBird Version</string>
@@ -7,11 +9,12 @@
     <string name="add_route">Add route</string>
     <string name="another_always_on_vpn_active">Another always-on VPN is active</string>
     <string name="app">App</string>
+    <string name="app_language">App language</string>
     <string name="app_name" translatable="false">JetBird</string>
     <string name="apps">Apps</string>
     <string name="auth_error_see_logs">Authentication error - see logs for more info</string>
     <string name="cancel">Cancel</string>
-    <string name="cidr">CIDR</string>
+    <string name="cidr" translatable="false">CIDR</string>
     <string name="clear_log">Clear log</string>
     <string name="close">Close</string>
     <string name="confirm">Confirm</string>
@@ -51,7 +54,7 @@
     <string name="logging">Logging</string>
     <string name="management_server">Management server</string>
     <string name="management_url">Management Server URL</string>
-    <string name="netbird">NetBird</string>
+    <string name="netbird" translatable="false">NetBird</string>
     <string name="no_route_overrides">You have no route overrides</string>
     <string name="not_set">Not set</string>
     <string name="peer_bytes_rx">Bytes RX: %1$sB</string>
@@ -114,4 +117,8 @@
     <string name="warning">Warning</string>
     <string name="welcome_jetbird">Welcome to JetBird!</string>
     <string name="your_overrides">Your overrides: %1$s</string>
+
+    <string name="en" translatable="false">English</string>
+    <string name="de" translatable="false">Deutsch</string>
+    <string name="ru" translatable="false">Русский</string>
 </resources>

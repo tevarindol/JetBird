@@ -5,6 +5,7 @@ import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.provider.Settings
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -45,6 +46,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.graphics.drawable.toBitmap
+import androidx.core.os.LocaleListCompat
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.bg.jetbird.BuildConfig
@@ -52,14 +54,17 @@ import dev.bg.jetbird.LocalNavController
 import dev.bg.jetbird.LocalSnackbar
 import dev.bg.jetbird.R
 import dev.bg.jetbird.Route
+import dev.bg.jetbird.data.Languages
 import dev.bg.jetbird.repository.PreferencesState
 import dev.bg.jetbird.ui.components.DeleteAlertDialog
 import dev.bg.jetbird.ui.components.OutlinedTextFieldInputType
+import dev.bg.jetbird.ui.components.SettingsDropdownTile
 import dev.bg.jetbird.ui.components.SettingsSection
 import dev.bg.jetbird.ui.components.SettingsSwitch
 import dev.bg.jetbird.ui.components.SettingsTile
 import dev.bg.jetbird.ui.components.SettingsTileWithValue
 import dev.bg.jetbird.ui.components.TextFieldAlertDialog
+import dev.bg.jetbird.util.ktx.assertivelyGet
 import dev.bg.jetbird.util.ktx.getConfigPath
 import dev.bg.jetbird.util.ktx.navigate
 import dev.bg.jetbird.util.ktx.toStringOrNotSet
@@ -220,10 +225,30 @@ fun SettingsScreen(
         SettingsSection(
             title = stringResource(R.string.app_name)
         ) {
+            var appLanguageDropdown by remember { mutableStateOf(false) }
             var reconnectWarningDialog by remember { mutableStateOf(false) }
             var excludeAppsDialog by remember { mutableStateOf(false) }
             var fallbackDnsDialog by remember { mutableStateOf(false) }
 
+            val localeList = remember {
+                Languages.resourceLanguageCodeMap.map { (k, v) -> ctx.getString(k) to v }.toMap()
+            }
+            val locale = remember {
+                Languages.languageCodeResourceMap.assertivelyGet(AppCompatDelegate.getApplicationLocales().get(0)?.language ?: "en")
+            }
+
+            SettingsDropdownTile(
+                title = stringResource(R.string.app_language),
+                description = stringResource(locale),
+                items = localeList.keys.sorted(),
+                selected = stringResource(locale),
+                expanded = appLanguageDropdown,
+                onExpandedChanged = { appLanguageDropdown = it },
+                onDismissRequest = { appLanguageDropdown = false },
+                onSelected = {
+                    AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(localeList[it]))
+                }
+            )
             SettingsSwitch(
                 title = stringResource(R.string.enable_logging),
                 description = stringResource(R.string.enable_logging_description),
