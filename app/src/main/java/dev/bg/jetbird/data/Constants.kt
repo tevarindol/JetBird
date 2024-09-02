@@ -2,6 +2,7 @@ package dev.bg.jetbird.data
 
 import android.graphics.Color
 import androidx.compose.runtime.Immutable
+import dev.bg.jetbird.R
 import androidx.compose.ui.graphics.Color as ComposeColor
 
 @Immutable
@@ -28,4 +29,13 @@ object NetBirdErrors {
     const val NETBIRD_TUNNEL_FAILURE = "rpc error: code = PermissionDenied desc = no peer auth method provided, please use a setup key or interactive SSO login"
 
     val all = listOf(NETBIRD_TUNNEL_FAILURE)
+}
+
+object Languages {
+    val resourceLanguageCodeMap = hashMapOf(
+        R.string.en to "en",
+        R.string.de to "de",
+        R.string.ru to "ru"
+    )
+    val languageCodeResourceMap = resourceLanguageCodeMap.entries.associate { (k, v) -> v to k }
 }

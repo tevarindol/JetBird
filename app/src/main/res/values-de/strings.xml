@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">JetBird</string>
+    <string name="welcome_jetbird">Willkommen bei JetBird!</string>
+    <string name="settings">Einstellungen</string>
+</resources>

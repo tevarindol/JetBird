@@ -1,18 +1,19 @@
 [versions]
-kotlin = "2.0.10"
+activityCompose = "1.9.1"
+adaptiveUi = "1.0.0-beta04"
 agp = "8.5.2"
-desugar_jdk_libs = "2.0.4"
+androidxHilt = "1.2.0"
+appcompat = "1.7.0"
+composeBom = "2024.08.00"
 coreKtx = "1.13.1"
-ksp = "2.0.10-1.0.24"
+desugar_jdk_libs = "2.1.1"
+espressoCore = "3.6.1"
+hilt = "2.52"
 junit = "4.13.2"
 junitVersion = "1.2.1"
-espressoCore = "3.6.1"
+kotlin = "2.0.10"
+ksp = "2.0.10-1.0.24"
 lifecycleRuntimeKtx = "2.8.4"
-activityCompose = "1.9.1"
-composeBom = "2024.06.00"
-adaptiveUi = "1.0.0-beta04"
-hilt = "2.52"
-androidxHilt = "1.2.0"
 
 [libraries]
 # Core
@@ -20,6 +21,7 @@ androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = 
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "lifecycleRuntimeKtx" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 
 # UI
 androidx-ui = { group = "androidx.compose.ui", name = "ui" }
