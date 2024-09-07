@@ -49,6 +49,8 @@
     <string name="foreground_notification_description">JetBird tunnel is active</string>
     <string name="get_started_url">To get started please enter your management server URL</string>
     <string name="grant_permission">Grant permission</string>
+    <string name="jetbird_exception">Oh no! JetBird encountered an error!</string>
+    <string name="jetbird_exception_description">Tap for more information</string>
     <string name="log">Log</string>
     <string name="log_empty">No log entries</string>
     <string name="logging">Logging</string>

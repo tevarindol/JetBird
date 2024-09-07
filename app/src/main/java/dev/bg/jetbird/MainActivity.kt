@@ -35,7 +35,7 @@ val LocalSnackbar = staticCompositionLocalOf<SnackbarHostState> { error("No Snac
 val LocalLayoutType = staticCompositionLocalOf<LayoutType> { error("No LayoutType") }
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity: AppCompatActivity() {
 
     private var binder by mutableStateOf<VPNService.VPNServiceBinder?>(null)
     private val serviceConnection = object : ServiceConnection {
