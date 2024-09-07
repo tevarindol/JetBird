@@ -1,7 +1,6 @@
 package dev.bg.jetbird.ui.screens.log
 
 import android.app.Activity
-import android.content.Intent
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.horizontalScroll
@@ -34,7 +33,10 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.bg.jetbird.R
+import dev.bg.jetbird.ui.components.CopyLog
 import dev.bg.jetbird.ui.components.MonospaceText
+import dev.bg.jetbird.ui.components.SaveLog
+import dev.bg.jetbird.util.getLogIntent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -104,38 +106,16 @@ fun LogScreen(
             modifier = Modifier.horizontalScroll(rememberScrollState()),
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            ElevatedAssistChip(
-                onClick = {
-                    if (logEntries.isNotEmpty()) {
-                        clipboardManager.setText(AnnotatedString(logEntries.joinToString("\n")))
-                    }
-                },
-                label = { Text(stringResource(R.string.copy_log)) },
-                colors = AssistChipDefaults.elevatedAssistChipColors(leadingIconContentColor = MaterialTheme.colorScheme.onSurfaceVariant),
-                leadingIcon = {
-                    Icon(
-                        painterResource(R.drawable.baseline_content_copy_24),
-                        contentDescription = stringResource(R.string.copy_log),
-                        modifier = Modifier.size(AssistChipDefaults.IconSize)
-                    )
+            CopyLog {
+                if (logEntries.isNotEmpty()) {
+                    clipboardManager.setText(AnnotatedString(logEntries.joinToString("\n")))
                 }
-            )
-            ElevatedAssistChip(
-                onClick = {
-                    if (logEntries.isNotEmpty()) {
-                        logWriterLauncher.launch(getLogIntent())
-                    }
-                },
-                label = { Text(stringResource(R.string.save_log)) },
-                colors = AssistChipDefaults.elevatedAssistChipColors(leadingIconContentColor = MaterialTheme.colorScheme.onSurfaceVariant),
-                leadingIcon = {
-                    Icon(
-                        painterResource(R.drawable.baseline_save_24),
-                        contentDescription = stringResource(R.string.save_log),
-                        modifier = Modifier.size(AssistChipDefaults.IconSize)
-                    )
+            }
+            SaveLog {
+                if (logEntries.isNotEmpty()) {
+                    logWriterLauncher.launch(getLogIntent())
                 }
-            )
+            }
             ElevatedAssistChip(
                 onClick = { viewModel.clearLog() },
                 label = { Text(stringResource(R.string.clear_log)) },
@@ -164,10 +144,4 @@ fun LogScreen(
             )
         }
     }
-}
-
-private fun getLogIntent() = Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
-    addCategory(Intent.CATEGORY_OPENABLE)
-    type = "text/plain"
-    putExtra(Intent.EXTRA_TITLE, "${("JetBird").replace("\\s+", "_")}_${System.currentTimeMillis() / 1000}.txt")
 }

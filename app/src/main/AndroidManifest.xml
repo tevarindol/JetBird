@@ -35,6 +35,11 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".ExceptionActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+
         <service
             android:name=".service.VPNService"
             android:permission="android.permission.BIND_VPN_SERVICE"

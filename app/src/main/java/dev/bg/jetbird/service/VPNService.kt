@@ -28,6 +28,7 @@ import dev.bg.jetbird.util.IoDispatcher
 import dev.bg.jetbird.util.Log
 import dev.bg.jetbird.util.ReplaceableJob
 import dev.bg.jetbird.util.ktx.getPendingIntent
+import dev.bg.jetbird.util.ktx.sendNotification
 import dev.bg.jetbird.util.ktx.toPeerList
 import io.netbird.android.ConnectionListener
 import io.netbird.android.URLOpener
@@ -357,22 +358,11 @@ class VPNService: VpnService() {
     }
 
     private fun sendRouteChangeNotification() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            (getSystemService(NOTIFICATION_SERVICE) as NotificationManager).createNotificationChannel(
-                NotificationChannel(
-                    JetBirdConstants.RECONNECT_NOTIFICATION_CHANNEL_ID,
-                    getString(R.string.route_changes),
-                    NotificationManager.IMPORTANCE_DEFAULT
-                )
-            )
-        }
-        val notification = NotificationCompat.Builder(application, JetBirdConstants.RECONNECT_NOTIFICATION_CHANNEL_ID)
-            .setSmallIcon(R.drawable.ic_stat)
-            .setContentTitle(this.getString(R.string.route_changes))
-            .setContentText(this.getString(R.string.route_changes_description))
-            .setContentIntent(getPendingIntent())
-            .build()
-        startForeground(1, notification)
+        sendNotification(
+            channel = JetBirdConstants.RECONNECT_NOTIFICATION_CHANNEL,
+            title = getString(R.string.route_changes),
+            description = getString(R.string.route_changes_description)
+        )
     }
 
     private var serviceStateListener = object : TunnelListener {

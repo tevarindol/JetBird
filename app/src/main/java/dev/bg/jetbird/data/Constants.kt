@@ -22,7 +22,8 @@ object Actions {
 }
 
 object JetBirdConstants {
-    const val RECONNECT_NOTIFICATION_CHANNEL_ID = "reconnect"
+    val RECONNECT_NOTIFICATION_CHANNEL = "reconnect" to "Route changes"
+    val EXCEPTION_NOTIFICATION_CHANNEL = "exception" to "Crashes"
 }
 
 object NetBirdErrors {
