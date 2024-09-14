@@ -140,12 +140,12 @@ class VPNService: VpnService() {
     }
 
     override fun onBind(intent: Intent): IBinder {
-        log("onBind()", verbose = true)
+        Timber.d("onBind()")
         return VPNServiceBinder()
     }
 
     override fun onUnbind(intent: Intent): Boolean {
-        log("onUnbind()", verbose = true)
+        Timber.d("onUnbind()")
         if (!isTunnelStarted) {
             stopSelf()
         }
@@ -153,7 +153,7 @@ class VPNService: VpnService() {
     }
 
     override fun onDestroy() {
-        log("onDestroy()", verbose = true)
+        Timber.d("onDestroy()")
         super.onDestroy()
         stop()
     }
@@ -314,7 +314,7 @@ class VPNService: VpnService() {
     private fun engineLog(
         message: String
     ) {
-        logRepository.log(Log.getLogcatLineContent(message))
+        logRepository.log(Log.getLogcatLineContent(message), timestamp = false)
     }
 
     private fun setEngineLoggingLevel(

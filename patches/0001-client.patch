@@ -49,7 +49,7 @@ index d937e132..6af7815d 100644
 +			p.PubKey,
 +			p.ConnStatusUpdate.Unix(),
 +			p.Relayed,
-+			p.Direct,
++			p.RelayServerAddress,
 +			p.LocalIceCandidateType,
 +			p.RemoteIceCandidateType,
 +			p.LocalIceCandidateEndpoint,
@@ -80,7 +80,7 @@ index 9f6fcddd..f9669a7d 100644
 +	PubKey                     string
 +	ConnStatusUpdate           int64
 +	Relayed                    bool
-+	Direct                     bool
++	RelayServerAddress         string
 +	LocalIceCandidateType      string
 +	RemoteIceCandidateType     string
 +	LocalIceCandidateEndpoint  string

@@ -176,7 +176,6 @@ fun HomeScreen(
                             Button(
                                 modifier = Modifier.size(256.dp),
                                 shape = RoundedCornerShape(16.dp),
-                                enabled = !hasOtherAlwaysOnVpn,
                                 onClick = {
                                     if (vpnState.connectionState == ConnectionState.DISCONNECTED) {
                                         if (viewModel.hasAuthed()) {
@@ -406,7 +405,7 @@ private fun PeersList(
                     Text(stringResource(R.string.peer_connection_status_update, peer?.connectionStatusUpdate ?: 0))
                     Text(stringResource(R.string.peer_public_key, peer?.publicKey.toString()))
                     Text(stringResource(R.string.peer_relayed, peer?.relayed ?: false))
-                    Text(stringResource(R.string.peer_direct, peer?.direct ?: false))
+                    Text(stringResource(R.string.relay, peer?.relayServerAddress.toString()))
 //                    Text(stringResource(R.string.peer_last_wireguard_handshake, peer?.lastWireguardHandshake.orEmpty()))
                     Text(stringResource(R.string.peer_bytes_rx, peer?.bytesRx.toString()))
                     Text(stringResource(R.string.peer_bytes_tx, peer?.bytesTx.toString()))
@@ -424,7 +423,7 @@ private fun PeersList(
                 ) {
                     Text(stringResource(R.string.close))
                 }
-            },
+            }
         )
     }
 }

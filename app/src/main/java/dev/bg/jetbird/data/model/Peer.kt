@@ -7,7 +7,7 @@ data class Peer(
     val connectionStatusUpdate: String,
     val publicKey: String,
     val relayed: Boolean,
-    val direct: Boolean,
+    val relayServerAddress: String,
     val lastWireguardHandshake: String,
     val bytesTx: Long,
     val bytesRx: Long,

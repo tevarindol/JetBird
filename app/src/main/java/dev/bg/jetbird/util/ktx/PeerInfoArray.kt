@@ -18,7 +18,7 @@ fun PeerInfoArray?.toPeerList(): List<Peer> {
                 connectionStatusUpdate = if (peer.connStatusUpdate > 0) SimpleDateFormat("dd'/'MM HH:mm", Locale.getDefault()).format(peer.connStatusUpdate * 1000) else "",
                 publicKey = peer.pubKey,
                 relayed = peer.relayed,
-                direct = peer.direct,
+                relayServerAddress = peer.relayServerAddress,
                 lastWireguardHandshake = peer.lastWireguardHandshake.toString(),
                 bytesTx = peer.bytesTx,
                 bytesRx = peer.bytesRx,

@@ -63,7 +63,6 @@
     <string name="peer_bytes_tx">Bytes TX: %1$sB</string>
     <string name="peer_connection_status">Status: %1$s</string>
     <string name="peer_connection_status_update">Status last updated: %1$s</string>
-    <string name="peer_direct">Direct: %1$b</string>
     <string name="peer_fqdn">FQDN: %1$s</string>
     <string name="peer_info">Peer info</string>
     <string name="peer_ip">IP: %1$s</string>
@@ -79,6 +78,7 @@
     <string name="reconnect_on_route_changes">Reconnect on route changes</string>
     <string name="reconnect_on_route_changes_description">Automatically reconnect when routes change</string>
     <string name="reconnect_on_route_changes_warning">Automatically reconnecting will momentarily stop the VPN and traffic may not be blocked during this period, depending on your device settings.</string>
+    <string name="relay">Relay: %1$s</string>
     <string name="removed_netbird_config">Removed NetBird configuration file</string>
     <string name="requires_vpn_permission">JetBird needs you to allow it to create a VPN connection on this device.</string>
     <string name="reset_app">Reset app</string>
