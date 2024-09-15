@@ -1,6 +1,6 @@
 steps:
   build_netbird:
-    image: openpriv/go-cross-compile:2024.02
+    image: openpriv/go-cross-compile:2024.09
     commands:
       - ./scripts/build_netbird.sh -v
   build_debug:
