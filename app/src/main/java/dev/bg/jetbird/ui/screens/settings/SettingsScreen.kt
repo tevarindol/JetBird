@@ -274,6 +274,12 @@ fun SettingsScreen(
                     viewModel.toggleReconnectOnRouteChanges(it)
                 }
             )
+            SettingsSwitch(
+                title = stringResource(R.string.start_on_reboot),
+                description = stringResource(R.string.start_on_reboot_description),
+                checked = state.startOnReboot,
+                onChange = viewModel::toggleStartOnReboot
+            )
             AutomaticReconnectWarning(
                 open = reconnectWarningDialog,
                 onDismissRequest = { reconnectWarningDialog = false }

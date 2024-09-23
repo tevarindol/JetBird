@@ -126,15 +126,36 @@ class VPNService: VpnService() {
         if (intent.action == Actions.TILE_STOP_SERVICE_ACTION && isTunnelStarted) {
             stop()
         }
-        if (intent.action == Actions.TILE_START_SERVICE_ACTION && !isTunnelStarted && hasAuthed) {
-            log("Starting tunnel from quick tile")
+        fun _start() {
             startInForeground()
             start(null)
         }
-        if (intent.action == Actions.ALWAYS_ON_START && hasAuthed) {
-            log("Android requesting us to start through always-on VPN", force = true)
-            startInForeground()
-            start(null)
+        if (hasAuthed) {
+            when (intent.action) {
+                Actions.ALWAYS_ON_START -> {
+                    log("Android requesting us to start through always-on VPN", force = true)
+                    _start()
+                }
+                Actions.BOOT_START_SERVICE_ACTION -> {
+                    log("Starting tunnel after device reboot", force = true)
+                    _start()
+                }
+                Actions.TILE_START_SERVICE_ACTION -> {
+                    if (!isTunnelStarted) {
+                        log("Starting tunnel from quick tile", force = true)
+                        _start()
+                    } else {
+                        log("Requested start through quick tile but tunnel is already up", force = true)
+                    }
+                }
+                else -> {
+                    log("${intent.`package` ?: "Unknown package"} (${intent.action}) tried to start tunnel - ignoring", force = true)
+                }
+            }
+        } else {
+            intent.action?.let { action ->
+                log("$action requested start although user has not authed")
+            }
         }
         return super.onStartCommand(intent, flags, startId)
     }

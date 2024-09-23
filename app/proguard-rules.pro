@@ -1,4 +1,3 @@
--optimizationpasses 5
 -allowaccessmodification
 -dontobfuscate
 -dontpreverify # not useful for Android

@@ -19,6 +19,7 @@ object Actions {
     const val ALWAYS_ON_START = "android.net.VpnService"
     const val TILE_START_SERVICE_ACTION = "dev.bg.jetbird.Tile.Start"
     const val TILE_STOP_SERVICE_ACTION = "dev.bg.jetbird.Tile.Stop"
+    const val BOOT_START_SERVICE_ACTION = "dev.bg.jetbird.BootReceiver"
 }
 
 object JetBirdConstants {

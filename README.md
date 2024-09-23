@@ -74,6 +74,7 @@ JetBird requires a few permissions in order to function:
 - `ACCESS_NETWORK_STATE`/`CHANGE_NETWORK_STATE` - used to monitor network to check if VPN is already running etc.
 - `POST_NOTIFICATIONS` - used for notifications when JetBird is running and when upstream sends new routes
 - `QUERY_ALL_PACKAGES` - used so you can choose which apps aren't tunneled
+- `RECEIVE_BOOT_COMPLETED` - used to start the tunnel when the device reboots - this is disabled by default in the manifest and will enable itself once you enable it in settings
 
 ## Notifications
 Notifications are optional but Android requires JetBird to show a notification when the tunnel is running. This is dismissible on Android 13+.

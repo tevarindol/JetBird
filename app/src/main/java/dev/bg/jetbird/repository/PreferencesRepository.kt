@@ -27,6 +27,7 @@ interface PreferencesValues {
     var routeOverrides: Set<String>
     var fallbackDns: String?
     var reconnectOnNewRoutes: Boolean
+    var startOnReboot: Boolean
 }
 
 interface PreferencesRepository: PreferencesValues {
@@ -128,6 +129,10 @@ class PreferencesRepositoryImpl @Inject constructor(): PreferencesRepository {
         get() = mmkv.decodeBool(PreferenceKeys.ReconnectOnNewRoutes.key, false)
         set(value) { mmkv.encode(PreferenceKeys.ReconnectOnNewRoutes.key, value) }
 
+    override var startOnReboot: Boolean
+        get() = mmkv.decodeBool(PreferenceKeys.StartOnReboot.key, false)
+        set(value) { mmkv.encode(PreferenceKeys.StartOnReboot.key, value) }
+
     override fun reset() {
         mmkv.removeValuesForKeys(mmkv.allKeys())
     }
@@ -150,7 +155,8 @@ class PreferencesRepositoryImpl @Inject constructor(): PreferencesRepository {
             routeOverridesEnabled = routeOverridesEnabled,
             routeOverrides = routeOverrides,
             fallbackDns = fallbackDns,
-            reconnectOnNewRoutes = reconnectOnNewRoutes
+            reconnectOnNewRoutes = reconnectOnNewRoutes,
+            startOnReboot = startOnReboot
         )
     }
 }
@@ -175,7 +181,8 @@ data class PreferencesState(
     override var routeOverridesEnabled: Boolean,
     override var routeOverrides: Set<String>,
     override var fallbackDns: String?,
-    override var reconnectOnNewRoutes: Boolean
+    override var reconnectOnNewRoutes: Boolean,
+    override var startOnReboot: Boolean
 ): PreferencesValues
 
 private enum class PreferenceKeys(
@@ -202,5 +209,6 @@ private enum class PreferenceKeys(
     RouteOverridesEnabled("route_overrides_enabled"),
     RouteOverrides("route_overrides"),
     FallbackDNS("fallback_dns"),
-    ReconnectOnNewRoutes("reconnect_new_routes")
+    ReconnectOnNewRoutes("reconnect_new_routes"),
+    StartOnReboot("start_on_reboot")
 }

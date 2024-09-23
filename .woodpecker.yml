@@ -6,6 +6,7 @@ steps:
   build_debug:
     image: alvrme/alpine-android:android-34-jdk21
     commands:
+      - extras ndk -n 26.1.10909125
       - ./gradlew :app:assembleDebug
     when:
       path: [app/**, build.gradle.kts, .woodpecker.yml]
@@ -14,7 +15,7 @@ steps:
     image: alvrme/alpine-android:android-34-jdk21
     commands:
       - extras ndk
-      - ./gradlew :app:assembleRelease --stacktrace
+      - ./gradlew :app:assembleRelease --stacktrace --no-build-cache --no-configuration-cache --no-daemon
     when:
       event: [tag]
   sign:

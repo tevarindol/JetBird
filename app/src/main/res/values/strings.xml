@@ -106,6 +106,8 @@
     <string name="setup_sso_unsupported">Your server doesn\'t support SSO :(</string>
     <string name="sso_supported">SSO supported</string>
     <string name="sso_unsupported">SSO unsupported</string>
+    <string name="start_on_reboot">Start tunnel on reboot</string>
+    <string name="start_on_reboot_description">Automatically try to start JetBird when the device restarts</string>
     <string name="successfully_changed_management_server">Successfully changed management server</string>
     <string name="unknown">Unknown</string>
     <string name="unknown_error_see_logs">Unknown error - see logs for more info</string>

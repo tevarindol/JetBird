@@ -16,8 +16,8 @@ android {
         applicationId = "dev.bg.jetbird"
         minSdk = 24
         targetSdk = 34
-        versionCode = 5
-        versionName = "1.0.4"
+        versionCode = 6
+        versionName = "1.0.5"
 
         buildConfigField("String", "NETBIRD_COMMIT", getNetbirdCommit())
 
@@ -26,6 +26,7 @@ android {
 
         vectorDrawables {
             useSupportLibrary = true
+            generatedDensities?.clear()
         }
     }
 
@@ -36,6 +37,7 @@ android {
         release {
             isMinifyEnabled = true
             isShrinkResources = true
+            vcsInfo.include = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -68,9 +70,13 @@ android {
         buildConfig = true
     }
     packaging {
+        jniLibs.keepDebugSymbols.add("**/*.so") // NetBird binary already stripped by "-s -w" linker flags
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
+    }
+    androidResources {
+        aaptOptions.cruncherEnabled = false
     }
 }
 
