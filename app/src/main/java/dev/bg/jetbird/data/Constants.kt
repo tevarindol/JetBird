@@ -37,7 +37,11 @@ object Languages {
     val resourceLanguageCodeMap = hashMapOf(
         R.string.en to "en",
         R.string.de to "de",
-        R.string.ru to "ru"
+        R.string.ru to "ru",
+        R.string.zh_CN to "zh-CN"
     )
-    val languageCodeResourceMap = resourceLanguageCodeMap.entries.associate { (k, v) -> v to k }
+    val languageCodeResourceMap = resourceLanguageCodeMap
+        .entries
+        .associate { (k, v) -> v to k }
+        .plus("zh" to R.string.zh_CN)
 }

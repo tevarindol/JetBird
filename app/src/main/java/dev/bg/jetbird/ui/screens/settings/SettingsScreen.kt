@@ -234,7 +234,8 @@ fun SettingsScreen(
                 Languages.resourceLanguageCodeMap.map { (k, v) -> ctx.getString(k) to v }.toMap()
             }
             val locale = remember {
-                Languages.languageCodeResourceMap.assertivelyGet(AppCompatDelegate.getApplicationLocales().get(0)?.language ?: "en")
+                Languages.languageCodeResourceMap[AppCompatDelegate.getApplicationLocales().get(0)?.language ?: "en"]
+                ?: Languages.languageCodeResourceMap.assertivelyGet("en")
             }
 
             SettingsDropdownTile(

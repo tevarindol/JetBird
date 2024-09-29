@@ -63,14 +63,14 @@
     <string name="peer_bytes_tx">Bytes TX: %1$sB</string>
     <string name="peer_connection_status">Status: %1$s</string>
     <string name="peer_connection_status_update">Status last updated: %1$s</string>
-    <string name="peer_fqdn">FQDN: %1$s</string>
+    <string name="peer_fqdn" translatable="false">FQDN: %1$s</string>
     <string name="peer_info">Peer info</string>
-    <string name="peer_ip">IP: %1$s</string>
+    <string name="peer_ip" translatable="false">IP: %1$s</string>
     <string name="peer_last_wireguard_handshake">Last WireGuard handshake: %1$s ago</string>
     <string name="peer_latency">Latency: %1$dms</string>
     <string name="peer_public_key">Public key: %1$s</string>
     <string name="peer_relayed">Relayed: %1$b</string>
-    <string name="peer_rosenpass">Rosenpass: %1$b</string>
+    <string name="peer_rosenpass" translatable="false">Rosenpass: %1$b</string>
     <string name="peers_connected">%1$d of %2$d peers connected</string>
     <string name="permissive_rosenpass">Permissive Rosenpass</string>
     <string name="permissive_rosenpass_description">Allow non-rosenpass peers to connect</string>
@@ -125,4 +125,5 @@
     <string name="en" translatable="false">English</string>
     <string name="de" translatable="false">Deutsch</string>
     <string name="ru" translatable="false">Русский</string>
+    <string name="zh_CN" translatable="false">中文 (简体)</string>
 </resources>
