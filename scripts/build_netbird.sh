@@ -30,6 +30,7 @@ gomobile init
 CGO_ENABLED=0 gomobile bind -o "$(pwd)"/../lib/netbird.aar \
     -javapkg=io.netbird \
     -ldflags="-s -w -X golang.zx2c4.com/wireguard/ipc.socketDirectory=/data/data/dev.bg.jetbird/cache/wireguard -X github.com/netbirdio/netbird/version.version=$(git rev-parse --short HEAD) -buildid=" \
+    -androidapi 24 \
     -trimpath \
     ${_vverbose:+-v} \
     "$(pwd)"/client/android && echo "Built netbird" || { echo "Failed to build netbird"; exit 1; }
