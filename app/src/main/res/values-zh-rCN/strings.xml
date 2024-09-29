@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="credits">致谢</string>
+    <string name="credits_description">查看库和许可证</string>
+    <string name="delete">删除</string>
+    <string name="disconnect">断开连接</string>
+    <string name="disconnected">已断开连接</string>
+    <string name="dump_netbird_log">转储 NetBird 日志</string>
+    <string name="enable_live_logging">启用实时日志记录</string>
+    <string name="enable_live_logging_description">实时查看 NetBird 日志</string>
+    <string name="enable_logging">启用日志记录</string>
+    <string name="enable_logging_description_netbird">查看 NetBird 的日志</string>
+    <string name="enable_verbose_logging">启用详细日志记录</string>
+    <string name="enable_verbose_logging_description">增加 JetBird 日志的详细程度</string>
+    <string name="get_started_url">要开始，请输入您的管理服务器 URL</string>
+    <string name="about_build">构建：%1$d</string>
+    <string name="about_version">JetBird 版本：%1$s</string>
+    <string name="action_not_reversible">此操作无法撤销。</string>
+    <string name="add_route">添加路由</string>
+    <string name="app">应用</string>
+    <string name="app_language">应用语言</string>
+    <string name="apps">应用</string>
+    <string name="auth_error_see_logs">身份验证错误 — 请参阅日志以了解更多信息</string>
+    <string name="cancel">取消</string>
+    <string name="clear_log">清除日志</string>
+    <string name="close">关闭</string>
+    <string name="confirm">确认</string>
+    <string name="connect">连接</string>
+    <string name="connect_to_see_peers">连接以查看对等方</string>
+    <string name="connected">已连接</string>
+    <string name="copy_log">复制日志</string>
+    <string name="connecting">正在连接</string>
+    <string name="engine_logging_warning">NetBird 客户端会随着时间的推移生成大量日志。
+\n
+\n这些日志存储在内存中，可能会导致您的手机速度变慢或 JetBird 崩溃。
+\n
+\n您还可以禁用实时日志记录，然后从日志屏幕转储日志。</string>
+    <string name="enable_logging_description">查看 JetBird 的日志</string>
+    <string name="about_netbird_version">NetBird 版本</string>
+    <string name="another_always_on_vpn_active">另一个始终连接的 VPN 已激活</string>
+    <string name="about">关于</string>
+    <string name="peer_bytes_tx">发送字节数：%1$s B</string>
+    <string name="exclude">排除</string>
+    <string name="exclude_apps">从隧道中排除应用</string>
+    <string name="exclude_apps_description">已排除 %1$d 个应用</string>
+    <string name="failed_remove_netbird_config">无法移除 NetBird 配置文件</string>
+    <string name="failed_to_change_management_server">无法更改管理服务器</string>
+    <string name="failed_vpn_permission">用户拒绝了 VPN 权限</string>
+    <string name="fallback_dns">后备 DNS</string>
+    <string name="foreground_notification_description">JetBird 隧道已激活</string>
+    <string name="grant_permission">授予权限</string>
+    <string name="jetbird_exception">糟糕！JetBird 遇到错误！</string>
+    <string name="jetbird_exception_description">轻击获取更多信息</string>
+    <string name="log">日志</string>
+    <string name="log_empty">没有日志条目</string>
+    <string name="logging">日志记录</string>
+    <string name="management_server">管理服务器</string>
+    <string name="management_url">管理服务器 URL</string>
+    <string name="no_route_overrides">您没有路由覆盖</string>
+    <string name="not_set">未设置</string>
+    <string name="peer_bytes_rx">接收字节数：%1$s B</string>
+    <string name="peer_connection_status">状态：%1$s</string>
+    <string name="peer_connection_status_update">状态最后更新时间：%1$s</string>
+    <string name="peer_fqdn">FQDN: %1$s</string>
+    <string name="peer_info">对等方信息</string>
+    <string name="peer_ip">IP: %1$s</string>
+    <string name="peer_latency">延迟：%1$d ms</string>
+    <string name="peer_public_key">公钥：%1$s</string>
+    <string name="peer_relayed">已中继：%1$b</string>
+    <string name="peer_rosenpass">Rosenpass: %1$b</string>
+    <string name="peers_connected">已连接 %2$d 个对等方中的 %1$d 个</string>
+    <string name="permissive_rosenpass">Rosenpass 宽容模式</string>
+    <string name="permissive_rosenpass_description">允许非 Rosenpass 对等方连接</string>
+    <string name="pre_shared_key">预共享密钥</string>
+    <string name="reconnect_on_route_changes_description">路由更改时自动重新连接</string>
+    <string name="relay">中继：%1$s</string>
+    <string name="requires_vpn_permission">JetBird 需要您允许它在此设备上创建 VPN 连接。</string>
+    <string name="reset_app">重置应用</string>
+    <string name="reset_app_description">擦除所有数据和配置</string>
+    <string name="reset_netbird_config">重置 NetBird 配置</string>
+    <string name="removed_netbird_config">已移除 NetBird 配置文件</string>
+    <string name="reset_netbird_config_description">移除 NetBird 配置文件</string>
+    <string name="reset_to_change_management_server">要更改管理服务器，请重置 JetBird</string>
+    <string name="route_calculator">路由计算</string>
+    <string name="route_changes">路由更改</string>
+    <string name="route_changes_description">此设备的路由已更新。请重启隧道以应用更改。</string>
+    <string name="route_override">启用路由覆盖</string>
+    <string name="route_override_description">覆盖 NetBird 路由</string>
+    <string name="route_selector">路由选择</string>
+    <string name="route_selector_description">%1$d 个路由覆盖</string>
+    <string name="route_selector_info">您可以在此处覆盖 NetBird 管理服务器发送给您的路由。
+\n
+\n启用后，所有流向您所定义路由的流量都不会使用隧道。您可以在日志中看到所有应用的路由。
+\n
+\n如果您启用路由覆盖但不提供任何路由，JetBird 将使用上游路由。</string>
+    <string name="routes">路由：%1$s</string>
+    <string name="save_log">保存日志</string>
+    <string name="settings">设置</string>
+    <string name="setup_key">设置密钥</string>
+    <string name="setup_key_saved">设置密钥已保存</string>
+    <string name="setup_setup_key_alternative">如果您愿意，可以使用设置密钥代替</string>
+    <string name="setup_setup_key_required">请提供密钥设置</string>
+    <string name="setup_sso_supported">不错！您的服务器支持单点登录！</string>
+    <string name="setup_sso_unsupported">您的服务器不支持单点登录 :(</string>
+    <string name="sso_supported">支持单点登录</string>
+    <string name="sso_unsupported">不支持单点登录</string>
+    <string name="start_on_reboot">重启时启动隧道</string>
+    <string name="start_on_reboot_description">设备重启时自动尝试启动 JetBird</string>
+    <string name="successfully_changed_management_server">已成功更改管理服务器</string>
+    <string name="unknown">未知</string>
+    <string name="unknown_error_see_logs">未知错误 — 请参阅日志以了解更多信息</string>
+    <string name="upstream_routes">上游路由：0.0.0.0/0, ::/0</string>
+    <string name="use_setup_key">使用设置密钥</string>
+    <string name="use_sso">使用单点登录</string>
+    <string name="view_config">查看配置</string>
+    <string name="view_config_description">查看 NetBird 配置文件</string>
+    <string name="view_routes">查看路由</string>
+    <string name="view_routes_description">查看计算的隧道路由</string>
+    <string name="warning">警告</string>
+    <string name="welcome_jetbird">欢迎使用 JetBird！</string>
+    <string name="your_overrides">您的覆盖：%1$s</string>
+    <string name="enable_verbose_logging_description_netbird">增加 NetBird 日志的详细程度</string>
+    <string name="peer_last_wireguard_handshake">最后 WireGuard 握手时间：%1$s 前</string>
+    <string name="reconnect_on_route_changes">路由更改时重新连接</string>
+    <string name="reconnect_on_route_changes_warning">自动重新连接将暂时停止 VPN，并且在此期间可能不会阻止流量，具体取决于您的设备设置。</string>
+</resources>
