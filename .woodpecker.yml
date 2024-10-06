@@ -16,7 +16,7 @@ steps:
       - ./gradlew :app:assembleDebug --stacktrace --no-build-cache --no-configuration-cache --no-daemon
     when:
       path: [app/**, build.gradle.kts, .woodpecker.yml, scripts/*]
-      event: [push, pull_request]
+      event: [pull_request]
 
   build_release:
     image: ubuntu:noble-20240827.1
@@ -61,4 +61,4 @@ steps:
     when:
       event: [tag]
 when:
-  event: [push, tag, pull_request]
+  event: [tag, pull_request]
