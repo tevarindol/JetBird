@@ -1,30 +1,49 @@
+workspace:
+  base: /build
+  path: repo
+
 steps:
-  build_netbird:
-    image: openpriv/go-cross-compile:2024.09
-    commands:
-      - ./scripts/build_netbird.sh -v
   build_debug:
-    image: alvrme/alpine-android:android-34-jdk21
+    image: ubuntu:noble-20240827.1
+    environment:
+      ANDROID_HOME: /build/sdk
+      DEBIAN_FRONTEND: noninteractive
+      GOBIN: /build/go/bin
+      JAVA_HOME: /build/jdk-21.0.4
     commands:
-      - extras ndk -n 26.1.10909125
-      - ./gradlew :app:assembleDebug
+      - ./scripts/provision.sh
+      - ./scripts/build_netbird.sh -v
+      - ./gradlew :app:assembleDebug --stacktrace --no-build-cache --no-configuration-cache --no-daemon
     when:
-      path: [app/**, build.gradle.kts, .woodpecker.yml]
-      event: [pull_request]
+      path: [app/**, build.gradle.kts, .woodpecker.yml, scripts/*]
+      event: [push, pull_request]
+
   build_release:
-    image: alvrme/alpine-android:android-34-jdk21
+    image: ubuntu:noble-20240827.1
+    environment:
+      ANDROID_HOME: /build/sdk
+      DEBIAN_FRONTEND: noninteractive
+      GOBIN: /build/go/bin
+      JAVA_HOME: /build/jdk-21.0.4
     commands:
-      - extras ndk -n 26.1.10909125
+      - ./scripts/provision.sh
+      - ./scripts/build_netbird.sh
       - ./gradlew :app:assembleRelease --stacktrace --no-build-cache --no-configuration-cache --no-daemon
     when:
       event: [tag]
-  sign:
-    image: alvrme/alpine-android:android-34-jdk21
+
+  sign_release:
+    image: ubuntu:noble-20240827.1
+    environment:
+      ANDROID_HOME: /build/sdk
+      DEBIAN_FRONTEND: noninteractive
+      JAVA_HOME: /build/jdk-21.0.4
     commands:
       - ./scripts/apk_sign.sh
     secrets: [APK_KS, APK_KS_ALIAS, APK_KS_PASS]
     when:
       event: [tag]
+
   publish:
     image: woodpeckerci/plugin-gitea-release
     settings:
@@ -42,4 +61,4 @@ steps:
     when:
       event: [tag]
 when:
-  event: [pull_request, tag]
+  event: [push, tag, pull_request]
