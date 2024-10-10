@@ -1,4 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="settings">Настройки</string>
+    <string name="route_changes">Маршрут изменён</string>
+    <string name="reset_app">Сброс приложения</string>
+    <string name="reset_app_description">Сбросить все настройки и данные</string>
+    <string name="reset_netbird_config">Сброс конфигурации NetBird</string>
+    <string name="setup_sso_supported">Сервер поддерживает SSO. Отлично!</string>
+    <string name="setup_sso_unsupported">Сервер не поддерживает SSO :(</string>
+    <string name="save_log">Сохранить журнал</string>
+    <string name="sso_unsupported">SSO не поддерживается</string>
+    <string name="warning">Внимание</string>
+    <string name="welcome_jetbird">Приветствуем в JetBird!</string>
+    <string name="add_route">Добавить маршрут</string>
+    <string name="app">Приложение</string>
+    <string name="app_language">Язык приложения</string>
+    <string name="connecting">Подключение</string>
+    <string name="copy_log">Копировать лог</string>
+    <string name="credits">Благодарности</string>
+    <string name="delete">Удалить</string>
+    <string name="enable_logging">Журналирование</string>
+    <string name="enable_logging_description">Журналы JetBird</string>
+    <string name="enable_logging_description_netbird">Журналы NetBird</string>
+    <string name="enable_verbose_logging">Подробное журналирование</string>
+    <string name="exclude_apps_description">Исключённых приложений: %1$d</string>
+    <string name="failed_remove_netbird_config">Не удалось удалить файл конфигурации NetBird</string>
+    <string name="failed_to_change_management_server">Не удалось сменить управляющий сервер</string>
+    <string name="foreground_notification_description">Тоннель JetBird активен</string>
+    <string name="route_calculator">Калькулятор маршрутов</string>
+    <string name="routes">Маршруты: %1$s</string>
+    <string name="reset_to_change_management_server">Чтобы сменить управляющий сервер, перезапустите JetBird</string>
+    <string name="route_selector">Выбор маршрутов</string>
+    <string name="reset_netbird_config_description">Удалить файл конфигурации NetBird</string>
+    <string name="sso_supported">SSO поддерживается</string>
+    <string name="about_build">Сборка: %1$d</string>
+    <string name="about_netbird_version">Версия NetBird</string>
+    <string name="about_version">Версия JetBird: %1$s</string>
+    <string name="apps">Приложения</string>
+    <string name="removed_netbird_config">Конфигурация NetBird удалена</string>
+    <string name="peer_latency">Задержка: %1$d мс</string>
+    <string name="peer_public_key">Открытый ключ: %1$s</string>
 </resources>
