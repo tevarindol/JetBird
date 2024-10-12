@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="settings">Настройки</string>
-    <string name="route_changes">Маршрут изменён</string>
+    <string name="route_changes">Изменения маршрута</string>
     <string name="reset_app">Сброс приложения</string>
     <string name="reset_app_description">Сбросить все настройки и данные</string>
     <string name="reset_netbird_config">Сброс конфигурации NetBird</string>
@@ -26,10 +26,10 @@
     <string name="failed_remove_netbird_config">Не удалось удалить файл конфигурации NetBird</string>
     <string name="failed_to_change_management_server">Не удалось сменить управляющий сервер</string>
     <string name="foreground_notification_description">Тоннель JetBird активен</string>
-    <string name="route_calculator">Калькулятор маршрутов</string>
+    <string name="route_calculator">Калькулятор маршрута</string>
     <string name="routes">Маршруты: %1$s</string>
     <string name="reset_to_change_management_server">Чтобы сменить управляющий сервер, перезапустите JetBird</string>
-    <string name="route_selector">Выбор маршрутов</string>
+    <string name="route_selector">Выбор маршрута</string>
     <string name="reset_netbird_config_description">Удалить файл конфигурации NetBird</string>
     <string name="sso_supported">SSO поддерживается</string>
     <string name="about_build">Сборка: %1$d</string>
@@ -39,4 +39,85 @@
     <string name="removed_netbird_config">Конфигурация NetBird удалена</string>
     <string name="peer_latency">Задержка: %1$d мс</string>
     <string name="peer_public_key">Открытый ключ: %1$s</string>
+    <string name="reconnect_on_route_changes_description">Автоматическое повторное подключение при изменении маршрутов</string>
+    <string name="reconnect_on_route_changes">Повторное подключение при изменении маршрута</string>
+    <string name="reconnect_on_route_changes_warning">Автоматическое повторное подключение приведет к кратковременной остановке VPN, и трафик может не блокироваться в течение этого периода, в зависимости от настроек вашего устройства.</string>
+    <string name="route_changes_description">Маршруты для этого устройства были обновлены. Пожалуйста, перезапустите туннель, чтобы изменения вступили в силу.</string>
+    <string name="setup_setup_key_required">Пожалуйста, укажите настройки ключа</string>
+    <string name="setup_setup_key_alternative">Если вы предпочитаете, вы можете вместо этого использовать клавишу настройки</string>
+    <string name="setup_key_saved">Сохраненный ключ настройки</string>
+    <string name="setup_key">Клавиша настройки</string>
+    <string name="unknown">Неизвестный</string>
+    <string name="successfully_changed_management_server">Успешно измененный сервер управления</string>
+    <string name="your_overrides">Ваши переопределения:%1$s</string>
+    <string name="view_routes_description">Смотрите расчетные маршруты туннелей</string>
+    <string name="view_routes">Просмотр маршрутов</string>
+    <string name="view_config_description">Смотрите конфигурационный файл NetBird</string>
+    <string name="view_config">Просмотр конфигурации</string>
+    <string name="use_sso">Использует ТАК</string>
+    <string name="use_setup_key">Используйте клавишу настройки</string>
+    <string name="upstream_routes">Восходящие маршруты: 0.0.0.0/0, ::/0</string>
+    <string name="unknown_error_see_logs">Неизвестная ошибка - смотрите журналы для получения дополнительной информации</string>
+    <string name="another_always_on_vpn_active">Активен еще один постоянно включенный VPN</string>
+    <string name="route_selector_info">Здесь вы можете переопределить маршруты, которые отправляет вам сервер управления NetBird.
+\n
+\nЕсли эта функция включена, весь трафик, идущий по определенным вами маршрутам, не будет использовать туннель. Вы можете просмотреть все примененные маршруты в журнале.
+\n
+\nЕсли вы включите переопределение маршрутов и не укажете никаких маршрутов, JetBird будет использовать восходящие маршруты.</string>
+    <string name="auth_error_see_logs">Ошибка аутентификации - смотрите журналы для получения дополнительной информации</string>
+    <string name="cancel">Отменить</string>
+    <string name="clear_log">Очистить журнал</string>
+    <string name="close">Закрывать</string>
+    <string name="confirm">Подтверждать</string>
+    <string name="connect_to_see_peers">Подключайтесь, чтобы видеть одноранговых пользователей</string>
+    <string name="credits_description">Смотрите раздел библиотеки и лицензии</string>
+    <string name="enable_live_logging_description">Просматривайте журналы NetBird в режиме реального времени</string>
+    <string name="enable_verbose_logging_description">Увеличьте детализацию журналов JetBird</string>
+    <string name="enable_verbose_logging_description_netbird">Увеличьте детализацию Net Bird урналов о птицах</string>
+    <string name="route_override_description">Переопределение маршрутов NetBird</string>
+    <string name="route_selector_description">%1$d переопределение маршрута</string>
+    <string name="engine_logging_warning">Клиент NetBird может создавать большое количество журналов с течением времени.
+\n
+\nЭти журналы сохраняются в памяти и могут привести к замедлению работы вашего телефона или сбою JetBird.
+\n
+\nВы также можете отключить ведение журнала в реальном времени и впоследствии удалить журналы с экрана журнала.</string>
+    <string name="exclude">Исключать</string>
+    <string name="exclude_apps">Исключить приложения из туннеля</string>
+    <string name="failed_vpn_permission">Пользователь отклонил разрешение на использование VPN</string>
+    <string name="fallback_dns">Резервный DNS</string>
+    <string name="get_started_url">Чтобы начать, пожалуйста, введите URL-адрес вашего сервера управления</string>
+    <string name="grant_permission">Предоставьте разрешение</string>
+    <string name="log">Лог</string>
+    <string name="log_empty">Никаких записей в журнале</string>
+    <string name="logging">Регистрация</string>
+    <string name="management_server">Сервер управления</string>
+    <string name="management_url">URL-адрес сервера управления</string>
+    <string name="route_override">Включить переопределение маршрута</string>
+    <string name="jetbird_exception">О, нет! JetBird обнаружил ошибку!</string>
+    <string name="jetbird_exception_description">Нажмите для получения дополнительной информации</string>
+    <string name="about">О</string>
+    <string name="action_not_reversible">Это действие не может быть отменено.</string>
+    <string name="connect">Подключить</string>
+    <string name="connected">Связанный</string>
+    <string name="disconnect">Разъединять</string>
+    <string name="disconnected">Разъединенный</string>
+    <string name="dump_netbird_log">Сбросить журнал NetBird</string>
+    <string name="enable_live_logging">Включить ведение журнала в режиме реального времени</string>
+    <string name="not_set">Не установлен</string>
+    <string name="peer_bytes_rx">Байт RX:%1$sB</string>
+    <string name="no_route_overrides">У вас нет переопределений маршрута</string>
+    <string name="peer_bytes_tx">Байт TX: %1$sB</string>
+    <string name="peer_connection_status">Статус: %1$s</string>
+    <string name="peer_connection_status_update">Статус последнего обновления: %1$s</string>
+    <string name="peer_info">Информация о равноправном узле</string>
+    <string name="pre_shared_key">Предварительно разделенный ключ</string>
+    <string name="requires_vpn_permission">JetBird нуждается в вашем разрешении на создание VPN-соединения на этом устройстве.</string>
+    <string name="permissive_rosenpass">Разрешительный Розенпасс</string>
+    <string name="permissive_rosenpass_description">Разрешить одноранговым узлам, не использующим rosen pass, подключаться</string>
+    <string name="peer_last_wireguard_handshake">Последнее рукопожатие охранника: %1$s тому назад</string>
+    <string name="peer_relayed">Передано: %1$b</string>
+    <string name="peers_connected">%1$d из %2$d подключенных одноранговых узлов</string>
+    <string name="relay">Реле: %1$s</string>
+    <string name="start_on_reboot">Запустите туннель при перезагрузке</string>
+    <string name="start_on_reboot_description">Автоматически попробуйте запустить JetBird при перезагрузке устройства</string>
 </resources>
