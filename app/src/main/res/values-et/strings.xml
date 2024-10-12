@@ -1,2 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="action_not_reversible">Seda toimingut ei saa tagasi võtta.</string>
+    <string name="auth_error_see_logs">Autentimisviga-lisateabe saamiseks vaadake logisid</string>
+    <string name="apps">Rakendused</string>
+    <string name="about_build">Ehitamine: %1$d</string>
+    <string name="about_netbird_version">Netbird Versioon</string>
+    <string name="about_version">Jetbird versioon: %1$s</string>
+    <string name="add_route">Lisa marsruut</string>
+    <string name="another_always_on_vpn_active">Teine alati sisse lülitatud VPN on aktiivne</string>
+    <string name="app">Rakendus</string>
+    <string name="app_language">Rakenduse keel</string>
+    <string name="cancel">Tühistama</string>
+    <string name="about">Umbes</string>
+</resources>
