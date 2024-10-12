@@ -12,4 +12,22 @@
     <string name="app_language">Rakenduse keel</string>
     <string name="cancel">Tühistama</string>
     <string name="about">Umbes</string>
+    <string name="connect_to_see_peers">Ühendage, et näha eakaaslasi</string>
+    <string name="enable_live_logging">Luba reaalajas logimine</string>
+    <string name="close">Lähedal</string>
+    <string name="connect">Ühendama</string>
+    <string name="connected">Ühendatud</string>
+    <string name="connecting">Ühendab</string>
+    <string name="copy_log">Kopeeri logi</string>
+    <string name="credits">Krediit</string>
+    <string name="credits_description">Vaadake teeke ja litsentse</string>
+    <string name="delete">Kustutama</string>
+    <string name="disconnect">Katkestama</string>
+    <string name="disconnected">Lahti</string>
+    <string name="dump_netbird_log">Dump NetBird logi</string>
+    <string name="enable_live_logging_description">Vaata NetBird logisid reaalajas</string>
+    <string name="enable_logging">Luba logimine</string>
+    <string name="enable_logging_description">Vaadake JetBird logisid</string>
+    <string name="clear_log">Tühjenda logi</string>
+    <string name="confirm">Kinnitama</string>
 </resources>
