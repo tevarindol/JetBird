@@ -1,4 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="about">Om</string>
+    <string name="action_not_reversible">Denne handling kan ikke fortrydes.</string>
+    <string name="add_route">Tilføj rute</string>
+    <string name="app">App</string>
+    <string name="app_language">App-sprog</string>
+    <string name="apps">Appen</string>
+    <string name="auth_error_see_logs">Godkendelsesfejl - se logfiler for mere info</string>
+    <string name="cancel">Annuller</string>
+    <string name="about_netbird_version">NetBird version</string>
+    <string name="about_version">JetBird-version: %1$s</string>
+    <string name="about_build">Byg: %1$d</string>
+    <string name="clear_log">Ryd loggen</string>
+    <string name="close">Luk</string>
+    <string name="confirm">Bekræft</string>
+    <string name="connect">Opret forbindelse</string>
+    <string name="connect_to_see_peers">Opret forbindelse for at se jævnaldrende</string>
+    <string name="connected">Forbundet</string>
+    <string name="connecting">Forbindelse</string>
+    <string name="copy_log">Kopier loggen</string>
+    <string name="credits">Kreditter</string>
+    <string name="credits_description">Se biblioteker og licenser</string>
+    <string name="delete">Sletning</string>
+    <string name="disconnect">Afbryd forbindelsen</string>
+    <string name="enable_live_logging">Aktivér live-logning</string>
+    <string name="enable_live_logging_description">Se NetBird-logfiler i realtid</string>
+    <string name="enable_logging">Aktiver logning</string>
+    <string name="enable_logging_description">Se logfiler fra JetBird</string>
+    <string name="enable_logging_description_netbird">Se logfiler fra NetBird</string>
+    <string name="enable_verbose_logging">Aktivér verbose-logning</string>
+    <string name="enable_verbose_logging_description_netbird">Øg omfanget af NetBird-logfiler</string>
+    <string name="exclude">Ekskluder</string>
+    <string name="exclude_apps">Udeluk apps fra tunnelen</string>
+    <string name="exclude_apps_description">%1$d apps udelukket</string>
+    <string name="failed_remove_netbird_config">Kunne ikke fjerne NetBird-konfigurationsfilen</string>
+    <string name="failed_to_change_management_server">Kunne ikke ændre administrationsserveren</string>
+    <string name="failed_vpn_permission">Bruger afviste VPN-tilladelse</string>
+    <string name="fallback_dns">Reserve-DNS</string>
+    <string name="grant_permission">Giv tilladelse</string>
+    <string name="jetbird_exception">Åh nej, nej! JetBird er stødt på en fejl!</string>
+    <string name="jetbird_exception_description">Tryk for mere information</string>
+    <string name="log">Loggen</string>
+    <string name="management_server">Administrationsserver</string>
+    <string name="management_url">Administrationsserverens URL</string>
+    <string name="no_route_overrides">Du har ingen ruteoverskridelser</string>
+    <string name="not_set">Ikke sat</string>
+    <string name="logging">Logning</string>
+    <string name="peer_connection_status">Status: %1$s</string>
+    <string name="peer_bytes_tx">Bytes TX: %1$sB</string>
+    <string name="log_empty">Ingen log-indlæg</string>
+    <string name="peer_bytes_rx">Bytes RX: %1$sB</string>
+    <string name="peer_info">Peer-information</string>
+    <string name="peer_public_key">Offentlig nøgle: %1$s</string>
+    <string name="peer_latency">Latenstid: %1$dms</string>
+    <string name="peer_last_wireguard_handshake">Sidste WireGuard-håndtryk: %1$s siden</string>
+    <string name="permissive_rosenpass_description">Tillad ikke-rosenpass-peers at forbinde</string>
+    <string name="pre_shared_key">Forhåndsdelt nøgle</string>
+    <string name="reconnect_on_route_changes">Opret forbindelse igen ved ruteændringer</string>
+    <string name="reconnect_on_route_changes_description">Opret automatisk forbindelse igen, når ruterne ændres</string>
+    <string name="permissive_rosenpass">Tilladt Rosenpass</string>
+    <string name="peers_connected">%1$d af %2$d peers er forbundet</string>
+    <string name="peer_relayed">Videresendt: %1$b</string>
+    <string name="reconnect_on_route_changes_warning">Automatisk genoprettelse af forbindelsen stopper VPN\'en et øjeblik, og trafikken er muligvis ikke blokeret i denne periode, afhængigt af din enheds indstillinger.</string>
+    <string name="removed_netbird_config">Fjernet NetBird-konfigurationsfil</string>
+    <string name="requires_vpn_permission">JetBird skal have lov til at oprette en VPN-forbindelse på denne enhed.</string>
+    <string name="relay">Relæ: %1$s</string>
+    <string name="reset_netbird_config">Nulstil NetBird-konfiguration</string>
+    <string name="reset_app_description">Slet alle data og konfigurationer</string>
+    <string name="reset_app">Nulstil appen</string>
+    <string name="reset_to_change_management_server">For at ændre administrationsserveren skal du nulstille JetBird</string>
+    <string name="route_calculator">Rute-beregner</string>
+    <string name="route_changes">Ruteændringer</string>
+    <string name="route_changes_description">Ruterne til denne enhed er blevet opdateret. Genstart venligst tunnelen for at få ændringerne til at gælde.</string>
+    <string name="route_override">Aktivér tilsidesættelse af ruter</string>
+    <string name="route_selector">Rutevælgeren</string>
+    <string name="route_selector_description">%1$d ruteoverskridelser</string>
+    <string name="route_override_description">Overstyr NetBird-ruter</string>
+    <string name="routes">Ruter: %1$s</string>
+    <string name="save_log">Gem loggen</string>
+    <string name="settings">Indstilling</string>
+    <string name="setup_key">Opsætningstast</string>
+    <string name="setup_key_saved">Opsætningstast gemt</string>
+    <string name="setup_setup_key_alternative">Hvis du foretrækker det, kan du bruge en opsætningsnøgle i stedet</string>
+    <string name="setup_setup_key_required">Angiv venligst en nøgleopsætning</string>
+    <string name="setup_sso_supported">Flot! Din server understøtter SSO!</string>
+    <string name="successfully_changed_management_server">Vellykket ændring af administrationsserver</string>
+    <string name="setup_sso_unsupported">Din server understøtter ikke SSO :(</string>
+    <string name="sso_supported">SSO understøttet</string>
+    <string name="sso_unsupported">SSO understøttes ikke</string>
+    <string name="start_on_reboot">Start tunnel ved genstart</string>
+    <string name="unknown">Ukendt</string>
+    <string name="your_overrides">Dine tilsidesættelser: %1$s</string>
+    <string name="warning">Advarsel</string>
+    <string name="view_routes_description">Se beregnede tunnelruter</string>
+    <string name="view_routes">Vis ruter</string>
+    <string name="view_config_description">Se NetBirds konfigurationsfil</string>
+    <string name="view_config">Vis konfiguration</string>
+    <string name="use_sso">Brug SSO</string>
+    <string name="use_setup_key">Brug opsætningstasten</string>
+    <string name="unknown_error_see_logs">Ukendt fejl - se logfiler for mere info</string>
+    <string name="another_always_on_vpn_active">En anden always-on VPN er aktiv</string>
+    <string name="disconnected">Frakoblet</string>
+    <string name="enable_verbose_logging_description">Øg omfanget af JetBird-logfiler</string>
+    <string name="foreground_notification_description">JetBird-tunnelen er aktiv</string>
+    <string name="engine_logging_warning">NetBird-klienten kan producere en masse logfiler over tid.
+\n
+\nDisse logfiler gemmes i hukommelsen og kan få din telefon til at blive langsommere eller JetBird til at gå ned.
+\n
+\nDu kan også deaktivere live-logning og dumpe logfilerne bagefter fra logskærmen.</string>
+    <string name="dump_netbird_log">Dump NetBird-loggen</string>
+    <string name="get_started_url">For at komme i gang skal du indtaste din administrationsservers URL</string>
+    <string name="reset_netbird_config_description">Fjern NetBird-konfigurationsfilen</string>
+    <string name="start_on_reboot_description">Forsøg automatisk at starte JetBird, når enheden genstarter</string>
+    <string name="welcome_jetbird">Velkommen til JetBird!</string>
+    <string name="peer_connection_status_update">Status senest opdateret: %1$s</string>
+    <string name="route_selector_info">Her kan du tilsidesætte de ruter, som NetBirds administrationsserver sender til dig.
+\n
+\nNår det er aktiveret, vil al trafik, der går til dine definerede ruter, ikke bruge tunnelen. Du kan se alle anvendte ruter i loggen.
+\n
+\nHvis du aktiverer route overrides og ikke angiver nogen ruter, vil JetBird bruge upstream-ruter.</string>
+    <string name="upstream_routes">Upstream-ruter: 0.0.0.0/0, ::/0</string>
 </resources>
