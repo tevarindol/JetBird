@@ -1,2 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="about">O</string>
+    <string name="about_build">Sestavení: %1$d</string>
+    <string name="about_version">JetBird verze: %1$s</string>
+    <string name="about_netbird_version">Verze NetBird</string>
+</resources>
