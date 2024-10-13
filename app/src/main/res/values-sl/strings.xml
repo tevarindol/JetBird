@@ -38,4 +38,22 @@
     <string name="disconnected">Odklopljen</string>
     <string name="connect_to_see_peers">Povežite se za ogled vrstnikov</string>
     <string name="connect">Poveži</string>
+    <string name="enable_logging_description">Oglejte si dnevnike programa JetBird</string>
+    <string name="enable_logging_description_netbird">Oglejte si dnevnike iz programa NetBird</string>
+    <string name="enable_verbose_logging_description_netbird">Povečanje razsežnosti dnevnikov NetBird</string>
+    <string name="failed_vpn_permission">Uporabnik je zavrnil dovoljenje VPN</string>
+    <string name="jetbird_exception">O ne! JetBird je naletel na napako!</string>
+    <string name="permissive_rosenpass_description">Omogočanje povezovanja z vrstniki, ki ne uporabljajo gesla rosenpass</string>
+    <string name="reconnect_on_route_changes_description">Samodejna ponovna povezava ob spremembi poti</string>
+    <string name="setup_setup_key_required">Navedite nastavitev ključa</string>
+    <string name="setup_sso_unsupported">Vaš strežnik ne podpira SSO :(</string>
+    <string name="setup_sso_supported">Lepo! Vaš strežnik podpira SSO!</string>
+    <string name="enable_verbose_logging_description">Povečanje razsežnosti dnevnikov JetBird</string>
+    <string name="peer_last_wireguard_handshake">Zadnje posredovanje WireGuard: pred %1$s</string>
+    <string name="failed_to_change_management_server">Ni uspelo spremeniti strežnika za upravljanje</string>
+    <string name="reset_app_description">Brisanje vseh podatkov in konfiguracij</string>
+    <string name="no_route_overrides">Nimate nobenih prepisov poti</string>
+    <string name="peers_connected">L%1$d od %2$d povezanih vrstnikov</string>
+    <string name="foreground_notification_description">Predor JetBird je aktiven</string>
+    <string name="exclude_apps">Izključitev aplikacij iz predora</string>
 </resources>
