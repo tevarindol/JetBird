@@ -3,9 +3,9 @@
     <string name="about_build">Збірка: %1$d</string>
     <string name="engine_logging_warning">Клієнт NetBird може створити велику кількість журналів з часом.
 \n
-\nЦі журнали зберігаються в пам\'яті і можуть призвести до уповільнення роботи телефона або збою JetBird.
+\nЦі журнали зберігаються в пам\'яті і можуть сповільнювати роботу телефона або призвести до збою JetBird.
 \n
-\nВи також можете вимкнути ведення журналу в режимі реального часу та згодом видалити журнали з екрана журналу.</string>
+\nВи також можете вимкнути журналювання в режимі реального часу та згодом видалити журнали з екрана журналу.</string>
     <string name="about">Про додаток</string>
     <string name="auth_error_see_logs">Помилка автентифікації — додаткову інформацію дивіться в журналах</string>
     <string name="connect_to_see_peers">Підключіться, щоб бачити однорангових користувачів</string>
@@ -40,7 +40,7 @@
     <string name="dump_netbird_log">Скинути журнал NetBird</string>
     <string name="enable_verbose_logging_description">Збільшення деталізації журналів JetBird</string>
     <string name="management_url">URL-адреса сервера управління</string>
-    <string name="peer_bytes_rx">Байт RX: %1$s Б</string>
+    <string name="peer_bytes_rx">Байтів отримано: %1$s Б</string>
     <string name="permissive_rosenpass_description">Дозволити підключатися вузлам, які не використовують Rosenpass</string>
     <string name="reconnect_on_route_changes_description">Автоматичне повторне підключення при зміні маршрутів</string>
     <string name="get_started_url">Щоб почати, будь ласка, введіть URL-адресу вашого сервера управління</string>
@@ -85,7 +85,7 @@
     <string name="logging">Журналювання</string>
     <string name="management_server">Сервер управління</string>
     <string name="no_route_overrides">У вас немає перевизначень маршруту</string>
-    <string name="peer_bytes_tx">Байт TX: %1$s Б</string>
+    <string name="peer_bytes_tx">Байтів надіслано: %1$s Б</string>
     <string name="peer_info">Інформація про рівноправний вузол</string>
     <string name="peer_last_wireguard_handshake">Останнє рукостискання WireGuard: %1$s тому</string>
     <string name="peer_latency">Затримка: %1$d мс</string>
