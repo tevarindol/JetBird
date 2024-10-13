@@ -1,2 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="about_netbird_version">Netbird Različica</string>
+    <string name="add_route">Dodaj pot</string>
+    <string name="another_always_on_vpn_active">Aktiven je še en vedno vklopljen VPN</string>
+    <string name="app">Aplikacija</string>
+    <string name="route_changes_description">Poti za to napravo so posodobljene. Znova zaženite predor, da bodo spremembe veljale.</string>
+    <string name="reset_to_change_management_server">Če želite spremeniti strežnik za upravljanje, ponastavite JetBird</string>
+    <string name="start_on_reboot_description">Samodejno poskusite zagnati JetBird, ko se naprava znova zažene</string>
+    <string name="unknown_error_see_logs">Neznana napaka-za več informacij glejte dnevniki</string>
+    <string name="reconnect_on_route_changes_warning">Samodejna Ponovna povezava bo za trenutek ustavila VPN in promet v tem obdobju morda ne bo blokiran, odvisno od nastavitev vaše naprave.</string>
+    <string name="enable_live_logging_description">Oglejte si dnevnike NetBird v realnem času</string>
+    <string name="requires_vpn_permission">JetBird potrebuje, da mu dovolite, da v tej napravi ustvari povezavo VPN.</string>
+    <string name="setup_setup_key_alternative">Če želite, lahko namesto tega uporabite nastavitveni ključ</string>
+    <string name="auth_error_see_logs">Napaka pri preverjanju pristnosti-za več informacij glejte dnevniki</string>
+    <string name="route_selector_info">Tu lahko preglasite poti, ki vam jih pošlje strežnik za upravljanje NetBird.
+\n
+\nKo je omogočeno, ves promet, ki gre na vaše določene poti, ne bo uporabljal predora. Vse uporabljene poti si lahko ogledate v dnevniku.
+\n
+\nČe omogočite preglasitev poti in ne navedete nobene poti, bo JetBird uporabil poti navzgor.</string>
+    <string name="action_not_reversible">Tega dejanja ni mogoče razveljaviti.</string>
+    <string name="failed_remove_netbird_config">Konfiguracijske datoteke NetBird ni bilo mogoče odstraniti</string>
+    <string name="about">O podjetju</string>
+    <string name="engine_logging_warning">Odjemalec NetBird lahko sčasoma proizvede veliko dnevnikov.
+\n
+\nTi dnevniki so shranjeni v pomnilniku in lahko povzročijo upočasnitev telefona ali zrušitev Jetbirda.
+\n
+\nPrav tako lahko onemogočite beleženje v živo in nato dnevnike odložite z zaslona dnevnika.</string>
+    <string name="get_started_url">Za začetek vnesite URL strežnika za upravljanje</string>
+</resources>
