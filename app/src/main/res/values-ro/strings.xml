@@ -1,2 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="about_build">Construi: %1$d</string>
+    <string name="about_version">Versiunea JetBird: %1$s</string>
+    <string name="action_not_reversible">Această acțiune nu poate fi anulată.</string>
+    <string name="add_route">Adaugă traseu</string>
+    <string name="another_always_on_vpn_active">Un alt VPN mereu activ este activ</string>
+    <string name="app">Aplicație</string>
+    <string name="app_language">Limba aplicației</string>
+    <string name="apps">Aplicații</string>
+    <string name="auth_error_see_logs">Eroare de autentificare-consultați jurnalele pentru mai multe informații</string>
+    <string name="cancel">Anulează</string>
+    <string name="clear_log">Ștergeți jurnalul</string>
+    <string name="close">Închide</string>
+    <string name="confirm">Confirmă</string>
+    <string name="connect">Conectați-vă</string>
+    <string name="connect_to_see_peers">Conectați - vă pentru a vedea colegii</string>
+    <string name="connected">Conectat</string>
+    <string name="connecting">Conectarea</string>
+    <string name="copy_log">Jurnal de copiere</string>
+    <string name="credits">Credite</string>
+    <string name="credits_description">Vezi Biblioteci și licențe</string>
+    <string name="delete">Șterge</string>
+    <string name="disconnect">Deconectare</string>
+    <string name="disconnected">Deconectat</string>
+    <string name="dump_netbird_log">Aruncă jurnalul NetBird</string>
+    <string name="enable_live_logging">Activați înregistrarea live</string>
+    <string name="enable_live_logging_description">Vedeți jurnalele NetBird în timp real</string>
+    <string name="enable_logging">Activați înregistrarea în jurnal</string>
+    <string name="enable_logging_description">Vezi jurnalele de la JetBird</string>
+    <string name="enable_logging_description_netbird">Vezi jurnalele de la NetBird</string>
+    <string name="enable_verbose_logging">Activați logare verbose</string>
+    <string name="enable_verbose_logging_description">Creșteți verbozitatea jurnalelor JetBird</string>
+    <string name="enable_verbose_logging_description_netbird">Creșteți verbozitatea jurnalelor NetBird</string>
+    <string name="engine_logging_warning">Clientul NetBird poate produce o mulțime de jurnale în timp.
+\n
+\nAceste jurnale sunt stocate în memorie și pot provoca încetinirea telefonului sau blocarea JetBird.
+\n
+\nDe asemenea, puteți dezactiva înregistrarea live și puteți arunca jurnalele ulterior din ecranul Jurnal.</string>
+    <string name="exclude">Excludeți</string>
+    <string name="exclude_apps">Excludeți aplicațiile din tunel</string>
+    <string name="failed_to_change_management_server">Nu a reușit să schimbe serverul de gestionare</string>
+    <string name="failed_vpn_permission">Utilizatorul a respins permisiunea VPN</string>
+    <string name="fallback_dns">DNS de rezervă</string>
+    <string name="foreground_notification_description">Tunelul JetBird este activ</string>
+    <string name="get_started_url">Pentru a începe, vă rugăm să introduceți adresa URL a serverului de gestionare</string>
+    <string name="log_empty">Fără intrări în jurnal</string>
+    <string name="logging">Logare</string>
+    <string name="management_server">Server de Management</string>
+    <string name="no_route_overrides">Nu aveți suprascrieri de traseu</string>
+    <string name="not_set">Nu este setat</string>
+    <string name="peer_bytes_rx">Octeți RX: %1$sB</string>
+    <string name="peer_bytes_tx">Octeți TX: %1$sB</string>
+    <string name="peer_connection_status_update">Stare Ultima actualizare: %1$s</string>
+    <string name="peer_info">Informații de la egal la egal</string>
+    <string name="peer_last_wireguard_handshake">Ultima strângere de mână WireGuard: %1$s în urmă</string>
+    <string name="peer_latency">Latență: %1$dms</string>
+    <string name="peer_relayed">Transmis: %1$b</string>
+    <string name="peers_connected">%1$d din %2$d colegi conectați</string>
+    <string name="permissive_rosenpass">Permisiv Rosenpass</string>
+    <string name="permissive_rosenpass_description">Permiteți colegilor non-rosen pass să se conecteze</string>
+    <string name="pre_shared_key">Cheie pre-partajată</string>
+    <string name="reconnect_on_route_changes">Reconectați-vă la modificările traseului</string>
+    <string name="requires_vpn_permission">JetBird are nevoie să îi permiteți să creeze o conexiune VPN pe acest dispozitiv.</string>
+    <string name="relay">Releu: %1$s</string>
+    <string name="removed_netbird_config">Eliminat fișierul de configurare NetBird</string>
+    <string name="reset_app">Resetați aplicația</string>
+    <string name="reset_app_description">Ștergeți toate datele și configurațiile</string>
+    <string name="reset_netbird_config_description">Eliminați fișierul de configurare NetBird</string>
+    <string name="route_calculator">Calculator traseu</string>
+    <string name="route_changes">Modificări de traseu</string>
+    <string name="route_override">Activați suprascrierile rutelor</string>
+    <string name="route_override_description">Suprascrie rutele NetBird</string>
+    <string name="route_selector">Selector traseu</string>
+    <string name="route_selector_description">%1$d suprascrie ruta</string>
+    <string name="routes">Rute: %1$s</string>
+    <string name="save_log">Salvați jurnalul</string>
+    <string name="settings">Setări</string>
+    <string name="setup_key">Cheie de configurare</string>
+    <string name="setup_setup_key_required">Vă rugăm să furnizați o configurare cheie</string>
+    <string name="setup_sso_supported">Frumos! Serverul dvs. acceptă SSO!</string>
+    <string name="setup_sso_unsupported">Serverul dvs. nu acceptă SSO :(</string>
+    <string name="sso_supported">SSO sprijinit</string>
+    <string name="start_on_reboot_description">Încercați automat să porniți JetBird când dispozitivul repornește</string>
+    <string name="start_on_reboot">Porniți tunelul la repornire</string>
+    <string name="successfully_changed_management_server">Schimbat cu succes server de management</string>
+    <string name="unknown">Necunoscut</string>
+    <string name="unknown_error_see_logs">Eroare necunoscută-consultați jurnalele pentru mai multe informații</string>
+    <string name="upstream_routes">Rute în amonte: 0.0.0.0/0,:: / 0</string>
+    <string name="welcome_jetbird">Bine ați venit la JetBird!</string>
+    <string name="warning">Avertisment</string>
+    <string name="view_routes">Vezi rutele</string>
+    <string name="use_sso">Utilizați SSO</string>
+    <string name="view_config">Configurare Vizualizare</string>
+    <string name="view_config_description">Consultați fișierul de configurare NetBird</string>
+    <string name="about">Despre</string>
+    <string name="route_selector_info">Aici puteți suprascrie rutele pe care le trimite serverul de gestionare NetBird.
+\n
+\nCând este activat, tot traficul care merge pe rutele dvs. definite nu va folosi tunelul. Puteți vedea toate rutele aplicate în jurnal.
+\n
+\nDacă activați suprascrierea rutelor și nu furnizați nicio rută, JetBird va folosi rutele din amonte.</string>
+    <string name="reconnect_on_route_changes_warning">Reconectarea automată va opri momentan VPN-ul și este posibil ca traficul să nu fie blocat în această perioadă, în funcție de setările dispozitivului.</string>
+    <string name="route_changes_description">Rutele pentru acest dispozitiv au fost actualizate. Vă rugăm să reporniți tunelul pentru ca modificările să se aplice.</string>
+    <string name="setup_setup_key_alternative">Dacă preferați, puteți utiliza în schimb o cheie de configurare</string>
+    <string name="about_netbird_version">Versiunea NetBird</string>
+    <string name="jetbird_exception">Oh, nu! JetBird a întâmpinat o eroare!</string>
+    <string name="failed_remove_netbird_config">A eșuat eliminarea fișierului de configurare NetBird</string>
+    <string name="grant_permission">Acordați permisiunea</string>
+    <string name="jetbird_exception_description">Apăsați pentru mai multe informații</string>
+    <string name="log">Jurnal</string>
+    <string name="exclude_apps_description">%1$d aplicații excluse</string>
+    <string name="management_url">Adresa URL a serverului de gestionare</string>
+    <string name="reconnect_on_route_changes_description">Reconectați automat când rutele se schimbă</string>
+    <string name="setup_key_saved">Tasta de configurare salvată</string>
+    <string name="peer_connection_status">Stare: %1$s</string>
+    <string name="reset_netbird_config">Resetați configurația NetBird</string>
+    <string name="sso_unsupported">SSO neacceptat</string>
+    <string name="peer_public_key">Cheie publică: %1$s</string>
+    <string name="reset_to_change_management_server">Pentru a schimba serverul de management, vă rugăm să resetați JetBird</string>
+    <string name="your_overrides">Suprascrierile dvs.: %1$s</string>
+    <string name="view_routes_description">A se vedea rutele tunelului calculate</string>
+    <string name="use_setup_key">Utilizați tasta de configurare</string>
+</resources>
