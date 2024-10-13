@@ -27,4 +27,15 @@
 \n
 \nPrav tako lahko onemogočite beleženje v živo in nato dnevnike odložite z zaslona dnevnika.</string>
     <string name="get_started_url">Za začetek vnesite URL strežnika za upravljanje</string>
+    <string name="connected">Povezan</string>
+    <string name="connecting">Povezovanje</string>
+    <string name="copy_log">Kopiraj dnevnik</string>
+    <string name="credits">Kreditne točke</string>
+    <string name="credits_description">Glej knjižnice in licence</string>
+    <string name="delete">Izbriši</string>
+    <string name="disconnect">Prekini povezavo</string>
+    <string name="clear_log">Počisti dnevnik</string>
+    <string name="disconnected">Odklopljen</string>
+    <string name="connect_to_see_peers">Povežite se za ogled vrstnikov</string>
+    <string name="connect">Poveži</string>
 </resources>
