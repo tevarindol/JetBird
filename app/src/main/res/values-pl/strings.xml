@@ -25,4 +25,99 @@
     <string name="app">Aplikacja</string>
     <string name="disconnected">Rozłączono</string>
     <string name="warning">Ostrzeżenie</string>
+    <string name="action_not_reversible">Tej akcji nie można cofnąć.</string>
+    <string name="another_always_on_vpn_active">Kolejny zawsze włączony VPN jest aktywny</string>
+    <string name="connect_to_see_peers">Połącz się, aby zobaczyć rówieśników</string>
+    <string name="credits_description">Zobacz biblioteki i licencje</string>
+    <string name="dump_netbird_log">Zrzuć dziennik NetBird</string>
+    <string name="enable_live_logging">Włącz rejestrowanie na żywo</string>
+    <string name="enable_live_logging_description">Zobacz dzienniki NetBird w czasie rzeczywistym</string>
+    <string name="enable_logging_description_netbird">Zobacz logi z NetBird</string>
+    <string name="enable_verbose_logging">Włącz szczegółowe rejestrowanie</string>
+    <string name="enable_verbose_logging_description">Zwiększ szczegółowość dzienników JetBird</string>
+    <string name="exclude_apps">Wyklucz aplikacje z tunelu</string>
+    <string name="exclude_apps_description">%1$d wykluczone aplikacje</string>
+    <string name="failed_remove_netbird_config">Nie udało się usunąć pliku konfiguracyjnego NetBird</string>
+    <string name="failed_to_change_management_server">Nie udało się zmienić serwera zarządzania</string>
+    <string name="failed_vpn_permission">Użytkownik odrzucił pozwolenie VPN</string>
+    <string name="enable_logging">Włącz logowanie</string>
+    <string name="foreground_notification_description">Tunel JetBird jest aktywny</string>
+    <string name="get_started_url">Aby rozpocząć, wprowadź adres URL serwera zarządzania</string>
+    <string name="grant_permission">Udziel pozwolenia</string>
+    <string name="jetbird_exception">O nie! JetBird napotkał błąd!</string>
+    <string name="log_empty">Brak wpisów w dzienniku</string>
+    <string name="logging">Logowanie</string>
+    <string name="management_server">Serwer zarządzania</string>
+    <string name="management_url">Adres URL serwera zarządzania</string>
+    <string name="no_route_overrides">Nie masz przesłonięcia trasy</string>
+    <string name="not_set">Nie ustawiono</string>
+    <string name="peer_bytes_rx">Bajty RX: %1$sB</string>
+    <string name="peer_bytes_tx">Bajty TX: %1$sB</string>
+    <string name="peer_connection_status_update">Ostatnia aktualizacja statusu: %1$s</string>
+    <string name="peer_info">Informacje o rówieśnikach</string>
+    <string name="peer_last_wireguard_handshake">Ostatni WireGuard handshake: %1$s temu</string>
+    <string name="peer_latency">Opóźnienie: %1$dms</string>
+    <string name="peer_public_key">Klucz publiczny: %1$s</string>
+    <string name="peer_relayed">Przekazany: %1$b</string>
+    <string name="peers_connected">%1$d z %2$d połączono równorzędnych</string>
+    <string name="permissive_rosenpass">Tolerancyjny Rosenpass</string>
+    <string name="permissive_rosenpass_description">Zezwalaj na łączenie się rówieśników spoza rosen pass</string>
+    <string name="pre_shared_key">Klucz wstępnie udostępniony</string>
+    <string name="reconnect_on_route_changes">Połącz się ponownie po zmianach trasy</string>
+    <string name="reconnect_on_route_changes_description">Automatycznie połącz się ponownie, gdy zmieniają się trasy</string>
+    <string name="reconnect_on_route_changes_warning">Automatyczne ponowne połączenie na chwilę zatrzyma VPN i ruch może nie zostać zablokowany w tym okresie, w zależności od ustawień urządzenia.</string>
+    <string name="relay">Przekaźnik: %1$s</string>
+    <string name="removed_netbird_config">Usunięto plik konfiguracyjny NetBird</string>
+    <string name="requires_vpn_permission">JetBird musi zezwolić mu na utworzenie połączenia VPN na tym urządzeniu.</string>
+    <string name="reset_app">Zresetuj aplikację</string>
+    <string name="reset_app_description">Wyczyść wszystkie dane i konfiguracje</string>
+    <string name="reset_netbird_config">Zresetuj konfigurację NetBird</string>
+    <string name="reset_to_change_management_server">Aby zmienić serwer zarządzania, zresetuj JetBird</string>
+    <string name="route_calculator">Kalkulator trasy</string>
+    <string name="route_changes">Zmiany trasy</string>
+    <string name="route_override">Włącz zastępowanie trasy</string>
+    <string name="route_override_description">Zastąp trasy NetBird</string>
+    <string name="route_selector">Wybór trasy</string>
+    <string name="route_selector_description">%1$d przesłonięcia trasy</string>
+    <string name="route_selector_info">Tutaj możesz zastąpić trasy wysyłane przez serwer zarządzania NetBird.
+\n
+\nPo włączeniu cały ruch idący na określone trasy nie będzie korzystał z tunelu. Możesz zobaczyć wszystkie zastosowane trasy w dzienniku.
+\n
+\nJeśli włączysz zastępowanie trasy i nie podasz żadnych tras, JetBird użyje tras nadrzędnych.</string>
+    <string name="routes">Trasy: %1$s</string>
+    <string name="save_log">Zapisz dziennik</string>
+    <string name="setup_key">Klucz konfiguracji</string>
+    <string name="setup_key_saved">Zapisany klucz konfiguracji</string>
+    <string name="setup_setup_key_alternative">Jeśli wolisz, możesz zamiast tego użyć klucza konfiguracji</string>
+    <string name="setup_setup_key_required">Proszę podać klucz konfiguracji</string>
+    <string name="setup_sso_supported">Nieźle! Twój serwer obsługuje SSO!</string>
+    <string name="setup_sso_unsupported">Twój serwer nie obsługuje SSO :(</string>
+    <string name="sso_supported">SSO obsługiwane</string>
+    <string name="sso_unsupported">SSO nieobsługiwane</string>
+    <string name="start_on_reboot">Uruchom tunel przy ponownym uruchomieniu</string>
+    <string name="start_on_reboot_description">Automatycznie spróbuj uruchomić JetBird po ponownym uruchomieniu urządzenia</string>
+    <string name="successfully_changed_management_server">Pomyślnie zmieniono serwer zarządzania</string>
+    <string name="unknown_error_see_logs">Nieznany błąd-zobacz dzienniki, aby uzyskać więcej informacji</string>
+    <string name="upstream_routes">Trasy Upstream: 0.0.0.0/0,:: / 0</string>
+    <string name="use_sso">Użyj SSO</string>
+    <string name="view_config">Zobacz konfigurację</string>
+    <string name="view_routes">Zobacz trasy</string>
+    <string name="view_routes_description">Zobacz obliczone trasy tuneli</string>
+    <string name="your_overrides">Twoje nadpisania: %1$s</string>
+    <string name="enable_logging_description">Zobacz dzienniki z JetBird</string>
+    <string name="jetbird_exception_description">Dotknij, aby uzyskać więcej informacji</string>
+    <string name="enable_verbose_logging_description_netbird">Zwiększ szczegółowość dzienników NetBird</string>
+    <string name="reset_netbird_config_description">Usuń plik konfiguracyjny NetBird</string>
+    <string name="about_version">Wersja JetBird: %1$s</string>
+    <string name="auth_error_see_logs">Błąd uwierzytelniania-zobacz dzienniki, aby uzyskać więcej informacji</string>
+    <string name="engine_logging_warning">Klient NetBird może z czasem tworzyć wiele dzienników.
+\n
+\nTe dzienniki są przechowywane w pamięci i mogą spowodować spowolnienie telefonu lub awarię JetBird.
+\n
+\nMożesz także wyłączyć rejestrowanie NA ŻYWO, a następnie zrzucić dzienniki z ekranu dziennika.</string>
+    <string name="peer_connection_status">Status: %1$s</string>
+    <string name="view_config_description">Zobacz plik konfiguracyjny NetBird</string>
+    <string name="route_changes_description">Trasy dla tego urządzenia zostały zaktualizowane. Uruchom ponownie tunel, aby zmiany miały zastosowanie.</string>
+    <string name="use_setup_key">Użyj klawisza setup</string>
+    <string name="welcome_jetbird">Witamy w JetBird!</string>
 </resources>
