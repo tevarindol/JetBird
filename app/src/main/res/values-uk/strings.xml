@@ -1,2 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="about_build">Збірка: %1$d</string>
+    <string name="engine_logging_warning">Клієнт NetBird може створювати велику кількість журналів з часом.
+\n
+\nЦі журнали зберігаються в пам\'яті і можуть призвести до уповільнення роботи телефону або збою JetBird.
+\n
+\nВи також можете вимкнути ведення журналу в режимі реального часу та згодом видалити журнали з екрана журналу.</string>
+    <string name="about">В</string>
+    <string name="auth_error_see_logs">Помилка автентифікації-дивіться журнали для отримання додаткової інформації</string>
+    <string name="connect_to_see_peers">Підключайтеся, щоб бачити однорангових користувачів</string>
+    <string name="credits_description">Дивіться розділ бібліотеки та ліцензії</string>
+    <string name="enable_live_logging_description">Переглядайте журнали NetBird в режимі реального часу</string>
+    <string name="about_netbird_version">Версія NetBird</string>
+    <string name="about_version">Версія JetBird: %1$s</string>
+    <string name="action_not_reversible">Ця дія не може бути скасована.</string>
+    <string name="add_route">Додати маршрут</string>
+    <string name="another_always_on_vpn_active">Активний ще один постійно включений VPN</string>
+    <string name="app">Апп</string>
+    <string name="app_language">Мова додатки</string>
+    <string name="apps">Докладання</string>
+    <string name="cancel">Відмінивши</string>
+    <string name="clear_log">Очистити журнал</string>
+    <string name="close">Закривати</string>
+    <string name="confirm">Підтверджувати</string>
+    <string name="connect">Підключивши</string>
+    <string name="connected">Пов\'язаний</string>
+    <string name="connecting">Зв\'язувальний</string>
+    <string name="copy_log">Журнал копіювання</string>
+    <string name="credits">Кредит</string>
+    <string name="delete">Видалити</string>
+    <string name="disconnect">Роз\'єднувати</string>
+    <string name="disconnected">Роз\'єднаний</string>
+    <string name="enable_live_logging">Увімкнути ведення журналу в режимі реального часу</string>
+    <string name="enable_logging">Увімкнути ведення журналу</string>
+    <string name="enable_logging_description">Дивіться журнали з JetBird</string>
+    <string name="enable_logging_description_netbird">Перегляд журналів з NetBird</string>
+    <string name="enable_verbose_logging">Включити детальне ведення журналу</string>
+    <string name="enable_verbose_logging_description_netbird">Збільште деталізацію журналів NetBird</string>
+    <string name="dump_netbird_log">Скинути Журнал NetBird</string>
+    <string name="enable_verbose_logging_description">Збільште деталізацію журналів JetBird</string>
+</resources>
