@@ -77,4 +77,47 @@
     <string name="peer_relayed">Odoslané: %1$b</string>
     <string name="peer_connection_status_update">Stav naposledy aktualizovaný: %1$s</string>
     <string name="reconnect_on_route_changes_warning">Automatické opätovné pripojenie na chvíľu zastaví sieť VPN a prevádzka nemusí byť počas tohto obdobia blokovaná v závislosti od nastavení vášho zariadenia.</string>
+    <string name="route_override_description">Prepisovanie trás NetBird</string>
+    <string name="route_selector">Výber trasy</string>
+    <string name="route_selector_description">%1$d prepisov trasy</string>
+    <string name="routes">Trasy: %1$s</string>
+    <string name="save_log">Uložiť denník</string>
+    <string name="settings">Nastavenia</string>
+    <string name="setup_key">Kľúč nastavenia</string>
+    <string name="setup_key_saved">Uložený kľúč nastavenia</string>
+    <string name="setup_setup_key_alternative">Ak chcete, môžete namiesto toho použiť nastavovací kľúč</string>
+    <string name="setup_setup_key_required">Uveďte nastavenie kľúča</string>
+    <string name="setup_sso_supported">Pekné! Váš server podporuje SSO!</string>
+    <string name="setup_sso_unsupported">Váš server nepodporuje SSO :(</string>
+    <string name="sso_supported">Podporované SSO</string>
+    <string name="sso_unsupported">SSO nepodporované</string>
+    <string name="start_on_reboot_description">Automatický pokus o spustenie JetBird pri reštartovaní zariadenia</string>
+    <string name="unknown">Neznáme</string>
+    <string name="unknown_error_see_logs">Neznáma chyba - viac informácií nájdete v záznamoch</string>
+    <string name="upstream_routes">Trasy proti prúdu rieky: 0.0.0.0/0, ::/0</string>
+    <string name="use_setup_key">Použitie tlačidla nastavenia</string>
+    <string name="use_sso">Používanie SSO</string>
+    <string name="view_config">Zobraziť konfiguráciu</string>
+    <string name="view_config_description">Pozri konfiguračný súbor NetBird</string>
+    <string name="view_routes">Zobraziť trasy</string>
+    <string name="view_routes_description">Pozrite si vypočítané trasy tunelov</string>
+    <string name="warning">Upozornenie</string>
+    <string name="welcome_jetbird">Vitajte v JetBird!</string>
+    <string name="your_overrides">Vaše prepísanie: %1$s</string>
+    <string name="reset_app">Resetovanie aplikácie</string>
+    <string name="reset_app_description">Vymazanie všetkých údajov a konfigurácií</string>
+    <string name="reset_netbird_config">Obnovenie konfigurácie NetBird</string>
+    <string name="reset_netbird_config_description">Odstránenie konfiguračného súboru NetBird</string>
+    <string name="reset_to_change_management_server">Ak chcete zmeniť server pre správu, resetujte JetBird</string>
+    <string name="route_calculator">Kalkulačka trasy</string>
+    <string name="route_changes">Zmeny trasy</string>
+    <string name="route_changes_description">Trasy pre toto zariadenie boli aktualizované. Reštartujte tunel, aby sa zmeny uplatnili.</string>
+    <string name="route_override">Povolenie prepísania trasy</string>
+    <string name="start_on_reboot">Spustenie tunela pri reštarte</string>
+    <string name="route_selector_info">Tu môžete prepísať trasy, ktoré vám posiela server správy NetBird.
+\n
+\nAk je táto možnosť povolená, všetka prevádzka smerujúca na vami definované trasy nebude používať tunel. Všetky použité trasy môžete vidieť v protokole.
+\n
+\nAk povolíte prepísanie trás a neposkytnete žiadne trasy, JetBird použije trasy smerom nahor.</string>
+    <string name="successfully_changed_management_server">Úspešne zmenený server pre správu</string>
 </resources>
