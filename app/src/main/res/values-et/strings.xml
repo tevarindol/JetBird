@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_not_reversible">Seda toimingut ei saa tagasi võtta.</string>
+    <string name="auth_error_see_logs">Autentimisviga-lisateabe saamiseks vaadake logisid</string>
+    <string name="apps">Rakendused</string>
+    <string name="about_build">Ehitamine: %1$d</string>
+    <string name="about_netbird_version">Netbird Versioon</string>
+    <string name="about_version">Jetbird versioon: %1$s</string>
+    <string name="add_route">Lisa marsruut</string>
+    <string name="another_always_on_vpn_active">Teine alati sisse lülitatud VPN on aktiivne</string>
+    <string name="app">Rakendus</string>
+    <string name="app_language">Rakenduse keel</string>
+    <string name="cancel">Tühistama</string>
+    <string name="about">Umbes</string>
+    <string name="connect_to_see_peers">Ühendage, et näha eakaaslasi</string>
+    <string name="enable_live_logging">Luba reaalajas logimine</string>
+    <string name="close">Lähedal</string>
+    <string name="connect">Ühendama</string>
+    <string name="connected">Ühendatud</string>
+    <string name="connecting">Ühendab</string>
+    <string name="copy_log">Kopeeri logi</string>
+    <string name="credits">Krediit</string>
+    <string name="credits_description">Vaadake teeke ja litsentse</string>
+    <string name="delete">Kustutama</string>
+    <string name="disconnect">Katkestama</string>
+    <string name="disconnected">Lahti</string>
+    <string name="dump_netbird_log">Dump NetBird logi</string>
+    <string name="enable_live_logging_description">Vaata NetBird logisid reaalajas</string>
+    <string name="enable_logging">Luba logimine</string>
+    <string name="enable_logging_description">Vaadake JetBird logisid</string>
+    <string name="clear_log">Tühjenda logi</string>
+    <string name="confirm">Kinnitama</string>
+    <string name="enable_logging_description_netbird">Vaadake netbirdi logisid</string>
+    <string name="enable_verbose_logging">Luba paljusõnaline logimine</string>
+    <string name="enable_verbose_logging_description">Suurendage Jetbirdi palkide paljusust</string>
+    <string name="enable_verbose_logging_description_netbird">Suurendage Netbirdi logide paljusust</string>
+    <string name="engine_logging_warning">Netbirdi klient suudab aja jooksul toota palju logisid.
+\n
+\nNeed logid on salvestatud mällu ja võib põhjustada telefoni aeglustada või JetBird krahhi.
+\n
+\nSamuti saate reaalajas logimise keelata ja logid hiljem logiekraanilt välja visata.</string>
+    <string name="exclude">Välistama</string>
+    <string name="exclude_apps">Rakenduste välistamine tunnelist</string>
+    <string name="exclude_apps_description">%1$d rakendused välistatud</string>
+    <string name="failed_remove_netbird_config">Netbirdi konfiguratsioonifaili eemaldamine nurjus</string>
+    <string name="failed_to_change_management_server">Haldusserveri muutmine nurjus</string>
+    <string name="failed_vpn_permission">Kasutaja lükkas VPN-i loa tagasi</string>
+    <string name="route_changes_description">Selle seadme marsruute on värskendatud. Muudatuste rakendamiseks taaskäivitage tunnel.</string>
+    <string name="route_selector_info">Siin saate alistada marsruudid, mille Netbirdi haldusserver teile saadab.
+\n
+\nKui see on lubatud, ei kasuta kogu teie määratud marsruutidele suunduv liiklus tunnelit. Logis näete kõiki rakendatud marsruute.
+\n
+\nKui lubate marsruudi alistamise ja ei paku ühtegi marsruuti, kasutab JetBird ülesvoolu marsruute.</string>
+    <string name="foreground_notification_description">Jetbirdi tunnel on aktiivne</string>
+    <string name="get_started_url">Alustamiseks sisestage oma haldusserveri URL</string>
+    <string name="grant_permission">Luba anda</string>
+    <string name="jetbird_exception">Oh ei! JetBird tekkinud viga!</string>
+    <string name="jetbird_exception_description">Puudutage lisateabe saamiseks</string>
+    <string name="log">Logima</string>
+    <string name="log_empty">Logikirjeid pole</string>
+    <string name="logging">Metsaraie</string>
+    <string name="management_server">Haldusserver</string>
+    <string name="management_url">Haldusserveri URL</string>
+    <string name="fallback_dns">Varuvariant DNS</string>
+    <string name="no_route_overrides">Teil pole marsruudi alistamist</string>
+    <string name="not_set">Pole määratud</string>
+    <string name="peer_bytes_rx">Baidid RX: %1$sB</string>
+    <string name="peer_bytes_tx">Baidid TX: %1$sB</string>
+    <string name="peer_connection_status">Staatus: %1$s</string>
+    <string name="peer_connection_status_update">Staatus Viimati uuendatud: %1$s</string>
+    <string name="peer_info">Vastastikune info</string>
+    <string name="peer_last_wireguard_handshake">Viimane WireGuard käepigistus: %1$s tagasi</string>
+    <string name="peer_latency">Latentsus: %1$dms</string>
+    <string name="peer_public_key">Avalik võti: %1$s</string>
+    <string name="peer_relayed">aheta: %1$b</string>
+    <string name="peers_connected">%1$d kohta %2$d eakaaslased ühendatud</string>
+    <string name="permissive_rosenpass">Lubav Rosenpass</string>
+    <string name="pre_shared_key">Eeljagatud võti</string>
+    <string name="reconnect_on_route_changes">Marsruudi muutmisel ühendage uuesti</string>
+    <string name="relay">Relee: %1$s</string>
+    <string name="removed_netbird_config">Eemaldatud Netbirdi konfiguratsioonifail</string>
+    <string name="requires_vpn_permission">JetBird vajab, et lubaksite sellel seadmel VPN-ühenduse luua.</string>
+    <string name="reset_app">Lähtesta rakendus</string>
+    <string name="reset_app_description">Pühkige kõik andmed ja konfiguratsioonid</string>
+    <string name="reset_netbird_config">Lähtestage Netbirdi konfiguratsioon</string>
+    <string name="reset_netbird_config_description">Eemalda NetBird konfiguratsioonifail</string>
+    <string name="reset_to_change_management_server">Haldusserveri muutmiseks lähtestage JetBird</string>
+    <string name="route_calculator">Marsruudi Kalkulaator</string>
+    <string name="route_changes">Marsruudi muudatused</string>
+    <string name="route_override">Marsruudi alistamise lubamine</string>
+    <string name="route_override_description">Netbirdi marsruutide tühistamine</string>
+    <string name="route_selector">Marsruudi valija</string>
+    <string name="route_selector_description">%1$d marsruut alistab</string>
+    <string name="routes">Marsruudid: %1$s</string>
+    <string name="save_log">Logi salvestamine</string>
+    <string name="settings">Seade</string>
+    <string name="setup_key">Seadistusvõti</string>
+    <string name="setup_key_saved">Setup võti salvestatud</string>
+    <string name="setup_setup_key_alternative">Kui soovite, võite selle asemel kasutada häälestusklahvi</string>
+    <string name="setup_setup_key_required">Palun esitage võtme seadistamine</string>
+    <string name="setup_sso_supported">Kena! Teie server toetab SSO-d!</string>
+    <string name="setup_sso_unsupported">Teie server ei toeta SSO-d :(</string>
+    <string name="sso_supported">SSO toetatud</string>
+    <string name="sso_unsupported">SSO toetamata</string>
+    <string name="start_on_reboot">Käivitage tunnel taaskäivitamisel</string>
+    <string name="start_on_reboot_description">Proovige Jetbirdi automaatselt käivitada, kui seade taaskäivitub</string>
+    <string name="successfully_changed_management_server">Edukalt muudetud haldusserver</string>
+    <string name="unknown">Tundmatu</string>
+    <string name="unknown_error_see_logs">Tundmatu viga-Vaata logisid rohkem infot</string>
+    <string name="upstream_routes">Ülesvoolu marsruudid: 0.0.0.0/0,:: / 0</string>
+    <string name="use_setup_key">Häälestusklahvi kasutamine</string>
+    <string name="use_sso">Kasutama SSO</string>
+    <string name="view_config">Kuva konfiguratsioon</string>
+    <string name="view_config_description">Vaadake NetBird konfiguratsioonifaili</string>
+    <string name="view_routes">Vaata marsruute</string>
+    <string name="view_routes_description">Vaadake arvutatud tunneli marsruute</string>
+    <string name="warning">Hoiatus</string>
+    <string name="welcome_jetbird">Tere tulemast JetBird!</string>
+    <string name="your_overrides">Teie alistused: %1$s</string>
+    <string name="reconnect_on_route_changes_warning">Automaatne uuesti ühendamine peatab VPN-i hetkeks ja sõltuvalt teie seadme seadetest ei pruugi liiklus sel perioodil olla blokeeritud.</string>
+    <string name="permissive_rosenpass_description">Luba mitte-rosen pass eakaaslased ühendada</string>
+    <string name="reconnect_on_route_changes_description">Marsruutide muutumisel Ühendage automaatselt uuesti</string>
+</resources>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_build">Збірка: %1$d</string>
+    <string name="engine_logging_warning">Клієнт NetBird може створити велику кількість журналів з часом.
+\n
+\nЦі журнали зберігаються в пам\'яті і можуть призвести до уповільнення роботи телефона або збою JetBird.
+\n
+\nВи також можете вимкнути ведення журналу в режимі реального часу та згодом видалити журнали з екрана журналу.</string>
+    <string name="about">Про додаток</string>
+    <string name="auth_error_see_logs">Помилка автентифікації — додаткову інформацію дивіться в журналах</string>
+    <string name="connect_to_see_peers">Підключіться, щоб бачити однорангових користувачів</string>
+    <string name="credits_description">Переглянути бібліотеки та ліцензії</string>
+    <string name="enable_live_logging_description">Перегляд журналів NetBird у режимі реального часу</string>
+    <string name="about_netbird_version">Версія NetBird</string>
+    <string name="about_version">Версія JetBird: %1$s</string>
+    <string name="action_not_reversible">Цю дію неможливо скасувати.</string>
+    <string name="add_route">Додати маршрут</string>
+    <string name="another_always_on_vpn_active">Активний ще один постійно включений VPN</string>
+    <string name="app">Додаток</string>
+    <string name="app_language">Мова додатка</string>
+    <string name="apps">Додатки</string>
+    <string name="cancel">Скасувати</string>
+    <string name="clear_log">Очистити журнал</string>
+    <string name="close">Закрити</string>
+    <string name="confirm">Підтвердити</string>
+    <string name="connect">Підключитися</string>
+    <string name="connected">Підключено</string>
+    <string name="connecting">Підключення</string>
+    <string name="copy_log">Копіювати журнал</string>
+    <string name="credits">Подяка</string>
+    <string name="delete">Видалити</string>
+    <string name="disconnect">Від\'єднатися</string>
+    <string name="disconnected">Від\'єднано</string>
+    <string name="enable_live_logging">Увімкнути ведення журналу в режимі реального часу</string>
+    <string name="enable_logging">Увімкнути журналювання</string>
+    <string name="enable_logging_description">Перегляд журналів з JetBird</string>
+    <string name="enable_logging_description_netbird">Перегляд журналів з NetBird</string>
+    <string name="enable_verbose_logging">Увімкнути детальне журналювання</string>
+    <string name="enable_verbose_logging_description_netbird">Збільшення деталізації журналів NetBird</string>
+    <string name="dump_netbird_log">Скинути журнал NetBird</string>
+    <string name="enable_verbose_logging_description">Збільшення деталізації журналів JetBird</string>
+    <string name="management_url">URL-адреса сервера управління</string>
+    <string name="peer_bytes_rx">Байт RX: %1$s Б</string>
+    <string name="permissive_rosenpass_description">Дозволити підключатися вузлам, які не використовують Rosenpass</string>
+    <string name="reconnect_on_route_changes_description">Автоматичне повторне підключення при зміні маршрутів</string>
+    <string name="get_started_url">Щоб почати, будь ласка, введіть URL-адресу вашого сервера управління</string>
+    <string name="not_set">Не встановлено</string>
+    <string name="permissive_rosenpass">Дозвільний пропуск Rosenpass</string>
+    <string name="reset_netbird_config">Скинути конфігурацію NetBird</string>
+    <string name="reset_netbird_config_description">Видалити конфігураційний файл NetBird</string>
+    <string name="route_selector_info">Тут ви можете перевизначити маршрути, які надсилає вам сервер управління NetBird.
+\n
+\nЯкщо цю функцію ввімкнено, весь трафік, що йде за визначеними вами маршрутами, не використовуватиме тунель. Ви можете переглянути всі застосовані маршрути в журналі.
+\n
+\nЯкщо ви ввімкнете перевизначення маршрутів і не вкажете жодних маршрутів, JetBird використовуватиме маршрути вгору.</string>
+    <string name="upstream_routes">Висхідні маршрути: 0.0.0.0/0, ::/0</string>
+    <string name="peers_connected">%1$d із %2$d вузлів підключено</string>
+    <string name="peer_relayed">Передано: %1$b</string>
+    <string name="route_selector">Вибір маршруту</string>
+    <string name="settings">Налаштування</string>
+    <string name="setup_sso_unsupported">Ваш сервер не підтримує SSO :(</string>
+    <string name="sso_unsupported">SSO не підтримується</string>
+    <string name="route_selector_description">%1$d перевизначень маршрутів</string>
+    <string name="successfully_changed_management_server">Сервер управління успішно змінено</string>
+    <string name="setup_setup_key_alternative">Якщо бажаєте, ви можете замість цього використовувати ключ налаштування</string>
+    <string name="failed_remove_netbird_config">Не вдалося видалити конфігураційний файл NetBird</string>
+    <string name="peer_connection_status">Статус: %1$s</string>
+    <string name="peer_connection_status_update">Останнє оновлення статусу: %1$s</string>
+    <string name="reconnect_on_route_changes_warning">Автоматичне повторне підключення призведе до короткої зупинки VPN, і трафік може не блокуватися протягом цього періоду, залежно від налаштувань вашого пристрою.</string>
+    <string name="failed_to_change_management_server">Не вдалося змінити сервер управління</string>
+    <string name="route_changes_description">Маршрути для цього пристрою оновлено. Будь ласка, перезапустіть тунель, щоб зміни набули чинності.</string>
+    <string name="setup_key">Ключ налаштування</string>
+    <string name="setup_setup_key_required">Будь ласка, вкажіть ключ налаштування</string>
+    <string name="exclude">Виключити</string>
+    <string name="exclude_apps">Виключити додатки з тунелю</string>
+    <string name="exclude_apps_description">%1$d додатків виключено</string>
+    <string name="failed_vpn_permission">Користувач відхилив дозвіл на використання VPN</string>
+    <string name="fallback_dns">Резервний DNS</string>
+    <string name="foreground_notification_description">Тунель JetBird активний</string>
+    <string name="grant_permission">Надайте дозвіл</string>
+    <string name="jetbird_exception">О, ні! JetBird виявив помилку!</string>
+    <string name="jetbird_exception_description">Натисніть для отримання додаткової інформації</string>
+    <string name="log">Журнал</string>
+    <string name="log_empty">Немає записів у журналі</string>
+    <string name="logging">Журналювання</string>
+    <string name="management_server">Сервер управління</string>
+    <string name="no_route_overrides">У вас немає перевизначень маршруту</string>
+    <string name="peer_bytes_tx">Байт TX: %1$s Б</string>
+    <string name="peer_info">Інформація про рівноправний вузол</string>
+    <string name="peer_last_wireguard_handshake">Останнє рукостискання WireGuard: %1$s тому</string>
+    <string name="peer_latency">Затримка: %1$d мс</string>
+    <string name="peer_public_key">Відкритий ключ: %1$s</string>
+    <string name="pre_shared_key">Попередньо переданий ключ</string>
+    <string name="reconnect_on_route_changes">Повторне підключення при зміні маршруту</string>
+    <string name="removed_netbird_config">Конфігураційний файл NetBird видалено</string>
+    <string name="requires_vpn_permission">JetBird потребує вашого дозволу на створення VPN-з\'єднання на цьому пристрої.</string>
+    <string name="reset_app">Скинути додаток</string>
+    <string name="reset_app_description">Видалити всі дані та налаштування</string>
+    <string name="relay">Реле: %1$s</string>
+    <string name="reset_to_change_management_server">Щоб змінити сервер управління, будь ласка, перезавантажте JetBird</string>
+    <string name="route_calculator">Калькулятор маршруту</string>
+    <string name="route_changes">Зміни маршруту</string>
+    <string name="route_override">Увімкнути перевизначення маршруту</string>
+    <string name="routes">Маршрути: %1$s</string>
+    <string name="save_log">Зберегти журнал</string>
+    <string name="route_override_description">Перевизначення маршрутів NetBird</string>
+    <string name="setup_key_saved">Ключ налаштування збережено</string>
+    <string name="setup_sso_supported">Чудово! Ваш сервер підтримує SSO!</string>
+    <string name="sso_supported">SSO підтримується</string>
+    <string name="start_on_reboot">Запускати тунель при перезавантаженні</string>
+    <string name="your_overrides">Ваші перевизначення: %1$s</string>
+    <string name="welcome_jetbird">Вітаємо в JetBird!</string>
+    <string name="warning">Попередження</string>
+    <string name="view_routes_description">Дивитися розраховані маршрути тунелів</string>
+    <string name="view_routes">Перегляд маршрутів</string>
+    <string name="view_config_description">Дивитися конфігураційний файл NetBird</string>
+    <string name="view_config">Перегляд конфігурації</string>
+    <string name="use_sso">Скористатися SSO</string>
+    <string name="use_setup_key">Використовувати ключ налаштування</string>
+    <string name="unknown_error_see_logs">Невідома помилка — додаткову інформацію дивіться в журналах</string>
+    <string name="unknown">Невідомий</string>
+    <string name="start_on_reboot_description">Автоматично пробувати запустити JetBird під час перезавантаження пристрою</string>
+</resources>
