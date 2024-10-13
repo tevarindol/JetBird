@@ -30,4 +30,19 @@
     <string name="enable_logging_description">Vaadake JetBird logisid</string>
     <string name="clear_log">Tühjenda logi</string>
     <string name="confirm">Kinnitama</string>
+    <string name="enable_logging_description_netbird">Vaadake netbirdi logisid</string>
+    <string name="enable_verbose_logging">Luba paljusõnaline logimine</string>
+    <string name="enable_verbose_logging_description">Suurendage Jetbirdi palkide paljusust</string>
+    <string name="enable_verbose_logging_description_netbird">Suurendage Netbirdi logide paljusust</string>
+    <string name="engine_logging_warning">Netbirdi klient suudab aja jooksul toota palju logisid.
+\n
+\nNeed logid on salvestatud mällu ja võib põhjustada telefoni aeglustada või JetBird krahhi.
+\n
+\nSamuti saate reaalajas logimise keelata ja logid hiljem logiekraanilt välja visata.</string>
+    <string name="exclude">Välistama</string>
+    <string name="exclude_apps">Rakenduste välistamine tunnelist</string>
+    <string name="exclude_apps_description">%1$d rakendused välistatud</string>
+    <string name="failed_remove_netbird_config">Netbirdi konfiguratsioonifaili eemaldamine nurjus</string>
+    <string name="failed_to_change_management_server">Haldusserveri muutmine nurjus</string>
+    <string name="failed_vpn_permission">Kasutaja lükkas VPN-i loa tagasi</string>
 </resources>
