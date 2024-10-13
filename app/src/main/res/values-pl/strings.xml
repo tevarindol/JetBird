@@ -1,2 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="about_build">Kompilacja: %1$d</string>
+    <string name="about_netbird_version">Wersja NetBird</string>
+    <string name="apps">Aplikacje</string>
+    <string name="cancel">Anuluj</string>
+    <string name="close">Zamknij</string>
+    <string name="confirm">Potwierdź</string>
+    <string name="connect">Połącz</string>
+    <string name="connected">Połączono</string>
+    <string name="connecting">Łączenie</string>
+    <string name="credits">Twórcy</string>
+    <string name="delete">Usuń</string>
+    <string name="disconnect">Rozłącz</string>
+    <string name="exclude">Wyklucz</string>
+    <string name="app_language">Język aplikacji</string>
+    <string name="clear_log">Wyczyść dziennik</string>
+    <string name="copy_log">Kopiuj dziennik</string>
+    <string name="log">Dziennik</string>
+    <string name="fallback_dns">Zapasowy serwe DNS</string>
+    <string name="settings">Ustawienia</string>
+    <string name="unknown">Nieznane</string>
+    <string name="add_route">Dodaj trasę</string>
+    <string name="about">O aplikacji</string>
+    <string name="app">Aplikacja</string>
+    <string name="disconnected">Rozłączono</string>
+    <string name="warning">Ostrzeżenie</string>
+</resources>
