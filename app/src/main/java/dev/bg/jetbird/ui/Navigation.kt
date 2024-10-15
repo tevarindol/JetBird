@@ -72,6 +72,10 @@ fun Navigation(
                     viewModel.resetAuthState()
                     ctx.getString(R.string.auth_error_see_logs)
                 }
+                NetBirdErrors.NETBIRD_LOGIN_EXPIRED -> {
+                    viewModel.resetAuthState()
+                    ctx.getString(R.string.login_expired)
+                }
                 else -> ctx.getString(R.string.unknown_error_see_logs)
             }
             snackbarHostState.showSnackbar(message)

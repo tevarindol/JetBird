@@ -369,7 +369,7 @@ class VPNService: VpnService() {
     ) {
         when {
             NetBirdErrors.all.contains(failure) -> {
-                log("NetBird auth error: $failure", force = true)
+                log("NetBird error: $failure", force = true)
                 scope.launch {
                     _events.emit(ServiceEvent(failure))
                 }

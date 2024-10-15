@@ -29,8 +29,12 @@ object JetBirdConstants {
 
 object NetBirdErrors {
     const val NETBIRD_TUNNEL_FAILURE = "rpc error: code = PermissionDenied desc = no peer auth method provided, please use a setup key or interactive SSO login"
+    const val NETBIRD_LOGIN_EXPIRED = "rpc error: code = PermissionDenied desc = peer login has expired, please log in once more"
 
-    val all = listOf(NETBIRD_TUNNEL_FAILURE)
+    val all = listOf(
+        NETBIRD_TUNNEL_FAILURE,
+        NETBIRD_LOGIN_EXPIRED
+    )
 }
 
 object Languages {
