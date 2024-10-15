@@ -1,2 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="about">Maidir</string>
+    <string name="about_build">Tóg: %1$d</string>
+    <string name="about_netbird_version">Leagan NetBird</string>
+    <string name="action_not_reversible">Ní féidir an gníomh seo a chealú.</string>
+    <string name="another_always_on_vpn_active">TÁ VPN eile i gcónaí gníomhach</string>
+    <string name="about_version">Leagan JetBird: %1$s</string>
+    <string name="add_route">Cuir bealach leis</string>
+    <string name="app">Aip</string>
+    <string name="app_language">Teanga App</string>
+    <string name="apps">Aipeanna</string>
+    <string name="cancel">Cealaigh</string>
+    <string name="clear_log">Glan log</string>
+    <string name="close">Dún</string>
+    <string name="confirm">Deimhnigh</string>
+    <string name="connect">Ceangail</string>
+    <string name="connect_to_see_peers">Ceangail le piaraí a fheiceáil</string>
+    <string name="connected">Ceangailte</string>
+    <string name="connecting">Ag nascadh</string>
+    <string name="copy_log">Cóipeáil log</string>
+    <string name="credits">Creidmheasanna</string>
+    <string name="delete">Scrios</string>
+    <string name="disconnect">Dínasc</string>
+    <string name="disconnected">Dícheangailte</string>
+    <string name="dump_netbird_log">Logáil NetBird Dumpáil</string>
+    <string name="enable_live_logging">Cumasaigh logáil bheo</string>
+    <string name="enable_logging">Cumasaigh logáil</string>
+    <string name="enable_logging_description">Féach logaí Ó JetBird</string>
+    <string name="enable_verbose_logging">Cumasaigh logáil briathra</string>
+    <string name="get_started_url">Chun tús a chur cuir ISTEACH URL do fhreastalaí bainistíochta</string>
+    <string name="failed_remove_netbird_config">Theip ar comhad cumraíochta NetBird a bhaint</string>
+    <string name="jetbird_exception">Ó níl! Tháinig JetBird ar earráid!</string>
+    <string name="enable_verbose_logging_description">Verbosity logs JetBird a mhéadú</string>
+    <string name="failed_to_change_management_server">Theip ar fhreastalaí bainistíochta a athrú</string>
+    <string name="no_route_overrides">Failed to change management server</string>
+    <string name="exclude">Eisiamh</string>
+    <string name="exclude_apps">Aipeanna a eisiamh ón tollán</string>
+    <string name="exclude_apps_description">%1$d aipeanna eisiata</string>
+    <string name="failed_vpn_permission">Diúltaíodh don úsáideoir cead VPN</string>
+    <string name="fallback_dns">Cúltaca DNS</string>
+    <string name="grant_permission">Cead a dheonú</string>
+    <string name="jetbird_exception_description">Beartaíonn le haghaidh tuilleadh faisnéise</string>
+    <string name="log">Log</string>
+    <string name="log_empty">Gan iontrálacha logála</string>
+    <string name="logging">Logáil</string>
+    <string name="management_server">Freastalaí bainistíochta</string>
+    <string name="management_url">URL An Fhreastalaí bainistíochta</string>
+    <string name="not_set">Gan socrú</string>
+    <string name="peer_bytes_rx">Bearta RX: %1$sB</string>
+    <string name="peer_bytes_tx">Bearta TX: %1$sB</string>
+    <string name="peer_connection_status">Stádas: %1$s</string>
+    <string name="peer_connection_status_update">Stádas nuashonraithe go deireanach: %1$s</string>
+    <string name="peer_info">Eolas piaraí</string>
+    <string name="peer_last_wireguard_handshake">Croitheadh láimhe An Gharda Sreinge is déanaí: %1$s shin</string>
+    <string name="peer_latency">Folaigh: %1$dms</string>
+    <string name="peer_public_key">Eochair phoiblí: %1$s</string>
+    <string name="peer_relayed">Athsheachadta: %1$b</string>
+    <string name="peers_connected">%1$d as %2$d piaraí ceangailte</string>
+    <string name="requires_vpn_permission">Teastaíonn JetBird uait chun ligean dó nasc VPN a chruthú ar an bhfeiste seo.</string>
+    <string name="permissive_rosenpass">Ceadaitheach Rosenpass</string>
+    <string name="permissive_rosenpass_description">Lig do phiaraí pas neamh-rosen ceangal a dhéanamh</string>
+    <string name="pre_shared_key">Eochair réamh-roinnte</string>
+    <string name="reconnect_on_route_changes">Athcheangail ar athruithe bealaigh</string>
+    <string name="relay">Athsheoladh: %1$s</string>
+    <string name="removed_netbird_config">Comhad cumraíochta NetBird bainte</string>
+    <string name="reset_app">Athshocraigh aip</string>
+    <string name="route_selector_info">Anseo is féidir leat bealaí a sheolann freastalaí bainistíochta NetBird chugat a shárú.
+\n
+\nNuair a bheidh sé cumasaithe, ní úsáidfidh an trácht go léir a théann chuig do bhealaí sainithe an tollán. Is féidir leat gach bealach feidhmeach a fheiceáil sa log.
+\n
+\nMá chumasaíonn tú sáruithe bealaigh agus mura soláthraíonn tú aon bhealaí, úsáidfidh JetBird bealaí in aghaidh srutha.</string>
+    <string name="route_changes_description">Nuashonraíodh na bealaí don fheiste seo. Atosaigh an tollán le do thoil chun na hathruithe a chur i bhfeidhm.</string>
+    <string name="setup_setup_key_alternative">Más fearr leat, is féidir leat eochair socraithe a úsáid ina ionad</string>
+    <string name="start_on_reboot_description">Déan iarracht JetBird a thosú go huathoibríoch nuair a atosóidh An gléas</string>
+    <string name="reset_to_change_management_server">Chun an freastalaí bainistíochta a athrú, athshocraigh JetBird le do thoil</string>
+    <string name="unknown_error_see_logs">Earráid anaithnid-féach logaí le haghaidh tuilleadh eolais</string>
+    <string name="setup_sso_unsupported">Ní thacaíonn do fhreastalaí LE SSO :(</string>
+    <string name="reset_app_description">Wipe na sonraí agus na cumraíochtaí go léir</string>
+    <string name="reset_netbird_config">Athshocraigh cumraíocht NetBird</string>
+    <string name="reset_netbird_config_description">Bain Comhad cumraíochta NetBird</string>
+    <string name="route_calculator">Áireamhán bealaigh</string>
+    <string name="route_changes">Athruithe bealaigh</string>
+    <string name="route_override">Cumasaigh sáruithe bealaigh</string>
+    <string name="route_override_description">Sáraigh bealaí NetBird</string>
+    <string name="route_selector">Roghnóir bealaigh</string>
+    <string name="route_selector_description">Sáraítear bealach %1$d</string>
+    <string name="unknown">Anaithnid</string>
+    <string name="successfully_changed_management_server">D \' éirigh leis an bhfreastalaí bainistíochta a athrú</string>
+    <string name="routes">Bealaí: %1$s</string>
+    <string name="save_log">Sábháil log</string>
+    <string name="settings">Socruithe</string>
+    <string name="setup_key">Eochair socraithe</string>
+    <string name="setup_key_saved">Eochair socraithe sábháilte</string>
+    <string name="setup_setup_key_required">Cuir socrú eochair ar fáil le do thoil</string>
+    <string name="setup_sso_supported">Deas! Tacaíonn do fhreastalaí LE SSO!</string>
+    <string name="sso_supported">SSO tacaithe</string>
+    <string name="sso_unsupported">SSO gan tacaíocht</string>
+    <string name="use_sso">Úsáid SSO</string>
+    <string name="use_setup_key">Úsáid eochair socraithe</string>
+    <string name="welcome_jetbird">Fáilte Go JetBird!</string>
+    <string name="warning">Rabhadh</string>
+    <string name="view_routes_description">Féach bealaí tolláin ríofa</string>
+    <string name="view_routes">Féach ar bhealaí</string>
+    <string name="enable_verbose_logging_description_netbird">Verbosity logs NetBird a mhéadú</string>
+    <string name="engine_logging_warning">Is féidir leis an gcliant NetBird a lán logaí a tháirgeadh le himeacht ama.
+\n
+\nStóráiltear na logaí seo sa chuimhne agus d \' fhéadfadh go gcuirfeadh siad moill ar do ghuthán nó go dtitfeadh JetBird.
+\n
+\nIs féidir leat logáil bheo a dhíchumasú freisin agus na logaí a dhumpáil ina dhiaidh sin ón scáileán logála.</string>
+    <string name="enable_live_logging_description">Féach logaí NetBird i bhfíor-am</string>
+    <string name="enable_logging_description_netbird">Féach logaí Ó NetBird</string>
+    <string name="auth_error_see_logs">Earráid fíordheimhnithe-féach logaí le haghaidh tuilleadh eolais</string>
+    <string name="reconnect_on_route_changes_warning">Stopfaidh athnascadh go huathoibríoch an VPN agus b \' fhéidir nach gcuirfear bac ar thrácht le linn na tréimhse seo, ag brath ar shocruithe do ghléis.</string>
+    <string name="credits_description">Féach leabharlanna agus ceadúnais</string>
+    <string name="foreground_notification_description">Tá tollán JetBird gníomhach</string>
+    <string name="your_overrides">Do shárú: %1$s</string>
+    <string name="reconnect_on_route_changes_description">Athcheangail go huathoibríoch nuair a athraíonn bealaí</string>
+    <string name="view_config">Féach ar chumraíocht</string>
+    <string name="upstream_routes">Bealaí in aghaidh srutha: 0.0.0.0/0,:: / 0</string>
+    <string name="view_config_description">Féach Comhad cumraíochta NetBird</string>
+    <string name="start_on_reboot">Tosaigh tollán ar atosaigh</string>
+</resources>
