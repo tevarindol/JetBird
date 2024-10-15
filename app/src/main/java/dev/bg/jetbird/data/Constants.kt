@@ -38,7 +38,18 @@ object Languages {
         R.string.en to "en",
         R.string.de to "de",
         R.string.ru to "ru",
-        R.string.zh_CN to "zh-CN"
+        R.string.zh_CN to "zh-CN",
+        R.string.cs to "cs",
+        R.string.da to "da",
+        R.string.et to "et",
+        R.string.hu to "hu",
+        R.string.ga to "ga",
+        R.string.pl to "pl",
+        R.string.ro to "ro",
+        R.string.sk to "sk",
+        R.string.sv to "sv",
+        R.string.tr to "tr",
+        R.string.uk to "uk"
     )
     val languageCodeResourceMap = resourceLanguageCodeMap
         .entries

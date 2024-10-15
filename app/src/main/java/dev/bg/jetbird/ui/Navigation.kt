@@ -15,6 +15,9 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -60,6 +63,8 @@ fun Navigation(
     val backStack by navController.currentBackStackEntryAsState()
     val scaffoldVisibility = Route.getScaffoldVisibility(backStack?.destination?.route)
 
+    var appLanguageDropdown by remember { mutableStateOf(false) }
+
     LaunchedEffect(binder) {
         binder?.events?.collectLatest { event ->
             val message = when (event.event) {
@@ -95,22 +100,38 @@ fun Navigation(
                     }
                 },
                 actions = {
-                    AnimatedVisibility(
-                        scaffoldVisibility == ScaffoldVisibility.Top ||
-                        scaffoldVisibility == ScaffoldVisibility.ActionsOnly
-                    ) {
-                        Row {
-                            IconButton(onClick = { navController.navigate(Route.Log) }) {
+                    when (backStack?.destination?.route) {
+                        Route.Setup.route -> {
+                            IconButton(
+                                onClick = {
+                                    appLanguageDropdown = true
+                                }
+                            ) {
                                 Icon(
-                                    painterResource(R.drawable.baseline_list_24),
-                                    contentDescription = stringResource(R.string.log)
+                                    painterResource(R.drawable.baseline_language_24),
+                                    contentDescription = stringResource(R.string.app_language)
                                 )
                             }
-                            IconButton(onClick = { navController.navigate(Route.Settings) }) {
-                                Icon(
-                                    Icons.Filled.Settings,
-                                    contentDescription = stringResource(R.string.settings)
-                                )
+                        }
+                        else -> {
+                            AnimatedVisibility(
+                                scaffoldVisibility == ScaffoldVisibility.Top ||
+                                        scaffoldVisibility == ScaffoldVisibility.ActionsOnly
+                            ) {
+                                Row {
+                                    IconButton(onClick = { navController.navigate(Route.Log) }) {
+                                        Icon(
+                                            painterResource(R.drawable.baseline_list_24),
+                                            contentDescription = stringResource(R.string.log)
+                                        )
+                                    }
+                                    IconButton(onClick = { navController.navigate(Route.Settings) }) {
+                                        Icon(
+                                            Icons.Filled.Settings,
+                                            contentDescription = stringResource(R.string.settings)
+                                        )
+                                    }
+                                }
                             }
                         }
                     }
@@ -129,7 +150,12 @@ fun Navigation(
                 HomeScreen()
             }
             composable(Route.Setup) {
-                SetupScreen()
+                SetupScreen(
+                    appLanguageDropdown = appLanguageDropdown,
+                    onAppLanguageDismissed = {
+                        appLanguageDropdown = false
+                    }
+                )
             }
             composable(Route.Log) {
                 LogScreen()

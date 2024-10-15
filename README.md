@@ -19,6 +19,8 @@ It has been built with privacy in mind and contains no blobs or trackers.
 - Exclude apps from the tunnel
 - Exit nodes (with client-side customisation)
 - Tablet support
+- Reconnect on restart
+- Relay support from JetBird v1.0.4+ (with NetBird v0.29.0+ peers)
 
 ## Differences
 There are a few differences between NetBird official Android client and JetBird. Some of these features rely on patches to the NetBird source (these are in `patches/`):
@@ -36,6 +38,7 @@ There are a few differences between NetBird official Android client and JetBird.
 
 <br />
 <div>
+    <a href="https://apt.izzysoft.de/fdroid/index/apk/dev.bg.jetbird" rel="noopener noreferrer" target=_blank><img src="./assets/IzzyOnDroidButtonGreyBorder.svg" height="60" alt="Get it on IzzyOnDroid"></a>&nbsp;&nbsp;&nbsp;
     <a href="https://codeberg.org/bg443/JetBird/releases" rel="noopener noreferrer" target=_blank><img src="./assets/codeberg.svg" height=60 alt="Get it on Codeberg" /></a>&nbsp;&nbsp;&nbsp;
     <a href="https://github.com/ImranR98/Obtainium" rel="noopener noreferrer" target="_blank"> <img src="./assets/badge_obtainium.png" height="60" alt="Get it on Obtainium" /></a>&nbsp;&nbsp;&nbsp;
     <a href="https://codeberg.org/bg443/JetBird/releases.rss" rel="noopener noreferrer" target=_blank><img src="./assets/RSS.svg" height=60 alt="Follow with RSS" /></a>
@@ -127,3 +130,5 @@ This software is provided with no warranty.
 "NetBird" and the "NetBird" logo are <a href="https://netbird.io/terms" rel="noopener noreferrer" target=_blank>copyright</a> owned by or licensed to Wiretrustee UG.
 
 "WireGuard" and the "WireGuard" logo are registered <a href="https://www.wireguard.com/trademark-policy" rel="noopener noreferrer" target=_blank>trademarks</a> of Jason A. Donenfeld.
+
+"IzzyOnDroid" and the "IzzyOnDroid" logo are registered trademarks of <a href="https://www.izzysoft.de" rel="noopener noreferrer" target=_blank>IzzySoft</a>.

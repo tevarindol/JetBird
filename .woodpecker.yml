@@ -9,7 +9,7 @@ steps:
       ANDROID_HOME: /build/sdk
       DEBIAN_FRONTEND: noninteractive
       GOBIN: /build/go/bin
-      JAVA_HOME: /build/jdk-21.0.4
+      JAVA_HOME: /build/jdk-21.0.5
     commands:
       - ./scripts/provision.sh
       - ./scripts/build_netbird.sh -v
@@ -17,6 +17,7 @@ steps:
     when:
       path: [app/**, build.gradle.kts, .woodpecker.yml, scripts/*]
       event: [pull_request]
+      evaluate: 'not (CI_COMMIT_AUTHOR == "translate")'
 
   build_release:
     image: ubuntu:noble-20240827.1
@@ -24,10 +25,10 @@ steps:
       ANDROID_HOME: /build/sdk
       DEBIAN_FRONTEND: noninteractive
       GOBIN: /build/go/bin
-      JAVA_HOME: /build/jdk-21.0.4
+      JAVA_HOME: /build/jdk-21.0.5
     commands:
       - ./scripts/provision.sh
-      - ./scripts/build_netbird.sh
+      - ./scripts/build_netbird.sh -v
       - ./gradlew :app:assembleRelease --stacktrace --no-build-cache --no-configuration-cache --no-daemon
     when:
       event: [tag]

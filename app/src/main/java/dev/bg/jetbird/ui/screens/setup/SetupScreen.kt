@@ -2,6 +2,7 @@ package dev.bg.jetbird.ui.screens.setup
 
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -22,6 +23,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -41,6 +43,7 @@ import dev.bg.jetbird.LocalSnackbar
 import dev.bg.jetbird.R
 import dev.bg.jetbird.Route
 import dev.bg.jetbird.data.LayoutType
+import dev.bg.jetbird.ui.components.AppLanguageDropDown
 import dev.bg.jetbird.ui.components.LoadingButton
 import dev.bg.jetbird.util.ktx.clearAndNavigate
 import dev.bg.jetbird.util.ktx.getConfigPath
@@ -51,6 +54,8 @@ import kotlinx.coroutines.flow.receiveAsFlow
 
 @Composable
 fun SetupScreen(
+    appLanguageDropdown: Boolean,
+    onAppLanguageDismissed: () -> Unit,
     viewModel: SetupViewModel = hiltViewModel(),
     errors: Flow<String> = viewModel.errors.receiveAsFlow()
 ) {
@@ -122,7 +127,7 @@ fun SetupScreen(
                     loading,
                     ssoSupport,
                     updateManagementUrl = { managementUrl ->
-                        viewModel.updateManagementUrl(managementUrl, ssoSupport ?: false)
+                        viewModel.updateManagementUrl(managementUrl, ssoSupport == true)
                     },
                     checkManagementUrl = { managementUrl ->
                         viewModel.checkManagementUrl(ctx.getConfigPath(), managementUrl)
@@ -132,12 +137,21 @@ fun SetupScreen(
                             configPath = ctx.getConfigPath(),
                             managementUrl = managementUrl,
                             setupKey = setupKey,
-                            ssoSupported = ssoSupport ?: false
+                            ssoSupported = ssoSupport == true
                         )
                     }
                 )
             }
         }
+    }
+    Box(
+        Modifier.fillMaxSize(),
+        contentAlignment = Alignment.TopEnd
+    ) {
+        AppLanguageDropDown(
+            expanded = appLanguageDropdown,
+            onDismissRequest = onAppLanguageDismissed
+        )
     }
 }
 
@@ -178,8 +192,8 @@ private fun SetupInfo(
     val managementUrlRegex = remember { Regex("^https://.*$") }
     val setupKeyRegex = remember { Regex("^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$") }
 
-    var managementUrl by remember { mutableStateOf("") }
-    var setupKey by remember { mutableStateOf("") }
+    var managementUrl by rememberSaveable { mutableStateOf("") }
+    var setupKey by rememberSaveable { mutableStateOf("") }
 
     AnimatedContent(
         targetState = ssoSupport,
