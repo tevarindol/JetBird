@@ -120,4 +120,5 @@
     <string name="relay">Передатчик: %1$s</string>
     <string name="start_on_reboot">Запускать туннель при перезагрузке</string>
     <string name="start_on_reboot_description">Автоматически попробуйте запустить JetBird при перезагрузке устройства</string>
+    <string name="login_expired">Сеанс истёк. Пожалуйста, подключитесь для повторной аутентификации</string>
 </resources>
