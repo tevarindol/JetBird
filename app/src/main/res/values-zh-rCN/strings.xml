@@ -123,4 +123,5 @@
     <string name="peer_last_wireguard_handshake">最后 WireGuard 握手时间：%1$s 前</string>
     <string name="reconnect_on_route_changes">路由更改时重新连接</string>
     <string name="reconnect_on_route_changes_warning">自动重新连接将暂时停止 VPN，并且在此期间可能不会阻止流量，具体取决于您的设备设置。</string>
+    <string name="login_expired">登录已过期 - 请再次连接以重新进行身份验证</string>
 </resources>
