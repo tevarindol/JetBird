@@ -120,4 +120,5 @@
     <string name="reconnect_on_route_changes">Rota değişikliklerinde yeniden bağlanma</string>
     <string name="setup_setup_key_alternative">Tercih ederseniz, bunun yerine bir kurulum anahtarı kullanabilirsiniz</string>
     <string name="welcome_jetbird">JetBird\'e hoş geldiniz!</string>
+    <string name="login_expired">Oturumun süresi doldu - yeniden kimlik doğrulama için lütfen tekrar bağlanın</string>
 </resources>
