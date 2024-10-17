@@ -1,2 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="enable_logging_description">Katso JetBirdin lokit</string>
+    <string name="about_build">Koonti: %1$d</string>
+    <string name="about_version">JetBird-versio: %1$s</string>
+    <string name="action_not_reversible">Tätä toimintoa ei voi kumota.</string>
+    <string name="add_route">Lisää reitti</string>
+    <string name="another_always_on_vpn_active">Toinen aina päällä oleva VPN on käytössä</string>
+    <string name="app">Sovellus</string>
+    <string name="app_language">Sovelluksen kieli</string>
+    <string name="apps">Sovellukset</string>
+    <string name="cancel">Peruuta</string>
+    <string name="clear_log">Tyhjennä loki</string>
+    <string name="close">Sulje</string>
+    <string name="confirm">Vahvista</string>
+    <string name="connect">Yhdistä</string>
+    <string name="connect_to_see_peers">Yhdistä nähdäksesi vertaiset</string>
+    <string name="connected">Yhdistetty</string>
+    <string name="connecting">Yhdistetään</string>
+    <string name="copy_log">Kopioi loki</string>
+    <string name="credits">Ansiot</string>
+    <string name="credits_description">Katso kirjastot ja lisenssit</string>
+    <string name="delete">Poista</string>
+    <string name="disconnect">Katkaise yhteys</string>
+    <string name="disconnected">Yhteys katkaistu</string>
+    <string name="enable_live_logging">Ota käyttöön reaaliaikainen loki-kirjaus</string>
+    <string name="enable_live_logging_description">Katso NetBirdin lokit reaaliajassa</string>
+    <string name="enable_logging">Ota lokiin kirjaus käyttöön</string>
+    <string name="enable_logging_description_netbird">Katso NetBirdin lokit</string>
+    <string name="enable_verbose_logging">Ota monisanainen lokiin kirjaus käyttöön</string>
+    <string name="enable_verbose_logging_description">Lisää JetBird-lokien monisanaisuutta</string>
+    <string name="about">Tietoja</string>
+    <string name="about_netbird_version">NetBird-versio</string>
+    <string name="enable_verbose_logging_description_netbird">Lisää NetBird-lokien monisanaisuutta</string>
+    <string name="dump_netbird_log">Tyhjennä NetBird-loki</string>
+    <string name="auth_error_see_logs">Todennusvirhe - katso lisätietoja lokeista</string>
+</resources>
