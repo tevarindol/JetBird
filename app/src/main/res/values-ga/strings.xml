@@ -120,4 +120,5 @@
     <string name="upstream_routes">Bealaí in aghaidh srutha: 0.0.0.0/0,:: / 0</string>
     <string name="view_config_description">Féach Comhad cumraíochta NetBird</string>
     <string name="start_on_reboot">Tosaigh tollán ar atosaigh</string>
+    <string name="login_expired">Chuaigh logáil isteach in éag - ceangail arís chun é a athfhíordheimhniú</string>
 </resources>
