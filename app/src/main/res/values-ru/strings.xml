@@ -58,14 +58,14 @@
     <string name="use_setup_key">Используйте клавишу настройки</string>
     <string name="upstream_routes">Восходящие маршруты: 0.0.0.0/0, ::/0</string>
     <string name="unknown_error_see_logs">Неизвестная ошибка - смотрите журналы для получения дополнительной информации</string>
-    <string name="another_always_on_vpn_active">Активен ещё один постоянный VPN</string>
+    <string name="another_always_on_vpn_active">Активен другой постоянный VPN</string>
     <string name="route_selector_info">Здесь вы можете переопределить маршруты, которые отправляет вам сервер управления NetBird.
 \n
 \nЕсли эта функция включена, весь трафик, идущий по определенным вами маршрутам, не будет использовать туннель. Вы можете просмотреть все примененные маршруты в журнале.
 \n
 \nЕсли вы включите переопределение маршрутов и не укажете никаких маршрутов, JetBird будет использовать восходящие маршруты.</string>
     <string name="auth_error_see_logs">Ошибка аутентификации - смотрите журналы для получения дополнительной информации</string>
-    <string name="cancel">Отменить</string>
+    <string name="cancel">Отмена</string>
     <string name="clear_log">Очистить журнал</string>
     <string name="close">Закрыть</string>
     <string name="confirm">Подтвердить</string>
@@ -120,4 +120,5 @@
     <string name="relay">Передатчик: %1$s</string>
     <string name="start_on_reboot">Запускать туннель при перезагрузке</string>
     <string name="start_on_reboot_description">Автоматически попробуйте запустить JetBird при перезагрузке устройства</string>
+    <string name="login_expired">Сеанс истёк. Пожалуйста, подключитесь для повторной аутентификации</string>
 </resources>
