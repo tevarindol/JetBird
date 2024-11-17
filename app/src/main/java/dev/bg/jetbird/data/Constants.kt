@@ -46,6 +46,7 @@ object Languages {
         R.string.cs to "cs",
         R.string.da to "da",
         R.string.et to "et",
+        R.string.fi to "fi",
         R.string.hu to "hu",
         R.string.ga to "ga",
         R.string.pl to "pl",

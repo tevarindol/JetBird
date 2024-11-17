@@ -129,7 +129,8 @@
     <string name="zh_CN" translatable="false">中文 (简体)</string>
     <string name="cs" translatable="false">Čeština</string>
     <string name="da" translatable="false">Dansk</string>
-    <string name="et" translatable="false">Eesti keel</string>
+    <string name="et" translatable="false">Eesti</string>
+    <string name="fi" translatable="false">Suomi</string>
     <string name="hu" translatable="false">Magyar</string>
     <string name="ga" translatable="false">Gaeilge</string>
     <string name="pl" translatable="false">Polski</string>

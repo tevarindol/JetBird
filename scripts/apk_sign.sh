@@ -1,5 +1,5 @@
 #!/bin/bash
-set -eux
+set -eu
 export PATH="${PATH}:${ANDROID_HOME}/build-tools/34.0.0"
 export PATH="${PATH}:${JAVA_HOME}/bin"
 
