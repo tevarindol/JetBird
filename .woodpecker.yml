@@ -12,6 +12,7 @@ steps:
       JAVA_HOME: /build/jdk-21.0.5
     commands:
       - ./scripts/provision.sh
+      - ./scripts/init_go.sh
       - ./scripts/build_netbird.sh -v
       - ./gradlew :app:assembleDebug --stacktrace --no-build-cache --no-configuration-cache --no-daemon
     when:
@@ -28,6 +29,7 @@ steps:
       JAVA_HOME: /build/jdk-21.0.5
     commands:
       - ./scripts/provision.sh
+      - ./scripts/init_go.sh
       - ./scripts/build_netbird.sh -v
       - ./gradlew :app:assembleRelease --stacktrace --no-build-cache --no-configuration-cache --no-daemon
     when:
