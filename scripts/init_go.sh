@@ -1,3 +1,4 @@
+#!/bin/bash
 set -eux
 
 # Download, verify and install Go
