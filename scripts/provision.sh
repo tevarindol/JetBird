@@ -1,17 +1,17 @@
 #!/bin/bash
 set -eux
 apt-get update
-apt-get install -y --no-install-recommends ca-certificates curl git unzip
+apt-get install -y --no-install-recommends ca-certificates wget git unzip
 
 # Download, verify and install JDK-21
-curl -o /tmp/jdk.tar.gz https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.tar.gz
+wget -O /tmp/jdk.tar.gz https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.tar.gz
 sha256sum -c <<< "9c2f7c39e0d5b296ce50e563740694b2ebfe4a620415d1b2b848ba47bebceb47 /tmp/jdk.tar.gz"
 tar -C /build -xzf /tmp/jdk.tar.gz
 rm -f /tmp/jdk.tar.gz
 export PATH="${PATH}:${JAVA_HOME}/bin"
 
 # Download, verify and install Android SDK cli tools
-curl -o /tmp/cmdline-tools.zip https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
+wget -O /tmp/cmdline-tools.zip https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
 sha256sum -c <<< "2d2d50857e4eb553af5a6dc3ad507a17adf43d115264b1afc116f95c92e5e258 /tmp/cmdline-tools.zip"
 mkdir -p "${ANDROID_HOME}"
 unzip -q -d "${ANDROID_HOME}" /tmp/cmdline-tools.zip
