@@ -120,4 +120,5 @@
 \n
 \nOm du aktiverar ruttöverrider och inte tillhandahåller några rutter använder JetBird uppströmsrutter.</string>
     <string name="permissive_rosenpass_description">Tillåt icke-rosen pass peers att ansluta</string>
+    <string name="login_expired">Inloggningen har upphört att gälla - anslut igen för att autentisera på nytt</string>
 </resources>
