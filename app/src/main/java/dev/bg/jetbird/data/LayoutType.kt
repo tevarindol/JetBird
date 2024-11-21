@@ -5,5 +5,6 @@ enum class LayoutType {
     WidePortrait,
     CompactLandscape,
     WideLandscape,
-    PanelLandscape
+    PanelLandscape,
+    Tv
 }
