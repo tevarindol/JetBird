@@ -120,4 +120,5 @@
     <string name="successfully_changed_management_server">Úspěšně změnil server správy</string>
     <string name="view_routes_description">Viz vypočtené trasy tunelu</string>
     <string name="view_routes">Zobrazit trasy</string>
+    <string name="login_expired">Platnost přihlášení vypršela - připojte se prosím znovu pro opětovné ověření</string>
 </resources>
