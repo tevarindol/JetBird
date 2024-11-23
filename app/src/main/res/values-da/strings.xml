@@ -120,4 +120,5 @@
 \n
 \nHvis du aktiverer route overrides og ikke angiver nogen ruter, vil JetBird bruge upstream-ruter.</string>
     <string name="upstream_routes">Upstream-ruter: 0.0.0.0/0, ::/0</string>
+    <string name="login_expired">Login udløbet - opret venligst forbindelse igen for at godkende igen</string>
 </resources>
