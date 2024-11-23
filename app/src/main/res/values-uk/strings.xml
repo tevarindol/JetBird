@@ -120,4 +120,5 @@
     <string name="unknown_error_see_logs">Невідома помилка — додаткову інформацію дивіться в журналах</string>
     <string name="unknown">Невідомий</string>
     <string name="start_on_reboot_description">Автоматично пробувати запустити JetBird під час перезавантаження пристрою</string>
+    <string name="login_expired">Термін дії логіну закінчився - будь ласка, підключіться знову для повторної автентифікації</string>
 </resources>
