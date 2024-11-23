@@ -120,4 +120,5 @@
     <string name="your_overrides">Suprascrierile dvs.: %1$s</string>
     <string name="view_routes_description">A se vedea rutele tunelului calculate</string>
     <string name="use_setup_key">Utilizați tasta de configurare</string>
+    <string name="login_expired">Autentificare expirată - vă rugăm să vă conectați din nou pentru a vă autentifica din nou</string>
 </resources>
