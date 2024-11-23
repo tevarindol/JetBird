@@ -120,4 +120,5 @@
     <string name="removed_netbird_config">Odstranjena konfiguracijska datoteka NetBird</string>
     <string name="route_selector_description">%1$d nadomeščanja poti</string>
     <string name="your_overrides">Vaše prevlade: %1$s</string>
+    <string name="login_expired">Prijava je potekla - za ponovno preverjanje pristnosti se ponovno povežite</string>
 </resources>
