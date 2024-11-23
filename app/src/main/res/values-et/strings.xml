@@ -120,4 +120,5 @@
     <string name="reconnect_on_route_changes_warning">Automaatne uuesti ühendamine peatab VPN-i hetkeks ja sõltuvalt teie seadme seadetest ei pruugi liiklus sel perioodil olla blokeeritud.</string>
     <string name="permissive_rosenpass_description">Luba mitte-rosen pass eakaaslased ühendada</string>
     <string name="reconnect_on_route_changes_description">Marsruutide muutumisel Ühendage automaatselt uuesti</string>
+    <string name="login_expired">Sisselogimine aegunud - palun ühendage uuesti, et uuesti autentida</string>
 </resources>
