@@ -120,4 +120,5 @@
     <string name="view_routes_description">Lásd a számított alagút útvonalakat</string>
     <string name="your_overrides">A felülbírálatok: %1$s</string>
     <string name="reset_to_change_management_server">A menedzsment-kiszolgáló megváltoztatásához állítsa vissza a JetBird</string>
+    <string name="login_expired">A bejelentkezés lejárt - kérjük, csatlakozzon újra az újbóli hitelesítéshez</string>
 </resources>
