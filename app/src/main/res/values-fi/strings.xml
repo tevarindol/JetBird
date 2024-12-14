@@ -34,4 +34,23 @@
     <string name="enable_verbose_logging_description_netbird">Lisää NetBird-lokien monisanaisuutta</string>
     <string name="dump_netbird_log">Tyhjennä NetBird-loki</string>
     <string name="auth_error_see_logs">Todennusvirhe - katso lisätietoja lokeista</string>
+    <string name="engine_logging_warning">NetBird-asiakasohjelma voi tuottaa paljon lokitietoja ajan mittaan.\n\nNämä lokit tallennetaan muistiin, ja ne voivat aiheuttaa puhelimen hidastumisen tai JetBirdin kaatumisen.\n\nVoit myös poistaa live-lokituksen käytöstä ja tyhjentää lokit jälkikäteen lokinäytöstä.</string>
+    <string name="login_expired">Sisäänkirjautuminen vanhentunut - ole hyvä ja muodosta yhteys uudelleen tunnistautuaksesi uudelleen</string>
+    <string name="exclude">Ei sisällä</string>
+    <string name="exclude_apps">Sovellusten sulkeminen pois tunnelista</string>
+    <string name="exclude_apps_description">%1$d sovelluksia pois suljettu</string>
+    <string name="failed_remove_netbird_config">NetBirdin asetustiedoston poistaminen epäonnistui</string>
+    <string name="failed_to_change_management_server">Hallintapalvelimen vaihtaminen epäonnistui</string>
+    <string name="failed_vpn_permission">Käyttäjä hylkäsi VPN-luvan</string>
+    <string name="fallback_dns">Varasuunnitelma DNS</string>
+    <string name="foreground_notification_description">JetBird-tunneli on aktiivinen</string>
+    <string name="get_started_url">Aloita syöttämällä hallintapalvelimen URL-osoite</string>
+    <string name="grant_permission">Luvan myöntäminen</string>
+    <string name="jetbird_exception">Voi ei! JetBirdissä tapahtui virhe!</string>
+    <string name="jetbird_exception_description">Napauta saadaksesi lisätietoja</string>
+    <string name="log">Loki</string>
+    <string name="log_empty">Ei lokimerkintöjä</string>
+    <string name="logging">Kirjaaminen</string>
+    <string name="management_server">Management-palvelin</string>
+    <string name="management_url">Hallintapalvelimen URL-osoite</string>
 </resources>
