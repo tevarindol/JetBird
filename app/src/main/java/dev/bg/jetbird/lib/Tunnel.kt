@@ -240,7 +240,9 @@ class Tunnel(
     }
 
     override fun protectSocket(socket: Int): Boolean {
-        return vpnService.protect(socket)
+        // TODO https://github.com/netbirdio/android-client/commit/26481951455cc77fec106651c946755174c675ef
+        vpnService.protect(socket)
+        return true
     }
 
     override fun updateAddr(s: String) {}
