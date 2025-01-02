@@ -120,4 +120,5 @@
     <string name="relay">Weiterleiten: %1$s</string>
     <string name="start_on_reboot">Tunnel beim Geräteneustart starten</string>
     <string name="start_on_reboot_description">Versuchen, JetBird automatisch zu starten, wenn das Gerät neugestartet wurde</string>
+    <string name="login_expired">Anmeldung abgelaufen - bitte verbinde dich erneut, um dich erneut zu authentifizieren</string>
 </resources>

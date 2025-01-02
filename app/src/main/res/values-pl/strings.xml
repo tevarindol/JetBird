@@ -120,4 +120,5 @@
     <string name="route_changes_description">Trasy dla tego urządzenia zostały zaktualizowane. Uruchom ponownie tunel, aby zmiany miały zastosowanie.</string>
     <string name="use_setup_key">Użyj klawisza setup</string>
     <string name="welcome_jetbird">Witamy w JetBird!</string>
+    <string name="login_expired">Login wygasł - połącz się ponownie w celu ponownego uwierzytelnienia</string>
 </resources>
