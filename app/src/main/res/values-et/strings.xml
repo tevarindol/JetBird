@@ -10,7 +10,7 @@
     <string name="another_always_on_vpn_active">Teine alati sisse lülitatud VPN on aktiivne</string>
     <string name="app">Rakendus</string>
     <string name="app_language">Rakenduse keel</string>
-    <string name="cancel">Tühistama</string>
+    <string name="cancel">Katkesta</string>
     <string name="about">Umbes</string>
     <string name="connect_to_see_peers">Ühendage, et näha eakaaslasi</string>
     <string name="enable_live_logging">Luba reaalajas logimine</string>
