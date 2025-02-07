@@ -1,44 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_not_reversible">Seda toimingut ei saa tagasi võtta.</string>
-    <string name="auth_error_see_logs">Autentimisviga-lisateabe saamiseks vaadake logisid</string>
+    <string name="auth_error_see_logs">Autentimisviga - lisateabe saamiseks vaata logisid</string>
     <string name="apps">Rakendused</string>
-    <string name="about_build">Ehitamine: %1$d</string>
-    <string name="about_netbird_version">Netbird Versioon</string>
-    <string name="about_version">Jetbird versioon: %1$s</string>
+    <string name="about_build">Kompileerimisjärk: %1$d</string>
+    <string name="about_netbird_version">Netbirdi versioon</string>
+    <string name="about_version">Jetbirdi versioon: %1$s</string>
     <string name="add_route">Lisa marsruut</string>
     <string name="another_always_on_vpn_active">Teine alati sisse lülitatud VPN on aktiivne</string>
     <string name="app">Rakendus</string>
     <string name="app_language">Rakenduse keel</string>
     <string name="cancel">Katkesta</string>
-    <string name="about">Umbes</string>
-    <string name="connect_to_see_peers">Ühendage, et näha eakaaslasi</string>
+    <string name="about">Rakenduse teave</string>
+    <string name="connect_to_see_peers">Võrdõigusvõrgu sõlmede nägemiseks loo ühendus</string>
     <string name="enable_live_logging">Luba reaalajas logimine</string>
-    <string name="close">Lähedal</string>
-    <string name="connect">Ühendama</string>
+    <string name="close">Sulge</string>
+    <string name="connect">Ühenda</string>
     <string name="connected">Ühendatud</string>
-    <string name="connecting">Ühendab</string>
+    <string name="connecting">Ühendame</string>
     <string name="copy_log">Kopeeri logi</string>
-    <string name="credits">Krediit</string>
-    <string name="credits_description">Vaadake teeke ja litsentse</string>
-    <string name="delete">Kustutama</string>
-    <string name="disconnect">Katkestama</string>
-    <string name="disconnected">Lahti</string>
-    <string name="dump_netbird_log">Dump NetBird logi</string>
+    <string name="credits">Tänuavaldused</string>
+    <string name="credits_description">Vaata teeke ja litsentse</string>
+    <string name="delete">Kustuta</string>
+    <string name="disconnect">Katkesta ühendus</string>
+    <string name="disconnected">Ühendus on katkestatud</string>
+    <string name="dump_netbird_log">Tühjenda NetBirdi logi</string>
     <string name="enable_live_logging_description">Vaata NetBird logisid reaalajas</string>
-    <string name="enable_logging">Luba logimine</string>
-    <string name="enable_logging_description">Vaadake JetBird logisid</string>
+    <string name="enable_logging">Võta logimine kasutusele</string>
+    <string name="enable_logging_description">Vaata JetBirdi logisid</string>
     <string name="clear_log">Tühjenda logi</string>
-    <string name="confirm">Kinnitama</string>
-    <string name="enable_logging_description_netbird">Vaadake netbirdi logisid</string>
-    <string name="enable_verbose_logging">Luba paljusõnaline logimine</string>
-    <string name="enable_verbose_logging_description">Suurendage Jetbirdi palkide paljusust</string>
-    <string name="enable_verbose_logging_description_netbird">Suurendage Netbirdi logide paljusust</string>
-    <string name="engine_logging_warning">Netbirdi klient suudab aja jooksul toota palju logisid.
-\n
-\nNeed logid on salvestatud mällu ja võib põhjustada telefoni aeglustada või JetBird krahhi.
-\n
-\nSamuti saate reaalajas logimise keelata ja logid hiljem logiekraanilt välja visata.</string>
+    <string name="confirm">Kinnita</string>
+    <string name="enable_logging_description_netbird">Vaata NetBirdi logisid</string>
+    <string name="enable_verbose_logging">Kasuta detailset logimist</string>
+    <string name="enable_verbose_logging_description">Suurenda Jetbirdi logide detailsust</string>
+    <string name="enable_verbose_logging_description_netbird">Suurenda NetBirdi logide detailsust</string>
+    <string name="engine_logging_warning">Netbirdi klient suudab aja jooksul toota palju logisid. \n \nNeed logid on salvestatud mällu ja võivad põhjustada telefoni aeglustumust või JetBirdi kokkujooksutada. \n \nSamuti saad reaalajas logimise keelata ja logid hiljem logivaatest eemaldada.</string>
     <string name="exclude">Välistama</string>
     <string name="exclude_apps">Rakenduste välistamine tunnelist</string>
     <string name="exclude_apps_description">%1$d rakendused välistatud</string>
