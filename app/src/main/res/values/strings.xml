@@ -7,7 +7,6 @@
     <string name="about_version">JetBird Version: %1$s</string>
     <string name="action_not_reversible">This action cannot be undone.</string>
     <string name="add_route">Add route</string>
-    <string name="android_tv_crash_warning">JetBird is known to crash on this version of Android TV</string>
     <string name="another_always_on_vpn_active">Another always-on VPN is active</string>
     <string name="app">App</string>
     <string name="app_language">App language</string>

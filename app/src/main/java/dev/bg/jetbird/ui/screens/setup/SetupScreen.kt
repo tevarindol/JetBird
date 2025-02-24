@@ -1,6 +1,5 @@
 package dev.bg.jetbird.ui.screens.setup
 
-import android.os.Build
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -13,13 +12,11 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
@@ -31,7 +28,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.platform.LocalContext
@@ -49,7 +45,6 @@ import dev.bg.jetbird.LocalNavController
 import dev.bg.jetbird.LocalSnackbar
 import dev.bg.jetbird.R
 import dev.bg.jetbird.Route
-import dev.bg.jetbird.data.JetBirdColors
 import dev.bg.jetbird.data.LayoutType
 import dev.bg.jetbird.ui.components.AppLanguageDropDown
 import dev.bg.jetbird.ui.components.LoadingButton
@@ -152,23 +147,6 @@ fun SetupScreen(
                             Text(stringResource(R.string.get_started))
                         }
                         Spacer(Modifier)
-                    }
-                    if (Build.VERSION_CODES.O <= Build.VERSION.SDK_INT && Build.VERSION.SDK_INT <= Build.VERSION_CODES.R) {
-                        Box(
-                            Modifier.fillMaxSize(),
-                            contentAlignment = Alignment.TopCenter
-                        ) {
-                            Surface(
-                                Modifier.clip(RoundedCornerShape(12.dp)),
-                                color = JetBirdColors.ErrorRed
-                            ) {
-                                Text(
-                                    stringResource(R.string.android_tv_crash_warning),
-                                    textAlign = TextAlign.Center,
-                                    modifier = Modifier.padding(vertical = 6.dp, horizontal = 24.dp)
-                                )
-                            }
-                        }
                     }
                 } else {
                     Box(

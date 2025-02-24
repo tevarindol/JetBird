@@ -5,6 +5,7 @@ import com.tencent.mmkv.MMKV
 import dagger.hilt.android.HiltAndroidApp
 import dev.bg.jetbird.data.JetBirdConstants
 import dev.bg.jetbird.util.ktx.getExceptionPendingIntent
+import dev.bg.jetbird.util.ktx.isLeanback
 import dev.bg.jetbird.util.ktx.sendNotification
 import timber.log.Timber
 
@@ -15,6 +16,10 @@ class JetBird: Application() {
 
     override fun onCreate() {
         super.onCreate()
+        if (baseContext.isLeanback()) {
+            // https://codeberg.org/bg443/JetBird/issues/1
+            catchFatalSignal()
+        }
         MMKV.initialize(this)
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
@@ -30,4 +35,12 @@ class JetBird: Application() {
         }
     }
 
+    companion object {
+        init {
+            System.loadLibrary("libsigsys")
+        }
+    }
+
 }
+
+private external fun catchFatalSignal()
