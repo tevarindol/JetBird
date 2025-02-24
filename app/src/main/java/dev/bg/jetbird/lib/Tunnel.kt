@@ -89,7 +89,6 @@ class Tunnel(
                     }
                 }
             } catch (e: Exception) {
-                log("NetBird error $e", force = true)
                 notifyError(e)
             } finally {
                 notifyServiceStateListeners(false)

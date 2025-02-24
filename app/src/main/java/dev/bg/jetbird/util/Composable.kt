@@ -8,6 +8,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
@@ -15,6 +16,7 @@ import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.window.core.layout.WindowHeightSizeClass
 import androidx.window.core.layout.WindowWidthSizeClass
 import dev.bg.jetbird.data.LayoutType
+import dev.bg.jetbird.util.ktx.isLeanback
 
 @Composable
 fun OnLifecycleEvent(
@@ -39,6 +41,7 @@ fun OnLifecycleEvent(
 fun OnLayoutChange(
     onEvent: (layoutType: LayoutType) -> Unit
 ) {
+    val ctx = LocalContext.current
     val configuration = LocalConfiguration.current
 
     val windowSize = currentWindowAdaptiveInfo().windowSizeClass
@@ -46,6 +49,10 @@ fun OnLayoutChange(
     LaunchedEffect(configuration) {
         snapshotFlow { configuration.orientation }
             .collect { orientation ->
+                if (ctx.isLeanback()) {
+                    onEvent(LayoutType.Tv)
+                    return@collect
+                }
                 when (orientation) {
                     Configuration.ORIENTATION_PORTRAIT -> {
                         onEvent(

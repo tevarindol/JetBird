@@ -21,6 +21,7 @@ It has been built with privacy in mind and contains no blobs or trackers.
 - Tablet support
 - Reconnect on restart
 - Relay support from JetBird v1.0.4+ (with NetBird v0.29.0+ peers)
+- Experimental TV support from JetBird v1.1.0
 
 ## Differences
 There are a few differences between NetBird official Android client and JetBird. Some of these features rely on patches to the NetBird source (these are in `patches/`):

@@ -11,13 +11,14 @@ plugins {
 android {
     namespace = "dev.bg.jetbird"
     compileSdk = 34
+    ndkVersion = "28.0.13004108"
 
     defaultConfig {
         applicationId = "dev.bg.jetbird"
         minSdk = 24
         targetSdk = 34
-        versionCode = 12
-        versionName = "1.0.11"
+        versionCode = 13
+        versionName = "1.1.0"
 
         buildConfigField("String", "NETBIRD_COMMIT", getNetbirdCommit())
 
@@ -27,6 +28,12 @@ android {
         vectorDrawables {
             useSupportLibrary = true
             generatedDensities?.clear()
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path = File("../jni/CMakeLists.txt")
         }
     }
 

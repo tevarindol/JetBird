@@ -37,6 +37,7 @@ git apply ../patches/* ${_vverbose:+-v} && echo "Applied patches" || {
 
 gomobile init
 
+# TODO update IPC dir to reflect current package name
 CGO_ENABLED=0 gomobile bind -o "$(pwd)"/../lib/netbird.aar \
     -target=android \
     -androidapi 24 \

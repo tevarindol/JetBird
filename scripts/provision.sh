@@ -20,7 +20,7 @@ export PATH="${PATH}:${ANDROID_HOME}/cmdline-tools/bin"
 
 # Download and install remaining Android SDK tools
 (yes || true) | sdkmanager --sdk_root="${ANDROID_HOME}" --licenses >/dev/null
-sdkmanager --sdk_root="${ANDROID_HOME}" "build-tools;34.0.0"
-sdkmanager --sdk_root="${ANDROID_HOME}" "ndk;27.1.12297006"
+sdkmanager --sdk_root="${ANDROID_HOME}" "build-tools;36.0.0-rc5"
+sdkmanager --sdk_root="${ANDROID_HOME}" "ndk;28.0.13004108"
 sdkmanager --sdk_root="${ANDROID_HOME}" "platforms;android-34"
 sdkmanager --sdk_root="${ANDROID_HOME}" "platform-tools"
