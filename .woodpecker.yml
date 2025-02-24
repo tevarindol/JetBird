@@ -41,9 +41,14 @@ steps:
       ANDROID_HOME: /build/sdk
       DEBIAN_FRONTEND: noninteractive
       JAVA_HOME: /build/jdk-21.0.5
+      APK_KS:
+        from_secret: APK_KS
+      APK_KS_ALIAS:
+        from_secret: APK_KS_ALIAS
+      APK_KS_PASS:
+        from_secret: APK_KS_PASS
     commands:
       - ./scripts/apk_sign.sh
-    secrets: [APK_KS, APK_KS_ALIAS, APK_KS_PASS]
     when:
       event: [tag]
 
