@@ -110,4 +110,7 @@
     <string name="start_on_reboot_description">Yritä käynnistää JetBird automaattisesti, kun laite käynnistyy uudelleen</string>
     <string name="view_config_description">Katso NetBird-määritystiedosto</string>
     <string name="route_selector_info">Täällä voit ohittaa reitit, jotka NetBird-hallintapalvelin lähettää sinulle.\n\nKun tämä on otettu käyttöön, kaikki määrittämillesi reiteille menevä liikenne ei käytä tunnelia. Voit nähdä kaikki käytetyt reitit lokissa.\n\nJos otat reitin ohitukset käyttöön etkä anna reittejä, JetBird käyttää ylävirran reittejä.</string>
+    <string name="peer_info">Katso sisään</string>
+    <string name="peers_connected">%1$d sellaisten %2$d ikäisensä yhdistetty</string>
+    <string name="permissive_rosenpass_description">Anna muiden kuin rosen pass-vertaisten muodostaa yhteys</string>
 </resources>
