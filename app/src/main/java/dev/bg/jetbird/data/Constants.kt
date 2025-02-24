@@ -54,7 +54,8 @@ object Languages {
         R.string.sk to "sk",
         R.string.sv to "sv",
         R.string.tr to "tr",
-        R.string.uk to "uk"
+        R.string.uk to "uk",
+        R.string.zu to "zu"
     )
     val languageCodeResourceMap = resourceLanguageCodeMap
         .entries

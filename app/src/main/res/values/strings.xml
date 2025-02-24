@@ -139,4 +139,5 @@
     <string name="sv" translatable="false">Svenska</string>
     <string name="tr" translatable="false">Türkçe</string>
     <string name="uk" translatable="false">Українська</string>
+    <string name="zu" translatable="false">IsiZulu</string>
 </resources>
