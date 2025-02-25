@@ -11,7 +11,7 @@ plugins {
 android {
     namespace = "dev.bg.jetbird"
     compileSdk = 34
-    ndkVersion = "28.0.13004108"
+    ndkVersion = "27.1.12297006"
 
     defaultConfig {
         applicationId = "dev.bg.jetbird"

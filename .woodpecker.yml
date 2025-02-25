@@ -4,12 +4,12 @@ workspace:
 
 steps:
   build_debug:
-    image: ubuntu:noble-20240827.1
+    image: ubuntu:noble
     environment:
       ANDROID_HOME: /build/sdk
       DEBIAN_FRONTEND: noninteractive
       GOBIN: /build/go/bin
-      JAVA_HOME: /build/jdk-21.0.5
+      JAVA_HOME: /build/jdk-21.0.6
     commands:
       - ./scripts/provision.sh
       - ./scripts/init_go.sh
@@ -21,12 +21,12 @@ steps:
       evaluate: 'not (CI_COMMIT_AUTHOR == "translate")'
 
   build_release:
-    image: ubuntu:noble-20240827.1
+    image: ubuntu:noble
     environment:
       ANDROID_HOME: /build/sdk
       DEBIAN_FRONTEND: noninteractive
       GOBIN: /build/go/bin
-      JAVA_HOME: /build/jdk-21.0.5
+      JAVA_HOME: /build/jdk-21.0.6
     commands:
       - ./scripts/provision.sh
       - ./scripts/init_go.sh
@@ -36,11 +36,11 @@ steps:
       event: [tag]
 
   sign_release:
-    image: ubuntu:noble-20240827.1
+    image: ubuntu:noble
     environment:
       ANDROID_HOME: /build/sdk
       DEBIAN_FRONTEND: noninteractive
-      JAVA_HOME: /build/jdk-21.0.5
+      JAVA_HOME: /build/jdk-21.0.6
       APK_KS:
         from_secret: APK_KS
       APK_KS_ALIAS:
