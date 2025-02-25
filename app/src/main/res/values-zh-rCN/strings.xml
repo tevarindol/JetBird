@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="credits">致谢</string>
-    <string name="credits_description">查看库和许可证</string>
+    <string name="credits_description">查看库和许可</string>
     <string name="delete">删除</string>
     <string name="disconnect">断开连接</string>
     <string name="disconnected">已断开连接</string>
@@ -123,5 +123,6 @@
     <string name="peer_last_wireguard_handshake">最后 WireGuard 握手时间：%1$s 前</string>
     <string name="reconnect_on_route_changes">路由更改时重新连接</string>
     <string name="reconnect_on_route_changes_warning">自动重新连接将暂时停止 VPN，并且在此期间可能不会阻止流量，具体取决于您的设备设置。</string>
-    <string name="login_expired">登录已过期 - 请再次连接以重新进行身份验证</string>
+    <string name="login_expired">登录已过期 — 请再次连接以重新验证身份</string>
+    <string name="get_started">开始</string>
 </resources>
