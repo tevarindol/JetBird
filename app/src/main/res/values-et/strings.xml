@@ -113,4 +113,5 @@
     <string name="permissive_rosenpass_description">Luba ühendada Rosenpassi mittekasutavaid võrdõigusvõrgu sõlmesid</string>
     <string name="reconnect_on_route_changes_description">Ruutingu muutumisel ühenda automaatselt uuesti</string>
     <string name="login_expired">Sisselogimine on aegunud - autentimiseks palun loo ühendus uuesti</string>
+    <string name="get_started">Alusta siit</string>
 </resources>
