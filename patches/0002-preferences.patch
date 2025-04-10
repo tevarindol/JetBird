@@ -1,8 +1,8 @@
 diff --git a/client/android/preferences.go b/client/android/preferences.go
-index 08485eaf..356b4119 100644
+index 08485eaf..9662aaf1 100644
 --- a/client/android/preferences.go
 +++ b/client/android/preferences.go
-@@ -71,6 +71,14 @@ func (p *Preferences) SetPreSharedKey(key string) {
+@@ -71,6 +71,18 @@ func (p *Preferences) SetPreSharedKey(key string) {
  	p.configInput.PreSharedKey = &key
  }
  
@@ -12,6 +12,10 @@ index 08485eaf..356b4119 100644
 +
 +func (p *Preferences) SetRosenpassPermissive(permissive bool) {
 +	p.configInput.RosenpassPermissive = &permissive
++}
++
++func (p *Preferences) SetLazyConnection(lazy bool) {
++	p.configInput.LazyConnectionEnabled = &lazy
 +}
 +
  // Commit write out the changes into config file

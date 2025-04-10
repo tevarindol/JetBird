@@ -27,6 +27,9 @@ cd ./netbird || {
     echo "No netbird folder"
     exit 1
 }
+
+go clean
+
 # shellcheck disable=SC2012
 [[ $(($(ls -1q . | wc -l))) -eq 0 ]] && git submodule update --init --recursive
 git reset --hard HEAD
@@ -47,6 +50,6 @@ CGO_ENABLED=0 gomobile bind -o "$(pwd)"/../lib/netbird.aar \
     ${_vverbose:+-v} \
     ${_vverbose:+-x} \
     "$(pwd)"/client/android && echo "Built netbird" || {
-      echo "Failed to build netbird"
-      exit 1
+        echo "Failed to build netbird"
+        exit 1
     }
