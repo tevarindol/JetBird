@@ -121,4 +121,5 @@
 \nAk povolíte prepísanie trás a neposkytnete žiadne trasy, JetBird použije trasy smerom nahor.</string>
     <string name="successfully_changed_management_server">Úspešne zmenený server pre správu</string>
     <string name="login_expired">Platnosť prihlásenia vypršala - pripojte sa znova, aby ste sa znovu overili</string>
+    <string name="get_started">Začať</string>
 </resources>
