@@ -484,7 +484,10 @@ private fun ExcludeAppsDialog(
         packageManager
             .getInstalledApplications(PackageManager.GET_META_DATA)
             .toList()
-            .filter { it.flags and ApplicationInfo.FLAG_SYSTEM == 0 && it.packageName != ctx.packageName }
+            .filter { p ->
+                (p.flags and ApplicationInfo.FLAG_SYSTEM == 0 && p.packageName != ctx.packageName) ||
+                p.packageName == "com.google.android.projection.gearhead"
+            }
             .sortedBy { it.loadLabel(packageManager).toString() }
     }
     val selectedPackages = remember {
