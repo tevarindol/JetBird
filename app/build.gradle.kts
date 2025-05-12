@@ -1,3 +1,4 @@
+import com.android.build.api.variant.FilterConfiguration
 import java.io.ByteArrayOutputStream
 
 plugins {
@@ -17,8 +18,8 @@ android {
         applicationId = "dev.bg.jetbird"
         minSdk = 24
         targetSdk = 34
-        versionCode = 14
-        versionName = "1.1.1"
+        versionCode = 15
+        versionName = "1.1.2"
 
         buildConfigField("String", "NETBIRD_COMMIT", getNetbirdCommit())
 
@@ -84,6 +85,25 @@ android {
     }
     androidResources {
         aaptOptions.cruncherEnabled = false
+    }
+}
+
+val abiMap = mapOf(
+    "arm64-v8a" to 1,
+    "armeabi-v7a" to 2,
+    "x86" to 3,
+    "x86_64" to 4
+)
+
+androidComponents {
+    onVariants { variant ->
+        variant.outputs.forEach { output ->
+            val name = output.filters.find { f -> f.filterType == FilterConfiguration.FilterType.ABI }?.identifier
+            val code = abiMap[name]
+            if (code != null) {
+                output.versionCode.set("${(output.versionCode.get() as Int? ?: 1)}${code}".toInt())
+            }
+        }
     }
 }
 
