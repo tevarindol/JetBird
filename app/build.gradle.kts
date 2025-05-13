@@ -18,8 +18,8 @@ android {
         applicationId = "dev.bg.jetbird"
         minSdk = 24
         targetSdk = 34
-        versionCode = 15
-        versionName = "1.1.2"
+        versionCode = 16
+        versionName = "1.1.3"
 
         buildConfigField("String", "NETBIRD_COMMIT", getNetbirdCommit())
 
@@ -89,8 +89,8 @@ android {
 }
 
 val abiMap = mapOf(
-    "arm64-v8a" to 1,
-    "armeabi-v7a" to 2,
+    "armeabi-v7a" to 1,
+    "arm64-v8a" to 2,
     "x86" to 3,
     "x86_64" to 4
 )

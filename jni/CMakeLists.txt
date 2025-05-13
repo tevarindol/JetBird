@@ -2,8 +2,12 @@ cmake_minimum_required(VERSION 3.6.0)
 
 project(LibSigSys)
 
+cmake_path(SET base_path NORMALIZE "${CMAKE_CURRENT_LIST_DIR}/..")
+
+# Set paths for reproducible builders
 add_link_options("LINKER:--build-id=none")
-add_compile_options("-ffile-prefix-map=<path>=/build/repo")
+add_compile_options("-ffile-prefix-map=$base_path=/build/repo")
+add_compile_options("-ffile-prefix-map=$ENV{ANDROID_NDK_HOME}=ndk")
 
 add_library(libsigsys SHARED libsigsys.c)
 
