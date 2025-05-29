@@ -18,7 +18,7 @@
     <string name="copy_log">Копировать лог</string>
     <string name="credits">Благодарности</string>
     <string name="delete">Удалить</string>
-    <string name="enable_logging">Журналирование</string>
+    <string name="enable_logging">Вести журнал</string>
     <string name="enable_logging_description">Журналы JetBird</string>
     <string name="enable_logging_description_netbird">Журналы NetBird</string>
     <string name="enable_verbose_logging">Подробное журналирование</string>
