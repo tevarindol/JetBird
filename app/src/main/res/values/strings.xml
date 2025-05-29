@@ -132,8 +132,9 @@
     <string name="da" translatable="false">Dansk</string>
     <string name="et" translatable="false">Eesti</string>
     <string name="fi" translatable="false">Suomi</string>
-    <string name="hu" translatable="false">Magyar</string>
     <string name="ga" translatable="false">Gaeilge</string>
+    <string name="hu" translatable="false">Magyar</string>
+    <string name="iw" translatable="false">עִבְרִית</string>
     <string name="pl" translatable="false">Polski</string>
     <string name="ro" translatable="false">Română</string>
     <string name="sk" translatable="false">Slovenčina</string>

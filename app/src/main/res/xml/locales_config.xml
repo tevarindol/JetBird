@@ -8,8 +8,9 @@
     <locale android:name="da" />
     <locale android:name="et" />
     <locale android:name="fi" />
-    <locale android:name="hu" />
     <locale android:name="ga" />
+    <locale android:name="hu" />
+    <locale android:name="iw" />
     <locale android:name="pl" />
     <locale android:name="ro" />
     <locale android:name="sk" />
