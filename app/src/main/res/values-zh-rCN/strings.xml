@@ -125,4 +125,6 @@
     <string name="reconnect_on_route_changes_warning">自动重新连接将暂时停止 VPN，并且在此期间可能不会阻止流量，具体取决于您的设备设置。</string>
     <string name="login_expired">登录已过期 — 请再次连接以重新验证身份</string>
     <string name="get_started">开始</string>
+    <string name="lazy_connections">延迟连接</string>
+    <string name="lazy_connections_description">按需连接到对等节点</string>
 </resources>
