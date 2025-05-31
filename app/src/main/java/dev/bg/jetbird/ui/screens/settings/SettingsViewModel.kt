@@ -14,7 +14,6 @@ import dev.bg.jetbird.util.IoDispatcher
 import io.netbird.android.Preferences
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
@@ -33,12 +32,24 @@ class SettingsViewModel @Inject constructor(
     ) {
         log("Updating pre-shared key to $key in config")
         viewModelScope.launch(ioDispatcher) {
-            withContext(ioDispatcher) {
-                val preferences = Preferences(configPath)
-                preferences.preSharedKey = key
-                preferences.commit()                
-            }
+            val preferences = Preferences(configPath)
+            preferences.preSharedKey = key
+            preferences.commit()
             preferencesRepository.preSharedKey = key
+            preferencesRepository.updateState()
+        }
+    }
+
+    fun toggleLazyConnections(
+        configPath: String,
+        enabled: Boolean
+    ) {
+        log(if (enabled) "Enabling lazy connections in config" else "Disabling lazy connections in config")
+        viewModelScope.launch(ioDispatcher) {
+            val preferences = Preferences(configPath)
+            preferences.setLazyConnection(enabled)
+            preferences.commit()
+            preferencesRepository.lazyConnections = enabled
             preferencesRepository.updateState()
         }
     }
@@ -49,11 +60,9 @@ class SettingsViewModel @Inject constructor(
     ) {
         log(if (enabled) "Enabling rosenpass in config" else "Disabling rosenpass in config")
         viewModelScope.launch(ioDispatcher) {
-            withContext(ioDispatcher) {
-                val preferences = Preferences(configPath)
-                preferences.setRosenpass(enabled)
-                preferences.commit()
-            }
+            val preferences = Preferences(configPath)
+            preferences.setRosenpass(enabled)
+            preferences.commit()
             preferencesRepository.rosenpass = enabled
             if (!enabled) {
                 toggleRosenpassPermissive(configPath, false)
@@ -68,11 +77,9 @@ class SettingsViewModel @Inject constructor(
     ) {
         log(if (enabled) "Enabling rosenpass permissive in config" else "Disabling rosenpass permissive in config")
         viewModelScope.launch(ioDispatcher) {
-            withContext(ioDispatcher) {
-                val preferences = Preferences(configPath)
-                preferences.setRosenpassPermissive(enabled)
-                preferences.commit()
-            }
+            val preferences = Preferences(configPath)
+            preferences.setRosenpassPermissive(enabled)
+            preferences.commit()
             preferencesRepository.rosenpassPermissive = enabled
             preferencesRepository.updateState()
         }

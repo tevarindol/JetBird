@@ -13,6 +13,7 @@ interface PreferencesValues {
     var hasAuthed: Boolean
     var preSharedKey: String?
     var setupKey: String?
+    var lazyConnections: Boolean
     var rosenpass: Boolean
     var rosenpassPermissive: Boolean
     var engineLogging: Boolean
@@ -69,9 +70,13 @@ class PreferencesRepositoryImpl @Inject constructor(): PreferencesRepository {
         get() = mmkv.decodeString(PreferenceKeys.SetupKey.key, null)
         set(value) { mmkv.encode(PreferenceKeys.SetupKey.key, value) }
 
+    override var lazyConnections: Boolean
+        get() = mmkv.decodeBool(PreferenceKeys.LazyConnections.key, false)
+        set(value) { mmkv.encode(PreferenceKeys.LazyConnections.key, value) }
+
     override var rosenpass: Boolean
         get() = mmkv.decodeBool(PreferenceKeys.Rosenpass.key, false)
-        set(value) {mmkv.encode(PreferenceKeys.Rosenpass.key, value) }
+        set(value) { mmkv.encode(PreferenceKeys.Rosenpass.key, value) }
 
     override var rosenpassPermissive: Boolean
         get() = mmkv.decodeBool(PreferenceKeys.RosenpassPermissive.key, false)
@@ -144,6 +149,7 @@ class PreferencesRepositoryImpl @Inject constructor(): PreferencesRepository {
             hasAuthed = hasAuthed,
             preSharedKey = preSharedKey,
             setupKey = setupKey,
+            lazyConnections = lazyConnections,
             rosenpass = rosenpass,
             rosenpassPermissive = rosenpassPermissive,
             engineLogging = engineLogging,
@@ -168,6 +174,7 @@ data class PreferencesState(
     override var hasAuthed: Boolean,
     override var preSharedKey: String?,
     override var setupKey: String?,
+    override var lazyConnections: Boolean,
     override var rosenpass: Boolean,
     override var rosenpassPermissive: Boolean,
     override var engineLogging: Boolean,
@@ -196,6 +203,7 @@ private enum class PreferenceKeys(
     HasAuthed("has_authed"),
     PreSharedKey("pre_shared_key"),
     SetupKey("setup_key"),
+    LazyConnections("lazy_conn"),
     Rosenpass("rosenpass"),
     RosenpassPermissive("rosenpass_permissive"),
     EngineLogging("engine_logging"),

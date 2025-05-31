@@ -27,6 +27,9 @@ cd ./netbird || {
     echo "No netbird folder"
     exit 1
 }
+
+go clean
+
 # shellcheck disable=SC2012
 [[ $(($(ls -1q . | wc -l))) -eq 0 ]] && git submodule update --init --recursive
 git reset --hard HEAD
@@ -42,11 +45,11 @@ CGO_ENABLED=0 gomobile bind -o "$(pwd)"/../lib/netbird.aar \
     -target=android \
     -androidapi 24 \
     -javapkg=io.netbird \
-    -ldflags="all=-s -w -X golang.zx2c4.com/wireguard/ipc.socketDirectory=/data/data/dev.bg.jetbird/cache/wireguard -X github.com/netbirdio/netbird/version.version=$(git rev-parse --short=8 HEAD) -buildid=" \
+    -ldflags="all=-s -w -X golang.zx2c4.com/wireguard/ipc.socketDirectory=/data/data/dev.bg.jetbird.debug/cache/wireguard -X github.com/netbirdio/netbird/version.version=$(git rev-parse --short=8 HEAD) -buildid=" \
     -trimpath \
     ${_vverbose:+-v} \
     ${_vverbose:+-x} \
     "$(pwd)"/client/android && echo "Built netbird" || {
-      echo "Failed to build netbird"
-      exit 1
+        echo "Failed to build netbird"
+        exit 1
     }

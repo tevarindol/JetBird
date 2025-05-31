@@ -164,6 +164,12 @@ fun SettingsScreen(
                 value = state.setupKey.toStringOrNotSet(ctx),
             )
             SettingsSwitch(
+                title = stringResource(R.string.lazy_connections),
+                description = stringResource(R.string.lazy_connections_description),
+                checked = state.lazyConnections,
+                onChange = { viewModel.toggleLazyConnections(ctx.getConfigPath(), it) }
+            )
+            SettingsSwitch(
                 title = stringResource(R.string.rosenpass),
                 checked = state.rosenpass,
                 onChange = { viewModel.toggleRosenpass(ctx.getConfigPath(), it) }
