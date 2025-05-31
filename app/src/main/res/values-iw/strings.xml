@@ -2,4 +2,6 @@
 <resources>
     <string name="about">אודות</string>
     <string name="about_build">בנייה: %1$d</string>
+    <string name="about_netbird_version">גרסת NetBird</string>
+    <string name="action_not_reversible">לא ניתן לבטל פעולה זו.</string>
 </resources>
