@@ -372,6 +372,7 @@ private fun PeersList(
                                 "Connected" -> stringResource(R.string.connected)
                                 "Disconnected" -> stringResource(R.string.disconnected)
                                 "Connecting" -> stringResource(R.string.connecting)
+                                "Idle" -> stringResource(R.string.idle)
                                 else -> stringResource(R.string.unknown)
                             }
                         )
@@ -383,6 +384,7 @@ private fun PeersList(
                                 color = when (peer.connectionStatus ) {
                                     "Connected" -> JetBirdColors.IndicatorColors.Connected
                                     "Disconnected" -> JetBirdColors.IndicatorColors.Disconnected
+                                    "Idle",
                                     "Connecting" -> JetBirdColors.IndicatorColors.Connecting
                                     else -> JetBirdColors.IndicatorColors.Disconnected
                                 }
