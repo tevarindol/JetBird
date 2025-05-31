@@ -7,9 +7,10 @@ export PATH="${PATH}:${JAVA_HOME}/bin"
     exit 1
 }
 
-while getopts 'v' f; do
+while getopts 'vd' f; do
     case "${f}" in
         v) ((_v++));;
+        d) _d=1;;
         *) :;;
     esac
 done
@@ -18,6 +19,12 @@ if [[ $_v -ge 2 ]]; then
     _vverbose=true
 elif [[ $_v -eq 1 ]]; then
     _verbose=true
+fi
+
+if [[ $_d -eq 1 ]]; then
+    _pkg="dev.bg.jetbird.debug"
+else
+    _pkg="dev.bg.jetbird"
 fi
 
 [[ $_verbose == true ]] && set -x
@@ -45,7 +52,7 @@ CGO_ENABLED=0 gomobile bind -o "$(pwd)"/../lib/netbird.aar \
     -target=android \
     -androidapi 24 \
     -javapkg=io.netbird \
-    -ldflags="all=-s -w -X golang.zx2c4.com/wireguard/ipc.socketDirectory=/data/data/dev.bg.jetbird.debug/cache/wireguard -X github.com/netbirdio/netbird/version.version=$(git rev-parse --short=8 HEAD) -buildid=" \
+    -ldflags="all=-s -w -X golang.zx2c4.com/wireguard/ipc.socketDirectory=/data/data/${_pkg}/cache/wireguard -X github.com/netbirdio/netbird/version.version=$(git rev-parse --short=8 HEAD) -buildid=" \
     -trimpath \
     ${_vverbose:+-v} \
     ${_vverbose:+-x} \

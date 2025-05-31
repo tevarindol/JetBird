@@ -18,10 +18,11 @@ android {
         applicationId = "dev.bg.jetbird"
         minSdk = 24
         targetSdk = 34
-        versionCode = 19
-        versionName = "1.1.6"
+        versionCode = 20
+        versionName = "1.2.0"
 
-        buildConfigField("String", "NETBIRD_COMMIT", getNetbirdCommit())
+        buildConfigField("String", "NETBIRD_COMMIT", getShortNetbirdCommit())
+        buildConfigField("String", "NETBIRD_VERSION", getNetbirdVersionFromCommit())
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         testInstrumentationRunnerArguments["disableAnalytics"] = "true"
@@ -163,5 +164,18 @@ fun getNetbirdCommit(): String {
         commandLine("git", "submodule", "status")
         standardOutput = stdout
     }
-    return "\"${stdout.toString().trim().split(" ").first().take(10).dropWhile { c -> c == '+' }}\""
+    return stdout.toString().trim().split(" ").first()
+}
+
+fun getShortNetbirdCommit(): String {
+    return "\"${getNetbirdCommit().take(10).dropWhile { c -> c == '+' }}\""
+}
+
+fun getNetbirdVersionFromCommit(): String {
+    val stdout = ByteArrayOutputStream()
+    exec {
+        commandLine("git", "-C", "../netbird", "describe", "--tags", "--abbrev=0", getNetbirdCommit())
+        standardOutput = stdout
+    }
+    return "\"${stdout.toString().trim()}\""
 }
