@@ -498,8 +498,12 @@ private fun ExcludeAppsDialog(
     }
     val selectedPackages = remember {
         mutableStateListOf(
-            *initialPackages.map {
-                packageManager.getApplicationInfo(it, PackageManager.GET_META_DATA)
+            *initialPackages.mapNotNull {
+                try {
+                    packageManager.getApplicationInfo(it, PackageManager.GET_META_DATA)
+                } catch (_: Exception) {
+                    null
+                }
             }.toTypedArray()
         )
     }
