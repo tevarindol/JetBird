@@ -28,6 +28,7 @@
     <string name="delete">Delete</string>
     <string name="disconnect">Disconnect</string>
     <string name="disconnected">Disconnected</string>
+    <string name="disconnecting">Disconnecting</string>
     <string name="dump_netbird_log">Dump NetBird log</string>
     <string name="enable_live_logging">Enable live logging</string>
     <string name="enable_live_logging_description">See NetBird logs in real time</string>

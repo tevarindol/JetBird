@@ -76,6 +76,7 @@ class Tunnel(
         dnsWatch.updateFallbackDns(fallbackDns)
         scope.launch {
             try {
+                client.setConnectionListener(connectionListener)
                 notifyServiceStateListeners(true)
                 if (urlOpener == null) {
                     dnsWatch.registerNetworkCallback()
@@ -93,6 +94,7 @@ class Tunnel(
             } finally {
                 notifyServiceStateListeners(false)
                 dnsWatch.engineHasStopped()
+                client.removeConnectionListener()
             }
         }
     }
@@ -108,14 +110,6 @@ class Tunnel(
 
     fun stop() {
         client.stop()
-    }
-
-    fun startClientListener() {
-        client.setConnectionListener(connectionListener)
-    }
-
-    fun stopClientListener() {
-        client.removeConnectionListener()
     }
 
     fun peersInfo(): PeerInfoArray {
@@ -216,7 +210,7 @@ class Tunnel(
                             log("Excluding $packageName from tunnel")
                             addDisallowedApplication(packageName)
                         } catch (e: Exception) {
-                            log("Failed to exclude $packageName from tunnel")
+                            log("Failed to exclude $packageName from tunnel: $e")
                         }
                     }
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
@@ -239,7 +233,7 @@ class Tunnel(
     }
 
     override fun protectSocket(socket: Int): Boolean {
-        // TODO https://github.com/netbirdio/android-client/commit/26481951455cc77fec106651c946755174c675ef
+        // 2762aafc3bedd4ddbed7ddfe7771a6020e2f3491/tool/src/main/java/io/netbird/client/tool/IFace.java#L44-L50
         vpnService.protect(socket)
         return true
     }

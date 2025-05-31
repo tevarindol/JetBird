@@ -15,7 +15,6 @@ import dev.bg.jetbird.data.Actions
 import dev.bg.jetbird.data.JetBirdConstants
 import dev.bg.jetbird.data.NetBirdErrors
 import dev.bg.jetbird.data.model.ConnectionState
-import dev.bg.jetbird.data.model.Peer
 import dev.bg.jetbird.data.model.ServiceEvent
 import dev.bg.jetbird.data.model.VPNState
 import dev.bg.jetbird.lib.EngineLoggingLevel
@@ -239,23 +238,6 @@ class VPNService: VpnService() {
 
         fun getState() = _state.value
 
-        fun getPeers(): List<Peer>? {
-            return tunnel
-                ?.peersInfo()
-                ?.toPeerList()
-                ?.sortedBy { peer -> peer.fqdn }
-        }
-
-        // These are broken
-        // Can't start listener without making Netbird unfunctional - needs issue
-//        fun startClientListener() {
-//            tunnel?.startClientListener()
-//        }
-//
-//        fun stopClientListener() {
-//            tunnel?.stopClientListener()
-//        }
-
         override fun onTransact(code: Int, data: Parcel, reply: Parcel?, flags: Int): Boolean {
             if (code == LAST_CALL_TRANSACTION) {
                 onRevoke()
@@ -286,35 +268,42 @@ class VPNService: VpnService() {
         startForeground(1, notification)
     }
 
-    // THIS IS NOT IN USE
     private var connectionListener = object : ConnectionListener {
         override fun onConnecting() {
-            Timber.d("Netbird connecting")
+            log("Netbird connecting")
             _state.update { it.copy(connectionState = ConnectionState.CONNECTING) }
         }
 
         override fun onConnected() {
-            Timber.d("Netbird connected")
+            log("Netbird connected")
             _state.update { it.copy(connectionState = ConnectionState.CONNECTED) }
         }
 
         override fun onAddressChanged(fqdn: String, address: String) {
-            Timber.d("Netbird address changed - fqdn: $fqdn address: $address")
+            log("Netbird address changed - our fqdn: $fqdn - our address: $address")
         }
 
         override fun onPeersListChanged(numberOfPeers: Long) {
-            Timber.d("Netbird peers changed: $numberOfPeers")
-            _state.update { it.copy(peers = tunnel?.peersInfo().toPeerList()) }
+            log("Netbird peers update (${numberOfPeers} peers)", verbose = true)
+            val newPeers = tunnel?.peersInfo().toPeerList().sortedBy { p -> p.fqdn }
+            if (_state.value.peers != newPeers) {
+                _state.update { it.copy(peers = newPeers) }
+            }
         }
 
         override fun onDisconnecting() {
-            Timber.d("Netbird disconnecting")
+            log("Netbird disconnecting")
             _state.update { it.copy(connectionState = ConnectionState.DISCONNECTING) }
         }
 
         override fun onDisconnected() {
-            Timber.d("Netbird disconnected")
-            _state.update { it.copy(connectionState = ConnectionState.DISCONNECTED) }
+            log("Netbird disconnected")
+            _state.update {
+                it.copy(
+                    connectionState = ConnectionState.DISCONNECTED,
+                    peers = emptyList()
+                )
+            }
         }
     }
 

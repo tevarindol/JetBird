@@ -40,7 +40,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.rememberBottomSheetScaffoldState
 import androidx.compose.material3.rememberStandardBottomSheetState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -66,14 +65,11 @@ import dev.bg.jetbird.LocalVPNServiceBinder
 import dev.bg.jetbird.R
 import dev.bg.jetbird.data.JetBirdColors
 import dev.bg.jetbird.data.model.ConnectionState
-import dev.bg.jetbird.data.model.Peer
 import dev.bg.jetbird.service.VPNService
 import dev.bg.jetbird.util.OnLifecycleEvent
 import dev.bg.jetbird.util.ktx.hasOtherAlwaysOnVpn
 import io.netbird.android.URLOpener
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlin.time.Duration.Companion.seconds
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -167,7 +163,7 @@ fun HomeScreen(
                     modifier = Modifier.align(Alignment.TopCenter)
                 )
                 when {
-                    hasVpnPermission && (vpnState?.connectionState == ConnectionState.CONNECTED || vpnState?.connectionState == ConnectionState.DISCONNECTED) -> {
+                    hasVpnPermission -> {
                         Column(
                             Modifier.fillMaxSize(),
                             verticalArrangement = Arrangement.Center,
@@ -177,7 +173,7 @@ fun HomeScreen(
                                 modifier = Modifier.size(256.dp),
                                 shape = RoundedCornerShape(16.dp),
                                 onClick = {
-                                    if (vpnState.connectionState == ConnectionState.DISCONNECTED) {
+                                    if (vpnState?.connectionState == ConnectionState.DISCONNECTED) {
                                         if (viewModel.hasAuthed()) {
                                             binder.start(null)
                                         } else {
@@ -189,14 +185,15 @@ fun HomeScreen(
                                             viewModel.updateHasAuthed()
                                         }
                                     } else {
-                                        binder.stop()
+                                        binder?.stop()
                                     }
-                                }
+                                },
+                                enabled = vpnState?.connectionState == ConnectionState.CONNECTED || vpnState?.connectionState == ConnectionState.DISCONNECTED
                             ) {
                                 Icon(
                                     painterResource(R.drawable.ic_launcher_monochrome),
                                     modifier = Modifier.fillMaxSize(),
-                                    contentDescription = if (vpnState.connectionState == ConnectionState.CONNECTED) {
+                                    contentDescription = if (vpnState?.connectionState == ConnectionState.CONNECTED) {
                                         stringResource(R.string.connected)
                                     } else {
                                         stringResource(R.string.disconnect)
@@ -205,27 +202,22 @@ fun HomeScreen(
                             }
                             Spacer(Modifier.size(36.dp))
                             AnimatedContent(
-                                vpnState.connectionState,
+                                vpnState?.connectionState,
                                 label = "Connection state animation"
-                            ) {connectionState ->
-                                if (connectionState == ConnectionState.CONNECTED) {
-                                    Text(
-                                        text = stringResource(R.string.connected),
-                                        fontWeight = FontWeight.SemiBold,
-                                        fontSize = 24.sp
-                                    )
-                                } else {
-                                    Text(
-                                        text = stringResource(R.string.disconnected),
-                                        fontWeight = FontWeight.SemiBold,
-                                        fontSize = 24.sp
-                                    )
-                                }
+                            ) { connectionState ->
+                                Text(
+                                    text = when (connectionState) {
+                                        ConnectionState.CONNECTED -> stringResource(R.string.connected)
+                                        ConnectionState.CONNECTING -> stringResource(R.string.connecting)
+                                        ConnectionState.DISCONNECTING -> stringResource(R.string.disconnecting)
+                                        ConnectionState.DISCONNECTED -> stringResource(R.string.disconnected)
+                                        else -> stringResource(R.string.disconnected)
+                                    },
+                                    fontWeight = FontWeight.SemiBold,
+                                    fontSize = 24.sp
+                                )
                             }
                         }
-                    }
-                    hasVpnPermission && (vpnState?.connectionState == ConnectionState.CONNECTING || vpnState?.connectionState == ConnectionState.DISCONNECTING) -> {
-                        CircularProgressIndicator()
                     }
                     !hasVpnPermission -> {
                         Column(
@@ -285,26 +277,11 @@ private fun PeersList(
 ) {
     val binder = LocalVPNServiceBinder.current
 
-    val connectionState = binder?.state?.collectAsStateWithLifecycle()?.value?.connectionState
+    val service = binder?.state?.collectAsStateWithLifecycle()?.value
+    val connectionState = service?.connectionState
+    val peers = service?.peers ?: emptyList()
+
     var selectedPeerIp by remember { mutableStateOf<String?>(null) }
-
-    var peers by remember { mutableStateOf<List<Peer>>(emptyList()) }
-
-    // temporary whilst listener gets fixed
-    LaunchedEffect(Unit, connectionState) {
-        while (true) {
-            if (connectionState == ConnectionState.CONNECTED) {
-                val newPeers = binder.getPeers() ?: emptyList()
-                if (peers != newPeers) {
-                    peers = newPeers
-                }
-            }
-            if (connectionState == ConnectionState.DISCONNECTED) {
-                peers = emptyList()
-            }
-            delay(5.seconds)
-        }
-    }
 
     LazyColumn(
         state = lazyListState,
