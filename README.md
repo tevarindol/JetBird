@@ -41,6 +41,7 @@ There are a few differences between NetBird official Android client and JetBird.
 <br />
 <div>
     <a href="https://apt.izzysoft.de/fdroid/index/apk/dev.bg.jetbird" rel="noopener noreferrer" target=_blank><img src="./assets/IzzyOnDroidButtonGreyBorder.svg" height="60" alt="Get it on IzzyOnDroid"></a>&nbsp;&nbsp;&nbsp;
+    <a href="https://f-droid.org/en/packages/dev.bg.jetbird" rel="noopener noreferrer" target=_blank><img src="./assets/f-droid.svg" height="60" alt="Get it on F-Droid"></a>&nbsp;&nbsp;&nbsp;
     <a href="https://codeberg.org/bg443/JetBird/releases" rel="noopener noreferrer" target=_blank><img src="./assets/codeberg.svg" height=60 alt="Get it on Codeberg" /></a>&nbsp;&nbsp;&nbsp;
     <a href="https://github.com/ImranR98/Obtainium" rel="noopener noreferrer" target="_blank"> <img src="./assets/badge_obtainium.png" height="60" alt="Get it on Obtainium" /></a>&nbsp;&nbsp;&nbsp;
     <a href="https://codeberg.org/bg443/JetBird/releases.rss" rel="noopener noreferrer" target=_blank><img src="./assets/RSS.svg" height=60 alt="Follow with RSS" /></a>
