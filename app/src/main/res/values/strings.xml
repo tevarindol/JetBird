@@ -22,6 +22,7 @@
     <string name="connect_to_see_peers">Connect to see peers</string>
     <string name="connected">Connected</string>
     <string name="connecting">Connecting</string>
+    <string name="copy">Copy</string>
     <string name="copy_log">Copy log</string>
     <string name="credits">Credits</string>
     <string name="credits_description">See libraries and licenses</string>

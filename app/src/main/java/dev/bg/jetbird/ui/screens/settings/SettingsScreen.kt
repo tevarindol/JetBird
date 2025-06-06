@@ -22,11 +22,14 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.AssistChipDefaults
 import androidx.compose.material3.Button
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -39,8 +42,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
@@ -456,6 +462,9 @@ private fun ConfigViewDialog(
     onDismissRequest: () -> Unit
 ) {
     val ctx = LocalContext.current
+    val clipboardManager = LocalClipboardManager.current
+
+    val config = remember { File(ctx.getConfigPath()).readText() }
 
     if (open) {
         AlertDialog(
@@ -463,7 +472,24 @@ private fun ConfigViewDialog(
             onDismissRequest = onDismissRequest,
             text = {
                 Column(Modifier.verticalScroll(rememberScrollState())) {
-                    Text(File(ctx.getConfigPath()).readText())
+                    SelectionContainer {
+                        Text(config)
+                    }
+                }
+            },
+            dismissButton = {
+                OutlinedButton(
+                    onClick = {
+                        clipboardManager.setText(AnnotatedString(config))
+                    }
+                ) {
+                    Icon(
+                        painterResource(R.drawable.baseline_content_copy_24),
+                        contentDescription = stringResource(R.string.copy),
+                        modifier = Modifier.size(AssistChipDefaults.IconSize)
+                    )
+                    Spacer(Modifier.width(4.dp))
+                    Text(stringResource(R.string.copy))
                 }
             },
             confirmButton = {
