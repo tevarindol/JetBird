@@ -1,5 +1,5 @@
 diff --git a/client/android/client.go b/client/android/client.go
-index d937e132..6af7815d 100644
+index 3b8a5bd0..c0d51969 100644
 --- a/client/android/client.go
 +++ b/client/android/client.go
 @@ -3,7 +3,9 @@
@@ -12,7 +12,7 @@ index d937e132..6af7815d 100644
  	"sync"
  
  	log "github.com/sirupsen/logrus"
-@@ -149,14 +151,20 @@ func (c *Client) Stop() {
+@@ -151,14 +153,20 @@ func (c *Client) Stop() {
  
  // SetTraceLogLevel configure the logger to trace level
  func (c *Client) SetTraceLogLevel() {
@@ -33,7 +33,7 @@ index d937e132..6af7815d 100644
  // PeersList return with the list of the PeerInfos
  func (c *Client) PeersList() *PeerInfoArray {
  
-@@ -164,10 +172,29 @@ func (c *Client) PeersList() *PeerInfoArray {
+@@ -166,10 +174,29 @@ func (c *Client) PeersList() *PeerInfoArray {
  
  	peerInfos := make([]PeerInfo, len(fullStatus.Peers))
  	for n, p := range fullStatus.Peers {
@@ -64,7 +64,7 @@ index d937e132..6af7815d 100644
  		peerInfos[n] = pi
  	}
 diff --git a/client/android/peer_notifier.go b/client/android/peer_notifier.go
-index 9f6fcddd..f9669a7d 100644
+index 1f5564c7..8b92811c 100644
 --- a/client/android/peer_notifier.go
 +++ b/client/android/peer_notifier.go
 @@ -2,9 +2,23 @@ package android
@@ -93,4 +93,4 @@ index 9f6fcddd..f9669a7d 100644
 +	Routes                     string
  }
  
- // PeerInfoCollection made for Java layer to get non default types as collection
+ // PeerInfoArray is a wrapper of []PeerInfo

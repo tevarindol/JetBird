@@ -222,6 +222,36 @@ fun SettingsScreen(
                 open = engineLoggingWarning,
                 onDismissRequest = { engineLoggingWarning = false }
             )
+            SettingsSwitch(
+                title = stringResource(R.string.client_routes),
+                checked = state.clientRoutes,
+                onChange = { viewModel.toggleClientRoutes(ctx.getConfigPath(), it) }
+            )
+            SettingsSwitch(
+                title = stringResource(R.string.server_routes),
+                checked = state.serverRoutes,
+                onChange = { viewModel.toggleServerRoutes(ctx.getConfigPath(), it) }
+            )
+            SettingsSwitch(
+                title = stringResource(R.string.dns),
+                checked = state.dns,
+                onChange = { viewModel.toggleDNS(ctx.getConfigPath(), it) }
+            )
+            SettingsSwitch(
+                title = stringResource(R.string.firewall),
+                checked = state.firewall,
+                onChange = { viewModel.toggleFirewall(ctx.getConfigPath(), it) }
+            )
+            SettingsSwitch(
+                title = stringResource(R.string.ssh),
+                checked = state.ssh,
+                onChange = { viewModel.toggleSSH(ctx.getConfigPath(), it) }
+            )
+            SettingsSwitch(
+                title = stringResource(R.string.block_inbound),
+                checked = state.blockInbound,
+                onChange = { viewModel.toggleBlockInbound(ctx.getConfigPath(), it) }
+            )
             SettingsTile(
                 title = stringResource(R.string.view_config),
                 description = stringResource(R.string.view_config_description),
@@ -229,6 +259,7 @@ fun SettingsScreen(
             )
             ConfigViewDialog(
                 open = configViewDialog,
+                state = state,
                 onDismissRequest = { configViewDialog = false }
             )
         }
@@ -459,12 +490,13 @@ private fun AutomaticReconnectWarning(
 @Composable
 private fun ConfigViewDialog(
     open: Boolean,
+    state: PreferencesState,
     onDismissRequest: () -> Unit
 ) {
     val ctx = LocalContext.current
     val clipboardManager = LocalClipboardManager.current
 
-    val config = remember { File(ctx.getConfigPath()).readText() }
+    val config = remember(state) { File(ctx.getConfigPath()).readText() }
 
     if (open) {
         AlertDialog(

@@ -19,6 +19,12 @@ interface PreferencesValues {
     var engineLogging: Boolean
     var verboseEngineLogging: Boolean
     var liveEngineLogging: Boolean
+    var clientRoutes: Boolean
+    var serverRoutes: Boolean
+    var dns: Boolean
+    var firewall: Boolean
+    var ssh: Boolean
+    var blockInbound: Boolean
 
     // JetBird
     var logging: Boolean
@@ -100,6 +106,32 @@ class PreferencesRepositoryImpl @Inject constructor(): PreferencesRepository {
         get() = mmkv.decodeBool(PreferenceKeys.LiveEngineLogging.key, false)
         set(value) { mmkv.encode(PreferenceKeys.LiveEngineLogging.key, value) }
 
+    override var clientRoutes: Boolean
+        get() = mmkv.decodeBool(PreferenceKeys.ClientRoutes.key, true)
+        set(value) { mmkv.encode(PreferenceKeys.ClientRoutes.key, value) }
+
+    // NetBird code and default configuration contradict other
+    // This should be true on JetBird side 0e5dc9d41229ef3f368aa5feb336934815b69a04#diff-dc3b51d6b4eb84b6bab0fb6f93b1c43e290b8ee615565f77b8af0bb823ac6976R136
+    override var serverRoutes: Boolean
+        get() = mmkv.decodeBool(PreferenceKeys.ServerRoutes.key, false)
+        set(value) { mmkv.encode(PreferenceKeys.ServerRoutes.key, value) }
+
+    override var dns: Boolean
+        get() = mmkv.decodeBool(PreferenceKeys.DNS.key, true)
+        set(value) { mmkv.encode(PreferenceKeys.DNS.key, value) }
+
+    override var firewall: Boolean
+        get() = mmkv.decodeBool(PreferenceKeys.Firewall.key, true)
+        set(value) { mmkv.encode(PreferenceKeys.Firewall.key, value) }
+
+    override var ssh: Boolean
+        get() = mmkv.decodeBool(PreferenceKeys.SSH.key, false)
+        set(value) { mmkv.encode(PreferenceKeys.SSH.key, value) }
+
+    override var blockInbound: Boolean
+        get() = mmkv.decodeBool(PreferenceKeys.BlockInbound.key, false)
+        set(value) { mmkv.encode(PreferenceKeys.BlockInbound.key, value) }
+
     // JetBird
     override var logging: Boolean
         get() = mmkv.decodeBool(PreferenceKeys.Logging.key, false)
@@ -155,6 +187,12 @@ class PreferencesRepositoryImpl @Inject constructor(): PreferencesRepository {
             engineLogging = engineLogging,
             verboseEngineLogging = verboseEngineLogging,
             liveEngineLogging = liveEngineLogging,
+            clientRoutes = clientRoutes,
+            serverRoutes = serverRoutes,
+            dns = dns,
+            firewall = firewall,
+            ssh = ssh,
+            blockInbound = blockInbound,
             logging = logging,
             verboseLogging = verboseLogging,
             excludedApps = excludedApps,
@@ -180,6 +218,12 @@ data class PreferencesState(
     override var engineLogging: Boolean,
     override var verboseEngineLogging: Boolean,
     override var liveEngineLogging: Boolean,
+    override var clientRoutes: Boolean,
+    override var serverRoutes: Boolean,
+    override var dns: Boolean,
+    override var firewall: Boolean,
+    override var ssh: Boolean,
+    override var blockInbound: Boolean,
 
     // JetBird
     override var logging: Boolean,
@@ -209,6 +253,12 @@ private enum class PreferenceKeys(
     EngineLogging("engine_logging"),
     VerboseEngineLogging("verbose_engine_logging"),
     LiveEngineLogging("live_engine_logging"),
+    ClientRoutes("client_routes"),
+    ServerRoutes("server_routes"),
+    DNS("dns"),
+    Firewall("firewall"),
+    SSH("ssh"),
+    BlockInbound("block_inbound"),
 
     // JetBird
     Logging("logging"),

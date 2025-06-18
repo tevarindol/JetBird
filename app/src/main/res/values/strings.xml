@@ -13,9 +13,11 @@
     <string name="app_name" translatable="false">JetBird</string>
     <string name="apps">Apps</string>
     <string name="auth_error_see_logs">Authentication error - see logs for more info</string>
+    <string name="block_inbound">Block inbound</string>
     <string name="cancel">Cancel</string>
     <string name="cidr" translatable="false">CIDR</string>
     <string name="clear_log">Clear log</string>
+    <string name="client_routes">Client routes</string>
     <string name="close">Close</string>
     <string name="confirm">Confirm</string>
     <string name="connect">Connect</string>
@@ -30,6 +32,7 @@
     <string name="disconnect">Disconnect</string>
     <string name="disconnected">Disconnected</string>
     <string name="disconnecting">Disconnecting</string>
+    <string name="dns" translatable="false">DNS</string>
     <string name="dump_netbird_log">Dump NetBird log</string>
     <string name="enable_live_logging">Enable live logging</string>
     <string name="enable_live_logging_description">See NetBird logs in real time</string>
@@ -48,6 +51,7 @@
     <string name="failed_to_change_management_server">Failed to change management server</string>
     <string name="failed_vpn_permission">User rejected VPN permission</string>
     <string name="fallback_dns">Fallback DNS</string>
+    <string name="firewall">Firewall</string>
     <string name="foreground_notification_description">JetBird tunnel is active</string>
     <string name="get_started">Get started</string>
     <string name="get_started_url">To get started please enter your management server URL</string>
@@ -104,6 +108,7 @@
     <string name="route_selector_info">Here you can override routes that the NetBird management server sends to you.\n\nWhen enabled, all traffic going to your defined routes will not use the tunnel. You can see all applied routes in the log.\n\nIf you enable route overrides and don\'t provide any routes, JetBird will use upstream routes.</string>
     <string name="routes">Routes: %1$s</string>
     <string name="save_log">Save log</string>
+    <string name="server_routes">Server routes</string>
     <string name="settings">Settings</string>
     <string name="setup_key">Setup key</string>
     <string name="setup_key_saved">Setup key saved</string>
@@ -111,6 +116,7 @@
     <string name="setup_setup_key_required">Please provide a key setup</string>
     <string name="setup_sso_supported">Nice! Your server supports SSO!</string>
     <string name="setup_sso_unsupported">Your server doesn\'t support SSO :(</string>
+    <string name="ssh" translatable="false">SSH</string>
     <string name="sso_supported">SSO supported</string>
     <string name="sso_unsupported">SSO unsupported</string>
     <string name="start_on_reboot">Start tunnel on reboot</string>

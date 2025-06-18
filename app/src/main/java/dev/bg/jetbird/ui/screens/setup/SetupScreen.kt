@@ -280,7 +280,8 @@ private fun SetupInfo(
                     OutlinedTextField(
                         value = managementUrl,
                         onValueChange = { managementUrl = it },
-                        placeholder = { Text(stringResource(R.string.management_url)) }
+                        label = { Text(stringResource(R.string.management_url)) },
+                        placeholder = { Text("https://api.netbird.io") }
                     )
                     LoadingButton(
                         onClick = {

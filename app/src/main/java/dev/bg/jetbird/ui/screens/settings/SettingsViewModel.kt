@@ -61,7 +61,7 @@ class SettingsViewModel @Inject constructor(
         log(if (enabled) "Enabling rosenpass in config" else "Disabling rosenpass in config")
         viewModelScope.launch(ioDispatcher) {
             val preferences = Preferences(configPath)
-            preferences.setRosenpass(enabled)
+            preferences.rosenpassEnabled = enabled
             preferences.commit()
             preferencesRepository.rosenpass = enabled
             if (!enabled) {
@@ -78,7 +78,7 @@ class SettingsViewModel @Inject constructor(
         log(if (enabled) "Enabling rosenpass permissive in config" else "Disabling rosenpass permissive in config")
         viewModelScope.launch(ioDispatcher) {
             val preferences = Preferences(configPath)
-            preferences.setRosenpassPermissive(enabled)
+            preferences.rosenpassPermissive = enabled
             preferences.commit()
             preferencesRepository.rosenpassPermissive = enabled
             preferencesRepository.updateState()
@@ -116,6 +116,84 @@ class SettingsViewModel @Inject constructor(
     fun toggleLiveEngineLogging(enabled: Boolean) {
         viewModelScope.launch(ioDispatcher) {
             preferencesRepository.liveEngineLogging = enabled
+            preferencesRepository.updateState()
+        }
+    }
+
+    fun toggleClientRoutes(
+        configPath: String,
+        enabled: Boolean
+    ) {
+        viewModelScope.launch(ioDispatcher) {
+            val preferences = Preferences(configPath)
+            preferences.disableClientRoutes = !enabled
+            preferences.commit()
+            preferencesRepository.clientRoutes = enabled
+            preferencesRepository.updateState()
+        }
+    }
+
+    fun toggleServerRoutes(
+        configPath: String,
+        enabled: Boolean
+    ) {
+        viewModelScope.launch(ioDispatcher) {
+            val preferences = Preferences(configPath)
+            preferences.disableServerRoutes = !enabled
+            preferences.commit()
+            preferencesRepository.serverRoutes = enabled
+            preferencesRepository.updateState()
+        }
+    }
+
+    fun toggleDNS(
+        configPath: String,
+        enabled: Boolean
+    ) {
+        viewModelScope.launch(ioDispatcher) {
+            val preferences = Preferences(configPath)
+            preferences.disableDNS = !enabled
+            preferences.commit()
+            preferencesRepository.dns = enabled
+            preferencesRepository.updateState()
+        }
+    }
+
+    fun toggleFirewall(
+        configPath: String,
+        enabled: Boolean
+    ) {
+        viewModelScope.launch(ioDispatcher) {
+            val preferences = Preferences(configPath)
+            preferences.disableFirewall = !enabled
+            preferences.commit()
+            preferencesRepository.firewall = enabled
+            preferencesRepository.updateState()
+        }
+    }
+
+    fun toggleSSH(
+        configPath: String,
+        enabled: Boolean
+    ) {
+        viewModelScope.launch(ioDispatcher) {
+            val preferences = Preferences(configPath)
+            preferences.serverSSHAllowed = enabled
+            preferences.commit()
+            preferencesRepository.ssh = enabled
+            preferencesRepository.updateState()
+        }
+    }
+
+    fun toggleBlockInbound(
+        configPath: String,
+        enabled: Boolean
+    ) {
+        viewModelScope.launch(ioDispatcher) {
+            val preferences = Preferences(configPath)
+            preferences.blockInbound = enabled
+            preferences.commit()
+            preferencesRepository.blockInbound = enabled
             preferencesRepository.updateState()
         }
     }
