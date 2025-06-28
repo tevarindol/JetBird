@@ -224,11 +224,13 @@ fun SettingsScreen(
             )
             SettingsSwitch(
                 title = stringResource(R.string.client_routes),
+                description = stringResource(R.string.client_routes_description),
                 checked = state.clientRoutes,
                 onChange = { viewModel.toggleClientRoutes(ctx.getConfigPath(), it) }
             )
             SettingsSwitch(
                 title = stringResource(R.string.server_routes),
+                description = stringResource(R.string.server_routes_description),
                 checked = state.serverRoutes,
                 onChange = { viewModel.toggleServerRoutes(ctx.getConfigPath(), it) }
             )
@@ -244,11 +246,13 @@ fun SettingsScreen(
             )
             SettingsSwitch(
                 title = stringResource(R.string.ssh),
+                description = stringResource(R.string.ssh_description),
                 checked = state.ssh,
                 onChange = { viewModel.toggleSSH(ctx.getConfigPath(), it) }
             )
             SettingsSwitch(
                 title = stringResource(R.string.block_inbound),
+                description = stringResource(R.string.block_inbound_description),
                 checked = state.blockInbound,
                 onChange = { viewModel.toggleBlockInbound(ctx.getConfigPath(), it) }
             )

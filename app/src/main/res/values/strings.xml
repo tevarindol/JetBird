@@ -13,11 +13,13 @@
     <string name="app_name" translatable="false">JetBird</string>
     <string name="apps">Apps</string>
     <string name="auth_error_see_logs">Authentication error - see logs for more info</string>
-    <string name="block_inbound">Block inbound</string>
+    <string name="block_inbound">Block inbound connections</string>
+    <string name="block_inbound_description">Overrides any policies received from the management server</string>
     <string name="cancel">Cancel</string>
     <string name="cidr" translatable="false">CIDR</string>
     <string name="clear_log">Clear log</string>
     <string name="client_routes">Client routes</string>
+    <string name="client_routes_description">Process client routes received from the management server</string>
     <string name="close">Close</string>
     <string name="confirm">Confirm</string>
     <string name="connect">Connect</string>
@@ -109,6 +111,7 @@
     <string name="routes">Routes: %1$s</string>
     <string name="save_log">Save log</string>
     <string name="server_routes">Server routes</string>
+    <string name="server_routes_description">Act as a router for server routes</string>
     <string name="settings">Settings</string>
     <string name="setup_key">Setup key</string>
     <string name="setup_key_saved">Setup key saved</string>
@@ -117,6 +120,7 @@
     <string name="setup_sso_supported">Nice! Your server supports SSO!</string>
     <string name="setup_sso_unsupported">Your server doesn\'t support SSO :(</string>
     <string name="ssh" translatable="false">SSH</string>
+    <string name="ssh_description">Allow SSH connections to this device</string>
     <string name="sso_supported">SSO supported</string>
     <string name="sso_unsupported">SSO unsupported</string>
     <string name="start_on_reboot">Start tunnel on reboot</string>
