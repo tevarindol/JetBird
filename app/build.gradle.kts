@@ -172,11 +172,10 @@ fun getShortNetbirdCommit(): String {
 }
 
 fun getNetbirdVersionFromCommit(): String {
-    val stdout = ByteArrayOutputStream()
-    val commit = getNetbirdCommit()
-    exec {
-        commandLine("git", "-C", "../netbird", "describe", "--tags", "--abbrev=0", commit.dropWhile { c -> c == '+' })
-        standardOutput = stdout
-    }
-    return "\"${stdout.toString().trim()}${if (commit.startsWith('+')) "+" else ""}\""
+//    val stdout = ByteArrayOutputStream()
+//    exec {
+//        commandLine("git", "-C", "../netbird", "describe", "--tags", "--abbrev=0", getNetbirdCommit())
+//        standardOutput = stdout
+//    }
+    return "\"v0.49.0\""
 }
