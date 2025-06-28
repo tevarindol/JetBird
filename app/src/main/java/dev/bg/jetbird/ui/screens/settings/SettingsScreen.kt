@@ -222,6 +222,40 @@ fun SettingsScreen(
                 open = engineLoggingWarning,
                 onDismissRequest = { engineLoggingWarning = false }
             )
+            SettingsSwitch(
+                title = stringResource(R.string.client_routes),
+                description = stringResource(R.string.client_routes_description),
+                checked = state.clientRoutes,
+                onChange = { viewModel.toggleClientRoutes(ctx.getConfigPath(), it) }
+            )
+            SettingsSwitch(
+                title = stringResource(R.string.server_routes),
+                description = stringResource(R.string.server_routes_description),
+                checked = state.serverRoutes,
+                onChange = { viewModel.toggleServerRoutes(ctx.getConfigPath(), it) }
+            )
+            SettingsSwitch(
+                title = stringResource(R.string.dns),
+                checked = state.dns,
+                onChange = { viewModel.toggleDNS(ctx.getConfigPath(), it) }
+            )
+            SettingsSwitch(
+                title = stringResource(R.string.firewall),
+                checked = state.firewall,
+                onChange = { viewModel.toggleFirewall(ctx.getConfigPath(), it) }
+            )
+            SettingsSwitch(
+                title = stringResource(R.string.ssh),
+                description = stringResource(R.string.ssh_description),
+                checked = state.ssh,
+                onChange = { viewModel.toggleSSH(ctx.getConfigPath(), it) }
+            )
+            SettingsSwitch(
+                title = stringResource(R.string.block_inbound),
+                description = stringResource(R.string.block_inbound_description),
+                checked = state.blockInbound,
+                onChange = { viewModel.toggleBlockInbound(ctx.getConfigPath(), it) }
+            )
             SettingsTile(
                 title = stringResource(R.string.view_config),
                 description = stringResource(R.string.view_config_description),
@@ -229,6 +263,7 @@ fun SettingsScreen(
             )
             ConfigViewDialog(
                 open = configViewDialog,
+                state = state,
                 onDismissRequest = { configViewDialog = false }
             )
         }
@@ -459,12 +494,13 @@ private fun AutomaticReconnectWarning(
 @Composable
 private fun ConfigViewDialog(
     open: Boolean,
+    state: PreferencesState,
     onDismissRequest: () -> Unit
 ) {
     val ctx = LocalContext.current
     val clipboardManager = LocalClipboardManager.current
 
-    val config = remember { File(ctx.getConfigPath()).readText() }
+    val config = remember(state) { File(ctx.getConfigPath()).readText() }
 
     if (open) {
         AlertDialog(

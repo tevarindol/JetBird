@@ -172,7 +172,7 @@ class Tunnel(
                         log("Ignoring DNS because private DNS is active")
                         return@apply
                     }
-                    log("Adding DNS: $dns")
+                    log("Registering DNS: $dns")
                     addDnsServer(dns)
                 }
                 .apply {
