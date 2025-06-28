@@ -129,4 +129,5 @@
     <string name="lazy_connections_description">按需连接到对等节点</string>
     <string name="idle">空闲</string>
     <string name="disconnecting">正在断开连接</string>
+    <string name="copy">复制</string>
 </resources>
