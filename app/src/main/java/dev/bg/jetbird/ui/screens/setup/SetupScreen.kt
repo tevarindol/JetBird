@@ -12,6 +12,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -35,6 +37,7 @@ import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -281,7 +284,15 @@ private fun SetupInfo(
                         value = managementUrl,
                         onValueChange = { managementUrl = it },
                         label = { Text(stringResource(R.string.management_url)) },
-                        placeholder = { Text("https://api.netbird.io") }
+                        placeholder = { Text("https://api.netbird.io") },
+                        singleLine = true,
+                        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
+                        keyboardActions = KeyboardActions(
+                            onDone = {
+                                focusManager.clearFocus()
+                                checkManagementUrl(managementUrl)
+                            }
+                        )
                     )
                     LoadingButton(
                         onClick = {
@@ -324,7 +335,18 @@ private fun SetupInfo(
                     OutlinedTextField(
                         value = setupKey,
                         onValueChange = { setupKey = it },
-                        placeholder = { Text(stringResource(R.string.setup_key)) }
+                        placeholder = { Text(stringResource(R.string.setup_key)) },
+                        singleLine = true,
+                        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
+                        keyboardActions = KeyboardActions(
+                            onDone = {
+                                if (setupKey.matches(setupKeyRegex)) {
+                                    focusManager.clearFocus()
+                                    updateSetupKey(managementUrl, setupKey)
+                                    navController.clearAndNavigate(Route.Home)
+                                }
+                            }
+                        )
                     )
                     Button(
                         onClick = {
