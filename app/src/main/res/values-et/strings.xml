@@ -119,4 +119,12 @@
     <string name="lazy_connections_description">Loo ühendus võrdõigusvõrgu sõlmega vastavalt vajadusele</string>
     <string name="idle">Jõude</string>
     <string name="copy">Kopeeri</string>
+    <string name="client_routes">Kliendiruutingud</string>
+    <string name="client_routes_description">Rakenda haldusserverist laaditud kliendipoolsed ruutingud</string>
+    <string name="firewall">Tulemüür</string>
+    <string name="server_routes_description">Toimi ruuterina serveriruutingute jaoks</string>
+    <string name="block_inbound">Blokeeri sissetulevad ühendused</string>
+    <string name="block_inbound_description">Sellega asendad kõik haldusserverist määratud teemakohased reeglid</string>
+    <string name="server_routes">Serveriruutingud</string>
+    <string name="ssh_description">Luba SSH-ühendusi sellesse seadmesse</string>
 </resources>
