@@ -172,10 +172,16 @@ fun getShortNetbirdCommit(): String {
 }
 
 fun getNetbirdVersionFromCommit(): String {
-//    val stdout = ByteArrayOutputStream()
-//    exec {
-//        commandLine("git", "-C", "../netbird", "describe", "--tags", "--abbrev=0", getNetbirdCommit())
-//        standardOutput = stdout
-//    }
-    return "\"v0.49.0\""
+    val stdout = ByteArrayOutputStream()
+    val commit = getNetbirdCommit()
+    return try {
+        exec {
+            commandLine("git", "-C", "../netbird", "describe", "--tags", "--abbrev=0", getNetbirdCommit())
+            standardOutput = stdout
+        }
+        return "\"${stdout.toString().trim()}${if (commit.startsWith('+')) "+" else ""}\""
+    } catch (e: Exception) {
+        println("Failed to get NetBird submodule tag from commit ${commit}: $e")
+        "null"
+    }
 }

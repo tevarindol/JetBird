@@ -3,7 +3,6 @@ package dev.bg.jetbird.ui.screens.settings
 import android.content.Intent
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
-import android.net.Uri
 import android.provider.Settings
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.animation.AnimatedVisibility
@@ -52,6 +51,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.graphics.drawable.toBitmap
+import androidx.core.net.toUri
 import androidx.core.os.LocaleListCompat
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -78,6 +78,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import java.io.File
+import java.io.FileNotFoundException
 import java.io.IOException
 
 @Composable
@@ -424,7 +425,7 @@ fun SettingsScreen(
                 onClick = {
                     ctx.startActivity(
                         Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
-                            data = Uri.parse("package:${ctx.packageName}")
+                            data = "package:${ctx.packageName}".toUri()
                         }
                     )
                 }
@@ -438,7 +439,7 @@ fun SettingsScreen(
             )
             SettingsTile(
                 title = stringResource(R.string.about_netbird_version),
-                description = "${BuildConfig.NETBIRD_COMMIT} (${BuildConfig.NETBIRD_VERSION})"
+                description = "${BuildConfig.NETBIRD_COMMIT} ${if (BuildConfig.NETBIRD_VERSION != null) "(${BuildConfig.NETBIRD_VERSION})" else ""}"
             )
             SettingsTile(
                 title = stringResource(R.string.credits),
@@ -500,7 +501,13 @@ private fun ConfigViewDialog(
     val ctx = LocalContext.current
     val clipboardManager = LocalClipboardManager.current
 
-    val config = remember(state) { File(ctx.getConfigPath()).readText() }
+    val config = remember(state) {
+        try {
+            File(ctx.getConfigPath()).readText()
+        } catch (e: FileNotFoundException) {
+            "NetBird config not found"
+        }
+    }
 
     if (open) {
         AlertDialog(
