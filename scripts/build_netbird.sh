@@ -52,7 +52,7 @@ CGO_ENABLED=0 gomobile bind -o "$(pwd)"/../lib/netbird.aar \
     -target=android \
     -androidapi 24 \
     -javapkg=io.netbird \
-    -ldflags="all=-s -w -X golang.zx2c4.com/wireguard/ipc.socketDirectory=/data/data/${_pkg}/cache/wireguard -X github.com/netbirdio/netbird/version.version=$(git rev-parse --short=8 HEAD) -buildid=" \
+    -ldflags="all=-s -w -X golang.zx2c4.com/wireguard/ipc.socketDirectory=/data/data/${_pkg}/cache/wireguard -checklinkname=0 -X github.com/netbirdio/netbird/version.version=$(git rev-parse --short=8 HEAD) -buildid=" \
     -trimpath \
     ${_vverbose:+-v} \
     ${_vverbose:+-x} \

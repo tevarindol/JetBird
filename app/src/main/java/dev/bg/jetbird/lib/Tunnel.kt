@@ -44,6 +44,7 @@ class Tunnel(
     private val scope = CoroutineScope(SupervisorJob())
     private val client: Client = Android.newClient(
         vpnService.baseContext.getConfigPath(),
+        Build.VERSION.SDK_INT.toLong(),
         Build.MODEL,
         "JetBird-${BuildConfig.VERSION_NAME}",
         this,
