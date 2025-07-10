@@ -1,7 +1,7 @@
 <div align="center">
 <img src="assets/jetbird_banner_full_rev4.svg" alt="JetBird banner" />
 
-[![](https://shields.rbtlog.dev/simple/dev.bg.jetbird)](https://shields.rbtlog.dev/dev.bg.jetbird)
+[![](https://shields.rbtlog.dev/simple/dev.bg.jetbird?style=flat-square)](https://shields.rbtlog.dev/dev.bg.jetbird)
 <p>An unofficial, FLOSS, native Android NetBird client built with privacy in mind</p>
 </div>
 

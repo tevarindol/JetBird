@@ -18,8 +18,8 @@ android {
         applicationId = "dev.bg.jetbird"
         minSdk = 24
         targetSdk = 34
-        versionCode = 23
-        versionName = "1.3.1"
+        versionCode = 24
+        versionName = "1.3.2"
 
         buildConfigField("String", "NETBIRD_COMMIT", getShortNetbirdCommit())
         buildConfigField("String", "NETBIRD_VERSION", getNetbirdVersionFromCommit())
@@ -174,14 +174,9 @@ fun getShortNetbirdCommit(): String {
 fun getNetbirdVersionFromCommit(): String {
     val stdout = ByteArrayOutputStream()
     val commit = getNetbirdCommit()
-    return try {
-        exec {
-            commandLine("git", "-C", "../netbird", "describe", "--tags", "--abbrev=0", getNetbirdCommit().dropWhile { c -> c == '+' })
-            standardOutput = stdout
-        }
-        return "\"${stdout.toString().trim()}${if (commit.startsWith('+')) "+" else ""}\""
-    } catch (e: Exception) {
-        println("Failed to get NetBird submodule tag from commit ${commit}: $e")
-        "null"
+    exec {
+        commandLine("git", "-C", "${rootDir}/netbird", "describe", "--tags", "--abbrev=0", getNetbirdCommit().dropWhile { c -> c == '+' })
+        standardOutput = stdout
     }
+    return "\"${stdout.toString().trim()}${if (commit.startsWith('+')) "+" else ""}\""
 }
