@@ -437,13 +437,9 @@ fun SettingsScreen(
                     BuildConfig.VERSION_CODE
                 )
             )
-//            SettingsTile(
-//                title = stringResource(R.string.about_netbird_version),
-//                description = "${BuildConfig.NETBIRD_COMMIT} ${if (BuildConfig.NETBIRD_VERSION != null) "(${BuildConfig.NETBIRD_VERSION})" else ""}"
-//            )
             SettingsTile(
                 title = stringResource(R.string.about_netbird_version),
-                description = BuildConfig.NETBIRD_COMMIT
+                description = "${BuildConfig.NETBIRD_COMMIT} ${if (BuildConfig.NETBIRD_VERSION != null) "(${BuildConfig.NETBIRD_VERSION})" else ""}"
             )
             SettingsTile(
                 title = stringResource(R.string.credits),
