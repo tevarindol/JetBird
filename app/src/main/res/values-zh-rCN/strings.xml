@@ -130,4 +130,12 @@
     <string name="idle">空闲</string>
     <string name="disconnecting">正在断开连接</string>
     <string name="copy">复制</string>
+    <string name="block_inbound_description">覆盖从管理服务器收到的任何策略</string>
+    <string name="client_routes">客户端路由</string>
+    <string name="server_routes_description">充当服务器路由的路由器</string>
+    <string name="firewall">防火墙</string>
+    <string name="block_inbound">阻止入站连接</string>
+    <string name="server_routes">‌服务器路由</string>
+    <string name="ssh_description">允许 SSH 连接到此设备</string>
+    <string name="client_routes_description">处理从管理服务器收到的客户端路由</string>
 </resources>
