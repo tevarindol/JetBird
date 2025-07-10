@@ -22,7 +22,7 @@ android {
         versionName = "1.3.2"
 
         buildConfigField("String", "NETBIRD_COMMIT", getShortNetbirdCommit())
-        buildConfigField("String", "NETBIRD_VERSION", getNetbirdVersionFromCommit())
+//        buildConfigField("String", "NETBIRD_VERSION", getNetbirdVersionFromCommit())
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         testInstrumentationRunnerArguments["disableAnalytics"] = "true"
@@ -171,12 +171,12 @@ fun getShortNetbirdCommit(): String {
     return "\"${getNetbirdCommit().take(10).dropWhile { c -> c == '+' }}\""
 }
 
-fun getNetbirdVersionFromCommit(): String {
-    val stdout = ByteArrayOutputStream()
-    val commit = getNetbirdCommit()
-    exec {
-        commandLine("git", "-C", "${rootDir}/netbird", "describe", "--tags", "--abbrev=0", getNetbirdCommit().dropWhile { c -> c == '+' })
-        standardOutput = stdout
-    }
-    return "\"${stdout.toString().trim()}${if (commit.startsWith('+')) "+" else ""}\""
-}
+//fun getNetbirdVersionFromCommit(): String {
+//    val stdout = ByteArrayOutputStream()
+//    val commit = getNetbirdCommit()
+//    exec {
+//        commandLine("git", "-C", "${rootDir}/netbird", "describe", "--tags", "--abbrev=0", getNetbirdCommit().dropWhile { c -> c == '+' })
+//        standardOutput = stdout
+//    }
+//    return "\"${stdout.toString().trim()}${if (commit.startsWith('+')) "+" else ""}\""
+//}
