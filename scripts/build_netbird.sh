@@ -35,6 +35,8 @@ cd ./netbird || {
     exit 1
 }
 
+git fetch
+
 go clean
 
 # shellcheck disable=SC2012
