@@ -138,4 +138,7 @@
     <string name="server_routes">‌服务器路由</string>
     <string name="ssh_description">允许 SSH 连接到此设备</string>
     <string name="client_routes_description">处理从管理服务器收到的客户端路由</string>
+    <string name="connect_to_see_networks">连接以查看网络</string>
+    <string name="networks">网络</string>
+    <string name="peers">对等节点</string>
 </resources>
