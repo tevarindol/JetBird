@@ -1,0 +1,2 @@
+- Update NetBird to v0.50.3
+- Show networks in peer list
