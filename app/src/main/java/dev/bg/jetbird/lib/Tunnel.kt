@@ -11,6 +11,7 @@ import io.netbird.android.Android
 import io.netbird.android.Client
 import io.netbird.android.ConnectionListener
 import io.netbird.android.DNSList
+import io.netbird.android.NetworkArray
 import io.netbird.android.NetworkChangeListener
 import io.netbird.android.PeerInfoArray
 import io.netbird.android.TunAdapter
@@ -115,6 +116,10 @@ class Tunnel(
 
     fun peersInfo(): PeerInfoArray {
         return client.peersList()
+    }
+
+    fun networks(): NetworkArray {
+        return client.networks() ?: NetworkArray()
     }
 
     private fun log(

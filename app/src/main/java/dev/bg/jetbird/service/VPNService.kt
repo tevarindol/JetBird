@@ -28,6 +28,7 @@ import dev.bg.jetbird.util.Log
 import dev.bg.jetbird.util.ReplaceableJob
 import dev.bg.jetbird.util.ktx.getPendingIntent
 import dev.bg.jetbird.util.ktx.sendNotification
+import dev.bg.jetbird.util.ktx.toNetworkList
 import dev.bg.jetbird.util.ktx.toPeerList
 import io.netbird.android.ConnectionListener
 import io.netbird.android.URLOpener
@@ -68,7 +69,8 @@ class VPNService: VpnService() {
     private val _state: MutableStateFlow<VPNState> = MutableStateFlow(
         VPNState(
             connectionState = ConnectionState.DISCONNECTED,
-            peers = emptyList()
+            peers = emptyList(),
+            networks = emptyList()
         )
     )
     private val _events = MutableSharedFlow<ServiceEvent>()
@@ -288,6 +290,10 @@ class VPNService: VpnService() {
             val newPeers = tunnel?.peersInfo().toPeerList().sortedBy { p -> p.fqdn }
             if (_state.value.peers != newPeers) {
                 _state.update { it.copy(peers = newPeers) }
+            }
+            val newNetworks = tunnel?.networks().toNetworkList().sortedBy { n -> n.network }
+            if (_state.value.networks != newNetworks) {
+                _state.update { it.copy(networks = newNetworks) }
             }
         }
 
