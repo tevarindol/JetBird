@@ -39,23 +39,24 @@ object NetBirdErrors {
 
 object Languages {
     val resourceLanguageCodeMap = hashMapOf(
-        R.string.en to "en",
-        R.string.de to "de",
-        R.string.ru to "ru",
-        R.string.zh_CN to "zh-CN",
         R.string.cs to "cs",
         R.string.da to "da",
+        R.string.de to "de",
+        R.string.en to "en",
         R.string.et to "et",
         R.string.fi to "fi",
+        R.string.fr to "fr",
         R.string.ga to "ga",
         R.string.hu to "hu",
         R.string.iw to "iw",
         R.string.pl to "pl",
         R.string.ro to "ro",
+        R.string.ru to "ru",
         R.string.sk to "sk",
         R.string.sv to "sv",
         R.string.tr to "tr",
         R.string.uk to "uk",
+        R.string.zh_CN to "zh-CN",
         R.string.zu to "zu"
     )
     val languageCodeResourceMap = resourceLanguageCodeMap

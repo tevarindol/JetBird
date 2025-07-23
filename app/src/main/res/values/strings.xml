@@ -142,22 +142,23 @@
     <string name="welcome_jetbird">Welcome to JetBird!</string>
     <string name="your_overrides">Your overrides: %1$s</string>
 
-    <string name="en" translatable="false">English</string>
-    <string name="de" translatable="false">Deutsch</string>
-    <string name="ru" translatable="false">Русский</string>
-    <string name="zh_CN" translatable="false">中文 (简体)</string>
     <string name="cs" translatable="false">Čeština</string>
     <string name="da" translatable="false">Dansk</string>
+    <string name="de" translatable="false">Deutsch</string>
+    <string name="en" translatable="false">English</string>
     <string name="et" translatable="false">Eesti</string>
     <string name="fi" translatable="false">Suomi</string>
+    <string name="fr" translatable="false">Français</string>
     <string name="ga" translatable="false">Gaeilge</string>
     <string name="hu" translatable="false">Magyar</string>
     <string name="iw" translatable="false">עִבְרִית</string>
     <string name="pl" translatable="false">Polski</string>
     <string name="ro" translatable="false">Română</string>
+    <string name="ru" translatable="false">Русский</string>
     <string name="sk" translatable="false">Slovenčina</string>
     <string name="sv" translatable="false">Svenska</string>
     <string name="tr" translatable="false">Türkçe</string>
     <string name="uk" translatable="false">Українська</string>
+    <string name="zh_CN" translatable="false">中文 (简体)</string>
     <string name="zu" translatable="false">IsiZulu</string>
 </resources>
