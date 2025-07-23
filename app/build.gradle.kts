@@ -18,8 +18,8 @@ android {
         applicationId = "dev.bg.jetbird"
         minSdk = 24
         targetSdk = 34
-        versionCode = 25
-        versionName = "1.3.3"
+        versionCode = 26
+        versionName = "1.3.4"
 
         buildConfigField("String", "NETBIRD_COMMIT", getShortNetbirdCommit())
         buildConfigField("String", "NETBIRD_VERSION", getNetbirdVersionFromCommit())

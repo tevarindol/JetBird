@@ -24,11 +24,9 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.AssistChipDefaults
 import androidx.compose.material3.Button
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -43,7 +41,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -63,6 +60,7 @@ import dev.bg.jetbird.Route
 import dev.bg.jetbird.data.Languages
 import dev.bg.jetbird.repository.PreferencesState
 import dev.bg.jetbird.ui.components.DeleteAlertDialog
+import dev.bg.jetbird.ui.components.OutlinedCopyButton
 import dev.bg.jetbird.ui.components.OutlinedTextFieldInputType
 import dev.bg.jetbird.ui.components.SettingsDropdownTile
 import dev.bg.jetbird.ui.components.SettingsSection
@@ -521,18 +519,8 @@ private fun ConfigViewDialog(
                 }
             },
             dismissButton = {
-                OutlinedButton(
-                    onClick = {
-                        clipboardManager.setText(AnnotatedString(config))
-                    }
-                ) {
-                    Icon(
-                        painterResource(R.drawable.baseline_content_copy_24),
-                        contentDescription = stringResource(R.string.copy),
-                        modifier = Modifier.size(AssistChipDefaults.IconSize)
-                    )
-                    Spacer(Modifier.width(4.dp))
-                    Text(stringResource(R.string.copy))
+                OutlinedCopyButton {
+                    clipboardManager.setText(AnnotatedString(config))
                 }
             },
             confirmButton = {

@@ -23,6 +23,7 @@ import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.BottomSheetScaffold
 import androidx.compose.material3.Button
@@ -48,10 +49,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -67,6 +70,7 @@ import dev.bg.jetbird.data.JetBirdColors
 import dev.bg.jetbird.data.model.ConnectionState
 import dev.bg.jetbird.service.VPNService
 import dev.bg.jetbird.ui.components.ConnectionCard
+import dev.bg.jetbird.ui.components.OutlinedCopyButton
 import dev.bg.jetbird.util.OnLifecycleEvent
 import dev.bg.jetbird.util.ktx.hasOtherAlwaysOnVpn
 import io.netbird.android.URLOpener
@@ -279,7 +283,9 @@ private fun AlwaysOnVpnBanner(
 private fun PeersList(
     lazyListState: LazyListState
 ) {
+    val ctx = LocalContext.current
     val binder = LocalVPNServiceBinder.current
+    val clipboardManager = LocalClipboardManager.current
 
     val service = binder?.state?.collectAsStateWithLifecycle()?.value
     val connectionState = service?.connectionState
@@ -422,23 +428,45 @@ private fun PeersList(
         AlertDialog(
             title = { Text(stringResource(R.string.peer_info)) },
             text = {
-                Column {
-                    Text(stringResource(R.string.peer_ip, peer?.ip.toString()))
-                    Text(stringResource(R.string.peer_fqdn, peer?.fqdn.toString()))
-                    Text(stringResource(R.string.peer_connection_status, peer?.connectionStatus.toString()))
-                    Text(stringResource(R.string.peer_connection_status_update, peer?.connectionStatusUpdate ?: 0))
-                    Text(stringResource(R.string.peer_public_key, peer?.publicKey.toString()))
-                    Text(stringResource(R.string.peer_relayed, peer?.relayed ?: false))
-                    Text(stringResource(R.string.relay, peer?.relayServerAddress.toString()))
+                SelectionContainer {
+                    Column {
+                        Text(stringResource(R.string.peer_ip, peer?.ip.toString()))
+                        Text(stringResource(R.string.peer_fqdn, peer?.fqdn.toString()))
+                        Text(stringResource(R.string.peer_connection_status, peer?.connectionStatus.toString()))
+                        Text(stringResource(R.string.peer_connection_status_update, peer?.connectionStatusUpdate ?: 0))
+                        Text(stringResource(R.string.peer_public_key, peer?.publicKey.toString()))
+                        Text(stringResource(R.string.peer_relayed, peer?.relayed ?: false))
+                        Text(stringResource(R.string.relay, peer?.relayServerAddress.toString()))
 //                    Text(stringResource(R.string.peer_last_wireguard_handshake, peer?.lastWireguardHandshake.orEmpty()))
-                    Text(stringResource(R.string.peer_bytes_rx, peer?.bytesRx.toString()))
-                    Text(stringResource(R.string.peer_bytes_tx, peer?.bytesTx.toString()))
-                    Text(stringResource(R.string.peer_latency, peer?.latency ?: 0))
-                    Text(stringResource(R.string.peer_rosenpass, peer?.rosenpassEnabled ?: false))
-                    Text(stringResource(R.string.routes, peer?.routes?.joinToString().orEmpty()))
+                        Text(stringResource(R.string.peer_bytes_rx, peer?.bytesRx.toString()))
+                        Text(stringResource(R.string.peer_bytes_tx, peer?.bytesTx.toString()))
+                        Text(stringResource(R.string.peer_latency, peer?.latency ?: 0))
+                        Text(stringResource(R.string.peer_rosenpass, peer?.rosenpassEnabled ?: false))
+                        Text(stringResource(R.string.routes, peer?.routes?.joinToString().orEmpty()))
+                    }
                 }
             },
             onDismissRequest = { selectedPeerIp = null },
+            dismissButton = {
+                OutlinedCopyButton {
+                    clipboardManager.setText(
+                        buildAnnotatedString {
+                            append("${ctx.getString(R.string.peer_ip, peer?.ip.toString())}\n")
+                            append("${ctx.getString(R.string.peer_fqdn, peer?.fqdn.toString())}\n")
+                            append("${ctx.getString(R.string.peer_connection_status, peer?.connectionStatus.toString())}\n")
+                            append("${ctx.getString(R.string.peer_connection_status_update, peer?.connectionStatusUpdate ?: 0)}\n")
+                            append("${ctx.getString(R.string.peer_public_key, peer?.publicKey.toString())}\n")
+                            append("${ctx.getString(R.string.peer_relayed, peer?.relayed ?: false)}\n")
+                            append("${ctx.getString(R.string.relay, peer?.relayServerAddress.toString())}\n")
+                            append("${ctx.getString(R.string.peer_bytes_rx, peer?.bytesRx.toString())}\n")
+                            append("${ctx.getString(R.string.peer_bytes_tx, peer?.bytesTx.toString())}\n")
+                            append("${ctx.getString(R.string.peer_latency, peer?.latency ?: 0)}\n")
+                            append("${ctx.getString(R.string.peer_rosenpass, peer?.rosenpassEnabled ?: false)}\n")
+                            append(ctx.getString(R.string.routes, peer?.routes?.joinToString().orEmpty()))
+                        }
+                    )
+                }
+            },
             confirmButton = {
                 Button(
                     onClick = {
