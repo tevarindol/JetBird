@@ -128,4 +128,6 @@
     <string name="idle">Leerlauf</string>
     <string name="disconnecting">Wird getrennt</string>
     <string name="networks">Netzwerke</string>
+    <string name="block_inbound">Eingehende Verbindungen blockieren</string>
+    <string name="block_inbound_description">Setzt alle vom Management Server empfangenen Richtlinien außer Kraft</string>
 </resources>
