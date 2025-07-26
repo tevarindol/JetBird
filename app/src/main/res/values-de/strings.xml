@@ -130,4 +130,8 @@
     <string name="networks">Netzwerke</string>
     <string name="block_inbound">Eingehende Verbindungen blockieren</string>
     <string name="block_inbound_description">Setzt alle vom Management Server empfangenen Richtlinien außer Kraft</string>
+    <string name="server_routes">Serverrouten</string>
+    <string name="firewall">Firewall</string>
+    <string name="client_routes">Clientrouten</string>
+    <string name="ssh_description">SSH-Verbindungen zu diesem Gerät zulassen</string>
 </resources>
