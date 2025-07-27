@@ -128,4 +128,6 @@
     <string name="route_changes_description">I routes per questo dispositivo sono stati aggiornati. Riavviare il tunnel per applicare le modifiche.</string>
     <string name="route_selector_info">Qui è possibile sovrascrivere le rotte inviate dal server management di NetBird.\n\nSe abilitate, tutto il traffico diretto alle rotte definite non utilizzerà il tunnel. È possibile visualizzare tutti le rotte applicate nel log.\n\nSe si abilitano le sostituzioni delle rotte e non si fornisce alcuna rotta, JetBird utilizzerà le route upstream.</string>
     <string name="unknown_error_see_logs">Errore sconosciuto - consulta i log per maggiori informazioni</string>
+    <string name="permissive_rosenpass">Rosenpass permissiva</string>
+    <string name="permissive_rosenpass_description">Permetti ai peer non Rosenpass di connettersi</string>
 </resources>
