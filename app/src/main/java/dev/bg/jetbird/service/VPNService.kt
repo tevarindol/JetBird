@@ -190,6 +190,13 @@ class VPNService: VpnService() {
         }
     }
 
+    private fun broadcastStatus(connected: Boolean) {
+        val statusIntent = Intent(VpnControlReceiver.ACTION_VPN_STATUS).apply {
+            putExtra(VpnControlReceiver.EXTRA_CONNECTED, connected)
+        }
+        sendBroadcast(statusIntent)
+    }
+
     private fun start(urlOpener: URLOpener?) {
         log("Starting NetBird", verbose = true)
         startInForeground()
@@ -387,6 +394,7 @@ class VPNService: VpnService() {
             vpnRepository.updateVpnState(true)
             log("Tunnel setup complete", verbose = true)
             _state.update { it.copy(connectionState = ConnectionState.CONNECTED) }
+            broadcastStatus(true)
         }
 
         override fun onStopped() {
@@ -395,6 +403,7 @@ class VPNService: VpnService() {
             log("Tunnel stopped", verbose = true)
             _state.update { it.copy(connectionState = ConnectionState.DISCONNECTED) }
             stop()
+            broadcastStatus(false)
         }
 
         override fun onRoutesChange() {
