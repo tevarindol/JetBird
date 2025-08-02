@@ -103,8 +103,8 @@
         </receiver>
 
         <receiver
-            android:name=".service.VpnControlReceiver"
-             android:exported="true">
+            android:name=".receiver.VpnControlReceiver"
+            android:exported="true">
              <intent-filter>
                  <action android:name="dev.bg.jetbird.EXTERNAL_ACTION_CONNECT_VPN" />
                  <action android:name="dev.bg.jetbird.EXTERNAL_ACTION_DISCONNECT_VPN" />

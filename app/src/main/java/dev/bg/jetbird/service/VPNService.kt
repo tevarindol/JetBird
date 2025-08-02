@@ -20,6 +20,7 @@ import dev.bg.jetbird.data.model.VPNState
 import dev.bg.jetbird.lib.EngineLoggingLevel
 import dev.bg.jetbird.lib.Tunnel
 import dev.bg.jetbird.lib.TunnelListener
+import dev.bg.jetbird.receiver.VpnControlReceiver
 import dev.bg.jetbird.repository.LogRepository
 import dev.bg.jetbird.repository.PreferencesRepository
 import dev.bg.jetbird.repository.VpnRepository
