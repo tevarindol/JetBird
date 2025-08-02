@@ -48,6 +48,7 @@ object Languages {
         R.string.fr to "fr",
         R.string.ga to "ga",
         R.string.hu to "hu",
+        R.string.it to "it",
         R.string.iw to "iw",
         R.string.pl to "pl",
         R.string.ro to "ro",
