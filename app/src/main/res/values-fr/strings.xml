@@ -62,4 +62,13 @@
     <string name="reset_app">Remettre à zéro l\'application</string>
     <string name="reset_app_description">Supprime toutes les données et configurations</string>
     <string name="reset_netbird_config">Remettre à zéro la configuration de NetBird</string>
+    <string name="action_not_reversible">Cette action ne peut pas être annulée.</string>
+    <string name="another_always_on_vpn_active">Un autre VPN en mode \"toujours actif\" est en cours d\'utilisation</string>
+    <string name="auth_error_see_logs">Erreur d\'authentification - voir les logs pour plus d\'informations</string>
+    <string name="block_inbound">Bloquer les connexions entrantes</string>
+    <string name="block_inbound_description">Remplace toutes les règles reçues du serveur de gestion</string>
+    <string name="enable_live_logging">Activer la journalisation en direct</string>
+    <string name="failed_remove_netbird_config">Échec de la suppression du fichier de configuration de NetBird</string>
+    <string name="failed_to_change_management_server">Échec du changement de serveur de gestion</string>
+    <string name="failed_vpn_permission">Autorisation du VPN rejeté par l\'utilisateur</string>
 </resources>
