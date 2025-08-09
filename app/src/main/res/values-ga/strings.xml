@@ -127,4 +127,15 @@
     <string name="lazy_connections_description">Ceangail le piaraí ar éileamh</string>
     <string name="idle">Díomhaoin</string>
     <string name="copy">Cóipeáil</string>
+    <string name="networks">Líonraí</string>
+    <string name="block_inbound">Blocáil naisc isteach</string>
+    <string name="block_inbound_description">Sáraíonn sé aon pholasaithe a fhaightear ón bhfreastalaí bainistíochta</string>
+    <string name="client_routes">Bealaí cliant</string>
+    <string name="client_routes_description">Próiseáil bealaí cliant a fuarthas ón bhfreastalaí bainistíochta</string>
+    <string name="connect_to_see_networks">Ceangail chun líonraí a fheiceáil</string>
+    <string name="firewall">Balla dóiteáin</string>
+    <string name="peers">Piaraí</string>
+    <string name="server_routes">Bealaí freastalaí</string>
+    <string name="server_routes_description">Gníomhaigh mar ródaire do bhealaí freastalaí</string>
+    <string name="ssh_description">Ceadaigh naisc SSH leis an ngléas seo</string>
 </resources>
