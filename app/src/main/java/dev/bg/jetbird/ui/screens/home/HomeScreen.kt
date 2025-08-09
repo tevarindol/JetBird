@@ -376,7 +376,7 @@ private fun PeersList(
                                     .fillMaxWidth()
                                     .padding(horizontal = 12.dp)
                                     .clip(RoundedCornerShape(12.dp))
-                                    .animateItemPlacement()
+                                    .animateItem()
                                     .clickable {
                                         selectedPeerIp = peer.ip
                                     }
@@ -414,7 +414,7 @@ private fun PeersList(
                                     .fillMaxWidth()
                                     .padding(horizontal = 12.dp)
                                     .clip(RoundedCornerShape(12.dp))
-                                    .animateItemPlacement()
+                                    .animateItem()
                             )
                         }
                     }

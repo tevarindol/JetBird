@@ -22,7 +22,8 @@ It has been built with privacy in mind and contains no blobs or trackers.
 - Reconnect on restart
 - Relay support from JetBird v1.0.4+ (with NetBird v0.29.0+ peers)
 - TV support
-- Experimental lazy connection support - [NetBird docs](https://docs.netbird.io/how-to/lazy-connection)
+- Lazy connection support - [NetBird docs](https://docs.netbird.io/how-to/lazy-connection)
+- External broadcast receiver for automation (e.g. via Tasker)
 
 ## Differences
 There are a few differences between NetBird official Android client and JetBird. Some of these features rely on patches to the NetBird source (these are in `patches/`):

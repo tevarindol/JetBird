@@ -35,7 +35,10 @@ cd ./netbird || {
     exit 1
 }
 
-git fetch
+# for CI - fetch from upstream to get the latest tags
+if [[ $_d -ne 1 ]]; then
+  git fetch
+fi
 
 go clean
 

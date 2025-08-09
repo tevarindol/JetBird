@@ -92,7 +92,7 @@ fun RouteSelectorScreen(
             }
             items(state.routeOverrides.toList()) { route ->
                 SwipeToDelete(
-                    modifier = Modifier.animateItemPlacement(),
+                    modifier = Modifier.animateItem(),
                     onDeleted = {
                         viewModel.removeRoute(route)
                     }
