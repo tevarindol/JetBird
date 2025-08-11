@@ -7,7 +7,7 @@
     <string name="confirm">Confirmar</string>
     <string name="peers_connected">%1$d de %2$d pares conectados</string>
     <string name="pre_shared_key">Clave precompartida</string>
-    <string name="reconnect_on_route_changes_warning">Es posible que la VPN y el tráfico no se bloquee durante este período, según la configuración de su dispositivo.</string>
+    <string name="reconnect_on_route_changes_warning">Es posible que la VPN y el tráfico no se bloquee durante el período de reconexión automática, según la configuración de su dispositivo.</string>
     <string name="enable_live_logging_description">Vea los registros de NetBird en tiempo real</string>
     <string name="route_selector_description">Anulaciones de ruta: %1$d</string>
     <string name="connected">Conectado</string>
