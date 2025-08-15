@@ -43,6 +43,7 @@ object Languages {
         R.string.da to "da",
         R.string.de to "de",
         R.string.en to "en",
+        R.string.es to "es",
         R.string.et to "et",
         R.string.fi to "fi",
         R.string.fr to "fr",

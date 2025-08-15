@@ -146,6 +146,7 @@
     <string name="da" translatable="false">Dansk</string>
     <string name="de" translatable="false">Deutsch</string>
     <string name="en" translatable="false">English</string>
+    <string name="es" translatable="false">Español</string>
     <string name="et" translatable="false">Eesti</string>
     <string name="fi" translatable="false">Suomi</string>
     <string name="fr" translatable="false">Français</string>
