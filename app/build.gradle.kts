@@ -18,8 +18,8 @@ android {
         applicationId = "dev.bg.jetbird"
         minSdk = 24
         targetSdk = 36
-        versionCode = 30
-        versionName = "1.4.2"
+        versionCode = 31
+        versionName = "1.4.3"
 
         buildConfigField("String", "NETBIRD_COMMIT", getShortNetbirdCommit())
         buildConfigField("String", "NETBIRD_VERSION", getNetbirdVersionFromCommit())
@@ -156,6 +156,12 @@ dependencies {
 
 configurations.all {
     exclude("com.google.android.gms") // Just in case
+}
+
+tasks.whenTaskAdded {
+    if (name.contains("ArtProfile")) {
+        enabled = false
+    }
 }
 
 fun getNetbirdCommit(): String {

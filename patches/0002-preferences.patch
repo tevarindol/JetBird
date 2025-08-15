@@ -1,5 +1,5 @@
 diff --git a/client/android/preferences.go b/client/android/preferences.go
-index 2d5668d1..64235a41 100644
+index 9a5d6bb2..1fb6357a 100644
 --- a/client/android/preferences.go
 +++ b/client/android/preferences.go
 @@ -219,6 +219,10 @@ func (p *Preferences) SetBlockInbound(block bool) {
@@ -12,4 +12,4 @@ index 2d5668d1..64235a41 100644
 +
  // Commit writes out the changes to the config file
  func (p *Preferences) Commit() error {
- 	_, err := internal.UpdateOrCreateConfig(p.configInput)
+ 	_, err := profilemanager.UpdateOrCreateConfig(p.configInput)

@@ -315,7 +315,9 @@ private fun PeersList(
         }
         PrimaryTabRow(
             selectedTabIndex = tab,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 8.dp)
         ) {
             Tab(
                 selected = tab == 0,
