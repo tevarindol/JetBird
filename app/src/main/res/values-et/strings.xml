@@ -109,7 +109,7 @@
     <string name="warning">Hoiatus</string>
     <string name="welcome_jetbird">Tere tulemast kasutama JetBirdi!</string>
     <string name="your_overrides">Sinu sürjutamised: %1$s</string>
-    <string name="reconnect_on_route_changes_warning">Automaatne uuesti ühendamine peatab VPNi hetkeks ja sõltuvalt sinu seadme seadistustest ei pruugi võrguliiklus sel ajal olla blokeeritud.</string>
+    <string name="reconnect_on_route_changes_warning">Automaatne uuesti ühendamine peatab VPNi hetkeks ja sõltuvalt sinu nutiseadme seadistustest ei pruugi võrguliiklus sel ajal olla blokeeritud.</string>
     <string name="permissive_rosenpass_description">Luba ühendada Rosenpassi mittekasutavaid võrdõigusvõrgu sõlmesid</string>
     <string name="reconnect_on_route_changes_description">Ruutingu muutumisel ühenda automaatselt uuesti</string>
     <string name="login_expired">Sisselogimine on aegunud - autentimiseks palun loo ühendus uuesti</string>
