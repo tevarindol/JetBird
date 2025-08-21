@@ -404,10 +404,7 @@ private fun PeersList(
                         item {
                             Spacer(Modifier.height(8.dp))
                         }
-                        items(
-                            networks,
-                            key = { network -> network.network.ifEmpty { network.hashCode() } }
-                        ) { network ->
+                        items(networks) { network ->
                             ConnectionCard(
                                 title = network.name,
                                 description = network.network,
