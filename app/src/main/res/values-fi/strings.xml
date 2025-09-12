@@ -113,4 +113,11 @@
     <string name="peer_info">Katso sisään</string>
     <string name="peers_connected">%1$d sellaisten %2$d ikäisensä yhdistetty</string>
     <string name="permissive_rosenpass_description">Anna muiden kuin rosen pass-vertaisten muodostaa yhteys</string>
+    <string name="block_inbound">Estä saapuvat yhteydet</string>
+    <string name="block_inbound_description">Ohittaa kaikki hallintapalvelimelta vastaanotetut säännöt</string>
+    <string name="copy">Kopioi</string>
+    <string name="firewall">Palomuuri</string>
+    <string name="get_started">Aloita</string>
+    <string name="networks">Verkostot</string>
+    <string name="connect_to_see_networks">Yhdistä nähdäksesi verkot</string>
 </resources>
