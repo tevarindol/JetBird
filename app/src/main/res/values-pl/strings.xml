@@ -121,4 +121,21 @@
     <string name="use_setup_key">Użyj klawisza setup</string>
     <string name="welcome_jetbird">Witamy w JetBird!</string>
     <string name="login_expired">Login wygasł - połącz się ponownie w celu ponownego uwierzytelnienia</string>
+    <string name="block_inbound">Blokuj połączenia przychodzące</string>
+    <string name="block_inbound_description">Nadpisuje wszelkie polityki otrzymane z serwera zarządzania</string>
+    <string name="client_routes">Trasy klientów</string>
+    <string name="client_routes_description">Przetwarzanie tras klientów otrzymanych z serwera zarządzającego</string>
+    <string name="connect_to_see_networks">Połącz się, aby zobaczyć sieci</string>
+    <string name="copy">Kopia</string>
+    <string name="disconnecting">Rozłączanie</string>
+    <string name="firewall">Firewall</string>
+    <string name="get_started">Rozpocznij</string>
+    <string name="idle">Bezczynność</string>
+    <string name="lazy_connections">Leniwe połączenia</string>
+    <string name="lazy_connections_description">Nawiązywanie połączeń z peerami na żądanie</string>
+    <string name="networks">Sieci</string>
+    <string name="peers">Peery</string>
+    <string name="server_routes">Trasy serwera</string>
+    <string name="server_routes_description">Działaj jako router dla tras serwerowych</string>
+    <string name="ssh_description">Zezwalaj na połączenia SSH do tego urządzenia</string>
 </resources>
