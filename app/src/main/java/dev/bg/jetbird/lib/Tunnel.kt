@@ -11,6 +11,7 @@ import io.netbird.android.Android
 import io.netbird.android.Client
 import io.netbird.android.ConnectionListener
 import io.netbird.android.DNSList
+import io.netbird.android.EnvList
 import io.netbird.android.NetworkArray
 import io.netbird.android.NetworkChangeListener
 import io.netbird.android.PeerInfoArray
@@ -82,14 +83,22 @@ class Tunnel(
                 notifyServiceStateListeners(true)
                 if (urlOpener == null) {
                     dnsWatch.registerNetworkCallback()
-                    client.runWithoutLogin(dnsWatch.getActiveDns()) {
-                        log("Netbird DNS ready")
-                    }
+                    client.runWithoutLogin(
+                        dnsWatch.getActiveDns(),
+                        {
+                            log("Netbird DNS ready")
+                        },
+                        EnvList()
+                    )
                 } else {
                     dnsWatch.registerNetworkCallback()
-                    client.run(urlOpener, dnsWatch.getActiveDns()) {
-                        log("Netbird DNS ready")
-                    }
+                    client.run(urlOpener,
+                        dnsWatch.getActiveDns(),
+                        {
+                            log("Netbird DNS ready")
+                        },
+                        EnvList()
+                    )
                 }
             } catch (e: Exception) {
                 notifyError(e)

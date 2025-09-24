@@ -122,7 +122,15 @@ fun HomeScreen(
         }
     }
 
-    val loginListener = URLOpener { url -> uriHandler.openUri(url) }
+    val loginListener = object : URLOpener {
+        override fun onLoginSuccess() {}
+
+        override fun open(uri: String?) {
+            uri?.let {
+                uriHandler.openUri(it)
+            }
+        }
+    }
 
     Surface(
         modifier = Modifier.fillMaxSize(),

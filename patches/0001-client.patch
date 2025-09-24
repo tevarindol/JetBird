@@ -1,5 +1,5 @@
 diff --git a/client/android/client.go b/client/android/client.go
-index c0524656..23a66eb1 100644
+index d2d0c37f..ef080c45 100644
 --- a/client/android/client.go
 +++ b/client/android/client.go
 @@ -3,7 +3,9 @@
@@ -9,10 +9,21 @@ index c0524656..23a66eb1 100644
 +	"bytes"
  	"context"
 +	"io"
+ 	"os"
  	"slices"
  	"sync"
+@@ -17,9 +19,9 @@ import (
+ 	"github.com/netbirdio/netbird/client/internal/peer"
+ 	"github.com/netbirdio/netbird/client/internal/profilemanager"
+ 	"github.com/netbirdio/netbird/client/internal/stdnet"
++	"github.com/netbirdio/netbird/client/net"
+ 	"github.com/netbirdio/netbird/client/system"
+ 	"github.com/netbirdio/netbird/formatter"
+-	"github.com/netbirdio/netbird/client/net"
+ )
  
-@@ -155,14 +157,20 @@ func (c *Client) Stop() {
+ // ConnectionListener export internal Listener for mobile
+@@ -158,14 +160,20 @@ func (c *Client) Stop() {
  
  // SetTraceLogLevel configure the logger to trace level
  func (c *Client) SetTraceLogLevel() {
@@ -33,7 +44,7 @@ index c0524656..23a66eb1 100644
  // PeersList return with the list of the PeerInfos
  func (c *Client) PeersList() *PeerInfoArray {
  
-@@ -170,10 +178,29 @@ func (c *Client) PeersList() *PeerInfoArray {
+@@ -173,10 +181,29 @@ func (c *Client) PeersList() *PeerInfoArray {
  
  	peerInfos := make([]PeerInfo, len(fullStatus.Peers))
  	for n, p := range fullStatus.Peers {
