@@ -549,7 +549,9 @@ private fun ExcludeAppsDialog(
             .toList()
             .filter { p ->
                 (p.flags and ApplicationInfo.FLAG_SYSTEM == 0 && p.packageName != ctx.packageName) ||
-                p.packageName == "com.google.android.projection.gearhead"
+                p.packageName == "com.google.android.projection.gearhead" ||
+                p.packageName == "com.google.android.apps.messaging" ||
+                p.packageName == "com.google.android.gms"
             }
             .sortedBy { it.loadLabel(packageManager).toString() }
     }
