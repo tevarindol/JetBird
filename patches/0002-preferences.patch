@@ -1,13 +1,13 @@
 diff --git a/client/android/preferences.go b/client/android/preferences.go
-index 9a5d6bb2..1fb6357a 100644
+index c3c8eb3f..9320129e 100644
 --- a/client/android/preferences.go
 +++ b/client/android/preferences.go
-@@ -219,6 +219,10 @@ func (p *Preferences) SetBlockInbound(block bool) {
+@@ -307,6 +307,10 @@ func (p *Preferences) SetBlockInbound(block bool) {
  	p.configInput.BlockInbound = &block
  }
  
 +func (p *Preferences) SetLazyConnection(lazy bool) {
-+	p.configInput.LazyConnectionEnabled = &lazy
++	p.configInput.RosenpassEnabled = &lazy
 +}
 +
  // Commit writes out the changes to the config file

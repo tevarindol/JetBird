@@ -1,5 +1,7 @@
 package dev.bg.jetbird.data.model
 
+import io.netbird.android.PeerRoutes
+
 data class Peer(
     val ip: String,
     val fqdn: String,
@@ -13,5 +15,5 @@ data class Peer(
     val bytesRx: Long,
     val latency: Long,
     val rosenpassEnabled: Boolean,
-    val routes: List<String>
+    val peerRoutes: PeerRoutes
 )

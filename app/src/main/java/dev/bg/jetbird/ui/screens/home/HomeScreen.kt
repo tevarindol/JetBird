@@ -125,7 +125,7 @@ fun HomeScreen(
     val loginListener = object : URLOpener {
         override fun onLoginSuccess() {}
 
-        override fun open(uri: String?) {
+        override fun open(uri: String?, userCode: String?) {
             uri?.let {
                 uriHandler.openUri(it)
             }
@@ -449,7 +449,7 @@ private fun PeersList(
                         Text(stringResource(R.string.peer_bytes_tx, peer?.bytesTx.toString()))
                         Text(stringResource(R.string.peer_latency, peer?.latency ?: 0))
                         Text(stringResource(R.string.peer_rosenpass, peer?.rosenpassEnabled ?: false))
-                        Text(stringResource(R.string.routes, peer?.routes?.joinToString().orEmpty()))
+//                        Text(stringResource(R.string.routes, peer?.routes?.joinToString().orEmpty()))
                     }
                 }
             },
@@ -469,7 +469,7 @@ private fun PeersList(
                             append("${ctx.getString(R.string.peer_bytes_tx, peer?.bytesTx.toString())}\n")
                             append("${ctx.getString(R.string.peer_latency, peer?.latency ?: 0)}\n")
                             append("${ctx.getString(R.string.peer_rosenpass, peer?.rosenpassEnabled ?: false)}\n")
-                            append(ctx.getString(R.string.routes, peer?.routes?.joinToString().orEmpty()))
+//                            append(ctx.getString(R.string.routes, peer?.routes?.joinToString().orEmpty()))
                         }
                     )
                 }

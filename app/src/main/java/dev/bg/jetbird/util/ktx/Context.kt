@@ -17,8 +17,9 @@ import androidx.core.app.NotificationManagerCompat
 import dev.bg.jetbird.ExceptionActivity
 import dev.bg.jetbird.MainActivity
 import dev.bg.jetbird.R
+import io.netbird.android.Android
 
-fun Context.getConfigPath(): String = "${filesDir.path}/netbird.cfg"
+fun Context.getProfileManager() = Android.newProfileManager(filesDir.path)
 
 fun Context.hasOtherAlwaysOnVpn(): Boolean {
     val connectivityManager = (getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager)

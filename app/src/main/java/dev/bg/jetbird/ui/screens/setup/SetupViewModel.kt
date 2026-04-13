@@ -1,11 +1,14 @@
 package dev.bg.jetbird.ui.screens.setup
 
+import android.content.Context
 import android.os.Build
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dev.bg.jetbird.repository.PreferencesRepository
 import dev.bg.jetbird.util.IoDispatcher
+import dev.bg.jetbird.util.ktx.getProfileManager
 import io.netbird.android.Android
 import io.netbird.android.ErrListener
 import io.netbird.android.SSOListener
@@ -21,6 +24,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SetupViewModel @Inject constructor(
+    @ApplicationContext private val ctx: Context,
     private val preferencesRepository: PreferencesRepository,
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher
 ): ViewModel() {
@@ -37,10 +41,10 @@ class SetupViewModel @Inject constructor(
     val errors = Channel<String>(Channel.UNLIMITED)
 
     fun checkManagementUrl(
-        configPath: String,
         url: String
     ) {
         _loading.update { true }
+        val configPath = ctx.getProfileManager().activeConfigPath
         val auth = Android.newAuth(configPath, url)
         auth.saveConfigIfSSOSupported(object : SSOListener {
             override fun onSuccess(sso: Boolean) {
@@ -68,12 +72,12 @@ class SetupViewModel @Inject constructor(
     }
 
     fun updateSetupKey(
-        configPath: String,
         managementUrl: String,
         setupKey: String,
         ssoSupported: Boolean = false
     ) {
         viewModelScope.launch(ioDispatcher) {
+            val configPath = ctx.getProfileManager().activeConfigPath
             val auth = Android.newAuth(configPath, managementUrl)
             preferencesRepository.managementUrl = managementUrl
             preferencesRepository.setupKey = setupKey

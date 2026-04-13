@@ -24,7 +24,7 @@ fun PeerInfoArray?.toPeerList(): List<Peer> {
                 bytesRx = peer.bytesRx,
                 latency = peer.latency,
                 rosenpassEnabled = peer.rosenpassEnabled,
-                routes = peer.routes.split(";")
+                peerRoutes = peer.peerRoutes
             )
         )
     }
