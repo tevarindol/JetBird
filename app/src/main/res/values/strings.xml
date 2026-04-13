@@ -55,6 +55,7 @@
     <string name="failed_vpn_permission">User rejected VPN permission</string>
     <string name="fallback_dns">Fallback DNS</string>
     <string name="firewall">Firewall</string>
+    <string name="force_relay_connection">Force relay connection</string>
     <string name="foreground_notification_description">JetBird tunnel is active</string>
     <string name="get_started">Get started</string>
     <string name="get_started_url">To get started please enter your management server URL</string>

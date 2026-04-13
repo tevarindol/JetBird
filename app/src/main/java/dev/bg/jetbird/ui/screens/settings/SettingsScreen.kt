@@ -69,7 +69,7 @@ import dev.bg.jetbird.ui.components.SettingsTile
 import dev.bg.jetbird.ui.components.SettingsTileWithValue
 import dev.bg.jetbird.ui.components.TextFieldAlertDialog
 import dev.bg.jetbird.util.ktx.assertivelyGet
-import dev.bg.jetbird.util.ktx.getConfigPath
+import dev.bg.jetbird.util.ktx.getProfileManager
 import dev.bg.jetbird.util.ktx.navigate
 import dev.bg.jetbird.util.ktx.toStringOrNotSet
 import kotlinx.coroutines.flow.StateFlow
@@ -93,7 +93,7 @@ fun SettingsScreen(
     val state = preferencesState.collectAsStateWithLifecycle().value
 
     fun deleteConfigFile() {
-        val config = File(ctx.getConfigPath())
+        val config = File(ctx.getProfileManager().activeConfigPath)
         try {
             when (config.delete()) {
                 true -> scope.launch { snackbar.showSnackbar(ctx.getString(R.string.removed_netbird_config)) }
@@ -162,7 +162,7 @@ fun SettingsScreen(
                 initialValue = state.preSharedKey,
                 inputType = OutlinedTextFieldInputType.Any,
                 onDismissRequest = { preSharedKeyDialog = false },
-                onEntered = { key -> viewModel.updatePreSharedKey(ctx.getConfigPath(), key) }
+                onEntered = { key -> viewModel.updatePreSharedKey(key) }
             )
             SettingsTileWithValue(
                 title = stringResource(R.string.setup_key),
@@ -172,19 +172,19 @@ fun SettingsScreen(
                 title = stringResource(R.string.lazy_connections),
                 description = stringResource(R.string.lazy_connections_description),
                 checked = state.lazyConnections,
-                onChange = { viewModel.toggleLazyConnections(ctx.getConfigPath(), it) }
+                onChange = { viewModel.toggleLazyConnections(it) }
             )
             SettingsSwitch(
                 title = stringResource(R.string.rosenpass),
                 checked = state.rosenpass,
-                onChange = { viewModel.toggleRosenpass(ctx.getConfigPath(), it) }
+                onChange = { viewModel.toggleRosenpass(it) }
             )
             AnimatedVisibility(state.rosenpass) {
                 SettingsSwitch(
                     title = stringResource(R.string.permissive_rosenpass),
                     description = stringResource(R.string.permissive_rosenpass_description),
                     checked = state.rosenpassPermissive,
-                    onChange = { viewModel.toggleRosenpassPermissive(ctx.getConfigPath(), it) }
+                    onChange = { viewModel.toggleRosenpassPermissive(it) }
                 )
             }
             SettingsSwitch(
@@ -225,35 +225,40 @@ fun SettingsScreen(
                 title = stringResource(R.string.client_routes),
                 description = stringResource(R.string.client_routes_description),
                 checked = state.clientRoutes,
-                onChange = { viewModel.toggleClientRoutes(ctx.getConfigPath(), it) }
+                onChange = { viewModel.toggleClientRoutes(it) }
             )
             SettingsSwitch(
                 title = stringResource(R.string.server_routes),
                 description = stringResource(R.string.server_routes_description),
                 checked = state.serverRoutes,
-                onChange = { viewModel.toggleServerRoutes(ctx.getConfigPath(), it) }
+                onChange = { viewModel.toggleServerRoutes(it) }
+            )
+            SettingsSwitch(
+                title = stringResource(R.string.force_relay_connection),
+                checked = state.forceRelay,
+                onChange = { viewModel.toggleForceRelay(it) }
             )
             SettingsSwitch(
                 title = stringResource(R.string.dns),
                 checked = state.dns,
-                onChange = { viewModel.toggleDNS(ctx.getConfigPath(), it) }
+                onChange = { viewModel.toggleDNS(it) }
             )
             SettingsSwitch(
                 title = stringResource(R.string.firewall),
                 checked = state.firewall,
-                onChange = { viewModel.toggleFirewall(ctx.getConfigPath(), it) }
+                onChange = { viewModel.toggleFirewall(it) }
             )
             SettingsSwitch(
                 title = stringResource(R.string.ssh),
                 description = stringResource(R.string.ssh_description),
                 checked = state.ssh,
-                onChange = { viewModel.toggleSSH(ctx.getConfigPath(), it) }
+                onChange = { viewModel.toggleSSH(it) }
             )
             SettingsSwitch(
                 title = stringResource(R.string.block_inbound),
                 description = stringResource(R.string.block_inbound_description),
                 checked = state.blockInbound,
-                onChange = { viewModel.toggleBlockInbound(ctx.getConfigPath(), it) }
+                onChange = { viewModel.toggleBlockInbound(it) }
             )
             SettingsTile(
                 title = stringResource(R.string.view_config),
@@ -501,7 +506,7 @@ private fun ConfigViewDialog(
 
     val config = remember(state) {
         try {
-            File(ctx.getConfigPath()).readText()
+            File(ctx.getProfileManager().activeConfigPath).readText()
         } catch (e: FileNotFoundException) {
             "NetBird config not found"
         }

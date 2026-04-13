@@ -6,7 +6,8 @@ import dev.bg.jetbird.BuildConfig
 import dev.bg.jetbird.data.model.CIDR
 import dev.bg.jetbird.service.VPNService
 import dev.bg.jetbird.util.calculateTunneledRoutes
-import dev.bg.jetbird.util.ktx.getConfigPath
+import dev.bg.jetbird.util.ktx.getProfileManager
+import dev.bg.jetbird.util.ktx.isLeanback
 import io.netbird.android.Android
 import io.netbird.android.Client
 import io.netbird.android.ConnectionListener
@@ -45,7 +46,6 @@ class Tunnel(
 
     private val scope = CoroutineScope(SupervisorJob())
     private val client: Client = Android.newClient(
-        vpnService.baseContext.getConfigPath(),
         Build.VERSION.SDK_INT.toLong(),
         Build.MODEL,
         "JetBird-${BuildConfig.VERSION_NAME}",
@@ -65,7 +65,9 @@ class Tunnel(
         excludeApps: Set<String>,
         enableRouteOverrides: Boolean,
         overrides: Set<String>,
-        fallbackDns: String?
+        fallbackDns: String?,
+        forceRelay: Boolean,
+        lazyConnection: Boolean
     ) {
         if (isRunning) return
         when (loggingLevel) {
@@ -81,23 +83,33 @@ class Tunnel(
             try {
                 client.setConnectionListener(connectionListener)
                 notifyServiceStateListeners(true)
+                val profileManager = vpnService.baseContext.getProfileManager()
+                val platformFiles = PlatformFiles(profileManager.activeConfigPath, profileManager.activeStateFilePath)
+                val envList = EnvList().apply {
+                    put(Android.getEnvKeyNBForceRelay(), forceRelay.toString())
+                    put(Android.getEnvKeyNBLazyConn(), lazyConnection.toString())
+                }
                 if (urlOpener == null) {
                     dnsWatch.registerNetworkCallback()
                     client.runWithoutLogin(
+                        platformFiles,
                         dnsWatch.getActiveDns(),
                         {
                             log("Netbird DNS ready")
                         },
-                        EnvList()
+                        envList
                     )
                 } else {
                     dnsWatch.registerNetworkCallback()
-                    client.run(urlOpener,
+                    client.run(
+                        platformFiles,
+                        urlOpener,
+                        vpnService.baseContext.isLeanback(),
                         dnsWatch.getActiveDns(),
                         {
                             log("Netbird DNS ready")
                         },
-                        EnvList()
+                        envList
                     )
                 }
             } catch (e: Exception) {

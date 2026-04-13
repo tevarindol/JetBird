@@ -210,7 +210,9 @@ class VPNService: VpnService() {
             excludeApps = preferencesRepository.excludedApps,
             enableRouteOverrides = preferencesRepository.routeOverridesEnabled,
             overrides = preferencesRepository.routeOverrides,
-            fallbackDns = fallbackDns
+            fallbackDns = fallbackDns,
+            forceRelay = preferencesRepository.forceRelay,
+            lazyConnection = preferencesRepository.lazyConnections
         )
     }
 

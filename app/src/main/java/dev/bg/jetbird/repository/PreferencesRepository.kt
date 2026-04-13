@@ -21,6 +21,7 @@ interface PreferencesValues {
     var liveEngineLogging: Boolean
     var clientRoutes: Boolean
     var serverRoutes: Boolean
+    var forceRelay: Boolean
     var dns: Boolean
     var firewall: Boolean
     var ssh: Boolean
@@ -116,6 +117,10 @@ class PreferencesRepositoryImpl @Inject constructor(): PreferencesRepository {
         get() = mmkv.decodeBool(PreferenceKeys.ServerRoutes.key, false)
         set(value) { mmkv.encode(PreferenceKeys.ServerRoutes.key, value) }
 
+    override var forceRelay: Boolean
+        get() = mmkv.decodeBool(PreferenceKeys.ForceRelay.key, false)
+        set(value) { mmkv.encode(PreferenceKeys.ForceRelay.key, value) }
+
     override var dns: Boolean
         get() = mmkv.decodeBool(PreferenceKeys.DNS.key, true)
         set(value) { mmkv.encode(PreferenceKeys.DNS.key, value) }
@@ -189,6 +194,7 @@ class PreferencesRepositoryImpl @Inject constructor(): PreferencesRepository {
             liveEngineLogging = liveEngineLogging,
             clientRoutes = clientRoutes,
             serverRoutes = serverRoutes,
+            forceRelay = forceRelay,
             dns = dns,
             firewall = firewall,
             ssh = ssh,
@@ -220,6 +226,7 @@ data class PreferencesState(
     override var liveEngineLogging: Boolean,
     override var clientRoutes: Boolean,
     override var serverRoutes: Boolean,
+    override var forceRelay: Boolean,
     override var dns: Boolean,
     override var firewall: Boolean,
     override var ssh: Boolean,
@@ -255,6 +262,7 @@ private enum class PreferenceKeys(
     LiveEngineLogging("live_engine_logging"),
     ClientRoutes("client_routes"),
     ServerRoutes("server_routes"),
+    ForceRelay("force_relay"),
     DNS("dns"),
     Firewall("firewall"),
     SSH("ssh"),

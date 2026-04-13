@@ -11,6 +11,7 @@ import dev.bg.jetbird.receiver.BootReceiver
 import dev.bg.jetbird.repository.LogRepository
 import dev.bg.jetbird.repository.PreferencesRepository
 import dev.bg.jetbird.util.IoDispatcher
+import dev.bg.jetbird.util.ktx.getProfileManager
 import io.netbird.android.Preferences
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
@@ -27,11 +28,11 @@ class SettingsViewModel @Inject constructor(
     val state = preferencesRepository.state
 
     fun updatePreSharedKey(
-        configPath: String,
         key: String?
     ) {
         log("Updating pre-shared key to $key in config")
         viewModelScope.launch(ioDispatcher) {
+            val configPath = ctx.getProfileManager().activeConfigPath
             val preferences = Preferences(configPath)
             preferences.preSharedKey = key
             preferences.commit()
@@ -41,11 +42,11 @@ class SettingsViewModel @Inject constructor(
     }
 
     fun toggleLazyConnections(
-        configPath: String,
         enabled: Boolean
     ) {
         log(if (enabled) "Enabling lazy connections in config" else "Disabling lazy connections in config")
         viewModelScope.launch(ioDispatcher) {
+            val configPath = ctx.getProfileManager().activeConfigPath
             val preferences = Preferences(configPath)
             preferences.setLazyConnection(enabled)
             preferences.commit()
@@ -55,28 +56,28 @@ class SettingsViewModel @Inject constructor(
     }
 
     fun toggleRosenpass(
-        configPath: String,
         enabled: Boolean
     ) {
         log(if (enabled) "Enabling rosenpass in config" else "Disabling rosenpass in config")
         viewModelScope.launch(ioDispatcher) {
+            val configPath = ctx.getProfileManager().activeConfigPath
             val preferences = Preferences(configPath)
             preferences.rosenpassEnabled = enabled
             preferences.commit()
             preferencesRepository.rosenpass = enabled
             if (!enabled) {
-                toggleRosenpassPermissive(configPath, false)
+                toggleRosenpassPermissive(false)
             }
             preferencesRepository.updateState()
         }
     }
 
     fun toggleRosenpassPermissive(
-        configPath: String,
         enabled: Boolean
     ) {
         log(if (enabled) "Enabling rosenpass permissive in config" else "Disabling rosenpass permissive in config")
         viewModelScope.launch(ioDispatcher) {
+            val configPath = ctx.getProfileManager().activeConfigPath
             val preferences = Preferences(configPath)
             preferences.rosenpassPermissive = enabled
             preferences.commit()
@@ -121,10 +122,10 @@ class SettingsViewModel @Inject constructor(
     }
 
     fun toggleClientRoutes(
-        configPath: String,
         enabled: Boolean
     ) {
         viewModelScope.launch(ioDispatcher) {
+            val configPath = ctx.getProfileManager().activeConfigPath
             val preferences = Preferences(configPath)
             preferences.disableClientRoutes = !enabled
             preferences.commit()
@@ -134,10 +135,10 @@ class SettingsViewModel @Inject constructor(
     }
 
     fun toggleServerRoutes(
-        configPath: String,
         enabled: Boolean
     ) {
         viewModelScope.launch(ioDispatcher) {
+            val configPath = ctx.getProfileManager().activeConfigPath
             val preferences = Preferences(configPath)
             preferences.disableServerRoutes = !enabled
             preferences.commit()
@@ -146,11 +147,20 @@ class SettingsViewModel @Inject constructor(
         }
     }
 
-    fun toggleDNS(
-        configPath: String,
+    fun toggleForceRelay(
         enabled: Boolean
     ) {
         viewModelScope.launch(ioDispatcher) {
+            preferencesRepository.forceRelay = enabled
+            preferencesRepository.updateState()
+        }
+    }
+
+    fun toggleDNS(
+        enabled: Boolean
+    ) {
+        viewModelScope.launch(ioDispatcher) {
+            val configPath = ctx.getProfileManager().activeConfigPath
             val preferences = Preferences(configPath)
             preferences.disableDNS = !enabled
             preferences.commit()
@@ -160,10 +170,10 @@ class SettingsViewModel @Inject constructor(
     }
 
     fun toggleFirewall(
-        configPath: String,
         enabled: Boolean
     ) {
         viewModelScope.launch(ioDispatcher) {
+            val configPath = ctx.getProfileManager().activeConfigPath
             val preferences = Preferences(configPath)
             preferences.disableFirewall = !enabled
             preferences.commit()
@@ -173,10 +183,10 @@ class SettingsViewModel @Inject constructor(
     }
 
     fun toggleSSH(
-        configPath: String,
         enabled: Boolean
     ) {
         viewModelScope.launch(ioDispatcher) {
+            val configPath = ctx.getProfileManager().activeConfigPath
             val preferences = Preferences(configPath)
             preferences.serverSSHAllowed = enabled
             preferences.commit()
@@ -186,10 +196,10 @@ class SettingsViewModel @Inject constructor(
     }
 
     fun toggleBlockInbound(
-        configPath: String,
         enabled: Boolean
     ) {
         viewModelScope.launch(ioDispatcher) {
+            val configPath = ctx.getProfileManager().activeConfigPath
             val preferences = Preferences(configPath)
             preferences.blockInbound = enabled
             preferences.commit()

@@ -52,7 +52,6 @@ import dev.bg.jetbird.data.LayoutType
 import dev.bg.jetbird.ui.components.AppLanguageDropDown
 import dev.bg.jetbird.ui.components.LoadingButton
 import dev.bg.jetbird.util.ktx.clearAndNavigate
-import dev.bg.jetbird.util.ktx.getConfigPath
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onEach
@@ -106,11 +105,10 @@ fun SetupScreen(
                         viewModel.updateManagementUrl(managementUrl, ssoSupport ?: false)
                     },
                     checkManagementUrl = { managementUrl ->
-                        viewModel.checkManagementUrl(ctx.getConfigPath(), managementUrl)
+                        viewModel.checkManagementUrl(managementUrl)
                     },
                     updateSetupKey = { managementUrl, setupKey ->
                         viewModel.updateSetupKey(
-                            configPath = ctx.getConfigPath(),
                             managementUrl = managementUrl,
                             setupKey = setupKey,
                             ssoSupported = ssoSupport ?: false
@@ -165,11 +163,10 @@ fun SetupScreen(
                                 viewModel.updateManagementUrl(managementUrl, ssoSupport ?: false)
                             },
                             checkManagementUrl = { managementUrl ->
-                                viewModel.checkManagementUrl(ctx.getConfigPath(), managementUrl)
+                                viewModel.checkManagementUrl(managementUrl)
                             },
                             updateSetupKey = { managementUrl, setupKey ->
                                 viewModel.updateSetupKey(
-                                    configPath = ctx.getConfigPath(),
                                     managementUrl = managementUrl,
                                     setupKey = setupKey,
                                     ssoSupported = ssoSupport ?: false
@@ -197,11 +194,10 @@ fun SetupScreen(
                         viewModel.updateManagementUrl(managementUrl, ssoSupport == true)
                     },
                     checkManagementUrl = { managementUrl ->
-                        viewModel.checkManagementUrl(ctx.getConfigPath(), managementUrl)
+                        viewModel.checkManagementUrl(managementUrl)
                     },
                     updateSetupKey = { managementUrl, setupKey ->
                         viewModel.updateSetupKey(
-                            configPath = ctx.getConfigPath(),
                             managementUrl = managementUrl,
                             setupKey = setupKey,
                             ssoSupported = ssoSupport == true
