@@ -63,7 +63,7 @@
     <string name="lazy_connections_description">Conéctese a pares bajo demanda</string>
     <string name="log">Registro</string>
     <string name="log_empty">Sin entradas de registro</string>
-    <string name="logging">Registro</string>
+    <string name="logging">Registrando</string>
     <string name="management_server">Servidor de administración</string>
     <string name="management_url">URL del Servidor de Administración</string>
     <string name="networks">Redes</string>
@@ -130,4 +130,5 @@
     <string name="enable_verbose_logging_description_netbird">Aumentar la verbosidad de los registros de NetBird</string>
     <string name="engine_logging_warning">El cliente NetBird puede producir muchos registros con el tiempo.\n\nEstos registros se almacenan en la memoria y pueden hacer que su teléfono se ralentice o que JetBird se bloquee.\n\nTambién puede deshabilitar el registro en vivo y volcar los registros posteriormente desde la pantalla de registro.</string>
     <string name="login_expired">Inicio de sesión caducado: conéctese nuevamente para volver a autenticarse</string>
+    <string name="force_relay_connection">conexión del relé forzada</string>
 </resources>
