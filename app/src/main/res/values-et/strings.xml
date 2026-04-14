@@ -69,7 +69,7 @@
     <string name="permissive_rosenpass">Lubav Rosenpass</string>
     <string name="pre_shared_key">Eeljagatud võti</string>
     <string name="reconnect_on_route_changes">Ruutingu muutmisel ühenda uuesti</string>
-    <string name="relay">Edastaja: %1$s</string>
+    <string name="relay">Edastusserver: %1$s</string>
     <string name="removed_netbird_config">Eemaldasime Netbirdi konfiguratsioonifaili</string>
     <string name="requires_vpn_permission">JetBird vajab, et lubaksid selles seadmes VPN-ühendust luua.</string>
     <string name="reset_app">Lähtesta rakendus</string>
@@ -130,4 +130,5 @@
     <string name="peers">Võrdõigusvõrgu sõlmed</string>
     <string name="networks">Võrgud</string>
     <string name="connect_to_see_networks">Võrkude nägemiseks ühenda</string>
+    <string name="force_relay_connection">Kasuta sundkorras ühendust edastusserver kaudu</string>
 </resources>
