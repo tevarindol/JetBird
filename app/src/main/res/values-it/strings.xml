@@ -88,9 +88,9 @@
     <string name="route_override_description">Sovrascrivi le routes NetBird</string>
     <string name="route_selector">Selettore delle route</string>
     <string name="route_selector_description">%1$d sostituzioni delle route</string>
-    <string name="routes">Routes: %1$s</string>
+    <string name="routes">Rotte: %1$s</string>
     <string name="save_log">Salva log</string>
-    <string name="server_routes">Server routes</string>
+    <string name="server_routes">Rotte del server</string>
     <string name="server_routes_description">Fungere da router per le rotte del server</string>
     <string name="settings">Impostazioni</string>
     <string name="setup_key">Setup key</string>
@@ -106,7 +106,7 @@
     <string name="start_on_reboot_description">Prova automaticamente ad avviare JetBird al riavvio del dispositivo</string>
     <string name="successfully_changed_management_server">Management server modificato correttamente</string>
     <string name="unknown">Sconosciuto</string>
-    <string name="upstream_routes">Upstream routes: 0.0.0.0/0, ::/0</string>
+    <string name="upstream_routes">Rotte upstream: 0.0.0.0/0, ::/0</string>
     <string name="use_setup_key">Usa setup key</string>
     <string name="use_sso">Usa SSO</string>
     <string name="view_config">Vedi configurazioni</string>
@@ -130,4 +130,5 @@
     <string name="unknown_error_see_logs">Errore sconosciuto - consulta i log per maggiori informazioni</string>
     <string name="permissive_rosenpass">Rosenpass permissiva</string>
     <string name="permissive_rosenpass_description">Permetti ai peer non Rosenpass di connettersi</string>
+    <string name="force_relay_connection">Forza la connessione relay</string>
 </resources>
