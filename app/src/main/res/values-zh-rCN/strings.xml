@@ -141,4 +141,5 @@
     <string name="connect_to_see_networks">连接以查看网络</string>
     <string name="networks">网络</string>
     <string name="peers">对等节点</string>
+    <string name="force_relay_connection">强制中继连接</string>
 </resources>

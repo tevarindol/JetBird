@@ -115,4 +115,18 @@
     <string name="login_expired">Inloggningen har upphört att gälla - anslut igen för att autentisera på nytt</string>
     <string name="get_started">Kom igång</string>
     <string name="block_inbound">Blockera inkommande anslutningar</string>
+    <string name="block_inbound_description">Åsidosätter alla policyer som tas emot från hanteringsservern</string>
+    <string name="client_routes">Klientrutter</string>
+    <string name="client_routes_description">Processklientrutter mottagna från hanteringsservern</string>
+    <string name="connect_to_see_networks">Anslut för att se nätverk</string>
+    <string name="copy">Kopiera</string>
+    <string name="disconnecting">Frånkopplar</string>
+    <string name="firewall">Brandvägg</string>
+    <string name="force_relay_connection">Tvinga reläanslutning</string>
+    <string name="idle">Inaktiv</string>
+    <string name="lazy_connections">Lata anslutningar</string>
+    <string name="networks">Nätverk</string>
+    <string name="server_routes">Serverrutter</string>
+    <string name="server_routes_description">Fungera som en router för serverrutter</string>
+    <string name="ssh_description">Tillåt SSH-anslutningar till den här enheten</string>
 </resources>

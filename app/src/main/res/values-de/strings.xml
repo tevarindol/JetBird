@@ -138,4 +138,5 @@
     <string name="connect_to_see_networks">Verbinden um Netzwerke zu sehen</string>
     <string name="peers">Gegenstellen</string>
     <string name="server_routes_description">Als Router für Serverrouten agieren</string>
+    <string name="force_relay_connection">Weiterleitungsverbindung erzwingen</string>
 </resources>
