@@ -222,6 +222,13 @@ class SettingsViewModel @Inject constructor(
         }
     }
 
+    fun toggleInvertExclusion(enabled: Boolean) {
+        viewModelScope.launch(ioDispatcher) {
+            preferencesRepository.invertExclusion = enabled
+            preferencesRepository.updateState()
+        }
+    }
+
     fun updateFallbackDns(dns: String?) {
         viewModelScope.launch(ioDispatcher) {
             preferencesRepository.fallbackDns = dns

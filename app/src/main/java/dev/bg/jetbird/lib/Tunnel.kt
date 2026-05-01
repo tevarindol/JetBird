@@ -1,5 +1,7 @@
 package dev.bg.jetbird.lib
 
+import android.content.pm.ApplicationInfo
+import android.content.pm.PackageManager
 import android.os.Build
 import android.system.OsConstants
 import dev.bg.jetbird.BuildConfig
@@ -55,6 +57,7 @@ class Tunnel(
     )
     private var isRunning = false
     private var excludedApps = emptySet<String>()
+    private var invertExclusion = false
     private var routeOverrideEnabled = false
     private var routeOverrides = emptySet<String>()
 
@@ -63,6 +66,7 @@ class Tunnel(
         urlOpener: URLOpener?,
         loggingLevel: EngineLoggingLevel,
         excludeApps: Set<String>,
+        invertExcludeApps: Boolean,
         enableRouteOverrides: Boolean,
         overrides: Set<String>,
         fallbackDns: String?,
@@ -76,6 +80,7 @@ class Tunnel(
             EngineLoggingLevel.None -> client.disableLogs()
         }
         excludedApps = excludeApps
+        invertExclusion = invertExcludeApps
         routeOverrideEnabled = enableRouteOverrides
         routeOverrides = overrides
         dnsWatch.updateFallbackDns(fallbackDns)
@@ -84,7 +89,11 @@ class Tunnel(
                 client.setConnectionListener(connectionListener)
                 notifyServiceStateListeners(true)
                 val profileManager = vpnService.baseContext.getProfileManager()
-                val platformFiles = PlatformFiles(profileManager.activeConfigPath, profileManager.activeStateFilePath)
+                val platformFiles = PlatformFiles(
+                    profileManager.activeConfigPath,
+                    profileManager.activeStateFilePath,
+                    vpnService.baseContext.cacheDir.absolutePath
+                )
                 val envList = EnvList().apply {
                     put(Android.getEnvKeyNBForceRelay(), forceRelay.toString())
                     put(Android.getEnvKeyNBLazyConn(), lazyConnection.toString())
@@ -232,12 +241,47 @@ class Tunnel(
                             }
                         }
                     }
-                    excludedApps.forEach { packageName ->
-                        try {
-                            log("Excluding $packageName from tunnel")
-                            addDisallowedApplication(packageName)
-                        } catch (e: Exception) {
-                            log("Failed to exclude $packageName from tunnel: $e")
+                    if (invertExclusion) {
+                        // Include
+                        // For some reason addAllowedApplication seems to block DNS
+                        // Calculate the inverse and exclude all other apps
+                        val apps = vpnService
+                            .baseContext
+                            .packageManager
+                            .getInstalledApplications(PackageManager.GET_META_DATA)
+                            .toList()
+                            .filter { p ->
+                                (p.flags and ApplicationInfo.FLAG_SYSTEM == 0 && p.packageName != vpnService.baseContext.packageName) ||
+                                        p.packageName == "com.google.android.projection.gearhead" ||
+                                        p.packageName == "com.google.android.apps.messaging" ||
+                                        p.packageName == "com.google.android.gms"
+                            }
+                        val exclude = apps.filter { p -> !excludedApps.contains(p.packageName) }.map { p -> p.packageName }
+                        val difference = apps.filter { p -> !exclude.contains(p.packageName) }.map { p -> p.packageName }
+                        exclude.forEach { packageName ->
+                            try {
+                                addDisallowedApplication(packageName)
+                            } catch (e: Exception) {
+                                log("Failed to exclude $packageName from the tunnel: $e")
+                            }
+                        }
+                        if (difference.isNotEmpty()) {
+                            difference.forEach { packageName ->
+                                log("Including $packageName in the tunnel")
+                            }
+                            log("Excluding all other packages from the tunnel")
+                        } else {
+                            log("Including all apps in tunnel")
+                        }
+                    } else {
+                        // Exclude
+                        excludedApps.forEach { packageName ->
+                            try {
+                                log("Excluding $packageName from tunnel")
+                                addDisallowedApplication(packageName)
+                            } catch (e: Exception) {
+                                log("Failed to exclude $packageName from tunnel: $e")
+                            }
                         }
                     }
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {

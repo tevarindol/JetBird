@@ -28,6 +28,9 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.SegmentedButton
+import androidx.compose.material3.SegmentedButtonDefaults
+import androidx.compose.material3.SingleChoiceSegmentedButtonRow
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -338,16 +341,22 @@ fun SettingsScreen(
             )
             SettingsTile(
                 title = stringResource(R.string.exclude_apps),
-                description = stringResource(R.string.exclude_apps_description, state.excludedApps.size),
+                description = if (state.invertExclusion) {
+                    stringResource(R.string.exclude_apps_inverted_description, state.excludedApps.size)
+                } else {
+                    stringResource(R.string.exclude_apps_description, state.excludedApps.size)
+                },
                 onClick = { excludeAppsDialog = true }
             )
             ExcludeAppsDialog(
                 open = excludeAppsDialog,
                 initialPackages = state.excludedApps,
+                invertState = state.invertExclusion,
                 onDismissRequest = { excludeAppsDialog = false },
-                onSelected = { packageNames ->
+                onSelected = { packageNames, invert ->
                     excludeAppsDialog = false
                     viewModel.updateExcludedApps(packageNames)
+                    viewModel.toggleInvertExclusion(invert)
                 }
             )
             SettingsTile(
@@ -541,8 +550,9 @@ private fun ConfigViewDialog(
 private fun ExcludeAppsDialog(
     open: Boolean,
     initialPackages: Set<String>,
+    invertState: Boolean,
     onDismissRequest: () -> Unit,
-    onSelected: (packageNames: Set<String>) -> Unit
+    onSelected: (packageNames: Set<String>, invert: Boolean) -> Unit
 ) {
     val ctx = LocalContext.current
 
@@ -571,6 +581,7 @@ private fun ExcludeAppsDialog(
             }.toTypedArray()
         )
     }
+    var invert by remember { mutableStateOf(invertState) }
 
     fun toggleSelected(app: ApplicationInfo) {
         if (!selectedPackages.any { p -> p.packageName == app.packageName }) {
@@ -588,6 +599,34 @@ private fun ExcludeAppsDialog(
                 LazyColumn(
                     Modifier.fillMaxSize()
                 ) {
+                    item {
+                        SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth()) {
+                            SegmentedButton(
+                                shape = SegmentedButtonDefaults.itemShape(
+                                    index = 0,
+                                    count = 2
+                                ),
+                                selected = invert,
+                                onClick = {
+                                    invert = true
+                                }
+                            ) {
+                                Text(stringResource(R.string.include))
+                            }
+                            SegmentedButton(
+                                shape = SegmentedButtonDefaults.itemShape(
+                                    index = 1,
+                                    count = 2
+                                ),
+                                selected = !invert,
+                                onClick = {
+                                    invert = false
+                                }
+                            ) {
+                                Text(stringResource(R.string.exclude))
+                            }
+                        }
+                    }
                     items(installedPackages) {
                         Row(
                             Modifier
@@ -627,10 +666,14 @@ private fun ExcludeAppsDialog(
             confirmButton = {
                 Button(
                     onClick = {
-                        onSelected(selectedPackages.map { it.packageName }.toSet())
+                        onSelected(selectedPackages.map { it.packageName }.toSet(), invert)
                     }
                 ) {
-                    Text(stringResource(R.string.exclude))
+                    if (invert) {
+                        Text(stringResource(R.string.include))
+                    } else {
+                        Text(stringResource(R.string.exclude))
+                    }
                 }
             }
         )

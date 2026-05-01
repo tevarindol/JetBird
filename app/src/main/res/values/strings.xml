@@ -48,8 +48,9 @@
     <string name="engine_logging_warning">The NetBird client can produce a lot of logs over time.\n\nThese logs are stored in memory and may cause your phone to slow down or JetBird to crash.\n\nYou can also disable live logging and dump the logs afterwards from the log screen.</string>
     <string name="example_cidr" translatable="false">192.168.1.0/24</string>
     <string name="exclude">Exclude</string>
-    <string name="exclude_apps">Exclude apps from tunnel</string>
+    <string name="exclude_apps">Include/exclude apps from tunnel</string>
     <string name="exclude_apps_description">%1$d apps excluded</string>
+    <string name="exclude_apps_inverted_description">%1$d apps included</string>
     <string name="failed_remove_netbird_config">Failed to remove NetBird configuration file</string>
     <string name="failed_to_change_management_server">Failed to change management server</string>
     <string name="failed_vpn_permission">User rejected VPN permission</string>
@@ -61,6 +62,7 @@
     <string name="get_started_url">To get started please enter your management server URL</string>
     <string name="grant_permission">Grant permission</string>
     <string name="idle">Idle</string>
+    <string name="include">Include</string>
     <string name="jetbird_exception">Oh no! JetBird encountered an error!</string>
     <string name="jetbird_exception_description">Tap for more information</string>
     <string name="lazy_connections">Lazy connections</string>

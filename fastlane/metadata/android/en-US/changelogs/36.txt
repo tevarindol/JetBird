@@ -1,0 +1,3 @@
+- Add app inclusion list
+- Update NetBird to v0.70.4
+- Update locales

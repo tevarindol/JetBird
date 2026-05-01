@@ -208,6 +208,7 @@ class VPNService: VpnService() {
             urlOpener = urlOpener,
             loggingLevel = engineLoggingLevel,
             excludeApps = preferencesRepository.excludedApps,
+            invertExcludeApps = preferencesRepository.invertExclusion,
             enableRouteOverrides = preferencesRepository.routeOverridesEnabled,
             overrides = preferencesRepository.routeOverrides,
             fallbackDns = fallbackDns,

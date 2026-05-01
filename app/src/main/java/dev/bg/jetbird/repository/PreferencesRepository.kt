@@ -31,6 +31,7 @@ interface PreferencesValues {
     var logging: Boolean
     var verboseLogging: Boolean
     var excludedApps: Set<String>
+    var invertExclusion: Boolean
     var routeOverridesEnabled: Boolean
     var routeOverrides: Set<String>
     var fallbackDns: String?
@@ -155,6 +156,10 @@ class PreferencesRepositoryImpl @Inject constructor(): PreferencesRepository {
         get() = mmkv.decodeStringSet(PreferenceKeys.ExcludedApps.key, emptySet<String>())!!.toSet()
         set(value) { mmkv.encode(PreferenceKeys.ExcludedApps.key, value) }
 
+    override var invertExclusion: Boolean
+        get() = mmkv.decodeBool(PreferenceKeys.InvertExclusion.key, false)
+        set(value) { mmkv.encode(PreferenceKeys.InvertExclusion.key, value) }
+
     override var routeOverridesEnabled: Boolean
         get() = mmkv.decodeBool(PreferenceKeys.RouteOverridesEnabled.key, false)
         set(value) { mmkv.encode(PreferenceKeys.RouteOverridesEnabled.key, value) }
@@ -202,6 +207,7 @@ class PreferencesRepositoryImpl @Inject constructor(): PreferencesRepository {
             logging = logging,
             verboseLogging = verboseLogging,
             excludedApps = excludedApps,
+            invertExclusion = invertExclusion,
             routeOverridesEnabled = routeOverridesEnabled,
             routeOverrides = routeOverrides,
             fallbackDns = fallbackDns,
@@ -236,6 +242,7 @@ data class PreferencesState(
     override var logging: Boolean,
     override var verboseLogging: Boolean,
     override var excludedApps: Set<String>,
+    override var invertExclusion: Boolean,
     override var routeOverridesEnabled: Boolean,
     override var routeOverrides: Set<String>,
     override var fallbackDns: String?,
@@ -272,6 +279,7 @@ private enum class PreferenceKeys(
     Logging("logging"),
     VerboseLogging("verbose_logging"),
     ExcludedApps("excluded_apps"),
+    InvertExclusion("invert_exclusion"),
     RouteOverridesEnabled("route_overrides_enabled"),
     RouteOverrides("route_overrides"),
     FallbackDNS("fallback_dns"),
