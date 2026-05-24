@@ -4,6 +4,7 @@ import io.netbird.android.PeerRoutes
 
 data class Peer(
     val ip: String,
+    val ipv6: String,
     val fqdn: String,
     val connectionStatus: String,
     val connectionStatusUpdate: String,

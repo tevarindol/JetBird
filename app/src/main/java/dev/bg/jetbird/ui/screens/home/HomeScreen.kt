@@ -438,6 +438,7 @@ private fun PeersList(
                 SelectionContainer {
                     Column {
                         Text(stringResource(R.string.peer_ip, peer?.ip.toString()))
+                        Text(stringResource(R.string.peer_ipv6, peer?.ipv6.toString()))
                         Text(stringResource(R.string.peer_fqdn, peer?.fqdn.toString()))
                         Text(stringResource(R.string.peer_connection_status, peer?.connectionStatus.toString()))
                         Text(stringResource(R.string.peer_connection_status_update, peer?.connectionStatusUpdate ?: 0))
@@ -459,6 +460,7 @@ private fun PeersList(
                     clipboardManager.setText(
                         buildAnnotatedString {
                             append("${ctx.getString(R.string.peer_ip, peer?.ip.toString())}\n")
+                            append("${ctx.getString(R.string.peer_ipv6, peer?.ipv6.toString())}\n")
                             append("${ctx.getString(R.string.peer_fqdn, peer?.fqdn.toString())}\n")
                             append("${ctx.getString(R.string.peer_connection_status, peer?.connectionStatus.toString())}\n")
                             append("${ctx.getString(R.string.peer_connection_status_update, peer?.connectionStatusUpdate ?: 0)}\n")

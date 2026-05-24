@@ -1,5 +1,5 @@
 diff --git a/client/android/client.go b/client/android/client.go
-index d35bf427..8658e013 100644
+index 99ccdf393..c19e63a26 100644
 --- a/client/android/client.go
 +++ b/client/android/client.go
 @@ -5,6 +5,7 @@ package android
@@ -10,7 +10,7 @@ index d35bf427..8658e013 100644
  	"os"
  	"slices"
  	"sync"
-@@ -187,14 +188,20 @@ func (c *Client) RenewTun(fd int) error {
+@@ -285,14 +286,20 @@ func (c *Client) DebugBundle(platformFiles PlatformFiles, anonymize bool) (strin
  
  // SetTraceLogLevel configure the logger to trace level
  func (c *Client) SetTraceLogLevel() {
@@ -31,41 +31,51 @@ index d35bf427..8658e013 100644
  // PeersList return with the list of the PeerInfos
  func (c *Client) PeersList() *PeerInfoArray {
  
-@@ -205,7 +212,20 @@ func (c *Client) PeersList() *PeerInfoArray {
+@@ -301,11 +308,24 @@ func (c *Client) PeersList() *PeerInfoArray {
+ 	peerInfos := make([]PeerInfo, len(fullStatus.Peers))
+ 	for n, p := range fullStatus.Peers {
  		pi := PeerInfo{
- 			p.IP,
- 			p.FQDN,
--			int(p.ConnStatus),
-+			p.ConnStatus.String(),
-+			p.PubKey,
-+			p.ConnStatusUpdate.Unix(),
-+			p.Relayed,
-+			p.RelayServerAddress,
-+			p.LocalIceCandidateType,
-+			p.RemoteIceCandidateType,
-+			p.LocalIceCandidateEndpoint,
-+			p.RemoteIceCandidateEndpoint,
-+			p.LastWireguardHandshake.Unix(),
-+			p.BytesTx,
-+			p.BytesRx,
-+			p.Latency.Milliseconds(),
-+			p.RosenpassEnabled,
- 			PeerRoutes{routes: maps.Keys(p.GetRoutes())},
+-			IP:         p.IP,
+-			IPv6:       p.IPv6,
+-			FQDN:       p.FQDN,
+-			ConnStatus: int(p.ConnStatus),
+-			Routes:     PeerRoutes{routes: maps.Keys(p.GetRoutes())},
++			IP:                         p.IP,
++			IPv6:                       p.IPv6,
++			FQDN:                       p.FQDN,
++			ConnStatus:                 p.ConnStatus.String(),
++			PubKey:                     p.PubKey,
++			ConnStatusUpdate:           p.ConnStatusUpdate.Unix(),
++			Relayed:                    p.Relayed,
++			RelayServerAddress:         p.RelayServerAddress,
++			LocalIceCandidateType:      p.LocalIceCandidateType,
++			RemoteIceCandidateType:     p.RemoteIceCandidateType,
++			LocalIceCandidateEndpoint:  p.LocalIceCandidateEndpoint,
++			RemoteIceCandidateEndpoint: p.RemoteIceCandidateEndpoint,
++			LastWireguardHandshake:     p.LastWireguardHandshake.Unix(),
++			BytesTx:                    p.BytesTx,
++			BytesRx:                    p.BytesRx,
++			Latency:                    p.Latency.Milliseconds(),
++			RosenpassEnabled:           p.RosenpassEnabled,
++			Routes:                     PeerRoutes{routes: maps.Keys(p.GetRoutes())},
  		}
  		peerInfos[n] = pi
+ 	}
 diff --git a/client/android/peer_notifier.go b/client/android/peer_notifier.go
-index 4ec22f3a..e39bc53f 100644
+index c2595e574..41d37f741 100644
 --- a/client/android/peer_notifier.go
 +++ b/client/android/peer_notifier.go
-@@ -13,10 +13,23 @@ const (
+@@ -13,11 +13,24 @@ const (
  
  // PeerInfo describe information about the peers. It designed for the UI usage
  type PeerInfo struct {
 -	IP         string
+-	IPv6       string
 -	FQDN       string
 -	ConnStatus int
 -	Routes     PeerRoutes
 +	IP                         string
++	IPv6                       string
 +	FQDN                       string
 +	ConnStatus                 string
 +	PubKey                     string

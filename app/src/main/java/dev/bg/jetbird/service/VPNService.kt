@@ -1,5 +1,6 @@
 package dev.bg.jetbird.service
 
+import android.annotation.SuppressLint
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Intent
@@ -50,6 +51,7 @@ import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
 
+@SuppressLint("VpnServicePolicy")
 @AndroidEntryPoint
 class VPNService: VpnService() {
 

@@ -63,6 +63,7 @@
     <string name="grant_permission">Grant permission</string>
     <string name="idle">Idle</string>
     <string name="include">Include</string>
+    <string name="ipv6" translatable="false">IPv6</string>
     <string name="jetbird_exception">Oh no! JetBird encountered an error!</string>
     <string name="jetbird_exception_description">Tap for more information</string>
     <string name="lazy_connections">Lazy connections</string>
@@ -84,6 +85,7 @@
     <string name="peer_fqdn" translatable="false">FQDN: %1$s</string>
     <string name="peer_info">Peer info</string>
     <string name="peer_ip" translatable="false">IP: %1$s</string>
+    <string name="peer_ipv6" translatable="false">IPv6: %1$s</string>
     <string name="peer_last_wireguard_handshake">Last WireGuard handshake: %1$s ago</string>
     <string name="peer_latency">Latency: %1$dms</string>
     <string name="peer_public_key">Public key: %1$s</string>

@@ -55,6 +55,20 @@ class SettingsViewModel @Inject constructor(
         }
     }
 
+    fun toggleIpv6(
+        enabled: Boolean
+    ) {
+        log(if (enabled) "Enabling IPv6" else "Disabling IPv6")
+        viewModelScope.launch(ioDispatcher) {
+            val configPath = ctx.getProfileManager().activeConfigPath
+            val preferences = Preferences(configPath)
+            preferences.disableIPv6 = !enabled
+            preferences.commit()
+            preferencesRepository.ipv6 = enabled
+            preferencesRepository.updateState()
+        }
+    }
+
     fun toggleRosenpass(
         enabled: Boolean
     ) {

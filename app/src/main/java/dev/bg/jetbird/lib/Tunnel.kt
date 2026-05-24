@@ -180,25 +180,45 @@ class Tunnel(
 
     override fun setInterfaceIP(ip: String) {}
 
+    override fun setInterfaceIPv6(ip: String?) {}
+
     override fun configureInterface(
-        cidr: String?,
+        ipv4Cidr: String?,
+        ipv6Cidr: String?,
         mtu: Long,
         dns: String?,
         domains: String?,
         routes: String?
     ): Long {
         return try {
-            log("Adding CIDR block to interface $cidr", verbose = true)
-            if (cidr == null) {
-                log("Netbird sent invalid CIDR block")
+            log("Adding CIDR block to interface $ipv4Cidr", verbose = true)
+            if (ipv4Cidr == null) {
+                log("NetBird sent invalid CIDR block")
                 return 0L
             }
-            val allocatedCidr = CIDR(cidr)
+            val upstreamRoutes = when (routes) {
+                null, "" -> emptyList()
+                else -> routes.split(";")
+            }.toSet()
+            val allocatedIpv6Cidr = when {
+                !ipv6Cidr.isNullOrEmpty() -> CIDR(ipv6Cidr)
+                hasIPv4DefaultRoute(upstreamRoutes) -> CIDR("::/0")
+                else -> null
+            }
+            val allocatedIpv4Cidr = CIDR(ipv4Cidr)
             val builder = vpnService.tunnelBuilder
-                .addAddress(allocatedCidr.address, allocatedCidr.mask)
+                .addAddress(allocatedIpv4Cidr.address, allocatedIpv4Cidr.mask)
                 .allowFamily(OsConstants.AF_INET)
                 .allowFamily(OsConstants.AF_INET6)
                 .setMtu(mtu.toInt())
+                // IPv6 setup
+                .apply {
+                    if (allocatedIpv6Cidr != null) {
+                        log("Adding IPv6 CIDR block to interface $allocatedIpv6Cidr")
+                        addAddress(allocatedIpv6Cidr.address, allocatedIpv6Cidr.mask)
+                    }
+                }
+                // DNS
                 .apply {
                     if (dns.isNullOrEmpty()) {
                         log("DNS null")
@@ -211,6 +231,7 @@ class Tunnel(
                     log("Registering DNS: $dns")
                     addDnsServer(dns)
                 }
+                // Route and app overrides
                 .apply {
                     when (domains) {
                         null, "" -> emptyList()
@@ -219,10 +240,6 @@ class Tunnel(
                         log("Adding search domain: $domain", verbose = true)
                         addSearchDomain(domain)
                     }
-                    val upstreamRoutes = when (routes) {
-                        null, "" -> emptyList()
-                        else -> routes.split(";")
-                    }.toSet()
                     if (upstreamRoutes.isNotEmpty()) {
                         if (routeOverrideEnabled && routeOverrides.isNotEmpty()) {
                             log("Using route overrides")
@@ -298,7 +315,7 @@ class Tunnel(
                 return tun.detachFd().toLong()
             }
         } catch (e: Exception) {
-            log("Failed to create tunnel ${e.message}")
+            log("Failed to create tunnel ${e.message} (${e.cause?.message})")
             0L
         }
     }
@@ -313,5 +330,13 @@ class Tunnel(
 
     override fun onNetworkChanged() {
         log("Network changed")
+    }
+
+    // 9b0f0fa6d1772112ffea1096361bf402426e3b00/tool/src/main/java/io/netbird/client/tool/IFace.java#L166-L173
+    private fun hasIPv4DefaultRoute(routes: Set<String>): Boolean {
+        return routes.any { r ->
+            val cidr = CIDR(r)
+            cidr.address == "0.0.0.0" && cidr.mask == 0
+        }
     }
 }

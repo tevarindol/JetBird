@@ -14,6 +14,7 @@ interface PreferencesValues {
     var preSharedKey: String?
     var setupKey: String?
     var lazyConnections: Boolean
+    var ipv6: Boolean
     var rosenpass: Boolean
     var rosenpassPermissive: Boolean
     var engineLogging: Boolean
@@ -81,6 +82,10 @@ class PreferencesRepositoryImpl @Inject constructor(): PreferencesRepository {
     override var lazyConnections: Boolean
         get() = mmkv.decodeBool(PreferenceKeys.LazyConnections.key, false)
         set(value) { mmkv.encode(PreferenceKeys.LazyConnections.key, value) }
+
+    override var ipv6: Boolean
+        get() = mmkv.decodeBool(PreferenceKeys.IPv6.key, true)
+        set(value) { mmkv.encode(PreferenceKeys.IPv6.key, value) }
 
     override var rosenpass: Boolean
         get() = mmkv.decodeBool(PreferenceKeys.Rosenpass.key, false)
@@ -192,6 +197,7 @@ class PreferencesRepositoryImpl @Inject constructor(): PreferencesRepository {
             preSharedKey = preSharedKey,
             setupKey = setupKey,
             lazyConnections = lazyConnections,
+            ipv6 = ipv6,
             rosenpass = rosenpass,
             rosenpassPermissive = rosenpassPermissive,
             engineLogging = engineLogging,
@@ -225,6 +231,7 @@ data class PreferencesState(
     override var preSharedKey: String?,
     override var setupKey: String?,
     override var lazyConnections: Boolean,
+    override var ipv6: Boolean,
     override var rosenpass: Boolean,
     override var rosenpassPermissive: Boolean,
     override var engineLogging: Boolean,
@@ -262,6 +269,7 @@ private enum class PreferenceKeys(
     PreSharedKey("pre_shared_key"),
     SetupKey("setup_key"),
     LazyConnections("lazy_conn"),
+    IPv6("ipv6"),
     Rosenpass("rosenpass"),
     RosenpassPermissive("rosenpass_permissive"),
     EngineLogging("engine_logging"),

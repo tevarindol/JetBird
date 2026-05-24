@@ -178,6 +178,11 @@ fun SettingsScreen(
                 onChange = { viewModel.toggleLazyConnections(it) }
             )
             SettingsSwitch(
+                title = stringResource(R.string.ipv6),
+                checked = state.ipv6,
+                onChange = viewModel::toggleIpv6
+            )
+            SettingsSwitch(
                 title = stringResource(R.string.rosenpass),
                 checked = state.rosenpass,
                 onChange = { viewModel.toggleRosenpass(it) }

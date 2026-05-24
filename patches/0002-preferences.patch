@@ -1,9 +1,9 @@
 diff --git a/client/android/preferences.go b/client/android/preferences.go
-index c3c8eb3f..9320129e 100644
+index 066477293..4d406697e 100644
 --- a/client/android/preferences.go
 +++ b/client/android/preferences.go
-@@ -307,6 +307,10 @@ func (p *Preferences) SetBlockInbound(block bool) {
- 	p.configInput.BlockInbound = &block
+@@ -325,6 +325,10 @@ func (p *Preferences) SetDisableIPv6(disable bool) {
+ 	p.configInput.DisableIPv6 = &disable
  }
  
 +func (p *Preferences) SetLazyConnection(lazy bool) {

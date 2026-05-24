@@ -13,6 +13,7 @@ fun PeerInfoArray?.toPeerList(): List<Peer> {
         peers.add(
             Peer(
                 ip = peer.ip,
+                ipv6 = peer.iPv6,
                 fqdn = peer.fqdn,
                 connectionStatus = peer.connStatus,
                 connectionStatusUpdate = if (peer.connStatusUpdate > 0) SimpleDateFormat("dd'/'MM HH:mm", Locale.getDefault()).format(peer.connStatusUpdate * 1000) else "",
