@@ -41,7 +41,7 @@
     <string name="about">关于</string>
     <string name="peer_bytes_tx">发送字节数：%1$s B</string>
     <string name="exclude">排除</string>
-    <string name="exclude_apps">从隧道中排除应用</string>
+    <string name="exclude_apps">从隧道中包含/排除应用</string>
     <string name="exclude_apps_description">已排除 %1$d 个应用</string>
     <string name="failed_remove_netbird_config">无法移除 NetBird 配置文件</string>
     <string name="failed_to_change_management_server">无法更改管理服务器</string>
@@ -142,4 +142,6 @@
     <string name="networks">网络</string>
     <string name="peers">对等节点</string>
     <string name="force_relay_connection">强制中继连接</string>
+    <string name="exclude_apps_inverted_description">已包含 %1$d 个应用</string>
+    <string name="include">包含</string>
 </resources>

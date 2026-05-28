@@ -36,7 +36,7 @@
     <string name="enable_verbose_logging_description_netbird">Suurenda NetBirdi logide detailsust</string>
     <string name="engine_logging_warning">Netbirdi klient suudab aja jooksul toota palju logisid. \n \nNeed logid on salvestatud mällu ja võivad põhjustada telefoni aeglustumust või JetBirdi kokkujooksutada. \n \nSamuti saad reaalajas logimise keelata ja logid hiljem logivaatest eemaldada.</string>
     <string name="exclude">Välista</string>
-    <string name="exclude_apps">Välista rakendused tunnelist</string>
+    <string name="exclude_apps">Kaasa või välista rakendused tunnelist</string>
     <string name="exclude_apps_description">%1$d rakendust on välistatud</string>
     <string name="failed_remove_netbird_config">Netbirdi konfiguratsioonifaili eemaldamine ei õnnestunud</string>
     <string name="failed_to_change_management_server">Haldusserveri muutmine ei õnnestunud</string>
@@ -131,4 +131,6 @@
     <string name="networks">Võrgud</string>
     <string name="connect_to_see_networks">Võrkude nägemiseks ühenda</string>
     <string name="force_relay_connection">Kasuta sundkorras ühendust edastusserver kaudu</string>
+    <string name="exclude_apps_inverted_description">%1$d rakendust on kaasatud</string>
+    <string name="include">Kaasa</string>
 </resources>

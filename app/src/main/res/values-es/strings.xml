@@ -45,7 +45,7 @@
     <string name="enable_verbose_logging">Habilitar el registro detallado</string>
     <string name="enable_verbose_logging_description">Aumentar la verbosidad de los registros de JetBird</string>
     <string name="exclude">Excluir</string>
-    <string name="exclude_apps">Excluir aplicaciones del túnel</string>
+    <string name="exclude_apps">Incluir o excluir aplicaciones del túnel</string>
     <string name="exclude_apps_description">Aplicaciones excluidas: %1$d</string>
     <string name="failed_remove_netbird_config">Error al eliminar el archivo de configuración de NetBird</string>
     <string name="failed_to_change_management_server">Error al cambiar el servidor de administración</string>
@@ -131,4 +131,6 @@
     <string name="engine_logging_warning">El cliente NetBird puede producir muchos registros con el tiempo.\n\nEstos registros se almacenan en la memoria y pueden hacer que su teléfono se ralentice o que JetBird se bloquee.\n\nTambién puede deshabilitar el registro en vivo y volcar los registros posteriormente desde la pantalla de registro.</string>
     <string name="login_expired">Inicio de sesión caducado: conéctese nuevamente para volver a autenticarse</string>
     <string name="force_relay_connection">conexión del relé forzada</string>
+    <string name="exclude_apps_inverted_description">%1$d aplicaciones incluidas</string>
+    <string name="include">Incluir</string>
 </resources>

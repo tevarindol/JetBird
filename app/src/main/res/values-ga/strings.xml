@@ -35,7 +35,7 @@
     <string name="failed_to_change_management_server">Theip ar fhreastalaí bainistíochta a athrú</string>
     <string name="no_route_overrides">Failed to change management server</string>
     <string name="exclude">Eisiamh</string>
-    <string name="exclude_apps">Aipeanna a eisiamh ón tollán</string>
+    <string name="exclude_apps">Cuir aipeanna san áireamh/eisiaigh iad ón tollán</string>
     <string name="exclude_apps_description">%1$d aipeanna eisiata</string>
     <string name="failed_vpn_permission">Diúltaíodh don úsáideoir cead VPN</string>
     <string name="fallback_dns">Cúltaca DNS</string>
@@ -138,4 +138,7 @@
     <string name="server_routes">Bealaí freastalaí</string>
     <string name="server_routes_description">Gníomhaigh mar ródaire do bhealaí freastalaí</string>
     <string name="ssh_description">Ceadaigh naisc SSH leis an ngléas seo</string>
+    <string name="exclude_apps_inverted_description">%1$d aip san áireamh</string>
+    <string name="force_relay_connection">Nasc sealaíochta fórsa</string>
+    <string name="include">Cuir san áireamh</string>
 </resources>

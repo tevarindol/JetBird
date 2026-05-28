@@ -29,7 +29,7 @@
     <string name="enable_verbose_logging">Aktivera utförlig loggning</string>
     <string name="enable_verbose_logging_description">Öka verbosity av JetBird loggar</string>
     <string name="exclude">Uteslut</string>
-    <string name="exclude_apps">Uteslut appar från tunnel</string>
+    <string name="exclude_apps">Inkludera/exkludera appar från tunnel</string>
     <string name="exclude_apps_description">%1$d appar exkluderade</string>
     <string name="failed_remove_netbird_config">Det gick inte att ta bort NetBird-konfigurationsfilen</string>
     <string name="failed_to_change_management_server">Det gick inte att ändra hanteringsservern</string>
@@ -129,4 +129,8 @@
     <string name="server_routes">Serverrutter</string>
     <string name="server_routes_description">Fungera som en router för serverrutter</string>
     <string name="ssh_description">Tillåt SSH-anslutningar till den här enheten</string>
+    <string name="exclude_apps_inverted_description">%1$d appar inkluderade</string>
+    <string name="include">Inkludera</string>
+    <string name="lazy_connections_description">Anslut till peers på begäran</string>
+    <string name="peers">Peers</string>
 </resources>
