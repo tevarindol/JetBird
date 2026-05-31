@@ -13,7 +13,6 @@ import androidx.core.app.NotificationCompat
 import dagger.hilt.android.AndroidEntryPoint
 import dev.bg.jetbird.R
 import dev.bg.jetbird.data.Actions
-import dev.bg.jetbird.data.JetBirdConstants
 import dev.bg.jetbird.data.NetBirdErrors
 import dev.bg.jetbird.data.model.ConnectionState
 import dev.bg.jetbird.data.model.ServiceEvent
@@ -29,7 +28,6 @@ import dev.bg.jetbird.util.IoDispatcher
 import dev.bg.jetbird.util.Log
 import dev.bg.jetbird.util.ReplaceableJob
 import dev.bg.jetbird.util.ktx.getPendingIntent
-import dev.bg.jetbird.util.ktx.sendNotification
 import dev.bg.jetbird.util.ktx.toNetworkList
 import dev.bg.jetbird.util.ktx.toPeerList
 import io.netbird.android.ConnectionListener
@@ -380,14 +378,6 @@ class VPNService: VpnService() {
             }
             else -> log("Tunnel failure: $failure", force = true)
         }
-    }
-
-    private fun sendRouteChangeNotification() {
-        sendNotification(
-            channel = JetBirdConstants.RECONNECT_NOTIFICATION_CHANNEL,
-            title = getString(R.string.route_changes),
-            description = getString(R.string.route_changes_description)
-        )
     }
 
     private var serviceStateListener = object : TunnelListener {

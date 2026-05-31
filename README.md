@@ -86,8 +86,6 @@ JetBird requires a few permissions in order to function:
 ## Notifications
 Notifications are optional but Android requires JetBird to show a notification when the tunnel is running. This is dismissible on Android 13+.
 
-JetBird will also send you a notification when there are route changes, as you will need to restart the tunnel. This can be configured in the settings to automatically restart the tunnel but this process will stop the VPN momentarily.
-
 ## Screenshots
 ### Phone
 <div align="center">

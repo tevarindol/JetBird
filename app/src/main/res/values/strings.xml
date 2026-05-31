@@ -106,8 +106,6 @@
     <string name="reset_to_change_management_server">To change the management server, please reset JetBird</string>
     <string name="rosenpass" translatable="false">Rosenpass</string>
     <string name="route_calculator">Route calculator</string>
-    <string name="route_changes">Route changes</string>
-    <string name="route_changes_description">The routes for this device have been updated. Please restart the tunnel for the changes to apply.</string>
     <string name="route_override">Enable route overrides</string>
     <string name="route_override_description">Override NetBird routes</string>
     <string name="route_selector">Route selector</string>
