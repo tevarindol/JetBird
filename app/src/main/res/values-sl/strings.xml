@@ -4,7 +4,6 @@
     <string name="add_route">Dodaj pot</string>
     <string name="another_always_on_vpn_active">Aktiven je še en vedno vklopljen VPN</string>
     <string name="app">Aplikacija</string>
-    <string name="route_changes_description">Poti za to napravo so posodobljene. Znova zaženite predor, da bodo spremembe veljale.</string>
     <string name="reset_to_change_management_server">Če želite spremeniti strežnik za upravljanje, ponastavite JetBird</string>
     <string name="start_on_reboot_description">Samodejno poskusite zagnati JetBird, ko se naprava znova zažene</string>
     <string name="unknown_error_see_logs">Neznana napaka-za več informacij glejte dnevniki</string>
@@ -81,7 +80,6 @@
     <string name="peer_relayed">Posredovano: %1$b</string>
     <string name="permissive_rosenpass">Permisivni Rosenpass</string>
     <string name="pre_shared_key">Predhodno dodeljen ključ</string>
-    <string name="reconnect_on_route_changes">Ponovna povezava ob spremembi poti</string>
     <string name="relay">Rele: %1$s</string>
     <string name="reset_netbird_config">Ponastavitev konfiguracije NetBird</string>
     <string name="reset_netbird_config_description">Odstranitev konfiguracijske datoteke NetBird</string>

@@ -56,14 +56,12 @@
     <string name="permissive_rosenpass">Permisivní Rosenpass</string>
     <string name="peer_connection_status">Stav: %1$s</string>
     <string name="pre_shared_key">Předsdílený klíč</string>
-    <string name="reconnect_on_route_changes">Znovu se připojte ke změnám trasy</string>
     <string name="requires_vpn_permission">JetBird potřebuje, abyste mu umožnili vytvořit připojení VPN na tomto zařízení.</string>
     <string name="reset_app">Obnovit aplikaci</string>
     <string name="reset_app_description">Vymažte všechna data a konfigurace</string>
     <string name="reset_netbird_config">Obnovit konfiguraci Netbird</string>
     <string name="reset_netbird_config_description">Odebrat konfigurační soubor NetBird</string>
     <string name="route_calculator">Kalkulačka trasy</string>
-    <string name="route_changes_description">Trasy pro toto zařízení byly aktualizovány. Restartujte tunel, aby se změny uplatnily.</string>
     <string name="route_override">Povolit přepsání trasy</string>
     <string name="route_override_description">Přepsat trasy Netbirdu</string>
     <string name="route_selector">Výběr trasy</string>

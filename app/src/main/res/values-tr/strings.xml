@@ -67,7 +67,6 @@
     <string name="reset_netbird_config">NetBird yapılandırmasını sıfırlama</string>
     <string name="reset_netbird_config_description">NetBird yapılandırma dosyasını kaldırma</string>
     <string name="route_calculator">Rota hesaplayıcı</string>
-    <string name="route_changes_description">Bu cihaz için rotalar güncellendi. Değişikliklerin uygulanması için lütfen tüneli yeniden başlatın.</string>
     <string name="route_override">Rota geçersiz kılmalarını etkinleştir</string>
     <string name="route_override_description">NetBird rotalarını geçersiz kılma</string>
     <string name="route_selector">Rota seçici</string>
@@ -114,7 +113,6 @@
     <string name="credits_description">Kütüphanelere ve lisanslara bakın</string>
     <string name="jetbird_exception_description">Daha fazla bilgi için dokunun</string>
     <string name="connect_to_see_peers">Akranları görmek için bağlanın</string>
-    <string name="reconnect_on_route_changes">Rota değişikliklerinde yeniden bağlanma</string>
     <string name="setup_setup_key_alternative">Tercih ederseniz, bunun yerine bir kurulum anahtarı kullanabilirsiniz</string>
     <string name="welcome_jetbird">JetBird\'e hoş geldiniz!</string>
     <string name="login_expired">Oturumun süresi doldu - yeniden kimlik doğrulama için lütfen tekrar bağlanın</string>

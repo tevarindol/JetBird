@@ -59,7 +59,6 @@
     <string name="permissive_rosenpass">Engedélyezett Rosenpass</string>
     <string name="permissive_rosenpass_description">Engedélyezze a nem-rosenpass peers csatlakozást</string>
     <string name="pre_shared_key">Előre megosztott kulcs</string>
-    <string name="reconnect_on_route_changes">Újrakapcsolódás útvonalváltáskor</string>
     <string name="relay">Relé: %1$s</string>
     <string name="removed_netbird_config">Eltávolított NetBird konfigurációs fájl</string>
     <string name="requires_vpn_permission">A JetBirdnek engedélyeznie kell, hogy VPN-kapcsolatot hozzon létre ezen az eszközön.</string>
@@ -67,7 +66,6 @@
     <string name="reset_app_description">Törölje az összes adatot és konfigurációt</string>
     <string name="reset_netbird_config_description">NetBird konfiguráció visszaállítása</string>
     <string name="reset_netbird_config">A NetBird konfiguráció visszaállítása</string>
-    <string name="route_changes_description">A készülék útvonalai frissítésre kerültek. Kérjük, indítsa újra az alagutat, hogy a módosítások érvényesüljenek.</string>
     <string name="route_override">Útvonal felülbírálásának engedélyezése</string>
     <string name="route_override_description">NetBird útvonalak felülírása</string>
     <string name="route_selector">Útvonal kiválasztó</string>

@@ -81,7 +81,6 @@
     <string name="reset_netbird_config_description">移除 NetBird 配置文件</string>
     <string name="reset_to_change_management_server">要更改管理服务器，请重置 JetBird</string>
     <string name="route_calculator">路由计算</string>
-    <string name="route_changes_description">此设备的路由已更新。请重启隧道以应用更改。</string>
     <string name="route_override">启用路由覆盖</string>
     <string name="route_override_description">覆盖 NetBird 路由</string>
     <string name="route_selector">路由选择</string>
@@ -119,7 +118,6 @@
     <string name="your_overrides">您的覆盖：%1$s</string>
     <string name="enable_verbose_logging_description_netbird">增加 NetBird 日志的详细程度</string>
     <string name="peer_last_wireguard_handshake">上次 WireGuard 握手：%1$s 前</string>
-    <string name="reconnect_on_route_changes">路由更改时重新连接</string>
     <string name="login_expired">登录已过期 — 请再次连接以重新验证身份</string>
     <string name="get_started">开始</string>
     <string name="lazy_connections">延迟连接</string>

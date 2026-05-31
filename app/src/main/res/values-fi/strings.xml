@@ -65,7 +65,6 @@
     <string name="peer_relayed">Välitetty: %1$b</string>
     <string name="permissive_rosenpass">Salliva Rosenpass</string>
     <string name="pre_shared_key">Esijaettu avain</string>
-    <string name="reconnect_on_route_changes">Yhdistä uudelleen reittimuutosten yhteydessä</string>
     <string name="relay">Välitys: %1$s</string>
     <string name="removed_netbird_config">NetBird-määritystiedosto poistettu</string>
     <string name="requires_vpn_permission">JetBird tarvitsee sinun sallivan sen luoda VPN-yhteys tällä laitteella.</string>
@@ -75,7 +74,6 @@
     <string name="reset_netbird_config_description">Poista NetBird-määritystiedosto</string>
     <string name="reset_to_change_management_server">Hallintapalvelimen vaihtamista varten, nollaa JetBird</string>
     <string name="route_calculator">Reitin laskuri</string>
-    <string name="route_changes_description">Reitit tälle laitteelle on päivitetty. Käynnistä tunneli uudelleen, jotta muutokset tulevat voimaan.</string>
     <string name="route_override">Ota reitin ohitukset käyttöön</string>
     <string name="route_override_description">Ohita NetBird-reitit</string>
     <string name="route_selector">Reitin valitsin</string>

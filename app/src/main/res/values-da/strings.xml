@@ -56,7 +56,6 @@
     <string name="peer_last_wireguard_handshake">Sidste WireGuard-håndtryk: %1$s siden</string>
     <string name="permissive_rosenpass_description">Tillad ikke-rosenpass-peers at forbinde</string>
     <string name="pre_shared_key">Forhåndsdelt nøgle</string>
-    <string name="reconnect_on_route_changes">Opret forbindelse igen ved ruteændringer</string>
     <string name="permissive_rosenpass">Tilladt Rosenpass</string>
     <string name="peers_connected">%1$d af %2$d peers er forbundet</string>
     <string name="peer_relayed">Videresendt: %1$b</string>
@@ -68,7 +67,6 @@
     <string name="reset_app">Nulstil appen</string>
     <string name="reset_to_change_management_server">For at ændre administrationsserveren skal du nulstille JetBird</string>
     <string name="route_calculator">Rute-beregner</string>
-    <string name="route_changes_description">Ruterne til denne enhed er blevet opdateret. Genstart venligst tunnelen for at få ændringerne til at gælde.</string>
     <string name="route_override">Aktivér tilsidesættelse af ruter</string>
     <string name="route_selector">Rutevælgeren</string>
     <string name="route_selector_description">%1$d ruteoverskridelser</string>

@@ -87,7 +87,6 @@
     <string name="reset_netbird_config">Restablecer la configuración de NetBird</string>
     <string name="reset_netbird_config_description">Eliminar el archivo de configuración de NetBird</string>
     <string name="route_calculator">Calculadora de rutas</string>
-    <string name="route_changes_description">Se han actualizado las rutas de este dispositivo. Reinicie el túnel para que se apliquen los cambios.</string>
     <string name="route_override">Habilitar anulaciones de ruta</string>
     <string name="route_override_description">Anular rutas de NetBird</string>
     <string name="route_selector">Selector de rutas</string>
@@ -123,7 +122,6 @@
     <string name="auth_error_see_logs">Error de autenticación: consulte los registros para obtener más información</string>
     <string name="close">Cerrar</string>
     <string name="enable_logging_description_netbird">Ver registros de NetBird</string>
-    <string name="reconnect_on_route_changes">Reconectarse en cambios de ruta</string>
     <string name="enable_verbose_logging_description_netbird">Aumentar la verbosidad de los registros de NetBird</string>
     <string name="engine_logging_warning">El cliente NetBird puede producir muchos registros con el tiempo.\n\nEstos registros se almacenan en la memoria y pueden hacer que su teléfono se ralentice o que JetBird se bloquee.\n\nTambién puede deshabilitar el registro en vivo y volcar los registros posteriormente desde la pantalla de registro.</string>
     <string name="login_expired">Inicio de sesión caducado: conéctese nuevamente para volver a autenticarse</string>

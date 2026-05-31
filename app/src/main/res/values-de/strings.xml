@@ -75,7 +75,6 @@
     <string name="peer_public_key">Öffentlicher Schlüssel: %1$s</string>
     <string name="pre_shared_key">Gemeinsammer Schlüssel</string>
     <string name="removed_netbird_config">NetBird-Konfigurationsdatei gelöscht</string>
-    <string name="reconnect_on_route_changes">Bei Routenänderung neu verbinden</string>
     <string name="requires_vpn_permission">JetBird benötigt Ihre Berechtigung, um eine VPN-Verbindung auf diesem Gerät einzurichten.</string>
     <string name="reset_app">App zurücksetzten</string>
     <string name="reset_app_description">Alle Daten und Einstellungen löschen</string>
@@ -83,7 +82,6 @@
     <string name="reset_netbird_config_description">NetBird-Konfigurationsdatei löschen</string>
     <string name="reset_to_change_management_server">Um den Verwaltungsserver zu ändern, setzten Sie JetBird zurück</string>
     <string name="route_calculator">Routenrechner</string>
-    <string name="route_changes_description">Die Routen wurden für dieses Gerät geändert. Bitten starten Sie den Tunnel neu, um die Änderungen anzuwenden.</string>
     <string name="route_override">Überschriebene Routen aktivieren</string>
     <string name="route_selector_description">%1$d Routen überschrieben</string>
     <string name="route_override_description">NetBird-Routen überschreiben</string>

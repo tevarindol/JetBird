@@ -119,10 +119,8 @@
     <string name="lazy_connections">Connessioni Lazy</string>
     <string name="management_url">Management Server URL</string>
     <string name="engine_logging_warning">Il client NetBird può generare molti log nel tempo.\n\nQuesti log vengono salvati in memoria e potrebbero rallentare il telefono o causare un arresto anomalo di JetBird.\n\nÈ anche possibile disattivare il logging in tempo reale e scaricare i log in un secondo momento dalla schermata dei log.</string>
-    <string name="reconnect_on_route_changes">Riconnettiti in caso di modifiche alle rotte</string>
     <string name="foreground_notification_description">JetBird tunnel è attivo</string>
     <string name="requires_vpn_permission">JetBird ha bisogno che tu gli consenti di creare una connessione VPN su questo dispositivo.</string>
-    <string name="route_changes_description">I routes per questo dispositivo sono stati aggiornati. Riavviare il tunnel per applicare le modifiche.</string>
     <string name="route_selector_info">Qui è possibile sovrascrivere le rotte inviate dal server management di NetBird.\n\nSe abilitate, tutto il traffico diretto alle rotte definite non utilizzerà il tunnel. È possibile visualizzare tutti le rotte applicate nel log.\n\nSe si abilitano le sostituzioni delle rotte e non si fornisce alcuna rotta, JetBird utilizzerà le route upstream.</string>
     <string name="unknown_error_see_logs">Errore sconosciuto - consulta i log per maggiori informazioni</string>
     <string name="permissive_rosenpass">Rosenpass permissiva</string>
