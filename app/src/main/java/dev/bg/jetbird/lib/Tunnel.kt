@@ -176,7 +176,6 @@ class Tunnel(
     }
 
     override fun onNetworkChanged(commaDelimitedRoutes: String) {
-        log("${this.routes} VS $routes")
         // routes is comma-delimited instead of semicolon-delimited
         val routes = commaDelimitedRoutes.replace(',', ';')
         if (this.routes != routes) {
