@@ -201,7 +201,6 @@ class Tunnel(
                 else -> routes.split(";")
             }.toSet()
             val allocatedIpv6Cidr = when {
-                !ipv6Cidr.isNullOrEmpty() && hasIPv4DefaultRoute(upstreamRoutes)-> CIDR("::/0")
                 !ipv6Cidr.isNullOrEmpty() -> CIDR(ipv6Cidr)
                 else -> null
             }
@@ -214,8 +213,12 @@ class Tunnel(
                 // IPv6 setup
                 .apply {
                     if (allocatedIpv6Cidr != null) {
-                        log("Adding IPv6 CIDR block to interface $allocatedIpv6Cidr")
+                        log("Adding IPv6 CIDR block to interface ${allocatedIpv6Cidr.address}/${allocatedIpv6Cidr.mask}")
                         addAddress(allocatedIpv6Cidr.address, allocatedIpv6Cidr.mask)
+                        if (hasIPv4DefaultRoute(upstreamRoutes)) {
+                            log("Adding ::/0 route to prevent leak")
+                            addRoute("::", 0)
+                        }
                     }
                 }
                 // DNS
