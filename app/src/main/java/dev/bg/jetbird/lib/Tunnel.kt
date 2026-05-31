@@ -201,8 +201,8 @@ class Tunnel(
                 else -> routes.split(";")
             }.toSet()
             val allocatedIpv6Cidr = when {
+                !ipv6Cidr.isNullOrEmpty() && hasIPv4DefaultRoute(upstreamRoutes)-> CIDR("::/0")
                 !ipv6Cidr.isNullOrEmpty() -> CIDR(ipv6Cidr)
-                hasIPv4DefaultRoute(upstreamRoutes) -> CIDR("::/0")
                 else -> null
             }
             val allocatedIpv4Cidr = CIDR(ipv4Cidr)
@@ -315,7 +315,7 @@ class Tunnel(
                 return tun.detachFd().toLong()
             }
         } catch (e: Exception) {
-            log("Failed to create tunnel ${e.message} (${e.cause?.message})")
+            log("Failed to create tunnel ${e.message} ${e.cause?.message.let { "(${it})" }}")
             0L
         }
     }
