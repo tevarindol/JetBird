@@ -80,7 +80,6 @@
     <string name="reset_netbird_config">Athshocraigh cumraíocht NetBird</string>
     <string name="reset_netbird_config_description">Bain Comhad cumraíochta NetBird</string>
     <string name="route_calculator">Áireamhán bealaigh</string>
-    <string name="route_changes">Athruithe bealaigh</string>
     <string name="route_override">Cumasaigh sáruithe bealaigh</string>
     <string name="route_override_description">Sáraigh bealaí NetBird</string>
     <string name="route_selector">Roghnóir bealaigh</string>
@@ -111,11 +110,9 @@
     <string name="enable_live_logging_description">Féach logaí NetBird i bhfíor-am</string>
     <string name="enable_logging_description_netbird">Féach logaí Ó NetBird</string>
     <string name="auth_error_see_logs">Earráid fíordheimhnithe-féach logaí le haghaidh tuilleadh eolais</string>
-    <string name="reconnect_on_route_changes_warning">Stopfaidh athnascadh go huathoibríoch an VPN agus b \' fhéidir nach gcuirfear bac ar thrácht le linn na tréimhse seo, ag brath ar shocruithe do ghléis.</string>
     <string name="credits_description">Féach leabharlanna agus ceadúnais</string>
     <string name="foreground_notification_description">Tá tollán JetBird gníomhach</string>
     <string name="your_overrides">Do shárú: %1$s</string>
-    <string name="reconnect_on_route_changes_description">Athcheangail go huathoibríoch nuair a athraíonn bealaí</string>
     <string name="view_config">Féach ar chumraíocht</string>
     <string name="upstream_routes">Bealaí in aghaidh srutha: 0.0.0.0/0,:: / 0</string>
     <string name="view_config_description">Féach Comhad cumraíochta NetBird</string>

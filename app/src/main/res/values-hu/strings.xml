@@ -67,7 +67,6 @@
     <string name="reset_app_description">Törölje az összes adatot és konfigurációt</string>
     <string name="reset_netbird_config_description">NetBird konfiguráció visszaállítása</string>
     <string name="reset_netbird_config">A NetBird konfiguráció visszaállítása</string>
-    <string name="route_changes">Útvonal változások</string>
     <string name="route_changes_description">A készülék útvonalai frissítésre kerültek. Kérjük, indítsa újra az alagutat, hogy a módosítások érvényesüljenek.</string>
     <string name="route_override">Útvonal felülbírálásának engedélyezése</string>
     <string name="route_override_description">NetBird útvonalak felülírása</string>
@@ -113,10 +112,8 @@
 \nLetilthatja az élő naplózást is, majd a naplófájlokat a napló képernyőről kiírhatja.</string>
     <string name="peers_connected">%1$d/%2$d társ csatlakozott</string>
     <string name="unknown_error_see_logs">Ismeretlen hiba - további információért lásd a naplókat</string>
-    <string name="reconnect_on_route_changes_description">Automatikus újracsatlakozás az útvonalak változásakor</string>
     <string name="route_calculator">Útvonal kalkulátor</string>
     <string name="credits_description">Lásd könyvtárak és licencek</string>
-    <string name="reconnect_on_route_changes_warning">Az automatikus újrakapcsolódás pillanatnyilag leállítja a VPN-t, és az eszköz beállításaitól függően előfordulhat, hogy a forgalom nem lesz blokkolva ez idő alatt.</string>
     <string name="view_routes_description">Lásd a számított alagút útvonalakat</string>
     <string name="your_overrides">A felülbírálatok: %1$s</string>
     <string name="reset_to_change_management_server">A menedzsment-kiszolgáló megváltoztatásához állítsa vissza a JetBird</string>

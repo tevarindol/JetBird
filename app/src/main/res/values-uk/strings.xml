@@ -42,7 +42,6 @@
     <string name="management_url">URL-адреса сервера управління</string>
     <string name="peer_bytes_rx">Байтів отримано: %1$s Б</string>
     <string name="permissive_rosenpass_description">Дозволити підключатися вузлам, які не використовують Rosenpass</string>
-    <string name="reconnect_on_route_changes_description">Автоматичне повторне підключення при зміні маршрутів</string>
     <string name="get_started_url">Щоб почати, будь ласка, введіть URL-адресу вашого сервера управління</string>
     <string name="not_set">Не встановлено</string>
     <string name="permissive_rosenpass">Дозвільний пропуск Rosenpass</string>
@@ -66,7 +65,6 @@
     <string name="failed_remove_netbird_config">Не вдалося видалити конфігураційний файл NetBird</string>
     <string name="peer_connection_status">Статус: %1$s</string>
     <string name="peer_connection_status_update">Останнє оновлення статусу: %1$s</string>
-    <string name="reconnect_on_route_changes_warning">Автоматичне повторне підключення призведе до короткої зупинки VPN, і трафік може не блокуватися протягом цього періоду, залежно від налаштувань вашого пристрою.</string>
     <string name="failed_to_change_management_server">Не вдалося змінити сервер управління</string>
     <string name="route_changes_description">Маршрути для цього пристрою оновлено. Будь ласка, перезапустіть тунель, щоб зміни набули чинності.</string>
     <string name="setup_key">Ключ налаштування</string>
@@ -99,7 +97,6 @@
     <string name="relay">Реле: %1$s</string>
     <string name="reset_to_change_management_server">Щоб змінити сервер управління, будь ласка, перезавантажте JetBird</string>
     <string name="route_calculator">Калькулятор маршруту</string>
-    <string name="route_changes">Зміни маршруту</string>
     <string name="route_override">Увімкнути перевизначення маршруту</string>
     <string name="routes">Маршрути: %1$s</string>
     <string name="save_log">Зберегти журнал</string>

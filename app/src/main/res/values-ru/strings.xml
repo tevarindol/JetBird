@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="settings">Настройки</string>
-    <string name="route_changes">Изменения маршрута</string>
     <string name="reset_app">Сброс приложения</string>
     <string name="reset_app_description">Сбросить все настройки и данные</string>
     <string name="reset_netbird_config">Сброс конфигурации NetBird</string>
@@ -39,9 +38,7 @@
     <string name="removed_netbird_config">Конфигурация NetBird удалена</string>
     <string name="peer_latency">Задержка: %1$d мс</string>
     <string name="peer_public_key">Открытый ключ: %1$s</string>
-    <string name="reconnect_on_route_changes_description">Автоматическое переподключение при изменении маршрутов</string>
     <string name="reconnect_on_route_changes">Повторное подключение при изменении маршрута</string>
-    <string name="reconnect_on_route_changes_warning">Автоматическое переподключение приведет к кратковременной остановке VPN, и трафик может не блокироваться в течение этого периода в зависимости от настроек вашего устройства.</string>
     <string name="route_changes_description">Маршруты для этого устройства были обновлены. Пожалуйста, перезапустите туннель, чтобы изменения вступили в силу.</string>
     <string name="setup_setup_key_required">Пожалуйста, укажите ключ настройки</string>
     <string name="setup_setup_key_alternative">Если вы предпочитаете, вы можете вместо этого использовать ключ настройки</string>

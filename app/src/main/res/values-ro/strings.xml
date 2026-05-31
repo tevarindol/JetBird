@@ -68,7 +68,6 @@
     <string name="reset_app_description">Ștergeți toate datele și configurațiile</string>
     <string name="reset_netbird_config_description">Eliminați fișierul de configurare NetBird</string>
     <string name="route_calculator">Calculator traseu</string>
-    <string name="route_changes">Modificări de traseu</string>
     <string name="route_override">Activați suprascrierile rutelor</string>
     <string name="route_override_description">Suprascrie rutele NetBird</string>
     <string name="route_selector">Selector traseu</string>
@@ -99,7 +98,6 @@
 \nCând este activat, tot traficul care merge pe rutele dvs. definite nu va folosi tunelul. Puteți vedea toate rutele aplicate în jurnal.
 \n
 \nDacă activați suprascrierea rutelor și nu furnizați nicio rută, JetBird va folosi rutele din amonte.</string>
-    <string name="reconnect_on_route_changes_warning">Reconectarea automată va opri momentan VPN-ul și este posibil ca traficul să nu fie blocat în această perioadă, în funcție de setările dispozitivului.</string>
     <string name="route_changes_description">Rutele pentru acest dispozitiv au fost actualizate. Vă rugăm să reporniți tunelul pentru ca modificările să se aplice.</string>
     <string name="setup_setup_key_alternative">Dacă preferați, puteți utiliza în schimb o cheie de configurare</string>
     <string name="about_netbird_version">Versiunea NetBird</string>
@@ -110,7 +108,6 @@
     <string name="log">Jurnal</string>
     <string name="exclude_apps_description">%1$d aplicații excluse</string>
     <string name="management_url">Adresa URL a serverului de gestionare</string>
-    <string name="reconnect_on_route_changes_description">Reconectați automat când rutele se schimbă</string>
     <string name="setup_key_saved">Tasta de configurare salvată</string>
     <string name="peer_connection_status">Stare: %1$s</string>
     <string name="reset_netbird_config">Resetați configurația NetBird</string>

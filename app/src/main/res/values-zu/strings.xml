@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="unknown_error_see_logs">Iphutha engaziwa-bheka izingodo ukuze uthole ukwaziswa okwengeziwe</string>
-    <string name="reconnect_on_route_changes_warning">Ukuxhuma kabusha ngokuzenzakalelayo kuzomisa okwesikhashana VPN futhi traffic kungase kungavinjelwa phakathi nalesi sikhathi, kuye izilungiselelo idivayisi yakho.</string>
     <string name="about">Cishe</string>
     <string name="about_build">Ukwakha: %1$d</string>
     <string name="about_version">JetBird Inguqulo: %1$s</string>
@@ -59,7 +58,6 @@
     <string name="peers_connected">%1$d ka %2$d ontanga abaxhunyiwe</string>
     <string name="reset_to_change_management_server">Ukuze ushintshe iseva management, sicela kabusha JetBird</string>
     <string name="route_calculator">Umzila wokubala</string>
-    <string name="route_changes">Izinguquko zomzila</string>
     <string name="route_override">Vumela umzila overrides</string>
     <string name="route_override_description">Ukugqugquzela imizila Yenetbird</string>
     <string name="route_selector">Umkhethi womzila</string>
@@ -69,7 +67,6 @@
     <string name="reset_app">Resela kabusha uhlelo lokusebenza</string>
     <string name="removed_netbird_config">Ifayela lokumisa Le-NetBird elisusiwe</string>
     <string name="relay">Ukudluliswa: %1$s</string>
-    <string name="reconnect_on_route_changes_description">Recuma ngokuzenzakalelayo lapho imizila ushintsho</string>
     <string name="reconnect_on_route_changes">Rec kabusha ekushintsheni komzila</string>
     <string name="pre_shared_key">Ukhiye owabiwe kusengaphambili</string>
     <string name="peer_connection_status">Isimo: %1$s</string>

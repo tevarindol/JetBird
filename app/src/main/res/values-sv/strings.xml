@@ -68,7 +68,6 @@
     <string name="reset_netbird_config_description">Ta bort NetBird-konfigurationsfil</string>
     <string name="reset_to_change_management_server">För att ändra hanteringsservern, vänligen åerställ JetBird</string>
     <string name="route_calculator">Ruttkalkylator</string>
-    <string name="route_changes">Ruttändringar</string>
     <string name="route_override">Aktivera ruttåsidosättanden</string>
     <string name="route_override_description">Åsidosätt NetBird-rutter</string>
     <string name="route_selector">Ruttväljare</string>
@@ -106,8 +105,6 @@
     <string name="copy_log">Kopiera logg</string>
     <string name="enable_logging_description">Se loggar från JetBird</string>
     <string name="enable_verbose_logging_description_netbird">Öka verbosity av NetBird loggar</string>
-    <string name="reconnect_on_route_changes_description">Anslut automatiskt igen när rutter ändras</string>
-    <string name="reconnect_on_route_changes_warning">Automatiskt återanslutning kommer tillfälligt stoppa VPN och trafiken kanske inte blockeras under denna period, beroende på enhetens inställningar.</string>
     <string name="engine_logging_warning">NetBird-klienten kan producera många loggar över tid.\n\nDessa loggar lagras i minnet och kan orsaka att din telefon reagerar långsam eller JetBird kraschar.\n\nDu kan också inaktivera live-loggning och dumpa loggarna efteråt från loggskärmen.</string>
     <string name="route_changes_description">Rutterna för den här enheten har uppdaterats. Vänligen starta om tunneln för att ändringarna ska gälla.</string>
     <string name="route_selector_info">Här kan du åsidosätta rutter som Netbird hanteringsserver skickar till dig. \n \nNär den är aktiverad kommer ingen trafik som går till dina definierade rutter att använda tunneln. Du kan se alla tillämpade rutter i loggen. \n \nOm du aktiverar ruttåsidosättanden och inte tillhandahåller några rutter använder JetBird uppströmsrutter.</string>

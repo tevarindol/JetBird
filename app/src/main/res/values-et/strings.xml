@@ -78,7 +78,6 @@
     <string name="reset_netbird_config_description">Eemalda NetBirdi konfiguratsioonifail</string>
     <string name="reset_to_change_management_server">Haldusserveri muutmiseks lähtesta JetBird</string>
     <string name="route_calculator">Ruutingu arvestaja</string>
-    <string name="route_changes">Ruutingu muudatused</string>
     <string name="route_override">Luba ruutingu sürjutamine</string>
     <string name="route_override_description">Sürjuta Netbirdi ruutingud</string>
     <string name="route_selector">Ruutingu valija</string>
@@ -109,9 +108,7 @@
     <string name="warning">Hoiatus</string>
     <string name="welcome_jetbird">Tere tulemast kasutama JetBirdi!</string>
     <string name="your_overrides">Sinu sürjutamised: %1$s</string>
-    <string name="reconnect_on_route_changes_warning">Automaatne uuesti ühendamine peatab VPNi hetkeks ja sõltuvalt sinu nutiseadme seadistustest ei pruugi võrguliiklus sel ajal olla blokeeritud.</string>
     <string name="permissive_rosenpass_description">Luba ühendada Rosenpassi mittekasutavaid võrdõigusvõrgu sõlmesid</string>
-    <string name="reconnect_on_route_changes_description">Ruutingu muutumisel ühenda automaatselt uuesti</string>
     <string name="login_expired">Sisselogimine on aegunud - autentimiseks palun loo ühendus uuesti</string>
     <string name="get_started">Alusta siit</string>
     <string name="disconnecting">Katkestan ühendust</string>

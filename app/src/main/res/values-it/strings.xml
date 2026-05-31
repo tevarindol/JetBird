@@ -74,7 +74,6 @@
     <string name="peers">Peers</string>
     <string name="peers_connected">%1$d di %2$d peers connessi</string>
     <string name="pre_shared_key">Chiave pre-condivisa</string>
-    <string name="reconnect_on_route_changes_description">Riconnettiti automaticamente quando cambiano le routes</string>
     <string name="relay">Relay: %1$s</string>
     <string name="removed_netbird_config">Rimosso il file di configurazione di NetBird</string>
     <string name="reset_app">Reimposta app</string>
@@ -83,7 +82,6 @@
     <string name="reset_netbird_config_description">Rimuovi il file di configurazione di NetBird</string>
     <string name="reset_to_change_management_server">Per cambiare il management server, reimposta JetBird</string>
     <string name="route_calculator">Calcolatore di rotte</string>
-    <string name="route_changes">Modifiche alle rotte</string>
     <string name="route_override">Abilita le sostituzioni delle route</string>
     <string name="route_override_description">Sovrascrivi le routes NetBird</string>
     <string name="route_selector">Selettore delle route</string>
@@ -124,7 +122,6 @@
     <string name="reconnect_on_route_changes">Riconnettiti in caso di modifiche alle rotte</string>
     <string name="foreground_notification_description">JetBird tunnel è attivo</string>
     <string name="requires_vpn_permission">JetBird ha bisogno che tu gli consenti di creare una connessione VPN su questo dispositivo.</string>
-    <string name="reconnect_on_route_changes_warning">La riconnessione automatica interromperà momentaneamente la VPN e a seconda delle impostazioni del dispositivo, il traffico potrebbe non essere bloccato durante questo periodo.</string>
     <string name="route_changes_description">I routes per questo dispositivo sono stati aggiornati. Riavviare il tunnel per applicare le modifiche.</string>
     <string name="route_selector_info">Qui è possibile sovrascrivere le rotte inviate dal server management di NetBird.\n\nSe abilitate, tutto il traffico diretto alle rotte definite non utilizzerà il tunnel. È possibile visualizzare tutti le rotte applicate nel log.\n\nSe si abilitano le sostituzioni delle rotte e non si fornisce alcuna rotta, JetBird utilizzerà le route upstream.</string>
     <string name="unknown_error_see_logs">Errore sconosciuto - consulta i log per maggiori informazioni</string>
