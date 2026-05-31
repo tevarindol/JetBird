@@ -37,7 +37,6 @@ import io.netbird.android.URLOpener
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -89,7 +88,6 @@ class VPNService: VpnService() {
     private var isLoggingEnabled = false
     private var isVerboseLoggingEnabled = false
     private var fallbackDns: String? = null
-    private var reconnectOnRouteChanges = false
 
     override fun onCreate() {
         super.onCreate()
@@ -100,7 +98,6 @@ class VPNService: VpnService() {
             isLoggingEnabled = preferencesRepository.logging
             isVerboseLoggingEnabled = preferencesRepository.verboseLogging
             fallbackDns = preferencesRepository.fallbackDns
-            reconnectOnRouteChanges = false
         }
         setEngineLoggingLevel(preferencesRepository.engineLogging, preferencesRepository.verboseEngineLogging)
         scope.launch {
@@ -111,7 +108,6 @@ class VPNService: VpnService() {
                 setEngineLoggingLevel(it.engineLogging, it.verboseEngineLogging)
                 isLiveLoggingEnabled = it.liveEngineLogging
                 fallbackDns = it.fallbackDns
-                reconnectOnRouteChanges = it.reconnectOnNewRoutes
                 if (it.liveEngineLogging) {
                     startEngineLogTailing()
                 } else {
@@ -410,18 +406,6 @@ class VPNService: VpnService() {
             _state.update { it.copy(connectionState = ConnectionState.DISCONNECTED) }
             stop()
             broadcastStatus(false)
-        }
-
-        override fun onRoutesChange() {
-            if (reconnectOnRouteChanges) {
-                stop()
-                scope.launch {
-                    delay(5000L)
-                    start(null)
-                }
-            } else {
-                sendRouteChangeNotification()
-            }
         }
 
         override fun onLog(

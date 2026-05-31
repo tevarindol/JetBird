@@ -96,9 +96,6 @@
     <string name="permissive_rosenpass">Permissive Rosenpass</string>
     <string name="permissive_rosenpass_description">Allow non-rosenpass peers to connect</string>
     <string name="pre_shared_key">Pre-shared key</string>
-    <string name="reconnect_on_route_changes">Reconnect on route changes</string>
-    <string name="reconnect_on_route_changes_description">Automatically reconnect when routes change</string>
-    <string name="reconnect_on_route_changes_warning">Automatically reconnecting will momentarily stop the VPN and traffic may not be blocked during this period, depending on your device settings.</string>
     <string name="relay">Relay: %1$s</string>
     <string name="removed_netbird_config">Removed NetBird configuration file</string>
     <string name="requires_vpn_permission">JetBird needs you to allow it to create a VPN connection on this device.</string>

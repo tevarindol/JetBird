@@ -285,7 +285,6 @@ fun SettingsScreen(
             title = stringResource(R.string.app_name)
         ) {
             var appLanguageDropdown by remember { mutableStateOf(false) }
-            var reconnectWarningDialog by remember { mutableStateOf(false) }
             var excludeAppsDialog by remember { mutableStateOf(false) }
             var fallbackDnsDialog by remember { mutableStateOf(false) }
 
@@ -324,25 +323,10 @@ fun SettingsScreen(
                 )
             }
             SettingsSwitch(
-                title = stringResource(R.string.reconnect_on_route_changes),
-                description = stringResource(R.string.reconnect_on_route_changes_description),
-                checked = state.reconnectOnNewRoutes,
-                onChange = {
-                    if (it) {
-                        reconnectWarningDialog = true
-                    }
-                    viewModel.toggleReconnectOnRouteChanges(it)
-                }
-            )
-            SettingsSwitch(
                 title = stringResource(R.string.start_on_reboot),
                 description = stringResource(R.string.start_on_reboot_description),
                 checked = state.startOnReboot,
                 onChange = viewModel::toggleStartOnReboot
-            )
-            AutomaticReconnectWarning(
-                open = reconnectWarningDialog,
-                onDismissRequest = { reconnectWarningDialog = false }
             )
             SettingsTile(
                 title = stringResource(R.string.exclude_apps),
@@ -480,26 +464,6 @@ private fun LiveLoggingWarning(
             onDismissRequest = onDismissRequest,
             title = { Text(stringResource(R.string.warning)) },
             text = { Text(stringResource(R.string.engine_logging_warning)) },
-            confirmButton = {
-                Button(onClick = onDismissRequest) {
-                    Text(stringResource(R.string.close))
-                }
-            }
-        )
-    }
-}
-
-@Composable
-private fun AutomaticReconnectWarning(
-    open: Boolean,
-    onDismissRequest: () -> Unit
-) {
-    if (open) {
-        AlertDialog(
-            modifier = Modifier.padding(vertical = 16.dp),
-            onDismissRequest = onDismissRequest,
-            title = { Text(stringResource(R.string.warning)) },
-            text = { Text(stringResource(R.string.reconnect_on_route_changes_warning)) },
             confirmButton = {
                 Button(onClick = onDismissRequest) {
                     Text(stringResource(R.string.close))

@@ -6,6 +6,7 @@ import android.os.Build
 import android.system.OsConstants
 import dev.bg.jetbird.BuildConfig
 import dev.bg.jetbird.data.model.CIDR
+import dev.bg.jetbird.data.model.IFace
 import dev.bg.jetbird.service.VPNService
 import dev.bg.jetbird.util.calculateTunneledRoutes
 import dev.bg.jetbird.util.ktx.getProfileManager
@@ -27,7 +28,6 @@ import kotlinx.coroutines.launch
 interface TunnelListener {
     fun onStarted()
     fun onStopped()
-    fun onRoutesChange()
     fun onLog(message: String, verbose: Boolean, force: Boolean)
     fun onError(message: String)
 }
@@ -45,6 +45,7 @@ class Tunnel(
 ): TunAdapter, NetworkChangeListener, DNSListener {
 
     val dnsWatch: DNSWatch = DNSWatch(vpnService.baseContext, this)
+    var iface: IFace? = null
 
     private val scope = CoroutineScope(SupervisorJob())
     private val client: Client = Android.newClient(
@@ -58,6 +59,7 @@ class Tunnel(
     private var isRunning = false
     private var excludedApps = emptySet<String>()
     private var invertExclusion = false
+    private var routes: String? = null
     private var routeOverrideEnabled = false
     private var routeOverrides = emptySet<String>()
 
@@ -173,9 +175,35 @@ class Tunnel(
         }
     }
 
-    override fun onNetworkChanged(routes: String) {
-        log("NetBird sent new routes - $routes")
-        tunnelListener.onRoutesChange()
+    override fun onNetworkChanged(commaDelimitedRoutes: String) {
+        log("${this.routes} VS $routes")
+        // routes is comma-delimited instead of semicolon-delimited
+        val routes = commaDelimitedRoutes.replace(',', ';')
+        if (this.routes != routes) {
+            log("NetBird sent new routes - $routes")
+            val iface = this.iface
+            if (!isRunning || iface == null) return
+            try {
+                val fd = configureInterface(
+                    iface.ipv4Cidr,
+                    iface.ipv6Cidr,
+                    iface.mtu,
+                    iface.dns,
+                    iface.domains,
+                    routes
+                )
+                if (fd != -1L) {
+                    // it is cast as Long because of the override, but it is an underlying int
+                    log("Renewing tunnel")
+                    vpnService.protect(fd.toInt())
+                    client.renewTun(fd)
+                } else {
+                    log("Failed to configure interface")
+                }
+            } catch (e: Exception) {
+                log("Failed to update routes ${e.message}")
+            }
+        }
     }
 
     override fun setInterfaceIP(ip: String) {}
@@ -190,6 +218,14 @@ class Tunnel(
         domains: String?,
         routes: String?
     ): Long {
+        this.iface = IFace(
+            ipv4Cidr = ipv4Cidr,
+            ipv6Cidr = ipv6Cidr,
+            mtu = mtu,
+            dns = dns,
+            domains = domains
+        )
+        this.routes = routes
         return try {
             log("Adding CIDR block to interface $ipv4Cidr", verbose = true)
             if (ipv4Cidr == null) {

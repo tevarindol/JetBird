@@ -222,13 +222,6 @@ class SettingsViewModel @Inject constructor(
         }
     }
 
-    fun toggleReconnectOnRouteChanges(enabled: Boolean) {
-        viewModelScope.launch(ioDispatcher) {
-            preferencesRepository.reconnectOnNewRoutes = enabled
-            preferencesRepository.updateState()
-        }
-    }
-
     fun updateExcludedApps(packageNames: Set<String>) {
         viewModelScope.launch(ioDispatcher) {
             preferencesRepository.excludedApps = packageNames
