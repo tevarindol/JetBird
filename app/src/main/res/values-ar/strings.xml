@@ -1,3 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="about">حول</string>
+    <string name="about_build">النسخة: %1$d</string>
+    <string name="about_netbird_version">إصدار NetBird</string>
+    <string name="about_version">إصدار JetBird: %1$s</string>
+    <string name="action_not_reversible">لا يمكن التراجع عن هذا الإجراء.</string>
+    <string name="add_route">إضافة مسار</string>
+    <string name="another_always_on_vpn_active">هناك شبكة افتراضية خاصة أخرى دائمة الاتصال</string>
+    <string name="app">التطبيق</string>
+    <string name="app_language">لغة التطبيق</string>
+    <string name="apps">التطبيقات</string>
+    <string name="auth_error_see_logs">خطأ في المصادقة - راجع السجلّات لمزيد من المعلومات</string>
+    <string name="block_inbound">حظر الاتصالات الواردة</string>
+    <string name="block_inbound_description">يتجاوز أي سياسات تم استلامها من خادوم الإدارة</string>
+    <string name="cancel">إلغاء</string>
+    <string name="clear_log">محو السجلّ</string>
+    <string name="client_routes">مسارات العملاء</string>
+    <string name="client_routes_description">معالجة مسارات العملاء الواردة من خادوم الإدارة</string>
+    <string name="close">إغلاق</string>
+    <string name="confirm">تأكيد</string>
+    <string name="connect">اتصال</string>
+    <string name="connect_to_see_networks">اتصل لعرض الشبكات</string>
+    <string name="connect_to_see_peers">اتصل لرؤية النظراء</string>
+    <string name="connected">متصل</string>
+    <string name="connecting">يجري الاتصال</string>
+    <string name="copy">نسخ</string>
+    <string name="copy_log">سجلّ النسخ</string>
+    <string name="credits">الحقوق</string>
+    <string name="credits_description">طالع المكتبات والتراخيص</string>
+    <string name="delete">حذف</string>
+    <string name="disconnect">قطع الاتصال</string>
+    <string name="disconnected">تم قطع الاتصال</string>
+    <string name="disconnecting">يجري قطع الاتصال</string>
+    <string name="dump_netbird_log">تفريغ سجلّ NetBird</string>
+    <string name="enable_live_logging">تفعيل التسجيل المباشر</string>
+    <string name="enable_live_logging_description">الاطّلاع على سجلّات NetBird في الوقت الفعلي</string>
+    <string name="enable_logging">تفعيل التسجيل</string>
+    <string name="enable_logging_description">الاطّلاع على سجلّات JetBird</string>
+    <string name="enable_logging_description_netbird">الاطّلاع على سجلّات NetBird</string>
+    <string name="enable_verbose_logging">تفعيل التسجيل المطوّل</string>
 </resources>
