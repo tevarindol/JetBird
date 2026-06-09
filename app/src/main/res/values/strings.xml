@@ -142,6 +142,7 @@
     <string name="welcome_jetbird">Welcome to JetBird!</string>
     <string name="your_overrides">Your overrides: %1$s</string>
 
+    <string name="ar" translatable="false">اَلْعَرَبِيَّةُ</string>
     <string name="cs" translatable="false">Čeština</string>
     <string name="da" translatable="false">Dansk</string>
     <string name="de" translatable="false">Deutsch</string>
