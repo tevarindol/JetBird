@@ -11,15 +11,15 @@ plugins {
 
 android {
     namespace = "dev.bg.jetbird"
-    compileSdk = 36
+    compileSdk = 37
     ndkVersion = "28.2.13676358"
 
     defaultConfig {
         applicationId = "dev.bg.jetbird"
         minSdk = 24
-        targetSdk = 36
-        versionCode = 40
-        versionName = "1.6.3"
+        targetSdk = 37
+        versionCode = 41
+        versionName = "1.7.0"
 
         buildConfigField("String", "NETBIRD_COMMIT", getShortNetbirdCommit())
         buildConfigField("String", "NETBIRD_VERSION", getNetbirdVersionFromCommit())

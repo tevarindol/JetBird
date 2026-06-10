@@ -154,6 +154,14 @@ class Tunnel(
         return client.networks() ?: NetworkArray()
     }
 
+    fun selectRoute(route: String) {
+        client.selectRoute(route)
+    }
+
+    fun deselectRoute(route: String) {
+        client.deselectRoute(route)
+    }
+
     private fun log(
         message: String,
         verbose: Boolean = false,

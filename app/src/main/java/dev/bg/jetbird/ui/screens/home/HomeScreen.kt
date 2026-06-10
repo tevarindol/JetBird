@@ -12,6 +12,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -34,6 +35,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.PrimaryTabRow
 import androidx.compose.material3.SheetValue
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberBottomSheetScaffoldState
@@ -68,8 +70,10 @@ import dev.bg.jetbird.LocalVPNServiceBinder
 import dev.bg.jetbird.R
 import dev.bg.jetbird.data.JetBirdColors
 import dev.bg.jetbird.data.model.ConnectionState
+import dev.bg.jetbird.data.model.Network
 import dev.bg.jetbird.service.VPNService
 import dev.bg.jetbird.ui.components.ConnectionCard
+import dev.bg.jetbird.ui.components.NetworkCard
 import dev.bg.jetbird.ui.components.OutlinedCopyButton
 import dev.bg.jetbird.util.OnLifecycleEvent
 import dev.bg.jetbird.util.ktx.hasOtherAlwaysOnVpn
@@ -301,6 +305,7 @@ private fun PeersList(
     val networks = service?.networks ?: emptyList()
 
     var selectedPeerIp by remember { mutableStateOf<String?>(null) }
+    var selectedNetwork by remember { mutableStateOf<Network?>(null) }
     var tab by rememberSaveable { mutableIntStateOf(0) }
 
     Column(
@@ -413,15 +418,18 @@ private fun PeersList(
                             Spacer(Modifier.height(8.dp))
                         }
                         items(networks) { network ->
-                            ConnectionCard(
+                            NetworkCard(
                                 title = network.name,
                                 description = network.network,
                                 connectionStatus = network.status,
+                                isSelected = network.selected,
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .padding(horizontal = 12.dp)
-                                    .clip(RoundedCornerShape(12.dp))
                                     .animateItem()
+                                    .clickable {
+                                        selectedNetwork = network
+                                    },
                             )
                         }
                     }
@@ -480,6 +488,68 @@ private fun PeersList(
                 Button(
                     onClick = {
                         selectedPeerIp = null
+                    }
+                ) {
+                    Text(stringResource(R.string.close))
+                }
+            }
+        )
+    }
+    if (selectedNetwork != null) {
+        AlertDialog(
+            title = { Text(stringResource(R.string.network_info)) },
+            text = {
+                Column {
+                    SelectionContainer {
+                        Column {
+                            Text(stringResource(R.string.network_name, selectedNetwork?.name.toString()))
+                            Text(stringResource(R.string.network_network, selectedNetwork?.network.toString()))
+                            Text(stringResource(R.string.network_peer, selectedNetwork?.peer.toString()))
+                            Text(stringResource(R.string.network_status, selectedNetwork?.status.toString()))
+                            Text(stringResource(R.string.network_domains, selectedNetwork?.domains?.joinToString { it.address } ?: ""))
+                        }
+                    }
+                    Row(
+                        Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Text(stringResource(R.string.enabled))
+                        Switch(
+                            checked = selectedNetwork?.selected == true,
+                            onCheckedChange = { checked ->
+                                selectedNetwork?.name?.let { network ->
+                                    if (checked) {
+                                        binder?.selectRoute(network)
+                                        selectedNetwork = null
+                                    } else {
+                                        binder?.deselectRoute(network)
+                                        selectedNetwork = null
+                                    }
+                                }
+                            }
+                        )
+                    }
+                }
+            },
+            onDismissRequest = { selectedNetwork = null },
+            dismissButton = {
+                OutlinedCopyButton {
+                    clipboardManager.setText(
+                        buildAnnotatedString {
+                            append("${ctx.getString(R.string.network_name, selectedNetwork?.name.toString())}\n")
+                            append("${ctx.getString(R.string.network_network, selectedNetwork?.network.toString())}\n")
+                            append("${ctx.getString(R.string.network_peer, selectedNetwork?.peer.toString())}\n")
+                            append("${ctx.getString(R.string.network_status, selectedNetwork?.status.toString())}\n")
+                            append("${ctx.getString(R.string.network_domains, selectedNetwork?.domains?.joinToString { it.address } ?: "")}\n")
+                        }
+                    )
+                }
+            },
+            confirmButton = {
+                Button(
+                    onClick = {
+                        selectedNetwork = null
                     }
                 ) {
                     Text(stringResource(R.string.close))

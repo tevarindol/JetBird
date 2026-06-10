@@ -45,6 +45,7 @@
     <string name="enable_verbose_logging">Enable verbose logging</string>
     <string name="enable_verbose_logging_description">Increase verbosity of JetBird logs</string>
     <string name="enable_verbose_logging_description_netbird">Increase verbosity of NetBird logs</string>
+    <string name="enabled">Enabled</string>
     <string name="engine_logging_warning">The NetBird client can produce a lot of logs over time.\n\nThese logs are stored in memory and may cause your phone to slow down or JetBird to crash.\n\nYou can also disable live logging and dump the logs afterwards from the log screen.</string>
     <string name="example_cidr" translatable="false">192.168.1.0/24</string>
     <string name="exclude">Exclude</string>
@@ -75,6 +76,12 @@
     <string name="management_server">Management server</string>
     <string name="management_url">Management Server URL</string>
     <string name="netbird" translatable="false">NetBird</string>
+    <string name="network_domains">Domains: %1$s</string>
+    <string name="network_info">Network info</string>
+    <string name="network_name">Name: %1$s</string>
+    <string name="network_network">Network: %1$s</string>
+    <string name="network_peer">Peer: %1$s</string>
+    <string name="network_status">Status: %1$s</string>
     <string name="networks">Networks</string>
     <string name="no_route_overrides">You have no route overrides</string>
     <string name="not_set">Not set</string>

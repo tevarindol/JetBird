@@ -245,7 +245,15 @@ class VPNService: VpnService() {
             tunnel?.stop()
         }
 
-        fun getState() = _state.value
+        fun selectRoute(route: String) {
+            tunnel?.selectRoute(route)
+            _state.update { it.copy(networks = tunnel?.networks().toNetworkList()) }
+        }
+
+        fun deselectRoute(route: String) {
+            tunnel?.deselectRoute(route)
+            _state.update { it.copy(networks = tunnel?.networks().toNetworkList()) }
+        }
 
         override fun onTransact(code: Int, data: Parcel, reply: Parcel?, flags: Int): Boolean {
             if (code == LAST_CALL_TRANSACTION) {

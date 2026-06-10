@@ -4,5 +4,7 @@ data class Network(
     val name: String,
     val network: String,
     val peer: String,
-    val status: String
+    val status: String,
+    val selected: Boolean,
+    val domains: List<Domain>
 )

@@ -13,7 +13,9 @@ fun NetworkArray?.toNetworkList(): List<Network> {
                 name = network.name,
                 network = network.network,
                 peer = network.peer,
-                status = network.status
+                status = network.status,
+                selected = network.isSelected,
+                domains = network.networkDomains.toDomains()
             )
         )
     }
