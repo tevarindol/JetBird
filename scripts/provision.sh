@@ -23,6 +23,5 @@ export PATH="${PATH}:${ANDROID_HOME}/cmdline-tools/bin"
 (yes || true) | sdkmanager --sdk_root="${ANDROID_HOME}" --licenses 1>/dev/null
 sdkmanager --sdk_root="${ANDROID_HOME}" "build-tools;34.0.0"
 sdkmanager --sdk_root="${ANDROID_HOME}" "ndk;28.2.13676358"
-sdkmanager --sdk_root="${ANDROID_HOME}" "platforms;android-24"
-sdkmanager --sdk_root="${ANDROID_HOME}" "platforms;android-37.0"
+sdkmanager --sdk_root="${ANDROID_HOME}" "platforms;android-36"
 sdkmanager --sdk_root="${ANDROID_HOME}" "platform-tools"

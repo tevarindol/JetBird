@@ -1,3 +1,4 @@
+
 import com.android.build.api.variant.FilterConfiguration
 import java.io.ByteArrayOutputStream
 
@@ -11,7 +12,7 @@ plugins {
 
 android {
     namespace = "dev.bg.jetbird"
-    compileSdk = 37
+    compileSdk = 36
     ndkVersion = "28.2.13676358"
 
     defaultConfig {
@@ -164,12 +165,17 @@ tasks.whenTaskAdded {
     }
 }
 
+interface InjectedExecOps {
+    @Inject //@javax.inject.Inject
+    fun getExecOps(): ExecOperations
+}
+
 fun getNetbirdCommit(): String {
     val stdout = ByteArrayOutputStream()
-    exec {
+    objects.newInstance(InjectedExecOps::class).getExecOps().exec {
         commandLine("git", "submodule", "status")
         standardOutput = stdout
-    }
+    }.assertNormalExitValue()
     return stdout.toString().trim().split(" ").first()
 }
 
@@ -179,9 +185,9 @@ fun getShortNetbirdCommit(): String {
 
 fun getNetbirdVersionFromCommit(): String {
     val stdout = ByteArrayOutputStream()
-    exec {
+    objects.newInstance(InjectedExecOps::class).getExecOps().exec {
         commandLine("git", "-C", "${rootDir}/netbird", "describe", "--tags", "--abbrev=0")
         standardOutput = stdout
-    }
+    }.assertNormalExitValue()
     return "\"${stdout.toString().trim()}\""
 }
