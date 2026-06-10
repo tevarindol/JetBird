@@ -8,6 +8,7 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -73,9 +74,9 @@ import dev.bg.jetbird.data.model.ConnectionState
 import dev.bg.jetbird.data.model.Network
 import dev.bg.jetbird.service.VPNService
 import dev.bg.jetbird.ui.components.ConnectionCard
-import dev.bg.jetbird.ui.components.NetworkCard
 import dev.bg.jetbird.ui.components.OutlinedCopyButton
 import dev.bg.jetbird.util.OnLifecycleEvent
+import dev.bg.jetbird.util.ktx.conditional
 import dev.bg.jetbird.util.ktx.hasOtherAlwaysOnVpn
 import io.netbird.android.URLOpener
 import kotlinx.coroutines.launch
@@ -299,6 +300,8 @@ private fun PeersList(
     val binder = LocalVPNServiceBinder.current
     val clipboardManager = LocalClipboardManager.current
 
+    val c = MaterialTheme.colorScheme.primary
+
     val service = binder?.state?.collectAsStateWithLifecycle()?.value
     val connectionState = service?.connectionState
     val peers = service?.peers ?: emptyList()
@@ -418,14 +421,17 @@ private fun PeersList(
                             Spacer(Modifier.height(8.dp))
                         }
                         items(networks) { network ->
-                            NetworkCard(
+                            ConnectionCard(
                                 title = network.name,
                                 description = network.network,
                                 connectionStatus = network.status,
-                                isSelected = network.selected,
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .padding(horizontal = 12.dp)
+                                    .clip(RoundedCornerShape(12.dp))
+                                    .conditional(network.selected) {
+                                        border(1.dp, c, RoundedCornerShape(12.dp))
+                                    }
                                     .animateItem()
                                     .clickable {
                                         selectedNetwork = network
