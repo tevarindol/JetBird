@@ -57,7 +57,7 @@
     <string name="not_set">Pole määratud</string>
     <string name="peer_bytes_rx">Vastuvõetud baite: %1$sB</string>
     <string name="peer_bytes_tx">Saadetud baite: %1$sB</string>
-    <string name="peer_connection_status">Staatus: %1$s</string>
+    <string name="peer_connection_status">Olek: %1$s</string>
     <string name="peer_connection_status_update">Oleku viimane uuendus: %1$s</string>
     <string name="peer_info">Võrdõigusvõrgu sõlme teave</string>
     <string name="peer_last_wireguard_handshake">Viimane WireGuardi kätlus: %1$s tagasi</string>
@@ -128,4 +128,11 @@
     <string name="force_relay_connection">Kasuta sundkorras ühendust edastusserver kaudu</string>
     <string name="exclude_apps_inverted_description">%1$d rakendust on kaasatud</string>
     <string name="include">Kaasa</string>
+    <string name="enabled">Kasutusel</string>
+    <string name="network_domains">Domeenid: %1$s</string>
+    <string name="network_info">Võrgu teave</string>
+    <string name="network_name">Nimi: %1$s</string>
+    <string name="network_network">Võrk: %1$s</string>
+    <string name="network_peer">Võrdõigusvõrgu sõlm: %1$s</string>
+    <string name="network_status">Olek: %1$s</string>
 </resources>
