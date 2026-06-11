@@ -128,4 +128,11 @@
     <string name="include">Inkludera</string>
     <string name="lazy_connections_description">Anslut till peers på begäran</string>
     <string name="peers">Peers</string>
+    <string name="enabled">Aktiverad</string>
+    <string name="network_domains">Domäner: %1$s</string>
+    <string name="network_info">Nätverksinformation</string>
+    <string name="network_name">Namn: %1$s</string>
+    <string name="network_network">Nätverk: %1$s</string>
+    <string name="network_status">Status: %1$s</string>
+    <string name="network_peer">Peer: %1$s</string>
 </resources>
