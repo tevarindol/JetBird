@@ -1,12 +1,14 @@
 JetBird is a wrapper around the NetBird client and is privacy friendly, containing no blobs or trackers.
 
-## Features
-- Native UI
-- Supports SSO and setup keys
-- Supports pre-shared keys
-- Real-time logs
-- Quick tile
-- Exclude apps from the tunnel
-- Exit nodes (with client-side customisation)
-- Android TV support
-- Lazy connection support
+<b>Features</b>
+<ul>
+<li>Native UI</li>
+<li>Supports SSO and setup keys</li>
+<li>Supports pre-shared keys</li>
+<li>Real-time logs</li>
+<li>Quick tile</li>
+<li>Exclude apps from the tunnel</li>
+<li>Exit nodes (with select and client-side customisation)</li>
+<li>Android TV support</li>
+<li>Lazy connection support</li>
+</ul>

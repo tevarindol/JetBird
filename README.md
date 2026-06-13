@@ -17,7 +17,7 @@ It has been built with privacy in mind and contains no blobs or trackers.
 - See all logs in real time
 - Quick tile
 - Exclude apps from the tunnel
-- Exit nodes (with client-side customisation)
+- Exit nodes (with selection and client-side customisation)
 - Tablet support
 - Reconnect on restart
 - Relay support from JetBird v1.0.4+ (with NetBird v0.29.0+ peers)
