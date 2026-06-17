@@ -128,4 +128,11 @@
     <string name="force_relay_connection">conexión del relé forzada</string>
     <string name="exclude_apps_inverted_description">%1$d aplicaciones incluidas</string>
     <string name="include">Incluir</string>
+    <string name="enabled">Activado</string>
+    <string name="network_domains">Dominios: %1$s</string>
+    <string name="network_info">Información de red</string>
+    <string name="network_name">Nombre: %1$s</string>
+    <string name="network_network">Red: %1$s</string>
+    <string name="network_peer">Par: %1$s</string>
+    <string name="network_status">Estado: %1$s</string>
 </resources>

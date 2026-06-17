@@ -42,7 +42,7 @@
     <string name="enable_verbose_logging">Ausführliche Protokollierung aktivieren</string>
     <string name="enable_verbose_logging_description">Ausführlichkeit der JetBird-Protokolle erhöhen</string>
     <string name="exclude">Auschließen</string>
-    <string name="exclude_apps">Apps vom Tunnel ausschließen</string>
+    <string name="exclude_apps">Apps in den Tunnel einbeziehen/ausnehmen</string>
     <string name="exclude_apps_description">%1$d Apps ausgeschlossen</string>
     <string name="failed_remove_netbird_config">Entfernen der NetBird-Konfigurationsdatei fehlgeschlagen</string>
     <string name="failed_to_change_management_server">Fehler beim Ändern des Verwaltungsservers</string>
@@ -134,4 +134,11 @@
     <string name="peers">Gegenstellen</string>
     <string name="server_routes_description">Als Router für Serverrouten agieren</string>
     <string name="force_relay_connection">Weiterleitungsverbindung erzwingen</string>
+    <string name="network_status">Status: %1$s</string>
+    <string name="enabled">Aktiviert</string>
+    <string name="exclude_apps_inverted_description">%1$d Apps einbezogen</string>
+    <string name="include">Einbeziehen</string>
+    <string name="network_info">Netzwerkinformationen</string>
+    <string name="network_name">Name: %1$s</string>
+    <string name="network_network">Netzwerk: %1$s</string>
 </resources>
