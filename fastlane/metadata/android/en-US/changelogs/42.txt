@@ -1,0 +1,1 @@
+- Update NetBird to v0.72.4
