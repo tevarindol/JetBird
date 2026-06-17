@@ -48,6 +48,12 @@ There are a few differences between NetBird official Android client and JetBird.
     <a href="https://codeberg.org/bg443/JetBird/releases.rss" rel="noopener noreferrer" target=_blank><img src="./assets/RSS.svg" height=60 alt="Follow with RSS" /></a>
 </div>
 
+### APK Signature
+```
+dev.bg.jetbird
+39:56:53:3C:54:22:18:34:9B:5F:3F:7F:3D:3A:69:26:06:0C:1A:0C:DF:32:D6:E5:8E:A1:DE:3A:36:C2:12:13
+```
+
 ### Build from source
 
 1. Build NetBird
