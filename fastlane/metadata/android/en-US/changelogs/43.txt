@@ -1,0 +1,3 @@
+- Add profiles
+- Update NetBird to v0.73.2
+- Update locales

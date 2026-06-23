@@ -8,6 +8,8 @@ import dev.bg.jetbird.repository.LogRepository
 import dev.bg.jetbird.repository.LogRepositoryImpl
 import dev.bg.jetbird.repository.PreferencesRepository
 import dev.bg.jetbird.repository.PreferencesRepositoryImpl
+import dev.bg.jetbird.repository.ProfileRepository
+import dev.bg.jetbird.repository.ProfileRepositoryImpl
 import dev.bg.jetbird.repository.VpnRepository
 import dev.bg.jetbird.repository.VpnRepositoryImpl
 import javax.inject.Singleton
@@ -21,6 +23,12 @@ interface RepositoryModule {
     abstract fun provideLogRepository(
         logRepository: LogRepositoryImpl
     ): LogRepository
+
+    @Binds
+    @Singleton
+    abstract fun provideProfileRepository(
+        profileRepository: ProfileRepositoryImpl
+    ): ProfileRepository
 
     @Binds
     @Singleton

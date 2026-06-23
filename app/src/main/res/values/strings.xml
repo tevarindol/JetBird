@@ -6,6 +6,8 @@
     <string name="about_netbird_version">NetBird Version</string>
     <string name="about_version">JetBird Version: %1$s</string>
     <string name="action_not_reversible">This action cannot be undone.</string>
+    <string name="add">Add</string>
+    <string name="add_a_profile">Add a profile</string>
     <string name="add_route">Add route</string>
     <string name="another_always_on_vpn_active">Another always-on VPN is active</string>
     <string name="app">App</string>
@@ -31,6 +33,7 @@
     <string name="copy_log">Copy log</string>
     <string name="credits">Credits</string>
     <string name="credits_description">See libraries and licenses</string>
+    <string name="default_profile">Default</string>
     <string name="delete">Delete</string>
     <string name="disconnect">Disconnect</string>
     <string name="disconnected">Disconnected</string>
@@ -75,6 +78,7 @@
     <string name="login_expired">Login expired - please connect again to re-authenticate</string>
     <string name="management_server">Management server</string>
     <string name="management_url">Management Server URL</string>
+    <string name="name">Name</string>
     <string name="netbird" translatable="false">NetBird</string>
     <string name="network_domains">Domains: %1$s</string>
     <string name="network_info">Network info</string>
@@ -103,7 +107,10 @@
     <string name="permissive_rosenpass">Permissive Rosenpass</string>
     <string name="permissive_rosenpass_description">Allow non-rosenpass peers to connect</string>
     <string name="pre_shared_key">Pre-shared key</string>
+    <string name="profiles">Profiles</string>
     <string name="relay">Relay: %1$s</string>
+    <string name="remove_profile">Remove %1$s</string>
+    <string name="remove_profile_description">Are you sure you want to remove this profile?</string>
     <string name="removed_netbird_config">Removed NetBird configuration file</string>
     <string name="requires_vpn_permission">JetBird needs you to allow it to create a VPN connection on this device.</string>
     <string name="reset_app">Reset app</string>

@@ -15,6 +15,7 @@ sealed class Route(
 ) {
     data object Home: Route("home")
     data object Setup: Route("setup")
+    data object Profile: Route("profile")
     data object Log: Route("log")
     data object Settings: Route("settings")
     data object RouteSelector: Route("route_selector")
@@ -24,6 +25,7 @@ sealed class Route(
         fun getScaffoldVisibility(route: String?): ScaffoldVisibility = when (route) {
             Home.route -> ScaffoldVisibility.ActionsOnly
             Setup.route -> ScaffoldVisibility.Gone
+            Profile.route -> ScaffoldVisibility.NavOnly
             Log.route -> ScaffoldVisibility.NavOnly
             Settings.route -> ScaffoldVisibility.NavOnly
             RouteSelector.route -> ScaffoldVisibility.NavOnly

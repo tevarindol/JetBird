@@ -24,6 +24,7 @@ It has been built with privacy in mind and contains no blobs or trackers.
 - TV support
 - Lazy connection support - [NetBird docs](https://docs.netbird.io/how-to/lazy-connection)
 - External broadcast receiver for automation (e.g. via Tasker)
+- Profiles
 
 ## Differences
 There are a few differences between NetBird official Android client and JetBird. Some of these features rely on patches to the NetBird source (these are in `patches/`):

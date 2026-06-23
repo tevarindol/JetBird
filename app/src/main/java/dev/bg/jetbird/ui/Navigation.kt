@@ -39,6 +39,7 @@ import dev.bg.jetbird.repository.PreferencesRepository
 import dev.bg.jetbird.ui.screens.credits.CreditsScreen
 import dev.bg.jetbird.ui.screens.home.HomeScreen
 import dev.bg.jetbird.ui.screens.log.LogScreen
+import dev.bg.jetbird.ui.screens.profile.ProfileScreen
 import dev.bg.jetbird.ui.screens.routeselector.RouteSelectorScreen
 import dev.bg.jetbird.ui.screens.settings.SettingsScreen
 import dev.bg.jetbird.ui.screens.setup.SetupScreen
@@ -123,6 +124,12 @@ fun Navigation(
                                         scaffoldVisibility == ScaffoldVisibility.ActionsOnly
                             ) {
                                 Row {
+                                    IconButton(onClick = { navController.navigate(Route.Profile) }) {
+                                        Icon(
+                                            painterResource(R.drawable.baseline_account_circle_24),
+                                            contentDescription = null
+                                        )
+                                    }
                                     IconButton(onClick = { navController.navigate(Route.Log) }) {
                                         Icon(
                                             painterResource(R.drawable.baseline_list_24),
@@ -160,6 +167,9 @@ fun Navigation(
                         appLanguageDropdown = false
                     }
                 )
+            }
+            composable(Route.Profile) {
+                ProfileScreen()
             }
             composable(Route.Log) {
                 LogScreen()
