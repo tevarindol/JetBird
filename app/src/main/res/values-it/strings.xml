@@ -38,7 +38,7 @@
     <string name="enable_verbose_logging">Abilita log dettagliati</string>
     <string name="enable_verbose_logging_description">Aumenta la verbosità dei log di JetBird</string>
     <string name="exclude">Escludi</string>
-    <string name="exclude_apps">Escludi applicazioni dal tunnel</string>
+    <string name="exclude_apps">Includi/Escludi applicazioni dal tunnel</string>
     <string name="exclude_apps_description">%1$d apps escluse</string>
     <string name="failed_remove_netbird_config">Impossibile rimuovere il file di configurazione di NetBird</string>
     <string name="failed_to_change_management_server">Impossibile modificare il server management</string>
@@ -126,4 +126,13 @@
     <string name="permissive_rosenpass">Rosenpass permissiva</string>
     <string name="permissive_rosenpass_description">Permetti ai peer non Rosenpass di connettersi</string>
     <string name="force_relay_connection">Forza la connessione relay</string>
+    <string name="enabled">Abilitato</string>
+    <string name="exclude_apps_inverted_description">%1$d apps incluse</string>
+    <string name="include">Includi</string>
+    <string name="network_domains">Domini: %1$s</string>
+    <string name="network_info">Network info</string>
+    <string name="network_name">Nome: %1$s</string>
+    <string name="network_network">Rete: %1$s</string>
+    <string name="network_peer">Peer: %1$s</string>
+    <string name="network_status">Stato: %1$s</string>
 </resources>
