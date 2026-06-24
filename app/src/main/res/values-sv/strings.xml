@@ -135,4 +135,11 @@
     <string name="network_network">Nätverk: %1$s</string>
     <string name="network_status">Status: %1$s</string>
     <string name="network_peer">Peer: %1$s</string>
+    <string name="add">Lägg till</string>
+    <string name="add_a_profile">Lägg till en profil</string>
+    <string name="default_profile">Standard</string>
+    <string name="name">Namn</string>
+    <string name="profiles">Profiler</string>
+    <string name="remove_profile">Ta bort %1$s</string>
+    <string name="remove_profile_description">Är du säker på att du vill ta bort den här profilen?</string>
 </resources>
