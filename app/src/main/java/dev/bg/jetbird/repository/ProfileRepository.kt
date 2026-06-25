@@ -24,6 +24,7 @@ interface ProfileRepository {
         onError: (error: String) -> Unit
     )
     fun switchProfile(id: String)
+    fun renameProfile(id: String, name: String)
     fun removeProfile(id: String)
 }
 
@@ -79,6 +80,14 @@ class ProfileRepositoryImpl @Inject constructor(
         }
         preferencesRepository.setProfileId(id)
         updatePreferencesState()
+    }
+
+    override fun renameProfile(id: String, name: String) {
+        try {
+            profileManager.renameProfile(id, name)
+        } catch (e: Exception) {
+            logRepository.log("Failed to rename profile: $e")
+        }
     }
 
     override fun removeProfile(id: String) {

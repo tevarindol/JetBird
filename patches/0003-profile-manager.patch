@@ -1,0 +1,21 @@
+diff --git a/client/android/profile_manager.go b/client/android/profile_manager.go
+index 87c001396..0091d05ab 100644
+--- a/client/android/profile_manager.go
++++ b/client/android/profile_manager.go
+@@ -154,6 +154,16 @@ func (pm *ProfileManager) AddProfile(profileName string) error {
+ 	return nil
+ }
+ 
++func (pm *ProfileManager) RenameProfile(id string, newName string) error {
++	err := pm.serviceMgr.RenameProfile(profilemanager.ID(id), androidUsername, newName)
++	if err != nil {
++		return fmt.Errorf("failed to rename profile: %w", err)
++	}
++
++	log.Infof("renamed profile: %s", id)
++	return nil
++}
++
+ // LogoutProfile logs out from a profile (clears authentication)
+ func (pm *ProfileManager) LogoutProfile(id string) error {
+ 	configPath, err := pm.getProfileConfigPath(id)

@@ -20,17 +20,21 @@ import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.ProgressIndicatorDefaults
 import androidx.compose.material3.Text
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -52,6 +56,7 @@ import dev.bg.jetbird.ui.components.TypedOutlinedTextField
 import dev.bg.jetbird.util.ktx.conditional
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 @Composable
 fun ProfileScreen(
@@ -62,7 +67,9 @@ fun ProfileScreen(
 
     val state by viewModel.state.collectAsStateWithLifecycle()
 
+    var actionSheet by remember { mutableStateOf<String?>(null) }
     var addProfileDialog by remember { mutableStateOf(false) }
+    var renameProfileDialog by remember { mutableStateOf<String?>(null) }
     var deleteProfileDialog by remember { mutableStateOf<String?>(null) }
     var activeProfileId by remember { mutableStateOf("") }
 
@@ -118,7 +125,7 @@ fun ProfileScreen(
                             activeProfileId = viewModel.activeProfileId()
                         },
                         onLongClick = {
-                            deleteProfileDialog = profile.id
+                            actionSheet = profile.id
                         }
                     )
                 }
@@ -143,12 +150,35 @@ fun ProfileScreen(
             )
         }
     }
+    ActionSheet(
+        actionSheet,
+        onRename = {
+            renameProfileDialog = actionSheet
+            actionSheet = null
+        },
+        onDelete = {
+            deleteProfileDialog = actionSheet
+            actionSheet = null
+        },
+        onDismissRequest = {
+            actionSheet = null
+        }
+    )
     AddProfileDialog(
         addProfileDialog,
         onDismissRequest = {
             addProfileDialog = false
         },
         onSubmit = viewModel::addProfile
+    )
+    RenameProfileDialog(
+        renameProfileDialog,
+        onDismissRequest = {
+            renameProfileDialog = null
+        },
+        onSubmit = { name ->
+            viewModel.renameProfile(renameProfileDialog, name)
+        }
     )
     DeleteAlertDialog(
         title = stringResource(R.string.remove_profile, deleteProfileDialog ?: ""),
@@ -203,6 +233,58 @@ private fun ProfileCard(
                 profile.id,
                 color = MaterialTheme.colorScheme.secondary
             )
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun ActionSheet(
+    id: String?,
+    onRename: () -> Unit,
+    onDelete: () -> Unit,
+    onDismissRequest: () -> Unit
+) {
+    val state = rememberModalBottomSheetState()
+    val scope = rememberCoroutineScope()
+
+    if (id != null) {
+        ModalBottomSheet(
+            onDismissRequest = {
+                scope.launch {
+                    state.hide()
+                    onDismissRequest()
+                }
+            }
+        ) {
+            Column(
+                Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 12.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Button(
+                    onClick = {
+                        scope.launch {
+                            state.hide()
+                            onRename()
+                        }
+                    }
+                ) {
+                    Text(stringResource(R.string.rename_profile))
+                }
+                Button(
+                    onClick = {
+                        scope.launch {
+                            state.hide()
+                            onDelete()
+                        }
+                    }
+                ) {
+                    Text(stringResource(R.string.delete_profile))
+                }
+            }
         }
     }
 }
@@ -268,6 +350,54 @@ private fun AddProfileDialog(
                     }
                 ) {
                     Text(stringResource(R.string.add))
+                }
+            }
+        )
+    }
+}
+
+@Composable
+private fun RenameProfileDialog(
+    id: String?,
+    onDismissRequest: () -> Unit,
+    onSubmit: (name: String) -> Unit
+) {
+    var name by remember { mutableStateOf("") }
+
+    if (id != null) {
+        AlertDialog(
+            title = {
+                Text(stringResource(R.string.rename_profile, id))
+            },
+            text = {
+                TypedOutlinedTextField(
+                    value = name,
+                    onValueChange = {
+                        name = it
+                    },
+                    label = { Text(stringResource(R.string.name)) },
+                    inputType = OutlinedTextFieldInputType.Any,
+                    maxLines = 1
+                )
+            },
+            onDismissRequest = onDismissRequest,
+            dismissButton = {
+                OutlinedButton(
+                    onClick = onDismissRequest
+                ) {
+                    Text(stringResource(R.string.cancel))
+                }
+            },
+            confirmButton = {
+                Button(
+                    enabled = name.isNotEmpty(),
+                    onClick = {
+                        onSubmit(name)
+                        name = ""
+                        onDismissRequest()
+                    }
+                ) {
+                    Text(stringResource(R.string.rename))
                 }
             }
         )

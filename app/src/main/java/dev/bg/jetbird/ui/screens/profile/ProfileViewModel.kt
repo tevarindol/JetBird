@@ -64,6 +64,24 @@ class ProfileViewModel @Inject constructor(
         getProfiles()
     }
 
+    fun renameProfile(
+        id: String?,
+        name: String
+    ) {
+        // Switch to default temporarily otherwise NetBird is in an unrecoverable state
+        val activeId = activeProfileId()
+        if (activeId == id) {
+            switchProfile("default")
+        }
+        if (id != null) {
+            profileRepository.renameProfile(id, name)
+            if (activeId == id) {
+                switchProfile(id)
+            }
+            getProfiles()
+        }
+    }
+
     fun removeProfile(
         id: String
     ) {
