@@ -141,4 +141,14 @@
     <string name="network_info">Netzwerkinformationen</string>
     <string name="network_name">Name: %1$s</string>
     <string name="network_network">Netzwerk: %1$s</string>
+    <string name="rename_profile_dialog">%1$s umbenennen</string>
+    <string name="add">Hinzufügen</string>
+    <string name="add_a_profile">Profil hinzufügen</string>
+    <string name="default_profile">Standard</string>
+    <string name="delete_profile">Profil löschen</string>
+    <string name="name">Name</string>
+    <string name="profiles">Profile</string>
+    <string name="remove_profile">%1$s entfernen</string>
+    <string name="rename">Umbenennen</string>
+    <string name="rename_profile">Profil umbenennen</string>
 </resources>
