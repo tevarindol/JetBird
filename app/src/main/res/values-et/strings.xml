@@ -142,4 +142,8 @@
     <string name="profiles">Profiilid</string>
     <string name="remove_profile">Eemalda %1$s</string>
     <string name="remove_profile_description">Kas oled kindel, et soovid selle profiili eemaldada?</string>
+    <string name="delete_profile">Kustuta profiil</string>
+    <string name="rename">Muuda nime</string>
+    <string name="rename_profile">Muuda profiili nime</string>
+    <string name="rename_profile_dialog">Muuda nime: %1$s</string>
 </resources>
