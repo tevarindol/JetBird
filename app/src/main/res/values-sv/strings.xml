@@ -142,4 +142,8 @@
     <string name="profiles">Profiler</string>
     <string name="remove_profile">Ta bort %1$s</string>
     <string name="remove_profile_description">Är du säker på att du vill ta bort den här profilen?</string>
+    <string name="delete_profile">Ta bort profil</string>
+    <string name="rename">Byt namn</string>
+    <string name="rename_profile">Byt namn på profil</string>
+    <string name="rename_profile_dialog">Byt namn %1$s</string>
 </resources>
