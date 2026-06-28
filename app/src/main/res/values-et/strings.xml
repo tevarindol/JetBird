@@ -135,4 +135,15 @@
     <string name="network_network">Võrk: %1$s</string>
     <string name="network_peer">Võrdõigusvõrgu sõlm: %1$s</string>
     <string name="network_status">Olek: %1$s</string>
+    <string name="add">Lisa</string>
+    <string name="add_a_profile">Lisa profiil</string>
+    <string name="default_profile">Vaikimisi</string>
+    <string name="name">Nimi</string>
+    <string name="profiles">Profiilid</string>
+    <string name="remove_profile">Eemalda %1$s</string>
+    <string name="remove_profile_description">Kas oled kindel, et soovid selle profiili eemaldada?</string>
+    <string name="delete_profile">Kustuta profiil</string>
+    <string name="rename">Muuda nime</string>
+    <string name="rename_profile">Muuda profiili nime</string>
+    <string name="rename_profile_dialog">Muuda nime: %1$s</string>
 </resources>
