@@ -19,8 +19,8 @@ android {
         applicationId = "dev.bg.jetbird"
         minSdk = 24
         targetSdk = 37
-        versionCode = 44
-        versionName = "1.8.1"
+        versionCode = 45
+        versionName = "1.8.2"
 
         buildConfigField("String", "NETBIRD_COMMIT", getShortNetbirdCommit())
         buildConfigField("String", "NETBIRD_VERSION", getNetbirdVersionFromCommit())
@@ -143,6 +143,7 @@ dependencies {
 
     // Misc
     implementation(libs.ipaddress)
+    implementation(libs.zxing)
     debugImplementation(libs.leakCanary)
 
     // Test

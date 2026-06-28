@@ -1,0 +1,2 @@
+- Add QR code for login on TV
+- Update locales

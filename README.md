@@ -21,7 +21,7 @@ It has been built with privacy in mind and contains no blobs or trackers.
 - Tablet support
 - Reconnect on restart
 - Relay support from JetBird v1.0.4+ (with NetBird v0.29.0+ peers)
-- TV support
+- TV support (QR code login)
 - Lazy connection support - [NetBird docs](https://docs.netbird.io/how-to/lazy-connection)
 - External broadcast receiver for automation (e.g. via Tasker)
 - Profiles

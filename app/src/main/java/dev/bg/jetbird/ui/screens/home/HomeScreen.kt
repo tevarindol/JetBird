@@ -3,10 +3,12 @@ package dev.bg.jetbird.ui.screens.home
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
 import android.net.VpnService
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedContent
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -15,6 +17,8 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -42,6 +46,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.rememberBottomSheetScaffoldState
 import androidx.compose.material3.rememberStandardBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -52,6 +57,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.FilterQuality
+import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
@@ -60,6 +67,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -78,6 +87,7 @@ import dev.bg.jetbird.ui.components.OutlinedCopyButton
 import dev.bg.jetbird.util.OnLifecycleEvent
 import dev.bg.jetbird.util.ktx.conditional
 import dev.bg.jetbird.util.ktx.hasOtherAlwaysOnVpn
+import dev.bg.jetbird.util.ktx.isLeanback
 import io.netbird.android.URLOpener
 import kotlinx.coroutines.launch
 
@@ -97,6 +107,7 @@ fun HomeScreen(
 
     var hasOtherAlwaysOnVpn by remember { mutableStateOf(false) }
     var hasVpnPermission by remember { mutableStateOf(false) }
+    var qrCode by remember { mutableStateOf<Bitmap?>(null) }
 
     val vpnPermissionLauncher = rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         when (result.resultCode) {
@@ -127,12 +138,22 @@ fun HomeScreen(
         }
     }
 
+    LaunchedEffect(vpnState?.connectionState) {
+        if (qrCode != null && vpnState?.connectionState == ConnectionState.CONNECTED) {
+            qrCode = null
+        }
+    }
+
     val loginListener = object : URLOpener {
         override fun onLoginSuccess() {}
 
         override fun open(uri: String?, userCode: String?) {
-            uri?.let {
-                uriHandler.openUri(it)
+            if (ctx.isLeanback()) {
+                qrCode = viewModel.generateQrCode(uri)
+            } else {
+                uri?.let {
+                    uriHandler.openUri(it)
+                }
             }
         }
     }
@@ -261,6 +282,13 @@ fun HomeScreen(
                 }
             }
         }
+        QrCodeDialog(
+            qrCode,
+            onDismissRequest = {
+                qrCode = null
+                binder?.stop()
+            }
+        )
     }
 }
 
@@ -557,6 +585,50 @@ private fun PeersList(
                     onClick = {
                         selectedNetwork = null
                     }
+                ) {
+                    Text(stringResource(R.string.close))
+                }
+            }
+        )
+    }
+}
+
+@Composable
+private fun QrCodeDialog(
+    bitmap: Bitmap?,
+    onDismissRequest: () -> Unit
+) {
+    if (bitmap != null) {
+        AlertDialog(
+            title = {
+                Text(stringResource(R.string.log_in))
+            },
+            text = {
+                Box(
+                    Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Canvas(
+                        Modifier
+                            .fillMaxHeight()
+                            .aspectRatio(1f)
+                    ) {
+                        drawImage(
+                            bitmap.asImageBitmap(),
+                            srcOffset = IntOffset.Zero,
+                            srcSize = IntSize(512, 512),
+                            dstOffset = IntOffset.Zero,
+                            dstSize = IntSize(size.width.toInt(), size.height.toInt()),
+                            filterQuality = FilterQuality.High
+                        )
+                    }
+                }
+            },
+            onDismissRequest = onDismissRequest,
+            dismissButton = {},
+            confirmButton = {
+                Button(
+                    onClick = onDismissRequest
                 ) {
                     Text(stringResource(R.string.close))
                 }

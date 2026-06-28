@@ -75,6 +75,7 @@
     <string name="lazy_connections_description">Connect to peers on-demand</string>
     <string name="log">Log</string>
     <string name="log_empty">No log entries</string>
+    <string name="log_in">Log in</string>
     <string name="logging">Logging</string>
     <string name="login_expired">Login expired - please connect again to re-authenticate</string>
     <string name="management_server">Management server</string>
