@@ -38,7 +38,8 @@ fun CreditsScreen() {
         Library("MMKV", BSD, "https://github.com/Tencent/MMKV"),
         Library("Timber", APACHE_V2, "https://github.com/JakeWharton/timber"),
         Library("LeakCanary", APACHE_V2, "https://square.github.io/leakcanary"),
-        Library("IPAddress", APACHE_V2, "https://github.com/seancfoley/IPAddress")
+        Library("IPAddress", APACHE_V2, "https://github.com/seancfoley/IPAddress"),
+        Library("ZXing", APACHE_V2, "https://github.com/zxing/zxing")
     )
 
     LazyColumn(
