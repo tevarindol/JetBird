@@ -152,7 +152,13 @@ fun HomeScreen(
                 qrCode = viewModel.generateQrCode(uri)
             } else {
                 uri?.let {
-                    uriHandler.openUri(it)
+                    try {
+                        uriHandler.openUri(it)
+                    } catch (_: IllegalArgumentException) {
+                        scope.launch {
+                            snackbar.showSnackbar(ctx.getString(R.string.unable_to_open_link))
+                        }
+                    }
                 }
             }
         }

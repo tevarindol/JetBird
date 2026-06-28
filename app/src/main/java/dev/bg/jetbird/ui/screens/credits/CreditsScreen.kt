@@ -76,7 +76,9 @@ private fun LibraryItem(
         Modifier
             .fillMaxWidth()
             .clickable {
-                uriHandler.openUri(library.url)
+                try {
+                    uriHandler.openUri(library.url)
+                } catch (_: IllegalArgumentException) {}
             }
     ) {
         Text(library.title)
