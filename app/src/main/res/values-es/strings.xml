@@ -135,4 +135,16 @@
     <string name="network_network">Red: %1$s</string>
     <string name="network_peer">Par: %1$s</string>
     <string name="network_status">Estado: %1$s</string>
+    <string name="add">Añadir</string>
+    <string name="add_a_profile">Añadir un perfil</string>
+    <string name="default_profile">Por defecto</string>
+    <string name="delete_profile">Eliminar perfil</string>
+    <string name="log_in">Acceso</string>
+    <string name="name">Nombre</string>
+    <string name="profiles">Perfiles</string>
+    <string name="remove_profile">Eliminar %1$s</string>
+    <string name="remove_profile_description">¿Estás seguro de que quieres eliminar este perfil?</string>
+    <string name="rename">Renombrar</string>
+    <string name="rename_profile">Renombrar el perfil</string>
+    <string name="rename_profile_dialog">Renombrar %1$s</string>
 </resources>
