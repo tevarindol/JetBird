@@ -146,4 +146,6 @@
     <string name="rename">Byt namn</string>
     <string name="rename_profile">Byt namn på profil</string>
     <string name="rename_profile_dialog">Byt namn %1$s</string>
+    <string name="log_in">Logga in</string>
+    <string name="unable_to_open_link">Det gick inte att öppna länken. Se till att du har en webbläsare installerad och ställ in den som standardwebbläsare</string>
 </resources>
