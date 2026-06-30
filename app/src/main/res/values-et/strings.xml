@@ -146,4 +146,6 @@
     <string name="rename">Muuda nime</string>
     <string name="rename_profile">Muuda profiili nime</string>
     <string name="rename_profile_dialog">Muuda nime: %1$s</string>
+    <string name="log_in">Logi sisse</string>
+    <string name="unable_to_open_link">Lingi avamine ei õnnestu. Palun kontrolli, et seadmes leidub mõni veebibrauser ja üks on märgitud vaikimisi brauseriks</string>
 </resources>
