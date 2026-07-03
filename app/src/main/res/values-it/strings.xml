@@ -134,4 +134,17 @@
     <string name="network_network">Rete: %1$s</string>
     <string name="network_peer">Peer: %1$s</string>
     <string name="network_status">Stato: %1$s</string>
+    <string name="add">Aggiungi</string>
+    <string name="add_a_profile">Aggiungi un profilo</string>
+    <string name="default_profile">Default</string>
+    <string name="delete_profile">Cancella profilo</string>
+    <string name="log_in">Accedi</string>
+    <string name="name">Nome</string>
+    <string name="profiles">Profili</string>
+    <string name="remove_profile">Rimuovi %1$s</string>
+    <string name="remove_profile_description">Sei sicuro di voler rimuovere questo profilo?</string>
+    <string name="rename">Rinomina</string>
+    <string name="rename_profile">Rinomina profilo</string>
+    <string name="rename_profile_dialog">Rinomina %1$s</string>
+    <string name="unable_to_open_link">Impossibile aprire il link. Assicurati di avere un browser installato e impostato come browser predefinito</string>
 </resources>
