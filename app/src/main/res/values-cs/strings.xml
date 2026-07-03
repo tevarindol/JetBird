@@ -36,7 +36,6 @@
     <string name="failed_remove_netbird_config">Nepodařilo se odebrat konfigurační soubor NetBird</string>
     <string name="failed_vpn_permission">Uživatel odmítl oprávnění VPN</string>
     <string name="foreground_notification_description">Jetbird tunel je aktivní</string>
-    <string name="grant_permission">Udělit povolení</string>
     <string name="jetbird_exception">Ale ne! JetBird narazil na chybu!</string>
     <string name="jetbird_exception_description">Klepnutím zobrazíte další informace</string>
     <string name="log">Protokol</string>

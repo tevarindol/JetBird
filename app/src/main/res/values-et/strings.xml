@@ -44,7 +44,6 @@
     <string name="route_selector_info">Siin saate sürjutada ruutingud, mida Netbirdi haldusserver sinu nutiseadmele saadab. \n \nKui see on lubatud, ei kasuta kogu võrguliiklus nutiseadmes määratud tunnelikohaseid ruutinguid. Kõiki kasutatud ruutinguid näed logis. \n \nKui lubad ruutingu sürjutamist ja ei paku ühtegi uut ruutingut, leiab JetBird selle üldiste võrguseadistsute alusel.</string>
     <string name="foreground_notification_description">Jetbirdi tunnel on aktiivne</string>
     <string name="get_started_url">Alustamiseks sisesta oma haldusserveri võrguaadress</string>
-    <string name="grant_permission">Anna luba</string>
     <string name="jetbird_exception">Oh ei! JetBird komistas nüüd vea otsa!</string>
     <string name="jetbird_exception_description">Lisateabe saamiseks puuduta</string>
     <string name="log">Logi</string>

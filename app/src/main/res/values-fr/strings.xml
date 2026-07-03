@@ -38,7 +38,6 @@
     <string name="exclude_apps">Exclure des applications du tunnel</string>
     <string name="foreground_notification_description">Le tunnel JetBird est actif</string>
     <string name="get_started">Commencer</string>
-    <string name="grant_permission">Donner la permission</string>
     <string name="jetbird_exception_description">Taper pour plus d\'informations</string>
     <string name="log_empty">Pas d\'entrées dans le journal</string>
     <string name="logging">Connexion en cours</string>

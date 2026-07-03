@@ -36,7 +36,6 @@
     <string name="fallback_dns">Náhradný systém DNS</string>
     <string name="foreground_notification_description">JetBird tunel je aktívny</string>
     <string name="get_started_url">Ak chcete začať, zadajte adresu URL svojho servera na správu</string>
-    <string name="grant_permission">Udeliť povolenie</string>
     <string name="jetbird_exception">Ale nie! JetBird narazil na chybu!</string>
     <string name="log">Záznam</string>
     <string name="log_empty">Žiadne záznamy v denníku</string>

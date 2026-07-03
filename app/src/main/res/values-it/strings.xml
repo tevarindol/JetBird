@@ -50,7 +50,6 @@
     <string name="firewall">Firewall</string>
     <string name="get_started">Inizia</string>
     <string name="get_started_url">Per iniziare, inserisci l\'URL del tuo management server</string>
-    <string name="grant_permission">Concedi permesso</string>
     <string name="idle">Inattivo</string>
     <string name="jetbird_exception">Oh no! JetBird ha riscontrato un errore!</string>
     <string name="jetbird_exception_description">Tocca per maggiori informazioni</string>

@@ -54,7 +54,6 @@
     <string name="foreground_notification_description">El túnel JetBird está activo</string>
     <string name="get_started">Comience</string>
     <string name="get_started_url">Para comenzar, ingrese la URL de su servidor de administración</string>
-    <string name="grant_permission">Otorgar permiso</string>
     <string name="idle">Inactivo</string>
     <string name="jetbird_exception">¡Oh no! ¡JetBird encontró un error!</string>
     <string name="jetbird_exception_description">Toque para obtener más información</string>

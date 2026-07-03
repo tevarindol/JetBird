@@ -43,7 +43,6 @@
     <string name="enable_logging">Włącz logowanie</string>
     <string name="foreground_notification_description">Tunel JetBird jest aktywny</string>
     <string name="get_started_url">Aby rozpocząć, wprowadź adres URL serwera zarządzania</string>
-    <string name="grant_permission">Udziel pozwolenia</string>
     <string name="jetbird_exception">O nie! JetBird napotkał błąd!</string>
     <string name="log_empty">Brak wpisów w dzienniku</string>
     <string name="logging">Logowanie</string>

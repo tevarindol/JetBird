@@ -81,7 +81,6 @@
     <string name="failed_vpn_permission">Разрешение на использование VPN было отклонено</string>
     <string name="fallback_dns">Резервный DNS</string>
     <string name="get_started_url">Чтобы начать, пожалуйста, введите URL-адрес управляющего сервера</string>
-    <string name="grant_permission">Предоставьте разрешение</string>
     <string name="log">Журнал</string>
     <string name="log_empty">В журнале нет записей</string>
     <string name="logging">Журналирование</string>

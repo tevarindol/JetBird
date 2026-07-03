@@ -37,7 +37,6 @@
     <string name="fallback_dns">Reserv DNS</string>
     <string name="foreground_notification_description">JetBird-tunnel är aktiv</string>
     <string name="get_started_url">För att komma igång, ange din webbadress för hanteringsservern</string>
-    <string name="grant_permission">Bevilja tillstånd</string>
     <string name="jetbird_exception">Åh nej! JetBird stötte på ett fel!</string>
     <string name="jetbird_exception_description">Tryck för mer information</string>
     <string name="log">Logga</string>

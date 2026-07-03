@@ -74,7 +74,6 @@
     <string name="failed_vpn_permission">Користувач відхилив дозвіл на використання VPN</string>
     <string name="fallback_dns">Резервний DNS</string>
     <string name="foreground_notification_description">Тунель JetBird активний</string>
-    <string name="grant_permission">Надайте дозвіл</string>
     <string name="jetbird_exception">О, ні! JetBird виявив помилку!</string>
     <string name="jetbird_exception_description">Натисніть для отримання додаткової інформації</string>
     <string name="log">Журнал</string>

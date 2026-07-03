@@ -39,7 +39,6 @@
     <string name="fallback_dns">Yedek DNS</string>
     <string name="foreground_notification_description">JetBird tüneli etkin</string>
     <string name="get_started_url">Başlamak için lütfen yönetim sunucunuzun URL\'sini girin</string>
-    <string name="grant_permission">İzin verin</string>
     <string name="jetbird_exception">Olamaz! JetBird bir hatayla karşılaştı!</string>
     <string name="log">Günlük</string>
     <string name="log_empty">Günlük girişi yok</string>

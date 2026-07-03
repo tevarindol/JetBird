@@ -37,7 +37,6 @@
     <string name="failed_to_change_management_server">Kunne ikke ændre administrationsserveren</string>
     <string name="failed_vpn_permission">Bruger afviste VPN-tilladelse</string>
     <string name="fallback_dns">Reserve-DNS</string>
-    <string name="grant_permission">Giv tilladelse</string>
     <string name="jetbird_exception">Åh nej, nej! JetBird er stødt på en fejl!</string>
     <string name="jetbird_exception_description">Tryk for mere information</string>
     <string name="log">Loggen</string>

@@ -86,6 +86,7 @@ JetBird requires a few permissions in order to function:
 - `INTERNET`
 - `FOREGROUND_SERVICE`/`FOREGROUND_SERVICE_SYSTEM_EXEMPTED` - used to run the VPN service
 - `ACCESS_NETWORK_STATE`/`CHANGE_NETWORK_STATE` - used to monitor network to check if VPN is already running etc.
+- `ACCESS_LOCAL_NETWORK` - used to talk to hosts within a local network - required on Android 17 or greater
 - `POST_NOTIFICATIONS` - used for notifications when JetBird is running and when upstream sends new routes
 - `QUERY_ALL_PACKAGES` - used so you can choose which apps aren't tunneled
 - `RECEIVE_BOOT_COMPLETED` - used to start the tunnel when the device reboots - this is disabled by default in the manifest and will enable itself once you enable it in settings

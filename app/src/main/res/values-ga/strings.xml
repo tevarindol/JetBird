@@ -39,7 +39,6 @@
     <string name="exclude_apps_description">%1$d aipeanna eisiata</string>
     <string name="failed_vpn_permission">Diúltaíodh don úsáideoir cead VPN</string>
     <string name="fallback_dns">Cúltaca DNS</string>
-    <string name="grant_permission">Cead a dheonú</string>
     <string name="jetbird_exception_description">Beartaíonn le haghaidh tuilleadh faisnéise</string>
     <string name="log">Log</string>
     <string name="log_empty">Gan iontrálacha logála</string>

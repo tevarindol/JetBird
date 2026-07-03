@@ -48,7 +48,6 @@
     <string name="failed_vpn_permission">用户拒绝了 VPN 权限</string>
     <string name="fallback_dns">后备 DNS</string>
     <string name="foreground_notification_description">JetBird 隧道已连接</string>
-    <string name="grant_permission">授予权限</string>
     <string name="jetbird_exception">糟糕！JetBird 遇到错误！</string>
     <string name="jetbird_exception_description">点按即可了解详情</string>
     <string name="log">日志</string>

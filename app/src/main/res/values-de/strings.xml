@@ -50,7 +50,6 @@
     <string name="fallback_dns">Rückfall-DNS</string>
     <string name="foreground_notification_description">JetBird-Tunnel ist aktiv</string>
     <string name="get_started_url">Zum Starten, trage die URL des Verwaltungsservers ein</string>
-    <string name="grant_permission">Berechtigung erteilen</string>
     <string name="log">Protokoll</string>
     <string name="routes">Routen: %1$s</string>
     <string name="jetbird_exception">Oh nein! JetBird ist ein Fehler unterlaufen!</string>

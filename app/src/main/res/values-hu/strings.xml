@@ -37,7 +37,6 @@
     <string name="fallback_dns">Tartalék DNS</string>
     <string name="foreground_notification_description">A JetBird alagút aktív</string>
     <string name="get_started_url">A kezdéshez kérjük, adja meg a menedzsment szerver URL-jét</string>
-    <string name="grant_permission">Engedély megadása</string>
     <string name="jetbird_exception">Ó, ne! A JetBird hibát észlelt!</string>
     <string name="jetbird_exception_description">Érintse meg a további információkat</string>
     <string name="log">Napló</string>

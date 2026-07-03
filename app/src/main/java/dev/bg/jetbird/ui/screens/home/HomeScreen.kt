@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.VpnService
+import android.os.Build
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedContent
@@ -74,6 +75,9 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.google.accompanist.permissions.ExperimentalPermissionsApi
+import com.google.accompanist.permissions.isGranted
+import com.google.accompanist.permissions.rememberPermissionState
 import dev.bg.jetbird.LocalServiceConnection
 import dev.bg.jetbird.LocalSnackbar
 import dev.bg.jetbird.LocalVPNServiceBinder
@@ -91,7 +95,10 @@ import dev.bg.jetbird.util.ktx.isLeanback
 import io.netbird.android.URLOpener
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(
+    ExperimentalMaterial3Api::class,
+    ExperimentalPermissionsApi::class
+)
 @Composable
 fun HomeScreen(
     viewModel: HomeViewModel = hiltViewModel()
@@ -104,7 +111,15 @@ fun HomeScreen(
 
     val scope = rememberCoroutineScope()
     val vpnState = binder?.state?.collectAsStateWithLifecycle()?.value
+    val localNetworkPermission = rememberPermissionState("android.permission.ACCESS_LOCAL_NETWORK")
 
+    val hasLocalNetworkPermission = remember(localNetworkPermission.status.isGranted) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.CINNAMON_BUN) {
+            localNetworkPermission.status.isGranted
+        } else {
+            true
+        }
+    }
     var hasOtherAlwaysOnVpn by remember { mutableStateOf(false) }
     var hasVpnPermission by remember { mutableStateOf(false) }
     var qrCode by remember { mutableStateOf<Bitmap?>(null) }
@@ -121,7 +136,7 @@ fun HomeScreen(
             }
         }
     }
-    
+
     OnLifecycleEvent { _, event ->
         when (event) {
             Lifecycle.Event.ON_START,
@@ -208,7 +223,7 @@ fun HomeScreen(
                     modifier = Modifier.align(Alignment.TopCenter)
                 )
                 when {
-                    hasVpnPermission -> {
+                    hasVpnPermission && hasLocalNetworkPermission -> {
                         Column(
                             Modifier.fillMaxSize(),
                             verticalArrangement = Arrangement.Center,
@@ -264,7 +279,7 @@ fun HomeScreen(
                             }
                         }
                     }
-                    !hasVpnPermission -> {
+                    !hasVpnPermission || !hasLocalNetworkPermission -> {
                         Column(
                             Modifier.fillMaxSize(),
                             verticalArrangement = Arrangement.Center,
@@ -276,12 +291,21 @@ fun HomeScreen(
                             )
                             Spacer(Modifier.height(16.dp))
                             Button(
-                                enabled = !hasOtherAlwaysOnVpn,
+                                enabled = !hasLocalNetworkPermission,
+                                onClick = {
+                                    localNetworkPermission.launchPermissionRequest()
+                                }
+                            ) {
+                                Text(stringResource(R.string.grant_local_network_permission))
+                            }
+                            Spacer(Modifier.height(16.dp))
+                            Button(
+                                enabled = !hasOtherAlwaysOnVpn && !hasVpnPermission,
                                 onClick = {
                                     vpnPermissionLauncher.launch(VpnService.prepare(ctx))
                                 }
                             ) {
-                                Text(stringResource(R.string.grant_permission))
+                                Text(stringResource(R.string.grant_vpn_permission))
                             }
                         }
                     }

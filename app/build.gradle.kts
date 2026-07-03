@@ -4,7 +4,6 @@ import java.io.ByteArrayOutputStream
 
 plugins {
     alias(libs.plugins.androidApplication)
-    alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
@@ -12,15 +11,15 @@ plugins {
 
 android {
     namespace = "dev.bg.jetbird"
-    compileSdk = 36
+    compileSdk = 37
     ndkVersion = "28.2.13676358"
 
     defaultConfig {
         applicationId = "dev.bg.jetbird"
         minSdk = 24
         targetSdk = 37
-        versionCode = 45
-        versionName = "1.8.2"
+        versionCode = 46
+        versionName = "1.8.3"
 
         buildConfigField("String", "NETBIRD_COMMIT", getShortNetbirdCommit())
         buildConfigField("String", "NETBIRD_VERSION", getNetbirdVersionFromCommit())
@@ -72,9 +71,6 @@ android {
         sourceCompatibility = JavaVersion.VERSION_21
         targetCompatibility = JavaVersion.VERSION_21
     }
-    kotlinOptions {
-        jvmTarget = "21"
-    }
     buildFeatures {
         compose = true
         buildConfig = true
@@ -84,9 +80,6 @@ android {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
-    }
-    androidResources {
-        aaptOptions.cruncherEnabled = false
     }
 }
 
@@ -134,6 +127,7 @@ dependencies {
     implementation(libs.bundles.hilt)
     ksp(libs.hilt.androidx.compiler)
     ksp(libs.hilt.compiler)
+    ksp(libs.kotlin.metadata)
 
     // Preferences
     implementation(libs.mmkv)
@@ -143,6 +137,7 @@ dependencies {
 
     // Misc
     implementation(libs.ipaddress)
+    implementation(libs.permissions)
     implementation(libs.zxing)
     debugImplementation(libs.leakCanary)
 

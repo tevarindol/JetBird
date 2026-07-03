@@ -101,7 +101,6 @@
     <string name="about_netbird_version">Versiunea NetBird</string>
     <string name="jetbird_exception">Oh, nu! JetBird a întâmpinat o eroare!</string>
     <string name="failed_remove_netbird_config">A eșuat eliminarea fișierului de configurare NetBird</string>
-    <string name="grant_permission">Acordați permisiunea</string>
     <string name="jetbird_exception_description">Apăsați pentru mai multe informații</string>
     <string name="log">Jurnal</string>
     <string name="exclude_apps_description">%1$d aplicații excluse</string>

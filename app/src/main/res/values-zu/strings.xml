@@ -39,7 +39,6 @@
     <string name="failed_vpn_permission">Umsebenzisi wenqaba imvume YE VPN</string>
     <string name="fallback_dns">Ukubuyela emuva DNS</string>
     <string name="get_started_url">Ukuze uqalise sicela ufake management SERVER URL yakho</string>
-    <string name="grant_permission">Imvume yokunikeza</string>
     <string name="jetbird_exception">Cha, cha! JetBird wahlangana iphutha!</string>
     <string name="jetbird_exception_description">Thepha ukuze uthole ukwaziswa okwengeziwe</string>
     <string name="log">Isiqu</string>

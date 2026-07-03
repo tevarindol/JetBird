@@ -63,7 +63,6 @@
     <string name="enable_live_logging">Omogočite beleženje v živo</string>
     <string name="enable_logging">Omogočite beleženje</string>
     <string name="enable_verbose_logging">Omogočite besedno beleženje</string>
-    <string name="grant_permission">Odobritev dovoljenja</string>
     <string name="jetbird_exception_description">Tapnite za več informacij</string>
     <string name="log">Dnevnik</string>
     <string name="log_empty">Ni vpisov v dnevnik</string>

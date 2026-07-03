@@ -1,0 +1,2 @@
+- Add local networks permission on Android 17
+- Update dependencies

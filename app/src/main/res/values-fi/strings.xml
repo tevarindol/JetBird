@@ -45,7 +45,6 @@
     <string name="fallback_dns">Varasuunnitelma DNS</string>
     <string name="foreground_notification_description">JetBird-tunneli on aktiivinen</string>
     <string name="get_started_url">Aloita syöttämällä hallintapalvelimen URL-osoite</string>
-    <string name="grant_permission">Luvan myöntäminen</string>
     <string name="jetbird_exception">Voi ei! JetBirdissä tapahtui virhe!</string>
     <string name="jetbird_exception_description">Napauta saadaksesi lisätietoja</string>
     <string name="log">Loki</string>

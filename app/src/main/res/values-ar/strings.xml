@@ -56,7 +56,6 @@
     <string name="foreground_notification_description">نفق JetBird نشط</string>
     <string name="get_started">ابدأ</string>
     <string name="get_started_url">للبدء، يُرجى إدخال عنوان URL الخاص بخادوم الإدارة الخاص بك</string>
-    <string name="grant_permission">منح الإذن</string>
     <string name="idle">عاطل</string>
     <string name="include">تضمين</string>
     <string name="jetbird_exception">أوه لا! واجه JetBird خطأً!</string>
