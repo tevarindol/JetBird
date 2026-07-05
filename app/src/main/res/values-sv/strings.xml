@@ -147,4 +147,6 @@
     <string name="rename_profile_dialog">Byt namn %1$s</string>
     <string name="log_in">Logga in</string>
     <string name="unable_to_open_link">Det gick inte att öppna länken. Se till att du har en webbläsare installerad och ställ in den som standardwebbläsare</string>
+    <string name="grant_vpn_permission">Bevilja VPN-behörighet</string>
+    <string name="grant_local_network_permission">Bevilja behörigheter till lokala nätverk</string>
 </resources>
