@@ -182,6 +182,9 @@ fun getShortNetbirdCommit(): String {
 fun getNetbirdVersionFromCommit(): String {
     val stdout = ByteArrayOutputStream()
     objects.newInstance(InjectedExecOps::class).getExecOps().exec {
+        commandLine("git", "-C", "${rootDir}/netbird", "fetch")
+    }.assertNormalExitValue()
+    objects.newInstance(InjectedExecOps::class).getExecOps().exec {
         commandLine("git", "-C", "${rootDir}/netbird", "describe", "--tags", "--abbrev=0")
         standardOutput = stdout
     }.assertNormalExitValue()
