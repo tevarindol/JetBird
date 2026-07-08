@@ -158,4 +158,6 @@
     <string name="rename_profile_dialog">重命名 %1$s</string>
     <string name="log_in">登录</string>
     <string name="unable_to_open_link">无法打开链接。请确保您已安装浏览器并将其设置为默认浏览器</string>
+    <string name="grant_vpn_permission">授予 VPN 权限</string>
+    <string name="grant_local_network_permission">授予本地网络权限</string>
 </resources>

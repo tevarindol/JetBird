@@ -147,4 +147,6 @@
     <string name="rename_profile_dialog">Muuda nime: %1$s</string>
     <string name="log_in">Logi sisse</string>
     <string name="unable_to_open_link">Lingi avamine ei õnnestu. Palun kontrolli, et seadmes leidub mõni veebibrauser ja üks on märgitud vaikimisi brauseriks</string>
+    <string name="grant_vpn_permission">Anna luba VPN-i kasutamiseks</string>
+    <string name="grant_local_network_permission">Anna luba kohtvõrgu kasutamiseks</string>
 </resources>
