@@ -2,8 +2,6 @@ package dev.bg.jetbird.util.ktx
 
 import dev.bg.jetbird.data.model.Peer
 import io.netbird.android.PeerInfoArray
-import java.text.SimpleDateFormat
-import java.util.Locale
 
 fun PeerInfoArray?.toPeerList(): List<Peer> {
     if (this == null) return emptyList()
@@ -15,15 +13,20 @@ fun PeerInfoArray?.toPeerList(): List<Peer> {
                 ip = peer.ip,
                 ipv6 = peer.iPv6,
                 fqdn = peer.fqdn,
-                connectionStatus = peer.connStatus,
-                connectionStatusUpdate = if (peer.connStatusUpdate > 0) SimpleDateFormat("dd'/'MM HH:mm", Locale.getDefault()).format(peer.connStatusUpdate * 1000) else "",
+                connectionStatus = when (peer.connStatus) {
+                    0L -> "Idle"
+                    1L -> "Connecting"
+                    2L -> "Connected"
+                    else -> null
+                },
+                connectionStatusUpdate = peer.connStatusUpdate,
                 publicKey = peer.pubKey,
                 relayed = peer.relayed,
                 relayServerAddress = peer.relayServerAddress,
                 lastWireguardHandshake = peer.lastWireguardHandshake.toString(),
                 bytesTx = peer.bytesTx,
                 bytesRx = peer.bytesRx,
-                latency = peer.latency,
+                latency = peer.latencyMs,
                 rosenpassEnabled = peer.rosenpassEnabled,
                 peerRoutes = peer.peerRoutes
             )

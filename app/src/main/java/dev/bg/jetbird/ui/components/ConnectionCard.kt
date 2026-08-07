@@ -25,7 +25,7 @@ import dev.bg.jetbird.data.JetBirdColors
 fun ConnectionCard(
     title: String,
     description: String,
-    connectionStatus: String,
+    connectionStatus: String?,
     modifier: Modifier
 ) {
     Card(modifier) {

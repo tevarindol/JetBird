@@ -6,7 +6,7 @@ data class Peer(
     val ip: String,
     val ipv6: String,
     val fqdn: String,
-    val connectionStatus: String,
+    val connectionStatus: String?,
     val connectionStatusUpdate: String,
     val publicKey: String,
     val relayed: Boolean,
