@@ -117,7 +117,6 @@
     <string name="login_expired">Сеанс истёк. Пожалуйста, подключитесь для повторной аутентификации</string>
     <string name="get_started">Начать</string>
     <string name="copy">Копировать</string>
-    <string name="lazy_connections">Ленивое подключение</string>
     <string name="block_inbound">Блокировать входящие подключения</string>
     <string name="block_inbound_description">Имеет приоритет над любыми политиками, полученными от управляющего сервера</string>
     <string name="client_routes">Клиентские маршруты</string>
@@ -131,5 +130,4 @@
     <string name="ssh_description">SSH-подключения к этому устройству</string>
     <string name="server_routes_description">Обрабатывать серверные маршруты как маршрутизатор</string>
     <string name="server_routes">Серверные маршруты</string>
-    <string name="lazy_connections_description">Подключаться к узлам при наличии необходимости</string>
 </resources>

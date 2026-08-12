@@ -60,8 +60,6 @@
     <string name="include">تضمين</string>
     <string name="jetbird_exception">أوه، لا! واجَه JetBird خطأً!</string>
     <string name="jetbird_exception_description">انقر للحصول على مزيدٍ مِن المعلومات</string>
-    <string name="lazy_connections">الاتّصالات الكسولة</string>
-    <string name="lazy_connections_description">الاتّصال بالنظراء عند الطلب</string>
     <string name="log">السجلّ</string>
     <string name="log_empty">لا توجَد سجلّات</string>
     <string name="logging">يجري التسجيل</string>

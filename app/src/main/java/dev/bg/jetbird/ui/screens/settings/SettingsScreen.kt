@@ -175,12 +175,6 @@ fun SettingsScreen(
                 value = state.setupKey.toStringOrNotSet(ctx),
             )
             SettingsSwitch(
-                title = stringResource(R.string.lazy_connections),
-                description = stringResource(R.string.lazy_connections_description),
-                checked = state.lazyConnections,
-                onChange = { viewModel.toggleLazyConnections(it) }
-            )
-            SettingsSwitch(
                 title = stringResource(R.string.ipv6),
                 checked = state.ipv6,
                 onChange = viewModel::toggleIpv6

@@ -72,8 +72,6 @@
     <string name="ipv6" translatable="false">IPv6</string>
     <string name="jetbird_exception">Oh no! JetBird encountered an error!</string>
     <string name="jetbird_exception_description">Tap for more information</string>
-    <string name="lazy_connections">Lazy connections</string>
-    <string name="lazy_connections_description">Connect to peers on-demand</string>
     <string name="log">Log</string>
     <string name="log_empty">No log entries</string>
     <string name="log_in">Log in</string>

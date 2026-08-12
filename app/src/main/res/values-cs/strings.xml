@@ -119,8 +119,6 @@
     <string name="connect_to_see_networks">Pro zobrazení sítí se nejprve připojte</string>
     <string name="disconnecting">Odpojování</string>
     <string name="force_relay_connection">Vynutit přenášené spojení</string>
-    <string name="lazy_connections">Líná spojení</string>
-    <string name="lazy_connections_description">Připojovat peerům na vyžádání</string>
     <string name="ssh_description">Povolit SSH připojení k tomuto zařízení</string>
     <string name="add">Přidat</string>
     <string name="add_a_profile">Přidat profil</string>

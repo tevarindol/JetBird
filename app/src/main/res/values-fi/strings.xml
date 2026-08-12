@@ -118,8 +118,6 @@
     <string name="client_routes_description">Käsittele hallintapalvelimelta vastaanotetut asiakasreitit</string>
     <string name="disconnecting">Yhteyden katkaiseminen</string>
     <string name="idle">Tyhjäkäynti</string>
-    <string name="lazy_connections">Laiskat yhteydet</string>
-    <string name="lazy_connections_description">Yhdistä vertaisiin pyynnöstä</string>
     <string name="peers">Vertaiset</string>
     <string name="server_routes">Palvelinreitit</string>
     <string name="server_routes_description">Toimii reitittimenä palvelinreiteille</string>

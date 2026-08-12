@@ -116,9 +116,7 @@
     <string name="start_on_reboot_description">Versuchen, JetBird automatisch zu starten, wenn das Gerät neugestartet wurde</string>
     <string name="login_expired">Anmeldung abgelaufen - bitte verbinde dich erneut, um dich erneut zu authentifizieren</string>
     <string name="get_started">Loslegen</string>
-    <string name="lazy_connections_description">Bei Bedarf mit anderen Peers verbinden</string>
     <string name="copy">Kopieren</string>
-    <string name="lazy_connections">Faule Verbindungen</string>
     <string name="idle">Leerlauf</string>
     <string name="disconnecting">Wird getrennt</string>
     <string name="networks">Netzwerke</string>

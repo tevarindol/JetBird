@@ -118,14 +118,12 @@
     <string name="firewall">Brandvägg</string>
     <string name="force_relay_connection">Tvinga reläanslutning</string>
     <string name="idle">Inaktiv</string>
-    <string name="lazy_connections">Lata anslutningar</string>
     <string name="networks">Nätverk</string>
     <string name="server_routes">Serverrutter</string>
     <string name="server_routes_description">Fungera som en router för serverrutter</string>
     <string name="ssh_description">Tillåt SSH-anslutningar till den här enheten</string>
     <string name="exclude_apps_inverted_description">%1$d appar inkluderade</string>
     <string name="include">Inkludera</string>
-    <string name="lazy_connections_description">Anslut till peers på begäran</string>
     <string name="peers">Peers</string>
     <string name="enabled">Aktiverad</string>
     <string name="network_domains">Domäner: %1$s</string>

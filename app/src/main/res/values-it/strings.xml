@@ -53,7 +53,6 @@
     <string name="idle">Inattivo</string>
     <string name="jetbird_exception">Oh no! JetBird ha riscontrato un errore!</string>
     <string name="jetbird_exception_description">Tocca per maggiori informazioni</string>
-    <string name="lazy_connections_description">Connettiti ai peer su richiesta</string>
     <string name="log">Log</string>
     <string name="log_empty">Nessuna voce nei log</string>
     <string name="logging">Logging</string>
@@ -115,7 +114,6 @@
     <string name="your_overrides">Le tue sostituzioni: %1$s</string>
     <string name="peer_last_wireguard_handshake">Ultimo handshake WireGuard: %1$s</string>
     <string name="enable_live_logging_description">Mostra i log di Netbird in tempo reale</string>
-    <string name="lazy_connections">Connessioni Lazy</string>
     <string name="management_url">Management Server URL</string>
     <string name="engine_logging_warning">Il client NetBird può generare molti log nel tempo.\n\nQuesti log vengono salvati in memoria e potrebbero rallentare il telefono o causare un arresto anomalo di JetBird.\n\nÈ anche possibile disattivare il logging in tempo reale e scaricare i log in un secondo momento dalla schermata dei log.</string>
     <string name="foreground_notification_description">JetBird tunnel è attivo</string>

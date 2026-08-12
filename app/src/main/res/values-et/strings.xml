@@ -109,8 +109,6 @@
     <string name="login_expired">Sisselogimine on aegunud - autentimiseks palun loo ühendus uuesti</string>
     <string name="get_started">Alusta siit</string>
     <string name="disconnecting">Katkestan ühendust</string>
-    <string name="lazy_connections">Poolvalmis ühendused</string>
-    <string name="lazy_connections_description">Loo ühendus võrdõigusvõrgu sõlmega vastavalt vajadusele</string>
     <string name="idle">Jõude</string>
     <string name="copy">Kopeeri</string>
     <string name="client_routes">Kliendiruutingud</string>

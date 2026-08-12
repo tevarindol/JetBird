@@ -119,8 +119,6 @@
     <string name="peer_last_wireguard_handshake">上次 WireGuard 握手：%1$s 前</string>
     <string name="login_expired">登录已过期 — 请再次连接以重新验证身份</string>
     <string name="get_started">开始</string>
-    <string name="lazy_connections">延迟连接</string>
-    <string name="lazy_connections_description">按需连接到对等节点</string>
     <string name="idle">空闲</string>
     <string name="disconnecting">正在断开连接</string>
     <string name="copy">复制</string>

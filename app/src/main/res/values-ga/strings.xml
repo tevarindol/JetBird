@@ -117,8 +117,6 @@
     <string name="login_expired">Chuaigh logáil isteach in éag - ceangail arís chun é a athfhíordheimhniú</string>
     <string name="get_started">Cuir tús leis</string>
     <string name="disconnecting">Ag dícheangal</string>
-    <string name="lazy_connections">Naisc leisciúla</string>
-    <string name="lazy_connections_description">Ceangail le piaraí ar éileamh</string>
     <string name="idle">Díomhaoin</string>
     <string name="copy">Cóipeáil</string>
     <string name="networks">Líonraí</string>

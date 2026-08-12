@@ -57,8 +57,6 @@
     <string name="idle">Inactivo</string>
     <string name="jetbird_exception">¡Oh no! ¡JetBird encontró un error!</string>
     <string name="jetbird_exception_description">Toque para obtener más información</string>
-    <string name="lazy_connections">Conexiones perezosas (lazy connections)</string>
-    <string name="lazy_connections_description">Conéctese a pares bajo demanda</string>
     <string name="log">Registro</string>
     <string name="log_empty">Sin entradas de registro</string>
     <string name="logging">Registrando</string>
