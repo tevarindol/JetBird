@@ -41,20 +41,6 @@ class SettingsViewModel @Inject constructor(
         }
     }
 
-    fun toggleLazyConnections(
-        enabled: Boolean
-    ) {
-        log(if (enabled) "Enabling lazy connections in config" else "Disabling lazy connections in config")
-        viewModelScope.launch(ioDispatcher) {
-            val configPath = ctx.getProfileManager().activeConfigPath
-            val preferences = Preferences(configPath)
-            preferences.setLazyConnection(enabled)
-            preferences.commit()
-            preferencesRepository.lazyConnections = enabled
-            preferencesRepository.updateState()
-        }
-    }
-
     fun toggleIpv6(
         enabled: Boolean
     ) {
