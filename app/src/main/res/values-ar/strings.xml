@@ -137,4 +137,16 @@
     <string name="start_on_reboot_description">محاولة تشغيل JetBird تلقائيًّا عند إعادة تشغيل الجهاز</string>
     <string name="successfully_changed_management_server">تمّ تغيير خادِم الإدارة بنجاح</string>
     <string name="unable_to_open_link">تعذّر فتح الرابِط. تأكّد من تثبيت متصفِّح لديك وتعيينه كمتصفِّح افتراضي</string>
+    <string name="unknown">غير معروف</string>
+    <string name="unknown_error_see_logs">خطأ غير معروف - راجِع سجلّات النظام لمزيدٍ مِن المعلومات</string>
+    <string name="upstream_routes">المسارات الوارِدة: 0.0.0.0/0، ::/0</string>
+    <string name="use_setup_key">استخدام مفتاح الإعداد</string>
+    <string name="use_sso">استخدام تسجيل الدخول الموحَّد (SSO)</string>
+    <string name="view_config">عرض الإعدادات</string>
+    <string name="view_config_description">مراجعة ملفّ إعدادات NetBird</string>
+    <string name="view_routes">عرض المسارات</string>
+    <string name="view_routes_description">الاطّلاع على مسارات الأنفاق المحسوبة</string>
+    <string name="warning">تحذير</string>
+    <string name="welcome_jetbird">أهلًا بك في JetBird!</string>
+    <string name="your_overrides">تجاوزاتك: %1$s</string>
 </resources>
