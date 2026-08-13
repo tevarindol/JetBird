@@ -14,7 +14,6 @@ interface PreferencesValues {
     var hasAuthed: Boolean
     var preSharedKey: String?
     var setupKey: String?
-    var lazyConnections: Boolean
     var ipv6: Boolean
     var rosenpass: Boolean
     var rosenpassPermissive: Boolean
@@ -57,6 +56,13 @@ class PreferencesRepositoryImpl @Inject constructor(): PreferencesRepository {
     override val state: StateFlow<PreferencesState>
         get() = _state.asStateFlow()
 
+    init {
+        // No longer used by NetBird
+        if (mmkv.containsKey(PreferenceKeys.LazyConnections.key)) {
+            mmkv.remove(PreferenceKeys.LazyConnections.key)
+        }
+    }
+
     override fun setProfileId(id: String) {
         _profileId.update { id }
         mmkv.encode(PreferenceKeys.Profile.key, id)
@@ -95,10 +101,6 @@ class PreferencesRepositoryImpl @Inject constructor(): PreferencesRepository {
     override var setupKey: String?
         get() = mmkv.decodeString(PreferenceKeys.SetupKey.key(), null)
         set(value) { mmkv.encode(PreferenceKeys.SetupKey.key(), value) }
-
-    override var lazyConnections: Boolean
-        get() = mmkv.decodeBool(PreferenceKeys.LazyConnections.key(), false)
-        set(value) { mmkv.encode(PreferenceKeys.LazyConnections.key(), value) }
 
     override var ipv6: Boolean
         get() = mmkv.decodeBool(PreferenceKeys.IPv6.key(), true)
@@ -209,7 +211,6 @@ class PreferencesRepositoryImpl @Inject constructor(): PreferencesRepository {
             hasAuthed = hasAuthed,
             preSharedKey = preSharedKey,
             setupKey = setupKey,
-            lazyConnections = lazyConnections,
             ipv6 = ipv6,
             rosenpass = rosenpass,
             rosenpassPermissive = rosenpassPermissive,
@@ -252,7 +253,6 @@ data class PreferencesState(
     override var hasAuthed: Boolean,
     override var preSharedKey: String?,
     override var setupKey: String?,
-    override var lazyConnections: Boolean,
     override var ipv6: Boolean,
     override var rosenpass: Boolean,
     override var rosenpassPermissive: Boolean,

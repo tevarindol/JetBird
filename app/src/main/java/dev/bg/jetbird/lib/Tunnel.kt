@@ -72,8 +72,7 @@ class Tunnel(
         enableRouteOverrides: Boolean,
         overrides: Set<String>,
         fallbackDns: String?,
-        forceRelay: Boolean,
-        lazyConnection: Boolean
+        forceRelay: Boolean
     ) {
         if (isRunning) return
         when (loggingLevel) {
@@ -98,7 +97,6 @@ class Tunnel(
                 )
                 val envList = EnvList().apply {
                     put(Android.getEnvKeyNBForceRelay(), forceRelay.toString())
-                    put(Android.getEnvKeyNBLazyConn(), lazyConnection.toString())
                 }
                 if (urlOpener == null) {
                     dnsWatch.registerNetworkCallback()
