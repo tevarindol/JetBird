@@ -5,5 +5,11 @@ data class IFace(
     val ipv6Cidr: String?,
     val mtu: Long,
     val dns: String?,
-    val domains: String?
-)
+    val domains: String?,
+    val routes: String?
+) {
+    fun didChange(
+        newDomains: String?,
+        newRoutes: String?
+    ) = newDomains != domains || newRoutes != routes
+}

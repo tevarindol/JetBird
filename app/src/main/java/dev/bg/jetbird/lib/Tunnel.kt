@@ -187,6 +187,7 @@ class Tunnel(
         if (!isRunning || iface == null) return
 
         val settings = client.tunSettings ?: return
+        if (!iface.didChange(settings.searchDomains, settings.routes)) return
 
         try {
             val fd = configureInterface(
@@ -227,7 +228,8 @@ class Tunnel(
             ipv6Cidr = ipv6Cidr,
             mtu = mtu,
             dns = dns,
-            domains = domains
+            domains = domains,
+            routes = routes
         )
         this.routes = routes
         return try {
