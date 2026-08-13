@@ -181,33 +181,32 @@ class Tunnel(
         }
     }
 
-    override fun onNetworkChanged(commaDelimitedRoutes: String) {
-        // routes is comma-delimited instead of semicolon-delimited
-        val routes = commaDelimitedRoutes.replace(',', ';')
-        if (this.routes != routes) {
-            log("NetBird sent new routes - $routes")
-            val iface = this.iface
-            if (!isRunning || iface == null) return
-            try {
-                val fd = configureInterface(
-                    iface.ipv4Cidr,
-                    iface.ipv6Cidr,
-                    iface.mtu,
-                    iface.dns,
-                    iface.domains,
-                    routes
-                )
-                if (fd != -1L) {
-                    // it is cast as Long because of the override, but it is an underlying int
-                    log("Renewing tunnel")
-                    vpnService.protect(fd.toInt())
-                    client.renewTun(fd)
-                } else {
-                    log("Failed to configure interface")
-                }
-            } catch (e: Exception) {
-                log("Failed to update routes ${e.message}")
+    override fun onNetworkChanged(ignore: String) {
+        log("NetBird sent new routes - $routes")
+        val iface = this.iface
+        if (!isRunning || iface == null) return
+
+        val settings = client.tunSettings ?: return
+
+        try {
+            val fd = configureInterface(
+                iface.ipv4Cidr,
+                iface.ipv6Cidr,
+                iface.mtu,
+                iface.dns,
+                settings.searchDomains,
+                settings.routes
+            )
+            if (fd != -1L) {
+                // it is cast as Long because of the override, but it is an underlying int
+                log("Renewing tunnel")
+                vpnService.protect(fd.toInt())
+                client.renewTun(fd)
+            } else {
+                log("Failed to configure interface")
             }
+        } catch (e: Exception) {
+            log("Failed to update routes ${e.message}")
         }
     }
 
