@@ -6,7 +6,7 @@ apt-get install -y --no-install-recommends ca-certificates wget git unzip
 # Download, verify and install JDK-21
 # https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.tar.gz.sha256
 wget -qO /tmp/jdk.tar.gz https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.tar.gz
-sha256sum -c <<< "33cc8a4ba4163b003bbf3516824861ee49e7295e6a2879ec91316c2aead78b80  /tmp/jdk.tar.gz"
+sha256sum -c <<< "12f870b21301b42292558a3f872ce543affa2b86cb6458591c78388c41ddb111  /tmp/jdk.tar.gz"
 tar -C /build -xzf /tmp/jdk.tar.gz
 rm -f /tmp/jdk.tar.gz
 export PATH="${PATH}:${JAVA_HOME}/bin"

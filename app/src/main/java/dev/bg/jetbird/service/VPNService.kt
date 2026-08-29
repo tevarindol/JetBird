@@ -295,6 +295,8 @@ class VPNService: VpnService() {
             _state.update { it.copy(connectionState = ConnectionState.CONNECTED) }
         }
 
+        override fun onStateChanged(state: Long) {}
+
         override fun onAddressChanged(fqdn: String, address: String) {
             log("Netbird address changed - our fqdn: $fqdn - our address: $address")
         }
