@@ -31,6 +31,7 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.SegmentedButton
 import androidx.compose.material3.SegmentedButtonDefaults
 import androidx.compose.material3.SingleChoiceSegmentedButtonRow
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -338,11 +339,13 @@ fun SettingsScreen(
                 open = excludeAppsDialog,
                 initialPackages = state.excludedApps,
                 invertState = state.invertExclusion,
+                includeSystemAppsState = state.includeSystemApps,
                 onDismissRequest = { excludeAppsDialog = false },
-                onSelected = { packageNames, invert ->
+                onSelected = { packageNames, invert, include ->
                     excludeAppsDialog = false
                     viewModel.updateExcludedApps(packageNames)
                     viewModel.toggleInvertExclusion(invert)
+                    viewModel.toggleIncludeSystemApps(include)
                 }
             )
             SettingsTile(
@@ -519,19 +522,27 @@ private fun ExcludeAppsDialog(
     open: Boolean,
     initialPackages: Set<String>,
     invertState: Boolean,
+    includeSystemAppsState: Boolean,
     onDismissRequest: () -> Unit,
-    onSelected: (packageNames: Set<String>, invert: Boolean) -> Unit
+    onSelected: (
+        packageNames: Set<String>,
+        invert: Boolean,
+        include: Boolean
+    ) -> Unit
 ) {
     val ctx = LocalContext.current
 
     val packageManager = ctx.packageManager
 
-    val installedPackages = remember {
+    var invert by remember { mutableStateOf(invertState) }
+    var include by remember { mutableStateOf(includeSystemAppsState) }
+
+    val installedPackages = remember(include) {
         packageManager
             .getInstalledApplications(PackageManager.GET_META_DATA)
             .toList()
             .filter { p ->
-                (p.flags and ApplicationInfo.FLAG_SYSTEM == 0 && p.packageName != ctx.packageName) ||
+                ((include || p.flags and ApplicationInfo.FLAG_SYSTEM == 0) && p.packageName != ctx.packageName) ||
                 p.packageName == "com.google.android.projection.gearhead" ||
                 p.packageName == "com.google.android.apps.messaging" ||
                 p.packageName == "com.google.android.gms"
@@ -549,7 +560,6 @@ private fun ExcludeAppsDialog(
             }.toTypedArray()
         )
     }
-    var invert by remember { mutableStateOf(invertState) }
 
     fun toggleSelected(app: ApplicationInfo) {
         if (!selectedPackages.any { p -> p.packageName == app.packageName }) {
@@ -564,65 +574,82 @@ private fun ExcludeAppsDialog(
             modifier = Modifier.padding(vertical = 16.dp),
             onDismissRequest = onDismissRequest,
             text = {
-                LazyColumn(
-                    Modifier.fillMaxSize()
-                ) {
-                    item {
-                        SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth()) {
-                            SegmentedButton(
-                                shape = SegmentedButtonDefaults.itemShape(
-                                    index = 0,
-                                    count = 2
-                                ),
-                                selected = invert,
-                                onClick = {
-                                    invert = true
+                Column {
+                    LazyColumn(
+                        Modifier
+                            .fillMaxWidth()
+                            .weight(1f)
+                    ) {
+                        item {
+                            SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth()) {
+                                SegmentedButton(
+                                    shape = SegmentedButtonDefaults.itemShape(
+                                        index = 0,
+                                        count = 2
+                                    ),
+                                    selected = invert,
+                                    onClick = {
+                                        invert = true
+                                    }
+                                ) {
+                                    Text(stringResource(R.string.include))
                                 }
-                            ) {
-                                Text(stringResource(R.string.include))
+                                SegmentedButton(
+                                    shape = SegmentedButtonDefaults.itemShape(
+                                        index = 1,
+                                        count = 2
+                                    ),
+                                    selected = !invert,
+                                    onClick = {
+                                        invert = false
+                                    }
+                                ) {
+                                    Text(stringResource(R.string.exclude))
+                                }
                             }
-                            SegmentedButton(
-                                shape = SegmentedButtonDefaults.itemShape(
-                                    index = 1,
-                                    count = 2
-                                ),
-                                selected = !invert,
-                                onClick = {
-                                    invert = false
-                                }
+                        }
+                        items(installedPackages) {
+                            Row(
+                                Modifier
+                                    .fillMaxWidth()
+                                    .clickable {
+                                        toggleSelected(it)
+                                    },
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.SpaceBetween
                             ) {
-                                Text(stringResource(R.string.exclude))
+                                Row(
+                                    verticalAlignment = Alignment.CenterVertically
+                                ) {
+                                    Image(
+                                        it.loadIcon(packageManager).toBitmap().asImageBitmap(),
+                                        modifier = Modifier.size(36.dp),
+                                        contentDescription = null
+                                    )
+                                    Spacer(Modifier.width(8.dp))
+                                    Text(it.loadLabel(packageManager).toString())
+                                }
+                                Checkbox(
+                                    checked = selectedPackages.any { p -> p.packageName == it.packageName },
+                                    onCheckedChange = { _ ->
+                                        toggleSelected(it)
+                                    }
+                                )
                             }
                         }
                     }
-                    items(installedPackages) {
-                        Row(
-                            Modifier
-                                .fillMaxWidth()
-                                .clickable {
-                                    toggleSelected(it)
-                                },
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.SpaceBetween
-                        ) {
-                            Row(
-                                verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                Image(
-                                    it.loadIcon(packageManager).toBitmap().asImageBitmap(),
-                                    modifier = Modifier.size(36.dp),
-                                    contentDescription = null
-                                )
-                                Spacer(Modifier.width(8.dp))
-                                Text(it.loadLabel(packageManager).toString())
+                    Row(
+                        Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Text(stringResource(R.string.include_system_apps))
+                        Switch(
+                            checked = include,
+                            onCheckedChange = { checked ->
+                                include = checked
                             }
-                            Checkbox(
-                                checked = selectedPackages.any { p -> p.packageName == it.packageName },
-                                onCheckedChange = { _ ->
-                                    toggleSelected(it)
-                                }
-                            )
-                        }
+                        )
                     }
                 }
             },
@@ -634,7 +661,7 @@ private fun ExcludeAppsDialog(
             confirmButton = {
                 Button(
                     onClick = {
-                        onSelected(selectedPackages.map { it.packageName }.toSet(), invert)
+                        onSelected(selectedPackages.map { it.packageName }.toSet(), invert, include)
                     }
                 ) {
                     if (invert) {

@@ -222,6 +222,13 @@ class SettingsViewModel @Inject constructor(
         }
     }
 
+    fun toggleIncludeSystemApps(include: Boolean) {
+        viewModelScope.launch(ioDispatcher) {
+            preferencesRepository.includeSystemApps = include
+            preferencesRepository.updateState()
+        }
+    }
+
     fun updateFallbackDns(dns: String?) {
         viewModelScope.launch(ioDispatcher) {
             preferencesRepository.fallbackDns = dns

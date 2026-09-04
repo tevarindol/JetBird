@@ -33,6 +33,7 @@ interface PreferencesValues {
     var verboseLogging: Boolean
     var excludedApps: Set<String>
     var invertExclusion: Boolean
+    var includeSystemApps: Boolean
     var routeOverridesEnabled: Boolean
     var routeOverrides: Set<String>
     var fallbackDns: String?
@@ -184,6 +185,10 @@ class PreferencesRepositoryImpl @Inject constructor(): PreferencesRepository {
         get() = mmkv.decodeBool(PreferenceKeys.InvertExclusion.key(), false)
         set(value) { mmkv.encode(PreferenceKeys.InvertExclusion.key(), value) }
 
+    override var includeSystemApps: Boolean
+        get() = mmkv.decodeBool(PreferenceKeys.IncludeSystemApps.key(), false)
+        set(value) { mmkv.encode(PreferenceKeys.IncludeSystemApps.key(), value) }
+
     override var routeOverridesEnabled: Boolean
         get() = mmkv.decodeBool(PreferenceKeys.RouteOverridesEnabled.key(), false)
         set(value) { mmkv.encode(PreferenceKeys.RouteOverridesEnabled.key(), value) }
@@ -228,6 +233,7 @@ class PreferencesRepositoryImpl @Inject constructor(): PreferencesRepository {
             verboseLogging = verboseLogging,
             excludedApps = excludedApps,
             invertExclusion = invertExclusion,
+            includeSystemApps = includeSystemApps,
             routeOverridesEnabled = routeOverridesEnabled,
             routeOverrides = routeOverrides,
             fallbackDns = fallbackDns,
@@ -272,6 +278,7 @@ data class PreferencesState(
     override var verboseLogging: Boolean,
     override var excludedApps: Set<String>,
     override var invertExclusion: Boolean,
+    override var includeSystemApps: Boolean,
     override var routeOverridesEnabled: Boolean,
     override var routeOverrides: Set<String>,
     override var fallbackDns: String?,
@@ -310,6 +317,7 @@ private enum class PreferenceKeys(
     VerboseLogging("verbose_logging"),
     ExcludedApps("excluded_apps"),
     InvertExclusion("invert_exclusion"),
+    IncludeSystemApps("include_system_apps"),
     RouteOverridesEnabled("route_overrides_enabled"),
     RouteOverrides("route_overrides"),
     FallbackDNS("fallback_dns"),
