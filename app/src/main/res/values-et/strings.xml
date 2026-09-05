@@ -147,4 +147,5 @@
     <string name="unable_to_open_link">Lingi avamine ei õnnestu. Palun kontrolli, et seadmes leidub mõni veebibrauser ja üks on märgitud vaikimisi brauseriks</string>
     <string name="grant_vpn_permission">Anna luba VPN-i kasutamiseks</string>
     <string name="grant_local_network_permission">Anna luba kohtvõrgu kasutamiseks</string>
+    <string name="include_system_apps">Kaasa süsteemirakendused</string>
 </resources>
