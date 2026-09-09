@@ -158,4 +158,5 @@
     <string name="unable_to_open_link">无法打开链接。请确保您已安装浏览器并将其设置为默认浏览器</string>
     <string name="grant_vpn_permission">授予 VPN 权限</string>
     <string name="grant_local_network_permission">授予本地网络权限</string>
+    <string name="include_system_apps">包含系统应用</string>
 </resources>
