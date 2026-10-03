@@ -37,7 +37,7 @@ cd ./netbird || {
 
 # for CI - fetch from upstream to get the latest tags
 if [[ $_d -ne 1 ]]; then
-  git fetch
+  git fetch --tags origin
 fi
 
 go clean
@@ -52,11 +52,13 @@ git apply ../patches/* ${_vverbose:+-v} && echo "Applied patches" || {
 
 gomobile init
 
+_version=$(git describe --tags --match "v*" 2>/dev/null) || _version=development
+
 CGO_ENABLED=0 gomobile bind -o "$(pwd)"/../lib/netbird.aar \
     -target=android \
     -androidapi 24 \
     -javapkg=io.netbird \
-    -ldflags="all=-s -w -X golang.zx2c4.com/wireguard/ipc.socketDirectory=/data/data/${_pkg}/cache/wireguard -checklinkname=0 -X github.com/netbirdio/netbird/version.version=$(git rev-parse --short=8 HEAD) -buildid=" \
+    -ldflags="all=-s -w -X golang.zx2c4.com/wireguard/ipc.socketDirectory=/data/data/${_pkg}/cache/wireguard -checklinkname=0 -X github.com/netbirdio/netbird/version.version=${_version} -buildid=" \
     -trimpath \
     ${_vverbose:+-v} \
     ${_vverbose:+-x} \
