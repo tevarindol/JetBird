@@ -15,6 +15,7 @@ import dev.bg.jetbird.R
 import dev.bg.jetbird.data.Actions
 import dev.bg.jetbird.data.NetBirdErrors
 import dev.bg.jetbird.data.model.ConnectionState
+import dev.bg.jetbird.data.model.Network
 import dev.bg.jetbird.data.model.ServiceEvent
 import dev.bg.jetbird.data.model.VPNState
 import dev.bg.jetbird.lib.EngineLoggingLevel
@@ -232,7 +233,7 @@ class VPNService: VpnService() {
         _state.update { it.copy(networks = tunnel?.networks().toNetworkList()) }
     }
 
-    private fun dev.bg.jetbird.data.model.Network.isExitNodeRoute(): Boolean {
+    private fun Network.isExitNodeRoute(): Boolean {
         return network.contains("0.0.0.0/0") || network.contains("::/0")
     }
 
