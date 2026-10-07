@@ -146,6 +146,12 @@ class VPNService: VpnService() {
                         log("Requested start through quick tile but tunnel is already up", force = true)
                     }
                 }
+                Actions.CONTROL_ENABLE_EXIT_NODE_ACTION -> {
+                    enableExitNode(intent.getStringExtra(Actions.EXTRA_EXIT_NODE_NAME))
+                }
+                Actions.CONTROL_DISABLE_EXIT_NODE_ACTION -> {
+                    disableExitNode()
+                }
                 else -> {
                     log("${intent.`package` ?: "Unknown package"} (${intent.action}) tried to start tunnel - ignoring", force = true)
                 }
@@ -156,6 +162,78 @@ class VPNService: VpnService() {
             }
         }
         return super.onStartCommand(intent, flags, startId)
+    }
+
+    private fun enableExitNode(requestedName: String?) {
+        if (!isTunnelStarted || tunnel == null) {
+            log("Cannot enable exit node because the tunnel is not running", force = true)
+            return
+        }
+
+        val exitRoutes = tunnel
+            ?.networks()
+            .toNetworkList()
+            .filter { it.isExitNodeRoute() }
+
+        if (exitRoutes.isEmpty()) {
+            log("Cannot enable exit node: no default-route network is available", force = true)
+            return
+        }
+
+        val selector = requestedName?.trim().orEmpty()
+        val matchingRoutes = if (selector.isEmpty()) {
+            exitRoutes
+        } else {
+            exitRoutes.filter { route ->
+                route.name.equals(selector, ignoreCase = true) ||
+                    route.peer.equals(selector, ignoreCase = true) ||
+                    route.network.equals(selector, ignoreCase = true)
+            }
+        }
+
+        if (matchingRoutes.isEmpty()) {
+            log("Cannot enable exit node: no exit route matched '$selector'", force = true)
+            return
+        }
+
+        // A dual-stack exit node can appear as more than one default route.
+        // NetBird selects routes by their network name, so avoid duplicate calls.
+        matchingRoutes
+            .filterNot { it.selected }
+            .map { it.name }
+            .distinct()
+            .forEach { routeName ->
+                log("Selecting exit-node route '$routeName'", force = true)
+                tunnel?.selectRoute(routeName)
+            }
+
+        _state.update { it.copy(networks = tunnel?.networks().toNetworkList()) }
+    }
+
+    private fun disableExitNode() {
+        if (!isTunnelStarted || tunnel == null) {
+            log("Cannot disable exit node because the tunnel is not running", force = true)
+            return
+        }
+
+        val selectedExitRoutes = tunnel
+            ?.networks()
+            .toNetworkList()
+            .filter { it.selected && it.isExitNodeRoute() }
+
+        selectedExitRoutes
+            .map { it.name }
+            .distinct()
+            .forEach { routeName ->
+                log("Deselecting exit-node route '$routeName'", force = true)
+                tunnel?.deselectRoute(routeName)
+            }
+
+        _state.update { it.copy(networks = tunnel?.networks().toNetworkList()) }
+    }
+
+    private fun dev.bg.jetbird.data.model.Network.isExitNodeRoute(): Boolean {
+        return network.contains("0.0.0.0/0") || network.contains("::/0")
     }
 
     override fun onBind(intent: Intent): IBinder {
