@@ -147,4 +147,5 @@
     <string name="grant_vpn_permission">Otorgar permiso a la VPN</string>
     <string name="grant_local_network_permission">Conceder permiso a las redes locales</string>
     <string name="unable_to_open_link">No se puede abrir el enlace. Asegúrate de tener instalado un navegador y de configurarlo como navegador predeterminado</string>
+    <string name="include_system_apps">Incluir aplicaciones del sistema</string>
 </resources>

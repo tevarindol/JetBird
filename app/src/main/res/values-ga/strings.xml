@@ -133,4 +133,27 @@
     <string name="exclude_apps_inverted_description">%1$d aip san áireamh</string>
     <string name="force_relay_connection">Nasc sealaíochta fórsa</string>
     <string name="include">Cuir san áireamh</string>
+    <string name="add">Cuir leis</string>
+    <string name="add_a_profile">Cuir próifíl leis</string>
+    <string name="default_profile">Réamhshocrú</string>
+    <string name="delete_profile">Scrios próifíl</string>
+    <string name="enabled">Cumasaithe</string>
+    <string name="grant_local_network_permission">Deonaigh cead do líonraí áitiúla</string>
+    <string name="grant_vpn_permission">Deonaigh cead VPN</string>
+    <string name="include_system_apps">Cuir aipeanna córais san áireamh</string>
+    <string name="log_in">Logáil isteach</string>
+    <string name="name">Ainm</string>
+    <string name="network_domains">Fearainn: %1$s</string>
+    <string name="network_info">Eolas líonra</string>
+    <string name="network_name">Ainm: %1$s</string>
+    <string name="network_network">Líonra: %1$s</string>
+    <string name="network_peer">Comhghleacaí: %1$s</string>
+    <string name="network_status">Stádas: %1$s</string>
+    <string name="profiles">Próifílí</string>
+    <string name="remove_profile">Bain %1$s</string>
+    <string name="remove_profile_description">An bhfuil tú cinnte gur mian leat an phróifíl seo a bhaint?</string>
+    <string name="rename">Athainmnigh</string>
+    <string name="rename_profile">Athainmnigh próifíl</string>
+    <string name="rename_profile_dialog">Athainmnigh %1$s</string>
+    <string name="unable_to_open_link">Ní féidir an nasc a oscailt. Cinntigh go bhfuil brabhsálaí suiteáilte agat agus socraigh é mar an mbrabhsálaí réamhshocraithe</string>
 </resources>

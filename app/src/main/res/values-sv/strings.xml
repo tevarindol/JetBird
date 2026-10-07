@@ -27,7 +27,7 @@
     <string name="enable_logging">Aktivera loggning</string>
     <string name="enable_logging_description_netbird">Se loggar från NetBird</string>
     <string name="enable_verbose_logging">Aktivera utförlig loggning</string>
-    <string name="enable_verbose_logging_description">Öka verbosity av JetBird loggar</string>
+    <string name="enable_verbose_logging_description">Öka detaljnivån i JetBird-loggarna</string>
     <string name="exclude">Uteslut</string>
     <string name="exclude_apps">Inkludera/exkludera appar från tunnel</string>
     <string name="exclude_apps_description">%1$d appar exkluderade</string>
@@ -64,12 +64,12 @@
     <string name="reset_app_description">Rensa alla data och konfigurationer</string>
     <string name="reset_netbird_config">Återställ NetBird-konfiguration</string>
     <string name="reset_netbird_config_description">Ta bort NetBird-konfigurationsfil</string>
-    <string name="reset_to_change_management_server">För att ändra hanteringsservern, vänligen åerställ JetBird</string>
+    <string name="reset_to_change_management_server">Återställ JetBird om du vill ändra hanteringsservern</string>
     <string name="route_calculator">Ruttkalkylator</string>
-    <string name="route_override">Aktivera ruttåsidosättanden</string>
+    <string name="route_override">Aktivera åsidosättning av rutter</string>
     <string name="route_override_description">Åsidosätt NetBird-rutter</string>
     <string name="route_selector">Ruttväljare</string>
-    <string name="route_selector_description">%1$d ruttåsidosättanden</string>
+    <string name="route_selector_description">%1$d åsidosättningar av rutter</string>
     <string name="routes">Rutter: %1$s</string>
     <string name="save_log">Spara logg</string>
     <string name="settings">Inställningar</string>
@@ -102,16 +102,16 @@
     <string name="confirm">Bekräfta</string>
     <string name="copy_log">Kopiera logg</string>
     <string name="enable_logging_description">Se loggar från JetBird</string>
-    <string name="enable_verbose_logging_description_netbird">Öka verbosity av NetBird loggar</string>
+    <string name="enable_verbose_logging_description_netbird">Öka detaljnivån i NetBird-loggarna</string>
     <string name="engine_logging_warning">NetBird-klienten kan producera många loggar över tid.\n\nDessa loggar lagras i minnet och kan orsaka att din telefon reagerar långsam eller JetBird kraschar.\n\nDu kan också inaktivera live-loggning och dumpa loggarna efteråt från loggskärmen.</string>
-    <string name="route_selector_info">Här kan du åsidosätta rutter som Netbird hanteringsserver skickar till dig. \n \nNär den är aktiverad kommer ingen trafik som går till dina definierade rutter att använda tunneln. Du kan se alla tillämpade rutter i loggen. \n \nOm du aktiverar ruttåsidosättanden och inte tillhandahåller några rutter använder JetBird uppströmsrutter.</string>
+    <string name="route_selector_info">Här kan du åsidosätta rutter som NetBird-hanteringsservern skickar till dig.\n\nNär funktionen är aktiverad använder trafik till dina angivna rutter inte tunneln. Du kan se de tillämpade rutterna i loggen.\n\nOm du aktiverar åsidosättning av rutter utan att ange några rutter använder JetBird uppströmsrutter.</string>
     <string name="permissive_rosenpass_description">Tillåt icke-rosenpass-peers att ansluta</string>
     <string name="login_expired">Inloggningen har upphört att gälla - anslut igen för att autentisera på nytt</string>
     <string name="get_started">Kom igång</string>
     <string name="block_inbound">Blockera inkommande anslutningar</string>
     <string name="block_inbound_description">Åsidosätter alla policyer som tas emot från hanteringsservern</string>
     <string name="client_routes">Klientrutter</string>
-    <string name="client_routes_description">Processklientrutter mottagna från hanteringsservern</string>
+    <string name="client_routes_description">Bearbeta klientrutter som tagits emot från hanteringsservern</string>
     <string name="connect_to_see_networks">Anslut för att se nätverk</string>
     <string name="copy">Kopiera</string>
     <string name="disconnecting">Frånkopplar</string>
@@ -147,4 +147,5 @@
     <string name="unable_to_open_link">Det gick inte att öppna länken. Se till att du har en webbläsare installerad och ställ in den som standardwebbläsare</string>
     <string name="grant_vpn_permission">Bevilja VPN-behörighet</string>
     <string name="grant_local_network_permission">Bevilja behörigheter till lokala nätverk</string>
+    <string name="include_system_apps">Inkludera system appar</string>
 </resources>
