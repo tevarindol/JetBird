@@ -20,6 +20,9 @@ object Actions {
     const val TILE_START_SERVICE_ACTION = "dev.bg.jetbird.Tile.Start"
     const val TILE_STOP_SERVICE_ACTION = "dev.bg.jetbird.Tile.Stop"
     const val BOOT_START_SERVICE_ACTION = "dev.bg.jetbird.BootReceiver"
+    const val CONTROL_ENABLE_EXIT_NODE_ACTION = "dev.bg.jetbird.Control.EnableExitNode"
+    const val CONTROL_DISABLE_EXIT_NODE_ACTION = "dev.bg.jetbird.Control.DisableExitNode"
+    const val EXTRA_EXIT_NODE_NAME = "exit_node_name"
 }
 
 object JetBirdConstants {
