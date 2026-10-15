@@ -15,6 +15,9 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
+    <uses-feature
         android:name="android.software.leanback"
         android:required="false" />
 
@@ -114,6 +117,18 @@
                  <action android:name="dev.bg.jetbird.EXTERNAL_ACTION_DISABLE_EXIT_NODE" />
              </intent-filter>
          </receiver>
+
+        <receiver
+            android:name=".widget.JetbirdWidgetReceiver"
+            android:exported="false"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/jetbird_widget_info" />
+        </receiver>
 
     </application>
 

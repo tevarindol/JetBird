@@ -160,6 +160,7 @@
     <string name="view_routes_description">See calculated tunnel routes</string>
     <string name="warning">Warning</string>
     <string name="welcome_jetbird">Welcome to JetBird!</string>
+    <string name="widget_description">Toggle the JetBird VPN connection</string>
     <string name="your_overrides">Your overrides: %1$s</string>
 
     <string name="ar" translatable="false">اَلْعَرَبِيَّةُ</string>

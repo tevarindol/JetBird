@@ -10,6 +10,7 @@ import android.os.Build
 import android.os.IBinder
 import android.os.Parcel
 import androidx.core.app.NotificationCompat
+import androidx.glance.appwidget.updateAll
 import dagger.hilt.android.AndroidEntryPoint
 import dev.bg.jetbird.R
 import dev.bg.jetbird.data.Actions
@@ -25,6 +26,7 @@ import dev.bg.jetbird.receiver.VpnControlReceiver
 import dev.bg.jetbird.repository.LogRepository
 import dev.bg.jetbird.repository.PreferencesRepository
 import dev.bg.jetbird.repository.VpnRepository
+import dev.bg.jetbird.widget.JetbirdWidget
 import dev.bg.jetbird.util.IoDispatcher
 import dev.bg.jetbird.util.Log
 import dev.bg.jetbird.util.ReplaceableJob
@@ -67,6 +69,7 @@ class VPNService: VpnService() {
     lateinit var ioDispatcher: CoroutineDispatcher
 
     private val scope = CoroutineScope(SupervisorJob())
+    private val widgetScope by lazy { CoroutineScope(SupervisorJob() + ioDispatcher) }
     private val _state: MutableStateFlow<VPNState> = MutableStateFlow(
         VPNState(
             connectionState = ConnectionState.DISCONNECTED,
@@ -266,6 +269,22 @@ class VPNService: VpnService() {
         }
     }
 
+    private fun setConnectionState(
+        state: ConnectionState,
+        clearPeers: Boolean = false
+    ) {
+        _state.update {
+            it.copy(
+                connectionState = state,
+                peers = if (clearPeers) emptyList() else it.peers
+            )
+        }
+        vpnRepository.updateConnectionState(state)
+        widgetScope.launch {
+            JetbirdWidget.updateAll(applicationContext)
+        }
+    }
+
     private fun broadcastStatus(connected: Boolean) {
         val statusIntent = Intent(VpnControlReceiver.ACTION_VPN_STATUS).apply {
             putExtra(VpnControlReceiver.EXTRA_CONNECTED, connected)
@@ -366,12 +385,12 @@ class VPNService: VpnService() {
     private var connectionListener = object : ConnectionListener {
         override fun onConnecting() {
             log("Netbird connecting")
-            _state.update { it.copy(connectionState = ConnectionState.CONNECTING) }
+            setConnectionState(ConnectionState.CONNECTING)
         }
 
         override fun onConnected() {
             log("Netbird connected")
-            _state.update { it.copy(connectionState = ConnectionState.CONNECTED) }
+            setConnectionState(ConnectionState.CONNECTED)
         }
 
         override fun onStateChanged(state: Long) {}
@@ -394,17 +413,12 @@ class VPNService: VpnService() {
 
         override fun onDisconnecting() {
             log("Netbird disconnecting")
-            _state.update { it.copy(connectionState = ConnectionState.DISCONNECTING) }
+            setConnectionState(ConnectionState.DISCONNECTING)
         }
 
         override fun onDisconnected() {
             log("Netbird disconnected")
-            _state.update {
-                it.copy(
-                    connectionState = ConnectionState.DISCONNECTED,
-                    peers = emptyList()
-                )
-            }
+            setConnectionState(ConnectionState.DISCONNECTED, clearPeers = true)
         }
     }
 
@@ -471,17 +485,15 @@ class VPNService: VpnService() {
     private var serviceStateListener = object : TunnelListener {
         override fun onStarted() {
             isTunnelStarted = true
-            vpnRepository.updateVpnState(true)
             log("Tunnel setup complete", verbose = true)
-            _state.update { it.copy(connectionState = ConnectionState.CONNECTED) }
+            setConnectionState(ConnectionState.CONNECTED)
             broadcastStatus(true)
         }
 
         override fun onStopped() {
             isTunnelStarted = false
-            vpnRepository.updateVpnState(false)
             log("Tunnel stopped", verbose = true)
-            _state.update { it.copy(connectionState = ConnectionState.DISCONNECTED) }
+            setConnectionState(ConnectionState.DISCONNECTED)
             stop()
             broadcastStatus(false)
         }
@@ -496,9 +508,8 @@ class VPNService: VpnService() {
 
         override fun onError(message: String) {
             isTunnelStarted = false
-            vpnRepository.updateVpnState(false)
             reduceTunnelFailure(message)
-            _state.update { it.copy(connectionState = ConnectionState.DISCONNECTED) }
+            setConnectionState(ConnectionState.DISCONNECTED)
             stop()
         }
     }
