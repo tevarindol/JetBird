@@ -306,7 +306,10 @@ class VPNService: VpnService() {
             enableRouteOverrides = preferencesRepository.routeOverridesEnabled,
             overrides = preferencesRepository.routeOverrides,
             fallbackDns = fallbackDns,
-            forceRelay = preferencesRepository.forceRelay
+            forceRelay = preferencesRepository.forceRelay,
+            iceKeepAliveInterval = preferencesRepository.iceKeepAliveInterval,
+            iceDisconnectedTimeout = preferencesRepository.iceDisconnectedTimeout,
+            iceFailedTimeout = preferencesRepository.iceFailedTimeout
         )
     }
 

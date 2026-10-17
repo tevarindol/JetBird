@@ -27,6 +27,7 @@ import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.SegmentedButton
 import androidx.compose.material3.SegmentedButtonDefaults
@@ -373,6 +374,103 @@ fun SettingsScreen(
         HorizontalDivider()
 
         SettingsSection(
+            title = stringResource(R.string.advanced)
+        ) {
+            var iceKeepAliveDialog by remember { mutableStateOf(false) }
+            var iceDisconnectedDialog by remember { mutableStateOf(false) }
+            var iceFailedDialog by remember { mutableStateOf(false) }
+
+            val effectiveIceKeepAlive = state.iceKeepAliveInterval?.toIntOrNull() ?: 4
+            val effectiveIceDisconnected = state.iceDisconnectedTimeout?.toIntOrNull() ?: 6
+
+            IceSettingsTile(
+                title = stringResource(R.string.ice_keepalive_interval),
+                description = stringResource(R.string.ice_keepalive_interval_description),
+                value = state.iceKeepAliveInterval.toStringOrNotSet(ctx),
+                onClick = { iceKeepAliveDialog = true }
+            )
+            TextFieldAlertDialog(
+                open = iceKeepAliveDialog,
+                title = stringResource(R.string.ice_keepalive_interval),
+                label = stringResource(R.string.ice_keepalive_interval),
+                initialValue = state.iceKeepAliveInterval,
+                inputType = OutlinedTextFieldInputType.Numeric,
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                supportingText = stringResource(R.string.ice_keepalive_interval_hint),
+                onDismissRequest = { iceKeepAliveDialog = false },
+                onEntered = { value ->
+                    val ka = value?.toIntOrNull() ?: 4
+                    when {
+                        value != null && iceSeconds(value) == null -> scope.launch {
+                            snackbar.showSnackbar(ctx.getString(R.string.ice_value_invalid))
+                        }
+                        ka >= effectiveIceDisconnected -> scope.launch {
+                            snackbar.showSnackbar(ctx.getString(R.string.ice_order_invalid))
+                        }
+                        else -> viewModel.updateIceKeepAliveInterval(value)
+                    }
+                }
+            )
+            IceSettingsTile(
+                title = stringResource(R.string.ice_disconnected_timeout),
+                description = stringResource(R.string.ice_disconnected_timeout_description),
+                value = state.iceDisconnectedTimeout.toStringOrNotSet(ctx),
+                onClick = { iceDisconnectedDialog = true }
+            )
+            TextFieldAlertDialog(
+                open = iceDisconnectedDialog,
+                title = stringResource(R.string.ice_disconnected_timeout),
+                label = stringResource(R.string.ice_disconnected_timeout),
+                initialValue = state.iceDisconnectedTimeout,
+                inputType = OutlinedTextFieldInputType.Numeric,
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                supportingText = stringResource(R.string.ice_disconnected_timeout_hint),
+                onDismissRequest = { iceDisconnectedDialog = false },
+                onEntered = { value ->
+                    val dc = value?.toIntOrNull() ?: 6
+                    when {
+                        value != null && iceSeconds(value) == null -> scope.launch {
+                            snackbar.showSnackbar(ctx.getString(R.string.ice_value_invalid))
+                        }
+                        dc <= effectiveIceKeepAlive -> scope.launch {
+                            snackbar.showSnackbar(ctx.getString(R.string.ice_order_invalid))
+                        }
+                        else -> viewModel.updateIceDisconnectedTimeout(value)
+                    }
+                }
+            )
+            IceSettingsTile(
+                title = stringResource(R.string.ice_failed_timeout),
+                description = stringResource(R.string.ice_failed_timeout_description),
+                value = state.iceFailedTimeout.toStringOrNotSet(ctx),
+                onClick = { iceFailedDialog = true }
+            )
+            TextFieldAlertDialog(
+                open = iceFailedDialog,
+                title = stringResource(R.string.ice_failed_timeout),
+                label = stringResource(R.string.ice_failed_timeout),
+                initialValue = state.iceFailedTimeout,
+                inputType = OutlinedTextFieldInputType.Numeric,
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                onDismissRequest = { iceFailedDialog = false },
+                onEntered = { value ->
+                    when {
+                        value != null && iceSeconds(value) == null -> scope.launch {
+                            snackbar.showSnackbar(ctx.getString(R.string.ice_value_invalid))
+                        }
+                        else -> viewModel.updateIceFailedTimeout(value)
+                    }
+                }
+            )
+            SettingsTile(
+                title = stringResource(R.string.ice_reset),
+                description = stringResource(R.string.ice_reset_description),
+                onClick = { viewModel.resetIceTimings() }
+            )
+        }
+        HorizontalDivider()
+
+        SettingsSection(
             title = stringResource(R.string.app)
         ) {
             var wipeConfigDialog by remember { mutableStateOf(false) }
@@ -674,3 +772,36 @@ private fun ExcludeAppsDialog(
         )
     }
 }
+
+@Composable
+private fun IceSettingsTile(
+    title: String,
+    description: String,
+    value: String,
+    onClick: () -> Unit
+) {
+    val clickModifier = Modifier.clickable { onClick() }
+    Column(
+        Modifier
+            .fillMaxWidth()
+            .then(clickModifier)
+    ) {
+        Row(
+            Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Text(title)
+            Text(
+                value,
+                color = MaterialTheme.colorScheme.secondary
+            )
+        }
+        Text(
+            description,
+            color = MaterialTheme.colorScheme.secondary
+        )
+    }
+}
+
+private fun iceSeconds(value: String?): Int? = value?.toIntOrNull()?.takeIf { it in 1..3600 }

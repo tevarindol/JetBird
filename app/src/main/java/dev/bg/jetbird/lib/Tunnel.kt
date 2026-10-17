@@ -72,7 +72,10 @@ class Tunnel(
         enableRouteOverrides: Boolean,
         overrides: Set<String>,
         fallbackDns: String?,
-        forceRelay: Boolean
+        forceRelay: Boolean,
+        iceKeepAliveInterval: String?,
+        iceDisconnectedTimeout: String?,
+        iceFailedTimeout: String?
     ) {
         if (isRunning) return
         when (loggingLevel) {
@@ -97,6 +100,9 @@ class Tunnel(
                 )
                 val envList = EnvList().apply {
                     put(Android.getEnvKeyNBForceRelay(), forceRelay.toString())
+                    putEnvSeconds("NB_ICE_KEEP_ALIVE_INTERVAL_SEC", iceKeepAliveInterval)
+                    putEnvSeconds("NB_ICE_DISCONNECTED_TIMEOUT_SEC", iceDisconnectedTimeout)
+                    putEnvSeconds("NB_ICE_FAILED_TIMEOUT_SEC", iceFailedTimeout)
                 }
                 if (urlOpener == null) {
                     dnsWatch.registerNetworkCallback()
@@ -384,4 +390,10 @@ class Tunnel(
             cidr.address == "0.0.0.0" && cidr.mask == 0
         }
     }
+
+    private fun EnvList.putEnvSeconds(key: String, value: String?) {
+        val seconds = value?.trim()?.toIntOrNull() ?: return
+        put(key, seconds.toString())
+    }
+
 }

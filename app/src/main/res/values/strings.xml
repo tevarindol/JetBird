@@ -9,6 +9,7 @@
     <string name="add">Add</string>
     <string name="add_a_profile">Add a profile</string>
     <string name="add_route">Add route</string>
+    <string name="advanced">Advanced</string>
     <string name="another_always_on_vpn_active">Another always-on VPN is active</string>
     <string name="app">App</string>
     <string name="app_language">App language</string>
@@ -67,6 +68,18 @@
     <string name="get_started_url">To get started please enter your management server URL</string>
     <string name="grant_local_network_permission">Grant local networks permission</string>
     <string name="grant_vpn_permission">Grant VPN permission</string>
+    <string name="ice_disconnected_timeout">ICE disconnected timeout</string>
+    <string name="ice_disconnected_timeout_description">Seconds without a response</string>
+    <string name="ice_disconnected_timeout_hint">Must be greater than the keepalive interval</string>
+    <string name="ice_failed_timeout">ICE failed timeout</string>
+    <string name="ice_failed_timeout_description">Seconds until a connection is considered failed</string>
+    <string name="ice_keepalive_interval">ICE keepalive interval</string>
+    <string name="ice_keepalive_interval_description">Seconds between keepalive packets</string>
+    <string name="ice_keepalive_interval_hint">Higher values such as 15–25 can reduce battery drain</string>
+    <string name="ice_order_invalid">Keepalive interval must be less than the disconnected timeout</string>
+    <string name="ice_reset">Reset ICE timings</string>
+    <string name="ice_reset_description">Restore defaults</string>
+    <string name="ice_value_invalid">Value must be between 1 and 3600 seconds</string>
     <string name="idle">Idle</string>
     <string name="include">Include</string>
     <string name="include_system_apps">Include system apps</string>

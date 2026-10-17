@@ -27,6 +27,9 @@ interface PreferencesValues {
     var firewall: Boolean
     var ssh: Boolean
     var blockInbound: Boolean
+    var iceKeepAliveInterval: String?
+    var iceDisconnectedTimeout: String?
+    var iceFailedTimeout: String?
 
     // JetBird
     var logging: Boolean
@@ -163,6 +166,18 @@ class PreferencesRepositoryImpl @Inject constructor(): PreferencesRepository {
         get() = mmkv.decodeBool(PreferenceKeys.BlockInbound.key(), false)
         set(value) { mmkv.encode(PreferenceKeys.BlockInbound.key(), value) }
 
+    override var iceKeepAliveInterval: String?
+        get() = mmkv.decodeString(PreferenceKeys.IceKeepAliveInterval.key(), null)
+        set(value) { mmkv.encode(PreferenceKeys.IceKeepAliveInterval.key(), value) }
+
+    override var iceDisconnectedTimeout: String?
+        get() = mmkv.decodeString(PreferenceKeys.IceDisconnectedTimeout.key(), null)
+        set(value) { mmkv.encode(PreferenceKeys.IceDisconnectedTimeout.key(), value) }
+
+    override var iceFailedTimeout: String?
+        get() = mmkv.decodeString(PreferenceKeys.IceFailedTimeout.key(), null)
+        set(value) { mmkv.encode(PreferenceKeys.IceFailedTimeout.key(), value) }
+
     // JetBird
     override var logging: Boolean
         get() = mmkv.decodeBool(PreferenceKeys.Logging.key, false)
@@ -229,6 +244,9 @@ class PreferencesRepositoryImpl @Inject constructor(): PreferencesRepository {
             firewall = firewall,
             ssh = ssh,
             blockInbound = blockInbound,
+            iceKeepAliveInterval = iceKeepAliveInterval,
+            iceDisconnectedTimeout = iceDisconnectedTimeout,
+            iceFailedTimeout = iceFailedTimeout,
             logging = logging,
             verboseLogging = verboseLogging,
             excludedApps = excludedApps,
@@ -272,6 +290,9 @@ data class PreferencesState(
     override var firewall: Boolean,
     override var ssh: Boolean,
     override var blockInbound: Boolean,
+    override var iceKeepAliveInterval: String?,
+    override var iceDisconnectedTimeout: String?,
+    override var iceFailedTimeout: String?,
 
     // JetBird
     override var logging: Boolean,
@@ -311,6 +332,9 @@ private enum class PreferenceKeys(
     Firewall("firewall"),
     SSH("ssh"),
     BlockInbound("block_inbound"),
+    IceKeepAliveInterval("ice_keepalive_interval"),
+    IceDisconnectedTimeout("ice_disconnected_timeout"),
+    IceFailedTimeout("ice_failed_timeout"),
 
     // JetBird
     Logging("logging"),

@@ -236,6 +236,36 @@ class SettingsViewModel @Inject constructor(
         }
     }
 
+    fun updateIceKeepAliveInterval(value: String?) {
+        viewModelScope.launch(ioDispatcher) {
+            preferencesRepository.iceKeepAliveInterval = value
+            preferencesRepository.updateState()
+        }
+    }
+
+    fun updateIceDisconnectedTimeout(value: String?) {
+        viewModelScope.launch(ioDispatcher) {
+            preferencesRepository.iceDisconnectedTimeout = value
+            preferencesRepository.updateState()
+        }
+    }
+
+    fun updateIceFailedTimeout(value: String?) {
+        viewModelScope.launch(ioDispatcher) {
+            preferencesRepository.iceFailedTimeout = value
+            preferencesRepository.updateState()
+        }
+    }
+
+    fun resetIceTimings() {
+        viewModelScope.launch(ioDispatcher) {
+            preferencesRepository.iceKeepAliveInterval = null
+            preferencesRepository.iceDisconnectedTimeout = null
+            preferencesRepository.iceFailedTimeout = null
+            preferencesRepository.updateState()
+        }
+    }
+
     fun toggleStartOnReboot(enabled: Boolean) {
         viewModelScope.launch(ioDispatcher) {
             preferencesRepository.startOnReboot = enabled
