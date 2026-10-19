@@ -1,0 +1,17 @@
+diff --git a/client/internal/engine.go b/client/internal/engine.go
+index 7f3f8185f..51239fb66 100644
+--- a/client/internal/engine.go
++++ b/client/internal/engine.go
+@@ -2141,7 +2141,11 @@ func (e *Engine) newWgIface() (*iface.WGIface, error) {
+ func (e *Engine) wgInterfaceCreate() (err error) {
+ 	switch runtime.GOOS {
+ 	case "android":
+-		err = e.wgInterface.CreateOnAndroid(e.routeManager.CurrentRouteRange(), e.dnsServer.DnsIP().String(), e.dnsServer.SearchDomains())
++		dns := ""
++		if !e.config.DisableDNS {
++			dns = e.dnsServer.DnsIP().String()
++		}
++		err = e.wgInterface.CreateOnAndroid(e.routeManager.CurrentRouteRange(), dns, e.dnsServer.SearchDomains())
+ 	case "ios":
+ 		e.mobileDep.NetworkChangeListener.SetInterfaceIP(e.config.WgAddr.String())
+ 		if e.config.WgAddr.HasIPv6() {
