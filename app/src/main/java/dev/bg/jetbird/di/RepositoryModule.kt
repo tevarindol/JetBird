@@ -4,6 +4,8 @@ import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import dev.bg.jetbird.repository.ConnectivityRepository
+import dev.bg.jetbird.repository.ConnectivityRepositoryImpl
 import dev.bg.jetbird.repository.LogRepository
 import dev.bg.jetbird.repository.LogRepositoryImpl
 import dev.bg.jetbird.repository.PreferencesRepository
@@ -41,5 +43,11 @@ interface RepositoryModule {
     abstract fun provideVpnRepository(
         vpnRepositoryImpl: VpnRepositoryImpl
     ): VpnRepository
+
+    @Binds
+    @Singleton
+    abstract fun provideConnectivityRepository(
+        connectivityRepositoryImpl: ConnectivityRepositoryImpl
+    ): ConnectivityRepository
 
 }

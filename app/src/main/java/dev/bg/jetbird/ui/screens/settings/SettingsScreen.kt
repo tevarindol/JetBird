@@ -99,6 +99,7 @@ fun SettingsScreen(
     val scope = rememberCoroutineScope()
     val scrollState = rememberScrollState()
     val state = preferencesState.collectAsStateWithLifecycle().value
+    val isPrivateDnsActive = viewModel.isPrivateDnsActive.collectAsStateWithLifecycle().value
 
     fun deleteConfigFile() {
         val config = File(ctx.getProfileManager().activeConfigPath)
@@ -247,6 +248,14 @@ fun SettingsScreen(
             )
             SettingsSwitch(
                 title = stringResource(R.string.dns),
+                description = when {
+                    !state.dns -> stringResource(
+                        if (isPrivateDnsActive) R.string.dns_description_disabled_private_dns
+                        else R.string.dns_description_disabled
+                    )
+                    isPrivateDnsActive -> stringResource(R.string.dns_description_private_dns)
+                    else -> null
+                },
                 checked = state.dns,
                 onChange = { viewModel.toggleDNS(it) }
             )

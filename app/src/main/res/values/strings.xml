@@ -41,6 +41,9 @@
     <string name="disconnected">Disconnected</string>
     <string name="disconnecting">Disconnecting</string>
     <string name="dns" translatable="false">DNS</string>
+    <string name="dns_description_disabled">=DNS is handled by the system</string>
+    <string name="dns_description_disabled_private_dns">Private DNS will be used</string>
+    <string name="dns_description_private_dns">System Private DNS is active and takes precedence over JetBird DNS</string>
     <string name="dump_netbird_log">Dump NetBird log</string>
     <string name="enable_live_logging">Enable live logging</string>
     <string name="enable_live_logging_description">See NetBird logs in real time</string>

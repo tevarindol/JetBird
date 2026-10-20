@@ -10,6 +10,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dev.bg.jetbird.receiver.BootReceiver
 import dev.bg.jetbird.repository.LogRepository
 import dev.bg.jetbird.repository.PreferencesRepository
+import dev.bg.jetbird.repository.ConnectivityRepository
 import dev.bg.jetbird.util.IoDispatcher
 import dev.bg.jetbird.util.ktx.getProfileManager
 import io.netbird.android.Preferences
@@ -21,11 +22,14 @@ import javax.inject.Inject
 class SettingsViewModel @Inject constructor(
     @ApplicationContext private val ctx: Context,
     private val preferencesRepository: PreferencesRepository,
+    private val connectivityRepository: ConnectivityRepository,
     private val logRepository: LogRepository,
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher
 ): ViewModel() {
 
     val state = preferencesRepository.state
+
+    val isPrivateDnsActive = connectivityRepository.isPrivateDnsActive
 
     fun updatePreSharedKey(
         key: String?
