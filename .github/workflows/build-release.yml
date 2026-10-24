@@ -54,10 +54,23 @@ jobs:
       - name: Build release APKs
         run: ./gradlew :app:assembleRelease --stacktrace --no-build-cache --no-configuration-cache --no-daemon
 
-      - name: Upload unsigned release APKs
+      - name: Sign release APKs
+        env:
+          APK_KS: ${{ secrets.APK_KS }}
+          APK_KS_ALIAS: ${{ secrets.APK_KS_ALIAS }}
+          APK_KS_PASS: ${{ secrets.APK_KS_PASS }}
+        run: ./scripts/apk_sign.sh
+
+      - name: Verify signed release APKs
+        run: |
+          for apk in JetBird-*-release.apk; do
+            "$ANDROID_HOME/build-tools/34.0.0/apksigner" verify --verbose "$apk"
+          done
+
+      - name: Upload signed release APKs
         uses: actions/upload-artifact@v4
         with:
           name: jetbird-release-apks
-          path: app/build/outputs/apk/release/*.apk
+          path: JetBird-*-release.apk
           if-no-files-found: error
           retention-days: 14
