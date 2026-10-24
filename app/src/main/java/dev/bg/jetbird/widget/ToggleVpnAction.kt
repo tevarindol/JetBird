@@ -16,6 +16,7 @@ import dev.bg.jetbird.data.Actions
 import dev.bg.jetbird.data.model.ConnectionState
 import dev.bg.jetbird.repository.PreferencesRepository
 import dev.bg.jetbird.repository.VpnRepository
+import dev.bg.jetbird.service.SocksService
 import dev.bg.jetbird.service.VPNService
 
 @EntryPoint
@@ -32,22 +33,26 @@ class ToggleVpnAction : ActionCallback {
             context.applicationContext,
             WidgetEntryPoint::class.java
         )
+        val proxyMode = entry.preferencesRepository().socksMode
         if (!entry.preferencesRepository().hasAuthed) {
             openApp(context)
             return
         }
-        VpnService.prepare(context)?.let { intent ->
-            runCatching {
-                PendingIntent.getActivity(
-                    context,
-                    0,
-                    intent,
-                    PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
-                ).send()
-            }.onFailure { openApp(context) }
-            return
+        if (!proxyMode) {
+            VpnService.prepare(context)?.let { intent ->
+                runCatching {
+                    PendingIntent.getActivity(
+                        context,
+                        0,
+                        intent,
+                        PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+                    ).send()
+                }.onFailure { openApp(context) }
+                return
+            }
         }
-        val serviceIntent = Intent(context, VPNService::class.java)
+        val target = if (proxyMode) SocksService::class.java else VPNService::class.java
+        val serviceIntent = Intent(context, target)
         when (entry.vpnRepository().connectionState.value) {
             ConnectionState.CONNECTING, ConnectionState.DISCONNECTING -> return
             ConnectionState.CONNECTED -> context.startService(

@@ -1,14 +1,8 @@
 package dev.bg.jetbird.lib
 
-import android.content.pm.ApplicationInfo
-import android.content.pm.PackageManager
 import android.os.Build
-import android.system.OsConstants
 import dev.bg.jetbird.BuildConfig
-import dev.bg.jetbird.data.model.CIDR
 import dev.bg.jetbird.data.model.IFace
-import dev.bg.jetbird.service.VPNService
-import dev.bg.jetbird.util.calculateTunneledRoutes
 import dev.bg.jetbird.util.ktx.getProfileManager
 import dev.bg.jetbird.util.ktx.isLeanback
 import io.netbird.android.Android
@@ -39,12 +33,12 @@ enum class EngineLoggingLevel {
 }
 
 class Tunnel(
-    private val vpnService: VPNService,
+    private val host: TunnelHost,
     private val tunnelListener: TunnelListener,
     private val connectionListener: ConnectionListener
 ): TunAdapter, NetworkChangeListener, DNSListener {
 
-    val dnsWatch: DNSWatch = DNSWatch(vpnService.baseContext, this)
+    val dnsWatch: DNSWatch = DNSWatch(host.appContext, this)
     var iface: IFace? = null
 
     private val scope = CoroutineScope(SupervisorJob())
@@ -75,7 +69,8 @@ class Tunnel(
         forceRelay: Boolean,
         iceKeepAliveInterval: String?,
         iceDisconnectedTimeout: String?,
-        iceFailedTimeout: String?
+        iceFailedTimeout: String?,
+        socksPort: Int? = null
     ) {
         if (isRunning) return
         when (loggingLevel) {
@@ -92,14 +87,19 @@ class Tunnel(
             try {
                 client.setConnectionListener(connectionListener)
                 notifyServiceStateListeners(true)
-                val profileManager = vpnService.baseContext.getProfileManager()
+                val profileManager = host.appContext.getProfileManager()
                 val platformFiles = PlatformFiles(
                     profileManager.activeConfigPath,
                     profileManager.activeStateFilePath,
-                    vpnService.baseContext.cacheDir.absolutePath
+                    host.appContext.cacheDir.absolutePath
                 )
                 val envList = EnvList().apply {
                     put(Android.getEnvKeyNBForceRelay(), forceRelay.toString())
+                    put("NB_USE_NETSTACK_MODE", (socksPort != null).toString())
+                    if (socksPort != null) {
+                        put("NB_SOCKS5_LISTENER_ADDRESS", "127.0.0.1")
+                        put("NB_SOCKS5_LISTENER_PORT", socksPort.toString())
+                    }
                     putEnvSeconds("NB_ICE_KEEP_ALIVE_INTERVAL_SEC", iceKeepAliveInterval)
                     putEnvSeconds("NB_ICE_DISCONNECTED_TIMEOUT_SEC", iceDisconnectedTimeout)
                     putEnvSeconds("NB_ICE_FAILED_TIMEOUT_SEC", iceFailedTimeout)
@@ -119,7 +119,7 @@ class Tunnel(
                     client.run(
                         platformFiles,
                         urlOpener,
-                        vpnService.baseContext.isLeanback(),
+                        host.appContext.isLeanback(),
                         dnsWatch.getActiveDns(),
                         {
                             log("Netbird DNS ready")
@@ -207,7 +207,7 @@ class Tunnel(
             if (fd != -1L) {
                 // it is cast as Long because of the override, but it is an underlying int
                 log("Renewing tunnel")
-                vpnService.protect(fd.toInt())
+                host.protectSocket(fd.toInt())
                 client.renewTun(fd)
             } else {
                 log("Failed to configure interface")
@@ -238,157 +238,42 @@ class Tunnel(
             routes = routes
         )
         this.routes = routes
-        return try {
-            log("Adding CIDR block to interface $ipv4Cidr", verbose = true)
-            if (ipv4Cidr == null) {
-                log("NetBird sent invalid CIDR block")
-                return 0L
-            }
-            val upstreamRoutes = when (routes) {
-                null, "" -> emptyList()
-                else -> routes.split(";")
-            }.toSet()
-            val allocatedIpv6Cidr = when {
-                !ipv6Cidr.isNullOrEmpty() -> CIDR(ipv6Cidr)
-                else -> null
-            }
-            val allocatedIpv4Cidr = CIDR(ipv4Cidr)
-            val builder = vpnService.tunnelBuilder
-                .addAddress(allocatedIpv4Cidr.address, allocatedIpv4Cidr.mask)
-                .allowFamily(OsConstants.AF_INET)
-                .allowFamily(OsConstants.AF_INET6)
-                .setMtu(mtu.toInt())
-                // IPv6 setup
-                .apply {
-                    if (allocatedIpv6Cidr != null) {
-                        log("Adding IPv6 CIDR block to interface ${allocatedIpv6Cidr.address}/${allocatedIpv6Cidr.mask}")
-                        addAddress(allocatedIpv6Cidr.address, allocatedIpv6Cidr.mask)
-                        if (hasIPv4DefaultRoute(upstreamRoutes)) {
-                            log("Adding ::/0 route to prevent leak")
-                            addRoute("::", 0)
-                        }
-                    }
-                }
-                // DNS
-                .apply {
-                    if (dns.isNullOrEmpty()) {
-                        log("DNS null")
-                        return@apply
-                    }
-                    if (vpnService.isUsingPrivateDns) {
-                        log("Ignoring DNS because private DNS is active")
-                        return@apply
-                    }
-                    log("Registering DNS: $dns")
-                    addDnsServer(dns)
-                }
-                // Route and app overrides
-                .apply {
-                    when (domains) {
-                        null, "" -> emptyList()
-                        else -> domains.split(";")
-                    }.forEach { domain ->
-                        log("Adding search domain: $domain", verbose = true)
-                        addSearchDomain(domain)
-                    }
-                    if (upstreamRoutes.isNotEmpty()) {
-                        if (routeOverrideEnabled && routeOverrides.isNotEmpty()) {
-                            log("Using route overrides")
-                            calculateTunneledRoutes(
-                                allowedIps = upstreamRoutes,
-                                disallowedIps = routeOverrides
-                            ).map { CIDR(it) }.forEach { route ->
-                                log("Adding route: ${route.address}/${route.mask}", verbose = true)
-                                addRoute(route.address, route.mask)
-                            }
-                        } else {
-                            log("Using upstream routes")
-                            upstreamRoutes.map { CIDR(it) }.forEach { route ->
-                                log("Adding route: ${route.address}/${route.mask}", verbose = true)
-                                addRoute(route.address, route.mask)
-                            }
-                        }
-                    }
-                    if (invertExclusion) {
-                        // Include
-                        // For some reason addAllowedApplication seems to block DNS
-                        // Calculate the inverse and exclude all other apps
-                        val apps = vpnService
-                            .baseContext
-                            .packageManager
-                            .getInstalledApplications(PackageManager.GET_META_DATA)
-                            .toList()
-                            .filter { p ->
-                                (p.flags and ApplicationInfo.FLAG_SYSTEM == 0 && p.packageName != vpnService.baseContext.packageName) ||
-                                        p.packageName == "com.google.android.projection.gearhead" ||
-                                        p.packageName == "com.google.android.apps.messaging" ||
-                                        p.packageName == "com.google.android.gms"
-                            }
-                        val exclude = apps.filter { p -> !excludedApps.contains(p.packageName) }.map { p -> p.packageName }
-                        val difference = apps.filter { p -> !exclude.contains(p.packageName) }.map { p -> p.packageName }
-                        exclude.forEach { packageName ->
-                            try {
-                                addDisallowedApplication(packageName)
-                            } catch (e: Exception) {
-                                log("Failed to exclude $packageName from the tunnel: $e")
-                            }
-                        }
-                        if (difference.isNotEmpty()) {
-                            difference.forEach { packageName ->
-                                log("Including $packageName in the tunnel")
-                            }
-                            log("Excluding all other packages from the tunnel")
-                        } else {
-                            log("Including all apps in tunnel")
-                        }
-                    } else {
-                        // Exclude
-                        excludedApps.forEach { packageName ->
-                            try {
-                                log("Excluding $packageName from tunnel")
-                                addDisallowedApplication(packageName)
-                            } catch (e: Exception) {
-                                log("Failed to exclude $packageName from tunnel: $e")
-                            }
-                        }
-                    }
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                        setMetered(false)
-                    }
-                    setBlocking(true)
-                }
-            vpnService.setUnderlyingNetworks(null)
-            builder.establish().use { tun ->
-                if (tun == null) {
-                    log("Failed to create tunnel")
-                    return 0L
-                }
-                return tun.detachFd().toLong()
-            }
-        } catch (e: Exception) {
-            log("Failed to create tunnel ${e.message} ${e.cause?.message.let { "(${it})" }}")
-            0L
+        log("Adding CIDR block to interface $ipv4Cidr", verbose = true)
+        if (ipv4Cidr == null) {
+            log("NetBird sent invalid CIDR block")
+            return 0L
         }
+        val effectiveDns = when {
+            dns.isNullOrEmpty() -> null
+            dnsWatch.isPrivateDnsActive -> {
+                log("Ignoring DNS because private DNS is active")
+                null
+            }
+            else -> dns
+        }
+        return host.configureVpnInterface(
+            ipv4Cidr = ipv4Cidr,
+            ipv6Cidr = ipv6Cidr,
+            mtu = mtu,
+            dns = effectiveDns,
+            domains = domains,
+            routes = routes,
+            excludedApps = excludedApps,
+            invertExclusion = invertExclusion,
+            routeOverrideEnabled = routeOverrideEnabled,
+            routeOverrides = routeOverrides
+        )
     }
 
     override fun protectSocket(socket: Int): Boolean {
         // 2762aafc3bedd4ddbed7ddfe7771a6020e2f3491/tool/src/main/java/io/netbird/client/tool/IFace.java#L44-L50
-        vpnService.protect(socket)
-        return true
+        return host.protectSocket(socket)
     }
 
     override fun updateAddr(s: String) {}
 
     override fun onNetworkChanged() {
         log("Network changed")
-    }
-
-    // 9b0f0fa6d1772112ffea1096361bf402426e3b00/tool/src/main/java/io/netbird/client/tool/IFace.java#L166-L173
-    private fun hasIPv4DefaultRoute(routes: Set<String>): Boolean {
-        return routes.any { r ->
-            val cidr = CIDR(r)
-            cidr.address == "0.0.0.0" && cidr.mask == 0
-        }
     }
 
     private fun EnvList.putEnvSeconds(key: String, value: String?) {

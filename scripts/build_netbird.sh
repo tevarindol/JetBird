@@ -40,6 +40,13 @@ if [[ $_d -ne 1 ]]; then
   git fetch --tags origin
 fi
 
+# pin go version
+toolchain=$(sed -n 's/^toolchain[[:space:]]*//p' go.mod)
+if [ -n "$toolchain" ]; then
+    echo "Pinning GOTOOLCHAIN to the go.mod toolchain $toolchain"
+    export GOTOOLCHAIN="$toolchain"
+fi
+
 go clean
 
 # shellcheck disable=SC2012

@@ -25,6 +25,7 @@ It has been built with privacy in mind and contains no blobs or trackers.
 - Lazy connection support - [NetBird docs](https://docs.netbird.io/how-to/lazy-connection)
 - External broadcast receiver for automation (e.g. via Tasker)
 - Profiles
+- SOCKS5 mode
 
 ## Differences
 There are a few differences between NetBird official Android client and JetBird. Some of these features rely on patches to the NetBird source (these are in `patches/`):
@@ -33,6 +34,7 @@ There are a few differences between NetBird official Android client and JetBird.
 - Rosenpass support
 - Split tunneling via routes and/or per app
 - l18n
+- SOCKS5 mode
 
 ## Install
 ### Prebuilt binaries
@@ -85,6 +87,7 @@ JetBird makes no extra connections or requests outside of the NetBird client.
 JetBird requires a few permissions in order to function:
 - `INTERNET`
 - `FOREGROUND_SERVICE`/`FOREGROUND_SERVICE_SYSTEM_EXEMPTED` - used to run the VPN service
+- `FOREGROUND_SERVICE_SPECIAL_USE` - used to run the SOCKS5 proxy service in proxy mode
 - `ACCESS_NETWORK_STATE`/`CHANGE_NETWORK_STATE` - used to monitor network to check if VPN is already running etc.
 - `ACCESS_LOCAL_NETWORK` - used to talk to hosts within a local network - required on Android 17 or greater
 - `POST_NOTIFICATIONS` - used for notifications when JetBird is running and when upstream sends new routes

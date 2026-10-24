@@ -30,7 +30,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.bg.jetbird.LocalNavController
 import dev.bg.jetbird.LocalSnackbar
-import dev.bg.jetbird.LocalVPNServiceBinder
+import dev.bg.jetbird.LocalEngineBinder
 import dev.bg.jetbird.R
 import dev.bg.jetbird.Route
 import dev.bg.jetbird.ScaffoldVisibility
@@ -59,7 +59,7 @@ fun Navigation(
     val ctx = LocalContext.current
     val navController = LocalNavController.current
     val snackbarHostState = LocalSnackbar.current
-    val binder = LocalVPNServiceBinder.current
+    val binder = LocalEngineBinder.current
 
     val backStack by navController.currentBackStackEntryAsState()
     val scaffoldVisibility = Route.getScaffoldVisibility(backStack?.destination?.route)

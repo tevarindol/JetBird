@@ -45,7 +45,7 @@ class SetupViewModel @Inject constructor(
     ) {
         _loading.update { true }
         val configPath = ctx.getProfileManager().activeConfigPath
-        val auth = Android.newAuth(configPath, url)
+        val auth = Android.newAuth(configPath, url) { "" }
         auth.saveConfigIfSSOSupported(object : SSOListener {
             override fun onSuccess(sso: Boolean) {
                 _loading.update { false }
@@ -78,7 +78,7 @@ class SetupViewModel @Inject constructor(
     ) {
         viewModelScope.launch(ioDispatcher) {
             val configPath = ctx.getProfileManager().activeConfigPath
-            val auth = Android.newAuth(configPath, managementUrl)
+            val auth = Android.newAuth(configPath, managementUrl) { "" }
             preferencesRepository.managementUrl = managementUrl
             preferencesRepository.setupKey = setupKey
             preferencesRepository.ssoSupported = ssoSupported

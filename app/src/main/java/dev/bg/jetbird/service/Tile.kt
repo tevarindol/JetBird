@@ -8,6 +8,7 @@ import android.widget.Toast
 import dagger.hilt.android.AndroidEntryPoint
 import dev.bg.jetbird.R
 import dev.bg.jetbird.data.Actions
+import dev.bg.jetbird.repository.PreferencesRepository
 import dev.bg.jetbird.repository.VpnRepository
 import dev.bg.jetbird.util.IoDispatcher
 import dev.bg.jetbird.util.ReplaceableJob
@@ -23,6 +24,9 @@ class Tile: TileService() {
 
     @Inject
     lateinit var vpnRepository: VpnRepository
+
+    @Inject
+    lateinit var preferencesRepository: PreferencesRepository
 
     @Inject
     @IoDispatcher
@@ -52,16 +56,18 @@ class Tile: TileService() {
     }
 
     override fun onClick() {
-        if (VpnService.prepare(this) == null) {
+        val proxyMode = preferencesRepository.socksMode
+        if (proxyMode || VpnService.prepare(this) == null) {
+            val target = if (proxyMode) SocksService::class.java else VPNService::class.java
             if (vpnRepository.isVpnConnected()) {
                 startService(
-                    Intent(this, VPNService::class.java).apply {
+                    Intent(this, target).apply {
                         action = Actions.TILE_STOP_SERVICE_ACTION
                     }
                 )
             } else {
                 startService(
-                    Intent(this, VPNService::class.java).apply {
+                    Intent(this, target).apply {
                         action = Actions.TILE_START_SERVICE_ACTION
                     }
                 )

@@ -78,13 +78,14 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberPermissionState
+import dev.bg.jetbird.LocalEngineBinder
 import dev.bg.jetbird.LocalServiceConnection
 import dev.bg.jetbird.LocalSnackbar
-import dev.bg.jetbird.LocalVPNServiceBinder
 import dev.bg.jetbird.R
 import dev.bg.jetbird.data.JetBirdColors
 import dev.bg.jetbird.data.model.ConnectionState
 import dev.bg.jetbird.data.model.Network
+import dev.bg.jetbird.service.SocksService
 import dev.bg.jetbird.service.VPNService
 import dev.bg.jetbird.ui.components.ConnectionCard
 import dev.bg.jetbird.ui.components.OutlinedCopyButton
@@ -104,13 +105,14 @@ fun HomeScreen(
     viewModel: HomeViewModel = hiltViewModel()
 ) {
     val ctx = LocalContext.current
-    val binder = LocalVPNServiceBinder.current
+    val binder = LocalEngineBinder.current
     val serviceConnection = LocalServiceConnection.current
     val uriHandler = LocalUriHandler.current
     val snackbar = LocalSnackbar.current
 
     val scope = rememberCoroutineScope()
     val vpnState = binder?.state?.collectAsStateWithLifecycle()?.value
+    val socksMode = viewModel.preferences.collectAsStateWithLifecycle().value.socksMode
     val localNetworkPermission = rememberPermissionState("android.permission.ACCESS_LOCAL_NETWORK")
 
     val hasLocalNetworkPermission = remember(localNetworkPermission.status.isGranted) {
@@ -141,10 +143,10 @@ fun HomeScreen(
         when (event) {
             Lifecycle.Event.ON_START,
             Lifecycle.Event.ON_RESUME -> {
-                hasOtherAlwaysOnVpn = vpnState?.connectionState != ConnectionState.CONNECTED && ctx.hasOtherAlwaysOnVpn()
-                hasVpnPermission = VpnService.prepare(ctx) == null
+                hasOtherAlwaysOnVpn = !socksMode && vpnState?.connectionState != ConnectionState.CONNECTED && ctx.hasOtherAlwaysOnVpn()
+                hasVpnPermission = socksMode || VpnService.prepare(ctx) == null
                 if (!hasOtherAlwaysOnVpn && hasVpnPermission && binder == null) {
-                    val i = Intent(ctx, VPNService::class.java)
+                    val i = Intent(ctx, if (socksMode) SocksService::class.java else VPNService::class.java)
                     ctx.startService(i)
                     ctx.bindService(i, serviceConnection, Context.BIND_AUTO_CREATE)
                 }
@@ -235,12 +237,12 @@ fun HomeScreen(
                                 onClick = {
                                     if (vpnState?.connectionState == ConnectionState.DISCONNECTED) {
                                         if (viewModel.hasAuthed()) {
-                                            binder.start(null)
+                                            binder?.start(null)
                                         } else {
                                             if (viewModel.getSetupKey() == null) {
-                                                binder.start(loginListener)
+                                                binder?.start(loginListener)
                                             } else {
-                                                binder.start(null)
+                                                binder?.start(null)
                                             }
                                             viewModel.updateHasAuthed()
                                         }
@@ -279,7 +281,7 @@ fun HomeScreen(
                             }
                         }
                     }
-                    !hasVpnPermission || !hasLocalNetworkPermission -> {
+                    else -> {
                         Column(
                             Modifier.fillMaxSize(),
                             verticalArrangement = Arrangement.Center,
@@ -355,7 +357,7 @@ private fun PeersList(
     lazyListState: LazyListState
 ) {
     val ctx = LocalContext.current
-    val binder = LocalVPNServiceBinder.current
+    val binder = LocalEngineBinder.current
     val clipboardManager = LocalClipboardManager.current
 
     val c = MaterialTheme.colorScheme.primary

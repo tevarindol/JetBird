@@ -476,6 +476,42 @@ fun SettingsScreen(
                 description = stringResource(R.string.ice_reset_description),
                 onClick = { viewModel.resetIceTimings() }
             )
+            SettingsSwitch(
+                title = stringResource(R.string.socks_mode),
+                description = stringResource(R.string.socks_mode_description),
+                checked = state.socksMode,
+                onChange = viewModel::toggleSocksMode
+            )
+            AnimatedVisibility(state.socksMode) {
+                var socksPortDialog by remember { mutableStateOf(false) }
+                Column {
+                    SettingsTileWithValue(
+                        title = stringResource(R.string.socks_port),
+                        description = stringResource(R.string.socks_port_description),
+                        value = state.socksPort.toString(),
+                        onClick = { socksPortDialog = true }
+                    )
+                    TextFieldAlertDialog(
+                        open = socksPortDialog,
+                        title = stringResource(R.string.socks_port),
+                        label = stringResource(R.string.socks_port),
+                        initialValue = state.socksPort.toString(),
+                        supportingText = stringResource(R.string.socks_port_hint),
+                        inputType = OutlinedTextFieldInputType.Numeric,
+                        onDismissRequest = { socksPortDialog = false },
+                        onEntered = { port ->
+                            val parsed = port?.toIntOrNull()
+                            if (parsed != null && parsed in 1..65535) {
+                                viewModel.updateSocksPort(parsed)
+                            } else {
+                                scope.launch {
+                                    snackbar.showSnackbar(ctx.getString(R.string.socks_port_invalid))
+                                }
+                            }
+                        }
+                    )
+                }
+            }
         }
         HorizontalDivider()
 

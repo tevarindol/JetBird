@@ -67,6 +67,7 @@
     <string name="firewall">Firewall</string>
     <string name="force_relay_connection">Force relay connection</string>
     <string name="foreground_notification_description">JetBird tunnel is active</string>
+    <string name="foreground_notification_description_socks">SOCKS5 proxy active on 127.0.0.1:%1$d</string>
     <string name="get_started">Get started</string>
     <string name="get_started_url">To get started please enter your management server URL</string>
     <string name="grant_local_network_permission">Grant local networks permission</string>
@@ -134,6 +135,12 @@
     <string name="rename_profile">Rename profile</string>
     <string name="rename_profile_dialog">Rename %1$s</string>
     <string name="requires_vpn_permission">JetBird needs you to allow it to create a VPN connection on this device.</string>
+    <string name="socks_mode">SOCKS5 mode</string>
+    <string name="socks_mode_description">Run JetBird as a local SOCKS5 proxy instead of a VPN, so another VPN or firewall app can use the VPN slot</string>
+    <string name="socks_port">Proxy port</string>
+    <string name="socks_port_description">Port the SOCKS5 proxy listens on</string>
+    <string name="socks_port_hint">Port between 1 and 65535</string>
+    <string name="socks_port_invalid">Invalid port - should be between 1–65535</string>
     <string name="reset_app">Reset app</string>
     <string name="reset_app_description">Wipe all data and configurations</string>
     <string name="reset_netbird_config">Reset NetBird configuration</string>

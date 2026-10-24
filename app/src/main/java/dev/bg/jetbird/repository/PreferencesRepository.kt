@@ -41,6 +41,8 @@ interface PreferencesValues {
     var routeOverrides: Set<String>
     var fallbackDns: String?
     var startOnReboot: Boolean
+    var socksMode: Boolean
+    var socksPort: Int
 }
 
 interface PreferencesRepository: PreferencesValues {
@@ -220,6 +222,14 @@ class PreferencesRepositoryImpl @Inject constructor(): PreferencesRepository {
         get() = mmkv.decodeBool(PreferenceKeys.StartOnReboot.key(), false)
         set(value) { mmkv.encode(PreferenceKeys.StartOnReboot.key(), value) }
 
+    override var socksMode: Boolean
+        get() = mmkv.decodeBool(PreferenceKeys.SocksMode.key, false)
+        set(value) { mmkv.encode(PreferenceKeys.SocksMode.key, value) }
+
+    override var socksPort: Int
+        get() = mmkv.decodeInt(PreferenceKeys.SocksPort.key, 1080)
+        set(value) { mmkv.encode(PreferenceKeys.SocksPort.key, value) }
+
     override fun reset() {
         mmkv.removeValuesForKeys(mmkv.allKeys())
     }
@@ -255,7 +265,9 @@ class PreferencesRepositoryImpl @Inject constructor(): PreferencesRepository {
             routeOverridesEnabled = routeOverridesEnabled,
             routeOverrides = routeOverrides,
             fallbackDns = fallbackDns,
-            startOnReboot = startOnReboot
+            startOnReboot = startOnReboot,
+            socksMode = socksMode,
+            socksPort = socksPort
         )
     }
 
@@ -303,7 +315,9 @@ data class PreferencesState(
     override var routeOverridesEnabled: Boolean,
     override var routeOverrides: Set<String>,
     override var fallbackDns: String?,
-    override var startOnReboot: Boolean
+    override var startOnReboot: Boolean,
+    override var socksMode: Boolean,
+    override var socksPort: Int
 ): PreferencesValues
 
 private enum class PreferenceKeys(
@@ -345,5 +359,7 @@ private enum class PreferenceKeys(
     RouteOverridesEnabled("route_overrides_enabled"),
     RouteOverrides("route_overrides"),
     FallbackDNS("fallback_dns"),
-    StartOnReboot("start_on_reboot")
+    StartOnReboot("start_on_reboot"),
+    SocksMode("socks_mode"),
+    SocksPort("socks_port")
 }

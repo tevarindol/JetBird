@@ -47,7 +47,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.bg.jetbird.LocalSnackbar
-import dev.bg.jetbird.LocalVPNServiceBinder
+import dev.bg.jetbird.LocalEngineBinder
 import dev.bg.jetbird.R
 import dev.bg.jetbird.data.model.Profile
 import dev.bg.jetbird.ui.components.DeleteAlertDialog
@@ -62,7 +62,7 @@ import kotlinx.coroutines.launch
 fun ProfileScreen(
     viewModel: ProfileViewModel = hiltViewModel()
 ) {
-    val binder = LocalVPNServiceBinder.current
+    val binder = LocalEngineBinder.current
     val snackbar = LocalSnackbar.current
 
     val state by viewModel.state.collectAsStateWithLifecycle()

@@ -24,6 +24,8 @@ class HomeViewModel @Inject constructor(
     private val logRepository: LogRepository,
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher
 ): ViewModel() {
+    val preferences = preferencesRepository.state
+
     fun hasAuthed() = preferencesRepository.hasAuthed
 
     fun getSetupKey() = preferencesRepository.setupKey

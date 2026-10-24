@@ -12,4 +12,5 @@ JetBird is a wrapper around the NetBird client and is privacy friendly, containi
 <li>Android TV support</li>
 <li>Lazy connection support</li>
 <li>Profiles</li>
+<li>SOCKS5 mode</li>
 </ul>

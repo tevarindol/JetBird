@@ -8,9 +8,9 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dev.bg.jetbird.receiver.BootReceiver
+import dev.bg.jetbird.repository.ConnectivityRepository
 import dev.bg.jetbird.repository.LogRepository
 import dev.bg.jetbird.repository.PreferencesRepository
-import dev.bg.jetbird.repository.ConnectivityRepository
 import dev.bg.jetbird.util.IoDispatcher
 import dev.bg.jetbird.util.ktx.getProfileManager
 import io.netbird.android.Preferences
@@ -38,7 +38,7 @@ class SettingsViewModel @Inject constructor(
         viewModelScope.launch(ioDispatcher) {
             val configPath = ctx.getProfileManager().activeConfigPath
             val preferences = Preferences(configPath)
-            preferences.preSharedKey = key
+            preferences.setPreSharedKey(key)
             preferences.commit()
             preferencesRepository.preSharedKey = key
             preferencesRepository.updateState()
@@ -281,6 +281,21 @@ class SettingsViewModel @Inject constructor(
             PackageManager.DONT_KILL_APP
         )
         log("${if (enabled) "Enabled" else "Disabled"} boot receiver", force = true)
+    }
+
+    fun toggleSocksMode(enabled: Boolean) {
+        log(if (enabled) "Enabling SOCKS5 mode" else "Disabling SOCKS5 mode", force = true)
+        viewModelScope.launch(ioDispatcher) {
+            preferencesRepository.socksMode = enabled
+            preferencesRepository.updateState()
+        }
+    }
+
+    fun updateSocksPort(port: Int) {
+        viewModelScope.launch(ioDispatcher) {
+            preferencesRepository.socksPort = port
+            preferencesRepository.updateState()
+        }
     }
 
     fun resetPreferences() {

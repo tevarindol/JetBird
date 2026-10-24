@@ -7,7 +7,9 @@ import android.os.Build
 import androidx.core.content.ContextCompat
 import dagger.hilt.android.AndroidEntryPoint
 import dev.bg.jetbird.data.Actions
+import dev.bg.jetbird.repository.PreferencesRepository
 import dev.bg.jetbird.repository.ProfileRepository
+import dev.bg.jetbird.service.SocksService
 import dev.bg.jetbird.service.VPNService
 import javax.inject.Inject
 
@@ -17,10 +19,15 @@ class VpnControlReceiver: BroadcastReceiver() {
     @Inject
     lateinit var profileRepository: ProfileRepository
 
+    @Inject
+    lateinit var preferencesRepository: PreferencesRepository
+
+    private fun engineServiceClass() = if (preferencesRepository.socksMode) SocksService::class.java else VPNService::class.java
+
     override fun onReceive(context: Context, intent: Intent) {
         when (intent.action) {
             ACTION_CONNECT_VPN -> {
-                val svcIntent = Intent(context, VPNService::class.java).apply {
+                val svcIntent = Intent(context, engineServiceClass()).apply {
                     action = Actions.TILE_START_SERVICE_ACTION
                 }
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -32,7 +39,7 @@ class VpnControlReceiver: BroadcastReceiver() {
 
             ACTION_DISCONNECT_VPN -> {
                 context.startService(
-                    Intent(context, VPNService::class.java).apply {
+                    Intent(context, engineServiceClass()).apply {
                         action = Actions.TILE_STOP_SERVICE_ACTION
                     }
                 )
@@ -42,7 +49,7 @@ class VpnControlReceiver: BroadcastReceiver() {
 
             ACTION_ENABLE_EXIT_NODE -> {
                 context.startService(
-                    Intent(context, VPNService::class.java).apply {
+                    Intent(context, engineServiceClass()).apply {
                         action = Actions.CONTROL_ENABLE_EXIT_NODE_ACTION
                         intent.getStringExtra(EXTRA_EXIT_NODE_NAME)?.let {
                             putExtra(Actions.EXTRA_EXIT_NODE_NAME, it)
@@ -53,7 +60,7 @@ class VpnControlReceiver: BroadcastReceiver() {
 
             ACTION_DISABLE_EXIT_NODE -> {
                 context.startService(
-                    Intent(context, VPNService::class.java).apply {
+                    Intent(context, engineServiceClass()).apply {
                         action = Actions.CONTROL_DISABLE_EXIT_NODE_ACTION
                     }
                 )
