@@ -1,0 +1,58 @@
+name: Build release APK
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+
+    env:
+      GOBIN: ${{ runner.temp }}/go/bin
+
+    steps:
+      - name: Check out repository and submodules
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.23.1'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install Android SDK components
+        run: sdkmanager --install "platforms;android-37" "ndk;28.2.13676358" "build-tools;34.0.0" "platform-tools"
+
+      - name: Install gomobile tools
+        run: |
+          mkdir -p "$GOBIN"
+          go install golang.org/x/mobile/cmd/gomobile@c6794c95c70b02ddb1a79d92fec29f8b8ddd8836
+          go install golang.org/x/mobile/cmd/gobind@c6794c95c70b02ddb1a79d92fec29f8b8ddd8836
+
+      - name: Build NetBird Android binding
+        run: ./scripts/build_netbird.sh -v
+
+      - name: Build release APKs
+        run: ./gradlew :app:assembleRelease --stacktrace --no-build-cache --no-configuration-cache --no-daemon
+
+      - name: Upload unsigned release APKs
+        uses: actions/upload-artifact@v4
+        with:
+          name: jetbird-release-apks
+          path: app/build/outputs/apk/release/*.apk
+          if-no-files-found: error
+          retention-days: 14
