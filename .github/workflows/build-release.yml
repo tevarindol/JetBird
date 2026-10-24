@@ -12,7 +12,7 @@ jobs:
     timeout-minutes: 90
 
     env:
-      GOBIN: ${{ runner.temp }}/go/bin
+      GOBIN: ${{ github.workspace }}/.tools/go/bin
 
     steps:
       - name: Check out repository and submodules
